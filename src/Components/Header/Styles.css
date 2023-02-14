@@ -1,0 +1,152 @@
+.header-one {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.title-fretegratis {
+  width: 100%;
+  height: 33px;
+  background: #e06f84;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-fretegratis p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+.header-one-main {
+  background: white;
+  display: flex;
+  justify-content: center;
+  height: 66px;
+  width: 100%;
+}
+
+.header-one-main-box {
+  width: 78%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 67px;
+}
+
+.header {
+  width: 100%;
+  height: 260px;
+
+  background: transparent;
+  z-index: 1000;
+  position: relative;
+  background-color: transparent;
+}
+
+#header-main-fixed {
+  /* background: black;
+  position: fixed; */
+}
+
+/* #header-main {
+}
+#header-main-none {
+  display: none;
+} */
+.header-main-none {
+  display: none;
+}
+
+.header-two-none {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+}
+
+.btns-home-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btns-home-header button {
+  background-color: transparent;
+  outline: none;
+  color: white;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.btns-home-header button:hover {
+  text-decoration: underline;
+}
+
+.header-two {
+  padding-bottom: 10px;
+}
+
+.border-box-image img {
+  transform: scale(0.9);
+}
+
+@media (max-width: 500px) {
+  .border-box-image img {
+    transform: scale(1.69);
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+  }
+
+  .header-one-main {
+    height: 60px;
+  }
+
+  .logo-icons {
+    margin-top: 10px;
+  }
+
+  .header-one-main-box {
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .border-box-image {
+    transform: scale(0.5);
+    border: 0;
+    width: 50px;
+  }
+
+  .conatiner-search-icons {
+    background-color: #e06f84;
+    flex-direction: column-reverse;
+  }
+
+  .search-icons {
+    margin-top: 0;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .itens-search-icons {
+    margin-right: 0;
+  }
+
+  .header {
+    height: 160px;
+  }
+
+  .border-box-image:last-child {
+    border: 0;
+  }
+
+  .btns-home-header {
+    display: none;
+  }
+}

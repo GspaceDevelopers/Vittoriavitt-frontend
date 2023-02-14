@@ -1,0 +1,19 @@
+.border-box-image {
+  display: flex;
+  align-items: center;
+  height: 66px;
+  border-left: 1px solid #979899;
+  cursor: pointer;
+  width: 208px;
+  justify-content: center;
+  transition: 0.5s;
+}
+/* .border-box-image:hover {
+  opacity: 0.6;
+} */
+.border-box-image:last-child {
+  border-right: 1px solid #979899;
+}
+.border-box-image img{
+  width: 150px;
+}

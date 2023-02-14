@@ -1,0 +1,43 @@
+.container-sucesso {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-congratulations {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container-congratulations h1 {
+    width: 300px;
+    display: flex;
+    font-weight: 800;
+    color: #DF0707;
+    text-shadow: 3px 3px 10px black;
+    white-space: hidden;
+    overflow: hidden;
+    animation: pulse 3s steps(22) infinite, blink .5s step-end infinite alternate;
+
+}
+
+
+
+@keyframes pulse {
+    from {
+        width: 0px;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}

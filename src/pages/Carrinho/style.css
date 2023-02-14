@@ -1,0 +1,528 @@
+.container-carrinho {
+  width: 100%;
+}
+
+.container-itens-nocarrinho {
+  width: 100%;
+  display: none;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: center;
+  gap: 20px;
+}
+
+.box-item-carrinho {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.box-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.box-item-carrinho img {
+  height: 120px;
+  border: 1px solid grey;
+}
+
+.box-total {
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+}
+
+.box-info-qtd-cor {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box-info-qtd-cor h2 {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.qtd-cor {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-qtd-carrinho {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+#qtdview {
+  width: 40px;
+  height: 30px;
+  border: 1px solid black;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.style-tamanho-cor {
+  min-width: 30px;
+  max-width: auto;
+  height: 30px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black !important;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.precocarrinho {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  align-items: flex-end;
+}
+
+.precocarrinho button {
+  background-color: transparent;
+  font-size: 20px;
+  color: #de4563;
+}
+
+.precocarrinho h3 {
+  font-size: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.subtotal {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.subtotal h2 {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.cupom {
+  width: 100%;
+  height: 75px;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cupom input {
+  width: max-content;
+  height: 48px;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
+
+.cupom input::placeholder {
+  border-bottom: 1px solid grey;
+}
+
+.total-cupom {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid grey;
+  margin-top: 30px;
+}
+
+.total-cupom h2 {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: silver;
+}
+
+.total-cupom span {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: silver;
+}
+
+#btnverificar {
+  width: 167px;
+  height: 40px;
+  border: 1px solid #de4563;
+  color: #de4563;
+  font-size: 16px;
+  background-color: transparent;
+  transition: 0.3s ease;
+}
+
+#btnverificar:hover {
+  background-color: #de4563;
+  color: white;
+}
+
+.btn-forma-pgmt {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn-forma-pgmt button {
+  width: 340px;
+  height: 45px;
+  color: white;
+  background-color: #de4563;
+  font-size: 14px;
+}
+
+.box-input-frete {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.box-input-frete button {
+  width: 100px;
+  height: 30px;
+  background-color: #de4563;
+  color: white;
+  font-size: 15px;
+}
+
+.box-input-frete input {
+  height: 30px;
+  border: 1px solid black;
+  outline: none;
+  padding-left: 5px;
+  background-color: transparent;
+}
+
+.staps {
+  width: 100%;
+  height: 70px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: 0.8s ease;
+}
+
+#btn-back {
+  position: absolute;
+  left: 30px;
+  background-color: transparent;
+}
+
+.stap {
+  width: 30px;
+  height: 30px;
+  background-color: #de4563;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.linha {
+  width: 30px;
+  height: 2px;
+  background-color: #de4563;
+}
+
+.modalCadastro {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.container-cadastro-carrinho {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 50%;
+  gap: 30px;
+  align-items: flex-end;
+}
+
+.box-dados-pessoais {
+  width: 70%;
+  height: 200px;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 15px;
+}
+
+.box-dados-pessoais input {
+  border-bottom: 1px solid grey;
+  outline: none;
+  width: 90%;
+  height: 30px;
+  background-color: transparent;
+  padding-left: 5px;
+}
+
+.box-dados-entrega {
+  width: 70%;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+.box-dados-entrega input {
+  border-bottom: 1px solid grey;
+  outline: none;
+  width: 90%;
+  height: 30px;
+  background-color: transparent;
+  padding-left: 5px;
+}
+
+.box-frete {
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box-frete h2 {
+  font-size: 20px;
+  color: grey;
+}
+
+.box-frete p {
+  color: grey;
+}
+
+#btn-pagamento {
+  width: 90%;
+  height: 30px;
+  border: 1px solid green;
+  color: green;
+  transition: 0.3s ease;
+}
+
+#btn-pagamento:hover {
+  background-color: green;
+  color: white;
+}
+
+.container-dados-pedido {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.box-dados-pedido {
+  width: 100%;
+  height: max-content;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.box-dados-pagamento {
+  width: 70%;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+.btn-tipo-pagamento {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #de4563;
+  color: #fff;
+  font-size: 10px;
+}
+
+.box-cartao-credito {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.box-cartao-credito input,
+.box-cartao-credito select {
+  width: 90%;
+  height: 30px;
+  border: 1px solid grey;
+  padding-left: 5px;
+}
+
+#btncalc{
+  padding: 5px;
+  background-color: #de4563;
+  color: #fff;
+  margin-top: 5px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+  .container-itens-nocarrinho {
+    flex-direction: column;
+  }
+
+  
+
+  .container-Timer h2 {
+    font-size: 15px;
+  }
+
+  .modalCadastro {
+    flex-direction: column;
+  }
+
+  .container-cadastro-carrinho,
+  .container-cadastro-pedido {
+    width: 100%;
+  }
+
+  .box-dados-pessoais,
+  .box-dados-entrega {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .box-dados-pagamento {
+    width: 100%;
+  }
+
+  .container-dados-pedido {
+    width: 100%;
+  }
+
+  .box-input-frete {
+    flex-direction: column;
+  }
+
+  .box-input-frete p {
+    text-align: center;
+  }
+
+  .box-info-qtd-cor h2 {
+    font-size: 13px;
+  }
+
+  #qtdview {
+    height: 20px;
+    width: 20px;
+  }
+
+  .style-tamanho-cor {
+    height: 20px;
+    width: 20px;
+  }
+
+  .precocarrinho h3 {
+    font-size: 15px;
+  }
+
+  .precocarrinho button {
+    font-size: 15px;
+  }
+
+  .total-cupom {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .total-cupom span {
+    font-size: 14px;
+  }
+
+  .total-cupom h2 {
+    font-size: 14px;
+  }
+
+  #btnverificar {
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+  }
+
+  .cupom input {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .cupom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-forma-pgmt button {
+    width: 310px;
+    height: 38px;
+    font-size: 12px;
+  }
+
+  .subtotal h2 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .box-item-carrinho {
+    width: 95%;
+  }
+
+  .box-input-frete span {
+    font-size: 10px;
+  }
+
+  .box-input-frete input,
+  .box-input-frete button {
+    height: 25px;
+  }
+}

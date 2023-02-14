@@ -1,0 +1,308 @@
+.container-Loja {
+  width: 100%;
+}
+
+.content-loja {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.banner-loja {
+  width: 80%;
+  height: 141px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title-produto-loja {
+  width: 80%;
+  border-bottom: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.title-produto-loja h2 {
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.container-produtos-loja {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.header-filtro-titulos {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+}
+
+.box-filtro-e-box-produtos {
+  width: 100%;
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.box-filtro {
+  width: 20%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.box-produtos {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #F1F1F1;
+}
+
+.btns-tamanho-loja {
+  display: flex;
+  gap: 10px;
+}
+
+.btns-tamanho-loja button {
+  width: max-content;
+  height: 50px;
+  padding: 5px;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+}
+
+.modo-view-btn {
+  background-color: transparent;
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+}
+
+.btn-maisrecente {
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.title-filtro-loja {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  gap: 200px;
+  margin-left: 10px;
+}
+
+.title-qtd-produtos-loja {
+  display: flex;
+  align-items: center;
+}
+
+.box-btns-vizualiar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  gap: 50px;
+}
+
+.box-btnsview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#select-ordenar-produtos-loja {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+#item-pag-loja {
+  width: 350px;
+  text-align: center;
+}
+
+#imgitem-pag-loja {
+  width: 280px;
+}
+
+
+.filtro-cores {
+  width: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+
+
+#icon-cupom {
+  width: 120px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  bottom: 300px;
+  transform: rotate(-15deg);
+
+}
+
+
+
+@media(max-width:2500px) {
+  .banner-loja {
+    width: 50%;
+  }
+}
+
+@media(max-width:1900px) {
+  .banner-loja {
+    width: 64%;
+  }
+
+  #item-pag-loja {
+    width: 300px;
+  }
+
+  #imgitem-pag-loja {
+    width: 220px;
+  }
+}
+
+@media(max-width:1300px) {
+
+  #item-pag-loja {
+    width: 300px;
+  }
+
+  #imgitem-pag-loja {
+    width: 220px;
+  }
+}
+
+@media (max-width: 500px) {
+  .content-loja {
+    padding-top: 0;
+    margin-top: 9rem;
+  }
+
+  .filtro-cores {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  #icon-cupom {
+    bottom: 280px;
+    width: 80px;
+  }
+
+  .banner-loja {
+    height: 47px;
+    width: 100%;
+    background-size: cover;
+    margin-top: 80px;
+  }
+
+  .header-filtro-titulos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title-filtros-loja {
+    text-align: center;
+  }
+
+  .title-qtd-produtos-loja {
+    justify-content: center;
+  }
+
+  .box-btns-vizualiar {
+    width: 100%;
+    padding: 3px;
+    justify-content: center;
+  }
+
+  .box-produtos {
+    width: 100% !important;
+    margin-top: 10px;
+    gap: 5px;
+    padding: 1rem;
+  }
+
+  .box-filtro {
+    height: min-content;
+    width: 100%;
+    margin-left: 0 !important;
+    padding-left: 5px;
+    align-items: center;
+  }
+
+  .box-filtro-e-box-produtos {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .box-btnsview {
+    display: none;
+  }
+
+  .btns-tamanho-loja {
+    width: min-content;
+  }
+
+  .btns-tamanho-loja span {
+    width: min-content;
+  }
+
+  .title-produto-loja h2 {
+    font-size: 18px;
+  }
+
+  #imgitem-pag-loja {
+    width: 120px;
+  }
+
+  #item-pag-loja {
+    width: 176px;
+    text-align: center;
+  }
+
+  #style-pag-loja-modelo {
+    font-size: 12px;
+  }
+
+
+}
+
+@media(max-width:420px) {
+  #imgitem-pag-loja {
+    width: 110px;
+  }
+
+  #item-pag-loja {
+    margin: 0;
+    padding: 15px 15px 0 15px;
+    width: 175px;
+
+    margin-top: 10px;
+
+  }
+
+  .div-ajust-flex-start {
+    width: 100%;
+  }
+}

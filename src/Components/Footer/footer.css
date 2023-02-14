@@ -1,0 +1,335 @@
+footer {
+  width: 100%;
+  background: #e06f84;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-category-footer {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.title-category-footer h2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.title-category-footer h2::before {
+  content: "";
+  display: block;
+  background-color: rgb(255, 255, 255);
+  width: 250px;
+  height: 1px;
+  margin-bottom: 6px;
+}
+
+.box-btns-footer {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 15px;
+}
+
+.box-btns-footer a {
+  text-decoration: none;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.box-btns-footer a:hover {
+  text-decoration: underline;
+}
+
+.box-btns-footer span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 23px;
+}
+
+.btns-footer {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.btns-footer::before {
+  content: "";
+  display: flex;
+  background-color: #ffffff;
+  width: 80%;
+  height: 1px;
+  position: absolute;
+  margin-top: -20px;
+}
+
+.input-email-promocao {
+  display: flex;
+  align-items: center;
+  gap: 75px;
+  margin-bottom: 40px;
+}
+
+.linha-vertical-promo {
+  width: 1.5px;
+  height: 75%;
+  background-color: grey;
+}
+
+.input-promo {
+  width: 360px;
+  height: 55px;
+  border: none;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 19px;
+  gap: 10px;
+  padding-left: 5px;
+}
+
+.input-promo input {
+  width: 90%;
+  height: 90%;
+  border: none;
+  outline: none;
+  border-radius: 19px;
+  font-size: 17px;
+}
+
+.input-promo input::placeholder {
+  text-transform: capitalize;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.input-promo-btn {
+  width: 360px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  background: #de4563;
+  border-radius: 19px;
+  border: 0px;
+  color: white;
+}
+
+.input-email-promocao-checkbox {
+  display: flex;
+  gap: 15px;
+}
+
+.title-gspace {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.certificados img {
+  height: 45px;
+}
+
+.certificados {
+  flex-direction: row;
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.redes-sociais-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.redes-text-flex-direction {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.redes-text-flex-direction .redes-sociais-footer {
+  justify-content: flex-start;
+}
+
+.redes-text-flex-direction span {
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+
+.info-empresa-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  gap: 10px;
+}
+
+.logo-footer {
+  display: flex !important;
+  flex-direction: row-reverse;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.brends-aceitas {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  background-color: #de4563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.brends-aceitas img {
+  width: 60px;
+}
+
+@media (max-width: 900px) {
+  .input-email-promocao {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  footer {
+    padding-bottom: 30px;
+  }
+
+  .brends-aceitas {
+    border: 0;
+    margin-bottom: 0;
+  }
+
+  .btns-footer {
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 15px;
+  }
+
+  .btns-footer:first-child {
+    gap: 10px;
+  }
+
+  .redes-text-flex-direction {
+    align-items: center;
+  }
+
+  .box-btns-footer {
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  .btns-footer::before {
+    display: none !important;
+  }
+
+
+  .logo-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .brends-aceitas img {
+    width: 48px;
+  }
+
+  .info-empresa-footer {
+    align-items: center;
+  }
+
+  .certificados {
+    display: flex;
+    width: 100%;
+    background-color: #de4563;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .certificados img {
+    height: 35px !important;
+  }
+
+  .input-email-promocao {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-email-promocao {
+    gap: 25px !important;
+  }
+
+  .title-category-footer h2 {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .input-email-promocao-checkbox {
+    gap: 10px;
+  }
+
+  .input-email-promocao-checkbox input {
+    margin-left: 10px;
+  }
+
+  .input-promo-btn {
+    margin: 0;
+  }
+
+  .title-category-footer {
+    width: 300px;
+    margin-top: 36px;
+    margin-bottom: 36px !important;
+  }
+
+  .input-email-promocao-checkbox {
+    font-size: 10px;
+  }
+
+  .input-promo {
+    width: 300px;
+  }
+
+  .input-promo-btn {
+    width: 300px !important;
+  }
+
+  .title-gspace {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brends-aceitas img {
+    width: 30px;
+  }
+}

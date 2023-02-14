@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+button {
+  border: 0;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffafbe;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  /* creates padding around scroll thumb */
+}
+
+*::-webkit-scrollbar {
+  background: #fff;
+ width: 7px;
+  /* color of the tracking area */
+}

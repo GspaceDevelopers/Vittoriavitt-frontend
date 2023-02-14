@@ -1,0 +1,1170 @@
+.container-adm-controller {
+  width: 100%;
+  background-color: #e06f84;
+  display: flex;
+
+}
+
+.menu-bar {
+  width: 19%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #e06f84;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  position: fixed;
+}
+
+.btn-area-admcontroller {
+  width: 100%;
+}
+
+.menu-bar button,
+.menu-bar a {
+  text-decoration: none;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  text-align: start;
+  padding-left: 10px;
+  transition: 0.3s ease;
+}
+
+.menu-bar button:hover,
+.menu-bar a:hover {
+  background: #964453;
+}
+
+.container-pedidos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-item-menu {
+  width: 600px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px;
+  margin-top: 30px;
+  font-family: "Montserrat", sans-serif;
+  color: #e06f84;
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 50px;
+}
+
+.pedidos-box {
+  width: 85%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20%;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y mandatory;
+  scroll-snap-align: end;
+  scrollbar-width: none;
+}
+
+.list-pedidos {
+  width: 100%;
+}
+
+.container-pedidos table {
+  border: 0;
+}
+
+.pedidos-box th,
+td {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  width: 150px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.448);
+}
+
+.pedidos-box td {
+  padding: 5px;
+  width: 100px;
+  color: white;
+  border: 1px solid silver;
+}
+
+.pedidos-box th {
+  background-color: #fff;
+  color: #e06f84;
+  width: 100px !important;
+  font-size: 10px;
+  height: 40px;
+  text-transform: capitalize;
+}
+
+#mudarstatuspedido {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+}
+
+.container-modalstatus {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.603);
+  z-index: 4;
+  justify-content: center;
+  left: 0;
+}
+
+.modal-stauts-pedidos {
+  width: 40%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(114, 114, 114, 0.448);
+  position: absolute;
+  color: white;
+  font-weight: 600;
+  margin-left: 20px;
+  backdrop-filter: blur(5px);
+}
+
+#closemodalstatus {
+  background-color: white;
+  color: black;
+}
+
+.modal-stauts-pedidos select {
+  outline: none;
+  width: 250px;
+  height: 30px;
+}
+
+.modal-stauts-pedidos p {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.modal-stauts-pedidos button {
+  padding: 3px;
+  border-radius: 5px;
+  background-color: white;
+  color: #121212;
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.modal-stauts-pedidos span,
+#strong {
+  padding-right: 10px;
+  padding-left: 10px;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.filter-pedidos {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 2;
+}
+
+.filter-pedidos span {
+  color: white;
+}
+
+.filter-pedidos button {
+  width: max-content;
+  height: 40px;
+  width: 200px;
+  padding: 5px;
+  background-color: #964453;
+  color: #fff;
+}
+
+.load {
+  width: 90%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.749);
+  color: white;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.input-search {
+  width: 250px;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  padding-left: 3px;
+  padding-right: 3px;
+  position: relative;
+}
+
+.input-search input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.input-search span {
+  position: absolute;
+  pointer-events: none;
+  transition: 0.3s ease;
+  color: #fff;
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+.input-search input:focus~span {
+  transform: translateY(-30px);
+  color: white;
+}
+
+.input-search input:valid~span {
+  transform: translateY(-30px);
+}
+
+.container-dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-info-empresa {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box-info {
+  width: 260px;
+  height: 350px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-info img {
+  width: 130px;
+}
+
+.title-info-box {
+  width: 100%;
+  color: #e06f84;
+  width: 80%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.box-info h2 {
+  margin-top: 30px;
+  font-size: 35px;
+
+  font-family: "Montserrat", sans-serif;
+  color: #e06f84;
+}
+
+.div-mail {
+  width: 100%;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-mail p {
+  color: white;
+  font-weight: bold;
+}
+
+.box-cores-tamanhos-adm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-lista-produtos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.box-lista-produtos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  margin-left: -40px;
+}
+
+.produto-da-lista {
+  width: 95%;
+  background-color: rgba(255, 255, 255, 0.432);
+  border-radius: 19px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 35px;
+}
+
+.produto-da-lista h2,
+.produto-da-lista p {
+  color: white;
+  font-size: 12px;
+  width: 100px;
+}
+
+.produto-da-lista img {
+  width: 100px;
+}
+
+.modal-update-produtos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e06f84;
+  position: absolute;
+  /* top: 100px; */
+  padding: 20px;
+  top: 0;
+  left: 0 !important;
+  overflow-y: auto;
+}
+
+.modal-update-produtos img {
+  width: 150px;
+}
+
+.modal-update-produtos span {
+  width: 50%;
+  text-align: start;
+  color: white;
+}
+
+.modal-update-produtos textarea {
+  width: 50%;
+  height: 100px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.modal-update-produtos select,
+.modal-update-produtos input {
+  border: 1px solid black;
+  margin: 10px;
+  width: 50%;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.modal-update-produtos input::placeholder {
+  color: white;
+}
+
+.box-cores-update {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.box-tamanho-update {
+  display: flex;
+  width: 100%;
+}
+
+.input-tamanho-update {
+  width: 100%;
+}
+
+.box-input-tamanho-update {
+  display: flex;
+}
+
+.box-btn-update-delete {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#update {
+  width: 200px;
+  height: 30px;
+  border-radius: 19px;
+  background-color: green;
+  color: white;
+  font-size: 20px;
+}
+
+#delete {
+  width: 200px;
+  height: 30px;
+  border-radius: 19px;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+}
+
+.btnclosemodalproduto {
+  width: 100%;
+  position: relative;
+}
+
+.btnclosemodalproduto button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+}
+
+.popup-delete {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.616);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  align-items: center;
+}
+
+.popup-delete-item {
+  position: absolute;
+  width: max-content;
+  padding: 10px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.popup-delete-item button {
+  width: 70%;
+  height: 30px;
+  font-size: 20px;
+  background-color: #ee6f6f;
+  color: white;
+  margin-top: 10px;
+}
+
+.popup-delete-item h2 {
+  padding: 5px;
+  border-radius: 10px;
+  color: #df0707;
+}
+
+#sim {
+  background-color: rgb(109, 252, 109);
+}
+
+.box-filtros-estoque-controller {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-filtro-estoque {
+  width: 200px;
+  height: 30px;
+  background: #964453;
+  color: #fff;
+}
+
+.container-editahome {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #E06F84;
+}
+
+.form-edita-home {
+  width: 100%;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  backdrop-filter: blur(5px);
+  position: relative;
+}
+
+.form-edita-home input {
+  width: 300px;
+  height: 40px;
+  border: 1px solid white;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: transparent;
+  outline: none;
+  color: white;
+}
+
+.form-edita-home button {
+  width: 100px;
+  height: 40px;
+  color: white;
+  background-color: #ee6f6f;
+  position: absolute;
+  bottom: 0;
+  transition: 0.3s ease;
+}
+
+.form-edita-home button:hover {
+  background-color: #964453;
+}
+
+.box-input-files {
+  border: 1px solid white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  gap: 10px;
+
+}
+
+.box-input-files input[type="file"] {
+  font-size: 13px;
+}
+
+.box-input-files strong {
+  font-weight: 800;
+  color: #fff;
+}
+
+.box-input-files span {
+  color: white;
+}
+
+.container-lista-emails {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.box-email-lista span {
+  color: white;
+  text-align: center;
+}
+
+.box-email-lista {
+  display: flex;
+  width: 90%;
+  height: 60px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.251);
+  gap: 10px;
+  align-items: center;
+  padding-left: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.area-btns-lista-emails button {
+  width: 150px;
+  height: 40px;
+  color: white;
+  background-color: #964453;
+  margin-left: 10px;
+}
+
+.box-email-lista input {
+  background-color: transparent;
+  position: absolute;
+  left: 20px;
+}
+
+#del-email-list {
+  background-color: transparent;
+  position: absolute;
+  right: 20px;
+}
+
+.container-lista-franqueados {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#null-pedidos {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.box-info-empresa ul {
+  list-style: none;
+  display: flex;
+}
+
+.box-info-empresa ul li {
+  margin: 10px;
+}
+
+
+.modaleditadados {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.box-form-edta-acesso {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.box-form-edta-acesso label {
+  color: #fff;
+  font-size: 20px;
+}
+
+.box-form-edta-acesso input {
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #964453;
+  outline: none;
+  font-size: 18px;
+  padding-left: 5px;
+}
+
+.box-form-edta-acesso input::placeholder {
+  font-size: 15px;
+}
+
+.box-form-edta-acesso button {
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #964453;
+  color: #fff;
+  font-size: 18px;
+}
+
+
+.modalperguntas {
+  width: 100%;
+
+  overflow-y: auto;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-input-perguntas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.box-input-perguntas input {
+  width: 300px;
+  height: 40px;
+  padding-left: 5px;
+  border-radius: 10px;
+
+}
+
+.box-input-perguntas textarea {
+  width: 300px;
+  height: 90px;
+  padding-left: 5px;
+  border-radius: 10px;
+}
+
+.box-input-perguntas button {
+  height: 40px;
+  background-color: #964453;
+  color: #fff;
+  cursor: pointer;
+}
+
+.item-pergunta {
+  width: 90%;
+  text-align: center;
+  padding: 5px;
+  color: #E06F84;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.item-pergunta button {
+  background-color: transparent;
+}
+
+.boxeditpergunta {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  gap: 10px;
+}
+
+.boxeditpergunta input {
+  width: 300px;
+  height: 40px;
+  border: 1px solid grey;
+  padding-left: 5px;
+}
+
+.boxeditpergunta textarea {
+  width: 300px;
+  height: 60px;
+  border: 1px solid grey;
+  padding-left: 5px;
+}
+
+.boxeditpergunta button {
+  width: 300px;
+  height: 40px;
+  background-color: #964453;
+  color: #fff;
+}
+
+
+.modallistacomentarios {
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modallistacomentarios input {
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 5px;
+}
+
+.modallistacomentarios textarea {
+  width: 300px;
+  border-radius: 10px;
+  padding-left: 5px;
+  height: 70px;
+  margin-top: 10px;
+}
+
+.modallistacomentarios button {
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #964453;
+  color: #fff;
+  margin-top: 10px;
+}
+
+
+#delitemcor{
+  background-color: #964453;
+  padding: 5px;
+  color: #fff;
+  margin: 5px;
+}
+
+
+
+@media(max-width:1300px) {
+  .filter-pedidos button {
+    width: 100px;
+    font-size: 12px;
+  }
+
+  .input-search {
+    width: 190px;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .box-info {
+    width: 176px;
+    height: 258px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .box-info img {
+    width: 80px;
+  }
+
+  .title-info-box {
+    font-size: 14px;
+    /* margin-top: 10px; */
+  }
+
+  .box-info h2 {
+    font-size: 25px;
+  }
+
+  .container-adm-controller {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .box-info-empresa ul {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .box-info-empresa {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    height: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .menu-bar {
+    width: 100%;
+    position: fixed;
+    bottom: 0 !important;
+    z-index: 1000;
+    height: 80px;
+    overflow-x: auto;
+    background-color: #964453;
+    justify-content: center;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 30px;
+  }
+
+  .btn-area-admcontroller {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .menu-bar button {
+    font-size: 10px;
+  }
+
+  .div-mail {
+    display: none;
+  }
+
+  .pedidos-box {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .title-item-menu {
+    width: 80%;
+    font-size: 10px;
+    margin-bottom: 5px;
+
+  }
+
+  .filter-pedidos {
+    overflow-x: auto;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: flex-start;
+  }
+
+  .filter-pedidos button {
+    height: 50px;
+  }
+
+  .input-search input {
+    width: auto;
+  }
+
+  .box-lista-produtos {
+    overflow-x: auto;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  #table {
+    justify-items: flex-start;
+    width: 100%;
+    padding-right: 10px;
+    flex-direction: column;
+  }
+
+  thead {
+    display: flex !important;
+  }
+
+  #mudar-display {
+    display: none;
+  }
+
+  #table th {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  #box-table {
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px;
+
+
+  }
+
+  #table tr {
+    display: flex;
+  }
+
+
+
+  .box-filtros-estoque-controller {
+    height: 50px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* padding: 12px; */
+    padding-bottom: 10px;
+  }
+
+  .btn-filtro-estoque {
+    background-color: #964453;
+  }
+
+  .container-editahome {
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 110px;
+  }
+
+  .form-edita-home button {
+    background-color: #964453;
+  }
+
+  .area-btns-lista-emails {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    padding-right: 20px;
+  }
+
+  .container-modalstatus {
+    width: 100%;
+    height: calc(100vh - 100px);
+  }
+
+  .modal-stauts-pedidos {
+    width: 90%;
+    height: 90%;
+  }
+
+  .modal-update-produtos {
+    padding-bottom: 110px;
+    background-color: #e06f84;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+
+  .modal-update-produtos span {
+    text-align: center;
+    margin-bottom: 10px;
+    width: 90%;
+  }
+
+  .modal-update-produtos select,
+  .modal-update-produtos input {
+    width: 90%;
+  }
+
+  .box-btn-update-delete {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  #filter-date {
+    height: 30px;
+  }
+
+  .filter-pedidos::-webkit-scrollbar-thumb {
+    background-color: #ffafbe;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+  }
+
+  .filter-pedidos::-webkit-scrollbar {
+    background: #fff;
+    height: 7px;
+    /* color of the tracking area */
+  }
+
+  #box-table::-webkit-scrollbar-thumb {
+    background-color: #ffafbe;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+  }
+
+  #box-table::-webkit-scrollbar {
+    background: #fff;
+    height: 7px;
+    /* color of the tracking area */
+  }
+
+  .menu-bar::-webkit-scrollbar-thumb {
+    background-color: #ffafbe;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+  }
+
+  .menu-bar::-webkit-scrollbar {
+    background: #fff;
+    height: 7px;
+    /* color of the tracking area */
+  }
+
+  .box-info-empresa::-webkit-scrollbar-thumb {
+    background-color: #ffafbe;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+  }
+
+  .box-info-empresa::-webkit-scrollbar {
+    background: #fff;
+    height: 10px;
+    /* color of the tracking area */
+  }
+
+  .box-lista-produtos::-webkit-scrollbar-thumb {
+    background-color: #ffafbe;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+  }
+
+  .box-lista-produtos::-webkit-scrollbar {
+    background: #fff;
+    height: 10px;
+    /* color of the tracking area */
+  }
+
+  .box-filtros-estoque-controller::-webkit-scrollbar-thumb {
+    background-color: #ffafbe;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+  }
+
+  .box-filtros-estoque-controller::-webkit-scrollbar {
+    background: #fff;
+    height: 7px;
+    /* color of the tracking area */
+  }
+}

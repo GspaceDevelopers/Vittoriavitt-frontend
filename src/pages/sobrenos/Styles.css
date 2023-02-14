@@ -1,0 +1,76 @@
+.main-sobrenos {
+  height: 100vh;
+  background: url("../../Assets/Background/Group\ 43.png");
+  background-repeat: no-repeat;
+  display: flex;
+  background-position: center;
+  background-size: cover;
+}
+.main-sobrenos-text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 80px;
+  padding-top: 130px;
+}
+.main-sobrenos-text h2 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #de4563;
+}
+.main-sobrenos-text p {
+  color: white;
+  font-size: 18px;
+}
+.main-sobrenos-img {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  flex-wrap: wrap;
+}
+.img-alinhar {
+  margin-top: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+}
+.img-alinhar img {
+  width: 211px;
+  margin: 20px;
+  margin-bottom: 0px !important;
+
+  height: 211px;
+}
+@media (max-width: 600px) {
+  .main-sobrenos {
+    height: auto ;
+    flex-direction: column;
+    margin-top: 200px;
+  }
+  .main-sobrenos-text {
+    padding-left: 10px !important;
+    width: 100%;
+  }
+  .main-sobrenos-img {
+    width: 100%;
+  }
+  .img-alinhar {
+    margin-bottom: 20px;
+  }
+  .img-alinhar img {
+    width: 100px;
+    margin-bottom: 10px;
+    height: 100px;
+  }
+
+  .main-sobrenos-text p {
+    font-size: 14px;
+  }
+
+  .main-sobrenos-text h2 {
+    font-size: 18px;
+  }
+}

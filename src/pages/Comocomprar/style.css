@@ -1,0 +1,42 @@
+.container-comocomprar {
+    width: 100%;
+}
+
+.content-page-comocomprar {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sec1-comocomprar {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sec1-comocomprar img {
+    width: 50%;
+}
+
+.sec1-comocomprar h2 {
+    background-color: #de4563;
+    padding: 5px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.sec1-comocomprar h4 {
+    color: #de4563;
+    font-weight: 600;
+}
+
+@media(max-width:500px) {
+    .sec1-comocomprar img {
+        width: 100%;
+    }
+}

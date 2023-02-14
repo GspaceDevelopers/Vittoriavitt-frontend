@@ -1,0 +1,622 @@
+#content-main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    gap: 10px;
+}
+
+#content-main h2 {
+    color: white;
+    font-size: 3rem;
+    font-weight: 200;
+}
+
+#content-main h2::after {
+    content: '';
+    width: 50px;
+    height: 2px;
+    background-color: red;
+    display: block;
+    margin-top: 3px;
+}
+
+#content-main header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+#content-main header img {
+    width: 100px;
+}
+
+#content-main header button {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+#itens-api {
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 5px;
+    scroll-behavior: auto;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: end;
+    scrollbar-width: none;
+}
+
+#itens-api::-webkit-scrollbar {
+    display: none;
+}
+
+#item {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+
+#item span {
+    font-size: 1rem;
+    width: 300px;
+    max-height: 50px;
+}
+
+#item span,
+strong {
+    color: white;
+    font-size: 20px;
+    height: auto;
+}
+
+#btn-maisdetails {
+    width: 200px;
+    cursor: pointer;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.modaldetails1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding-bottom: 1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+    scroll-behavior: auto;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+    scroll-snap-align: end;
+    scrollbar-width: none;
+}
+
+#desfoca-fundo1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-img-item1 {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}
+
+#img-main {
+    width: 350px;
+    height: 450px;
+    object-fit: cover;
+
+}
+
+#img1,
+#img2,
+#img3,
+#img4,
+#img5,
+#img6,
+#img7,
+#img8 {
+    width: 80px;
+    height: 103px;
+}
+
+.box-info-itens1 {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap: 10px;
+}
+
+#desfoca-fundo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 12;
+}
+
+.modaldetails1 span {
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.modaldetails1 #descricao {
+    text-align: start;
+    color: #121212;
+    font-weight: 300;
+    width: 70%;
+}
+
+.modaldetails1 strong {
+    color: #121212;
+    height: 40px;
+}
+
+#closebuton {
+    background-color: transparent;
+    font-size: 20px;
+}
+
+#btnclosedetails1 {
+    border: 0;
+    background-color: transparent;
+    font-size: 25px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #121212;
+}
+
+#colorsOptions1 {
+    display: flex;
+    gap: 5px;
+}
+
+#tamanhosOptions1 {
+    display: flex;
+    gap: 5px;
+}
+
+#box-final1 {
+    width: 100%;
+    display: flex;
+}
+
+#box-final1 span {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+    font-weight: 200;
+}
+
+#box-final1 .btnqtd {
+    width: 60px;
+    height: 60px;
+    border: 1px solid grey;
+    font-size: 18px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#box-final1 .btnqtd:first-child {
+    border-radius: 5px 0px 0px 5px;
+}
+
+
+#addcarrinho1 {
+    background-color: rgb(62, 133, 62);
+    color: white;
+    font-size: 17px;
+    height: 60px;
+    border-radius: 5px;
+    width: 150px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-left: 10px;
+}
+
+#desc-produto {
+    width: 100%;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.modalCarrinho {
+    width: 600px;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    animation: showcart 1s;
+    overflow: hidden;
+}
+
+@keyframes showcart {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 600px;
+    }
+}
+
+#info-item-carrinho {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 5px;
+    scroll-behavior: auto;
+    overflow-x: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+    scroll-snap-align: end;
+    scrollbar-width: none;
+}
+
+
+
+
+.content-cart {
+    width: 95%;
+    display: flex;
+    height: auto;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.629);
+    border-radius: 4px;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.content-cart img {
+    width: 40px;
+    height: 50px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.content-cart strong {
+    color: white;
+}
+
+.content-cart span {
+    width: 150px;
+    color: white;
+    font-size: 0.8rem;
+}
+
+#trash {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}
+
+#closecart {
+    width: auto;
+    height: auto;
+    margin: 1rem;
+}
+
+#closecart button {
+    background-color: transparent;
+    font-size: 20px;
+}
+
+#pagamento {
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#content-main select {
+    width: 100%;
+    background: transparent;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+#content-main select option {
+    background-color: black;
+    color: white;
+    text-transform: capitalize;
+}
+
+.content-main-itens {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+#filtro span {
+    color: white;
+    font-size: 25px;
+}
+
+#filtro {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    left: 0;
+    align-items: center;
+}
+
+#filtro button {
+    width: 100%;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    border: 1px solid grey;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3px;
+}
+
+#filtro button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+.colorBox {
+    width: 70px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+
+.colorBox input[type='radio'] {
+    position: absolute;
+    width: 70px;
+    height: 90px;
+    z-index: 15;
+    cursor: pointer;
+}
+
+
+.imgcor {
+    width: 70px;
+    height: 90px;
+    position: absolute;
+    z-index: 20;
+    pointer-events: none;
+    border-radius: 10px;
+}
+
+
+
+.tamanhoBox {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.tape {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    position: absolute;
+    pointer-events: none;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.tamanhoBox input[type='radio'] {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    pointer-events: visible;
+}
+
+.tamanhoBox p {
+    position: absolute;
+    pointer-events: none;
+}
+
+#tamanhosOptions {
+    display: flex;
+    height: 45px;
+    gap: 15px;
+}
+
+.styleimg {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    transition: 0.3s ease-in;
+    overflow: hidden;
+}
+
+#img1:hover,
+#img2:hover,
+#img3:hover,
+#img4:hover,
+#img5:hover,
+#img6:hover,
+#img7:hover,
+#img8:hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.725);
+}
+
+.valortotal {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 2rem;
+    background-color: #000;
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+@media(max-width:500px) {
+    .modalCarrinho {
+        width: 100%;
+        animation: none;
+    }
+
+    #content-main {
+        height: auto;
+    }
+
+    .content-main-itens {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #filtro {
+        width: 100%;
+        height: auto;
+        padding-bottom: 1rem;
+        position: relative;
+    }
+
+    #filtro select,
+    #filtro button {
+        width: 40%;
+    }
+
+
+    .modaldetails1 {
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .box-info-itens1 {
+        width: 100%;
+        align-items: center;
+    }
+
+    .modaldetails1 #descricao {
+        width: 90%;
+    }
+
+    #box-final1 {
+        height: 90px;
+        justify-content: center;
+    }
+
+    #img-main {
+        width: 120px;
+        height: 150px;
+        margin-top: auto;
+    }
+
+
+    #itens-api {
+        height: 100%;
+    }
+
+    #item span,
+    strong {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #item {
+        align-items: center;
+        width: 250px;
+    }
+
+    #content-main h2 {
+        font-size: 2rem;
+    }
+
+    #img1,
+    #img2,
+    #img3,
+    #img4,
+    #img5,
+    #img6,
+    #img7,
+    #img8 {
+        width: 50px;
+        height: 70px;
+    }
+
+    #btn-maisdetails {
+        width: 200px;
+    }
+
+    .colorBox input[type='checkbox'] {
+        width: 20px;
+        height: 20px;
+    }
+
+    .tamanhoBox input[type='checkbox'] {
+        width: 20px;
+        height: 20px;
+    }
+
+    #box-final1 .btnqtd {
+        width: 40px;
+        height: 40px;
+    }
+
+    #box-final1 span {
+        width: 40px;
+        height: 40px;
+    }
+
+    #addcarrinho1 {
+        width: 100px;
+        height: 40px;
+    }
+}

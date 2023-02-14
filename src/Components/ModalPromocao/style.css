@@ -1,0 +1,195 @@
+.container-pai-modal-promocao {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.686);
+  position: fixed;
+  z-index: 50000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
+
+.container-modal-promocao {
+  width: 90%;
+  height: 584px;
+  display: flex;
+  z-index: 50000;
+}
+
+.ilustracao-modal-promocao {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bannerpromo {
+  width: 100%;
+  height: calc(100% - 100px);
+  object-fit: cover;
+}
+
+.logo-area-modal-promocao {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e06f84;
+}
+
+.logo-area-modal-promocao img {
+  width: 100px;
+}
+
+.form-modal-promocao {
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.box-input-modal-promocao {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-modal-promocao h2 {
+  text-align: center;
+  font-weight: 800;
+}
+
+.form-modal-promocao h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.form-modal-promocao input {
+  width: 350px;
+  height: 48px;
+  background-color: #e06f84;
+  border-radius: 30px;
+  padding-left: 10px;
+  outline: none;
+  color: white;
+  font-size: 18px;
+}
+
+.form-modal-promocao input::placeholder {
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.btn-submit-modal-promo {
+  width: 137px;
+  border-radius: 30px;
+  height: 48px;
+  background: #e06f84;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.close-modal-promocao {
+  background-color: transparent;
+  color: #e06f84;
+  font-size: 20px;
+  position: absolute;
+  top: 35px;
+  right: 35px;
+}
+
+@media (max-width: 500px) {
+  .ilustracao-modal-promocao {
+    width: 100%;
+  }
+
+  .logo-area-modal-promocao {
+    display: none;
+  }
+
+  .bannerpromo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .form-modal-promocao {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.46);
+  }
+
+  .container-modal-promocao {
+    width: 100%;
+    position: fixed;
+    align-items: center;
+  }
+
+  .close-modal-promocao {
+    top: 12px;
+    right: 20px;
+  }
+
+  .form-modal-promocao input {
+    width: 230px;
+    height: 35px;
+    background-color: #e06f84;
+    border-radius: 30px;
+    padding-left: 10px;
+    outline: none;
+    color: white;
+    font-size: 18px;
+  }
+
+  .btn-submit-modal-promo {
+    width: 120px;
+    height: 35px;
+    font-size: 15px;
+  }
+
+  .logo-area-modal-promocao img {
+    width: 80px;
+  }
+
+  .form-modal-promocao h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 400px) {
+  .form-modal-promocao h2 {
+    font-size: 9px;
+    margin-bottom: 20px;
+  }
+
+  .form-modal-promocao input {
+    width: 150px;
+    height: 20px;
+    border: 1px solid black;
+  }
+
+  .logo-area-modal-promocao img {
+    width: 80px;
+  }
+}
+
+#id-p-mensagembonita-haha {
+  font-size: 20px;
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+}

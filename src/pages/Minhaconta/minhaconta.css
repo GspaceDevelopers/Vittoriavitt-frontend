@@ -1,0 +1,306 @@
+.container-minhaconta {
+  width: 100%;
+}
+
+.content-minhaconta {
+  width: 90%;
+  display: flex;
+  padding-bottom: 30px;
+}
+
+.btn-options {
+  width: 308px;
+  height: 471px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50px;
+}
+
+.btnoption {
+  width: 100%;
+  height: 67px;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  transition: 0.3s ease;
+  color: white;
+  background-color: #e06f84;
+}
+
+.btnoption:hover {
+  background-color: #de4563;
+}
+
+.container-content-btns {
+  width: calc(100% - 308px);
+  margin-left: 30px;
+}
+
+.titlemenuminhaconta {
+  width: 100%;
+  border-bottom: 1px solid grey;
+  margin-top: 60px;
+}
+
+.titlemenuminhaconta h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: grey;
+  width: max-content;
+}
+
+.inputareameusdados {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.labelarea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.labelarea input {
+  height: 40px;
+  width: 100%;
+  border: 1px solid #121212;
+}
+
+.btn-salvar-area {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.btn-salvar-area button {
+  background: #df0707;
+  border-radius: 20px;
+  width: 188px;
+  height: 34px;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.719);
+  color: white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-form-cartao-add {
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.719);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-form-cartao {
+  width: 90%;
+  height: 90%;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+
+#fecha-modal-cartao {
+  background-color: transparent;
+  float: right;
+}
+
+.card-caontainer {
+  width: 300px;
+  display: grid;
+  padding: 10px;
+  background-color: #6c6563c0;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  gap: 15px;
+}
+
+#editarcard {
+  width: min-content;
+  background-color: transparent;
+}
+
+.card-caontainer h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.card-caontainer span {
+  font-weight: 600;
+}
+
+.item-favoritos {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  text-align: center;
+  gap: 5px;
+}
+
+.item-favoritos img {
+  width: 200px;
+  cursor: pointer;
+}
+
+.item-favoritos span {
+  font-family: "Montserrat", sans-serif;
+}
+
+#del-favorito {
+  background-color: #de4563;
+  border-radius: 20px;
+  width: 188px;
+  height: 34px;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.box-pedidos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.box-pedidos button {
+  width: min-content;
+  background: transparent;
+  margin-top: 10px;
+}
+
+#btn-recebimeupedido {
+  width: max-content;
+  background-color: #6c6563;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  transition: 0.3s ease;
+}
+
+#btn-recebimeupedido:hover {
+  background-color: #343332;
+}
+
+.container-fav-item {
+  width: 100%;
+  padding-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.container-fav-item::-webkit-scrollbar-thumb {
+  background-color: #ffafbe;
+  border-radius: 20px;
+}
+
+.container-fav-item::-webkit-scrollbar {
+  background: #fff;
+  /* color of the tracking area */
+}
+
+
+
+.modalcomentarios {
+  width: calc(100% - 308px);
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modalcomentarios input {
+  width: 300px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding-left: 5px;
+}
+
+.modalcomentarios textarea {
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  padding-left: 5px;
+  border: 1px solid grey;
+  margin-top: 20px;
+}
+
+.modalcomentarios button {
+  width: 100px;
+  height: 40px;
+  background-color: #de4563;
+  color: white;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+@media (max-width: 500px) {
+  .content-minhaconta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-content-btns {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modalcomentarios {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .inputareameusdados {
+    flex-direction: column;
+  }
+
+  .titlemenuminhaconta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-salvar-area {
+    display: flex;
+    justify-content: center;
+  }
+
+  #fecha-modal-cartao {
+    margin-left: -35px;
+    margin-right: 35px;
+  }
+}

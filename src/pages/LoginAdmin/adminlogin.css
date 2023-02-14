@@ -1,0 +1,82 @@
+.container-adminlogin {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e06f84;
+  flex-direction: column;
+}
+
+.container-adminlogin img {
+  width: 150px;
+  margin: 10px;
+}
+
+#form-admin {
+  width: 60%;
+  height: 500px;
+  background-color: transparent;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  background-color: #fff;
+}
+
+.title-login-admin {
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  margin-top: 8rem;
+}
+
+.title-login-admin h2 {
+  background-color: transparent;
+  color: #e06f84;
+  font-size: 25px;
+}
+
+.input-area {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: transparent;
+  gap: 5px;
+  margin-top: 2rem;
+}
+
+.input-area input {
+  background-color: transparent;
+  border: 2px solid grey;
+  width: 60%;
+  height: 50px;
+  outline: none;
+  border-radius: 19px;
+  color: black;
+  font-size: 15px;
+  padding-left: 3px;
+  background-color: white;
+}
+
+.input-area button {
+  width: 60%;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 19px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  background-color: #e06f84;
+  color: white;
+  margin-top: 30px;
+}
+
+@media (max-width: 500px) {
+  #form-admin {
+    width: 90%;
+  }
+}

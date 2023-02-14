@@ -1,0 +1,137 @@
+.cadastro-clientes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.formclientes {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+.formclientes  span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: white;
+
+}
+
+.box-input-cadastro {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+#submit-clientes{
+    width: 200px;
+    height: 40px;
+
+}
+#formpj {
+    width: 31%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+
+.inputs-row {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.inputs-row-area input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.inputs-row-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inputgrup-pj {
+    width: 100%;
+}
+
+.input-sozinho {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-sozinho input {
+    height: 40px;
+}
+
+
+
+.titleformPj {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.titleformPj h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: grey;
+    font-weight: 400;
+
+}
+
+.btn-informativo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.btn-submitarea {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#btn-cadastrar {
+    width: 211px;
+    height: 55px;
+    background-color: #e06f84;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+@media(max-width:500px) {
+    .inputs-row {
+        flex-direction: column;
+    }
+
+    #formpj {
+        width: 95%;
+    }
+
+    .btn-submitarea {
+        flex-direction: column;
+    }
+}

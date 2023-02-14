@@ -1,0 +1,151 @@
+.background-image-main-one {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover !important;
+  background-repeat: none;
+  background-position: center !important;
+  cursor: pointer;
+}
+
+.background-image-main-two {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover !important;
+  background-repeat: none;
+  background-position: center !important;
+  cursor: pointer;
+}
+
+.background-image-main-three {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover !important;
+  background-repeat: none;
+  background-position: center !important;
+  cursor: pointer;
+}
+
+.background-image-main-four {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover !important;
+  background-repeat: none;
+  background-position: center !important;
+  cursor: pointer;
+}
+
+.background-image-main-five {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover !important;
+  background-repeat: none;
+  background-position: center !important;
+  cursor: pointer;
+}
+
+.main-background {
+  height: 100%;
+  width: 100%;
+}
+
+.main-background ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0;
+  margin-left: 0px;
+  padding-left: 0px;
+  overflow-x: hidden;
+}
+
+.main-background ul li {
+  height: 100vh;
+  width: 100vw;
+
+  animation: slide 18s ease-out infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+
+  24% {
+    transform: translateX(0%);
+  }
+
+  25% {
+    transform: translateX(-100%);
+  }
+
+  49% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(-200%);
+  }
+
+  74% {
+    transform: translateX(-200%);
+  }
+
+  75% {
+    transform: translateX(-300%);
+  }
+
+  99% {
+    transform: translateX(-300%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media (max-width: 500px) {
+  .main-background ul li {
+    height: 513px;
+  }
+
+  .background-image-main-one {
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    height: 515px;
+    background-position: center;
+  }
+
+  .background-image-main-two {
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    height: 515px;
+    background-position: center;
+  }
+
+  .background-image-main-three {
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    height: 515px;
+    background-position: center;
+  }
+
+  .background-image-main-four {
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    height: 515px;
+    background-position: center;
+  }
+
+  .background-image-main-five {
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    height: 515px;
+    background-position: center;
+  }
+
+  .main-background {
+    height: auto;
+    margin-top: -20px;
+  }
+}

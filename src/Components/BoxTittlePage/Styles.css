@@ -1,0 +1,14 @@
+.titulo-page {
+  height: 150px;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.titulo-page h2 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 35px;
+}

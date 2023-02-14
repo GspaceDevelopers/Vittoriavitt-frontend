@@ -1,0 +1,72 @@
+.container-modal-menucomponent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 170px;
+}
+
+.modal-menu-component {
+    width: 84%;
+    height: 229px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    display: flex;
+    border-radius: 23px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.box-btns-menu-component:first-child {
+    border-left: 0;
+}
+
+.box-btns-menu-component {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 1.5px solid grey;
+    height: 150px;
+    align-items: center;
+}
+
+.box-btns-menu-component label {
+    font-weight: 600;
+}
+
+.box-btns-menu-component button {
+    background-color: transparent;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.box-btns-menu-component button:hover {
+    color: red;
+}
+
+
+@media(max-width:500px) {
+    .modal-menu-component {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        border-radius: 0;
+        justify-content: space-evenly;
+        gap: 30px;
+        z-index: 3;
+    }
+
+    .container-modal-menucomponent {
+        top: 244px;
+        height: 75vh;
+    }
+
+    .box-btns-menu-component {
+        border: 0;
+        height: auto;
+        align-items: flex-start;
+    }
+}

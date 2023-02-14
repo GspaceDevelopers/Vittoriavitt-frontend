@@ -1,0 +1,21 @@
+.list-products {
+  display: flex;
+  margin-top: 50px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+}
+
+.side-product {
+  display: flex;
+  background-color: black;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.side-product input,
+.input-number {
+  width: 72%;
+}

@@ -1,0 +1,139 @@
+.div-form-main-father {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-form-second-son {
+  width: 25%;
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  padding-left: 100px;
+  justify-content: flex-start;
+}
+.div-form-second-son h3 {
+  margin-bottom: 20px;
+}
+.div-form-second-son p {
+  font-size: 12px;
+}
+
+.div-form-second-son span {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.div-form-third-son {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.banner-div-main-banner {
+  width: 100%;
+  display: flex;
+  margin: 50px;
+  margin-left: 0;
+  margin-right: 0;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20px;
+}
+.div-iframe-maps {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-form-third-son-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.div-form-third-son-main select {
+  width: 300px !important;
+  border: 1px solid #ababab;
+  height: 40px;
+}
+.div-form-third-son-main-master {
+  width: 70%;
+  margin-top: 20px;
+  display: flex;
+}
+.div-form-third-son-main input {
+  width: 300px !important;
+  border: 1px solid #ababab;
+  height: 40px;
+}
+.div-form-third-son-main label {
+  color: #313131;
+  margin-bottom: 10px;
+}
+#text-area {
+  width: 70%;
+}
+
+#text-area textarea {
+  width: 90%;
+  margin-top: 20px;
+  border: 1px solid #ababab;
+}
+#text-area button {
+  width: 150px;
+  height: 40px;
+  background-color: #de4563;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 50px;
+  /* or 357% */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  transition: 0.6s;
+}
+#text-area button:hover {
+  opacity: 0.8;
+}
+@media (max-width: 600px) {
+  #text-area {
+    margin-left: 10px;
+  }
+  .div-form-second-son {
+    width: 100%;
+    padding-left: 10px;
+  }
+  .div-form-main-father {
+    flex-direction: column;
+    height: 100%;
+  }
+  .div-form-third-son {
+    width: 100%;
+    align-items: flex-start;
+  }
+  .div-form-third-son-main-master {
+    flex-direction: column;
+    margin-left: 10px;
+  }
+  .banner-div-main-banner img {
+    width: 300px;
+    display: none;
+  }
+  .banner-div-main-banner {
+    align-items: flex-start;
+    height: 200px;
+  }
+}

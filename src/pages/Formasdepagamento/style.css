@@ -1,0 +1,215 @@
+.container-Formas-pagamento {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-formas-pagamento {
+  width: 80%;
+}
+
+.tipo-pagamento {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background-color: #f5f5f5;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  position: relative;
+  border-bottom: 1px solid grey;
+}
+
+.tipo-pagamento h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.btncontinuar {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btncontinuar button {
+  width: 213px;
+  height: 55px;
+  background-color: #df0707;
+  color: white;
+  font-size: 19px;
+}
+
+.modal-cartao-credito {
+  width: 80%;
+  background-color: #f5f5f5;
+  margin-top: 40px;
+  border-radius: 19px;
+}
+
+.form-cartao {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.input-numero-nome {
+  width: 80%;
+  margin-top: 30px;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-numero-nome input {
+  width: 100%;
+  height: 35px;
+  border: 0;
+  border-bottom: 1px solid grey;
+  background-color: transparent;
+  outline: none;
+}
+
+.input-data-cvv {
+  width: 80%;
+  margin-top: 50px;
+  gap: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input-data-cvv input {
+  width: 100%;
+  height: 35px;
+  border: 0;
+  border-bottom: 1px solid grey;
+  background-color: transparent;
+  outline: none;
+}
+
+.title-parcelamento {
+  width: 80%;
+  text-align: start;
+  margin-top: 30px;
+}
+
+.title-parcelamento h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+#select-parcelas {
+  width: 278px;
+  height: 60px;
+  border: 1px solid grey;
+  border-radius: 19.1696px;
+  background-color: transparent;
+  font-size: 20px;
+  color: grey;
+}
+
+.conatiner-details-pedido {
+  width: 80%;
+  background-color: #f5f5f5;
+  margin-top: 30px;
+  border-radius: 19.1696px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.conatiner-details-pedido span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.conatiner-details-pedido h3 {
+  font-weight: 400;
+  color: grey;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.finalizarcompra {
+  width: 213px;
+  height: 55px;
+  background-color: #df0707;
+  color: white;
+  font-size: 17px;
+  margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .box-formas-pagamento {
+    width: 95%;
+    margin-top: 70px;
+  }
+
+  .tipo-pagamento {
+    height: 70px;
+  }
+
+  .icon-pagamento {
+    width: 60px;
+  }
+
+  .tipo-pagamento h2 {
+    font-size: 20px;
+  }
+
+  .conatiner-details-pedido {
+    width: 95%;
+    align-items: flex-start;
+  }
+
+  .conatiner-details-pedido h3 {
+    font-size: 13px;
+    display: flex;
+    gap: 4px;
+  }
+
+  .modal-cartao-credito {
+    width: 95%;
+    margin-top: 70px;
+  }
+}
+
+#baseqr {
+}
+#text-sucess-pix {
+  background-color: green;
+  color: #f5f5f5;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#input-link-pix {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#input-link-pix input {
+  border: 1px solid black;
+  width: 300px;
+}
+#input-link-pix button {
+  margin-left: 1px;
+  border: 1px solid black;
+  width: 100px;
+}

@@ -1,0 +1,77 @@
+.container-politica {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-component {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid grey;
+}
+
+.header-component img {
+  width: 150px;
+}
+
+.logo-politica {
+  text-align: center;
+}
+
+.logo-politica button {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.logo-politica img {
+  width: 200px;
+}
+
+#header-politicas {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btnarea-politica button {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.content-politica {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 3rem;
+  margin-top: 6rem;
+}
+
+.content-politica {
+  color: rgb(56, 54, 54);
+  font-weight: 200;
+}
+
+@media (max-width: 500px) {
+  .header-component {
+    align-items: center;
+  }
+
+  .header-component img {
+    width: 50px;
+    height: 30px;
+  }
+  .container-politica{
+    margin-top: 200px;
+  }
+}

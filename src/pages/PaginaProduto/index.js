@@ -29,6 +29,9 @@ export default function PaginaProduto() {
   const { usercliente } = useContext(AuthContext);
 
   const [dataproduto, setDataproduto] = useState([]);
+  const [pegarbrinde, setPegarbrinde] = useState();
+  const [pegarbrindeinfo, setPegarbrindeinfo] = useState();
+
   const [datacarrinho, setDatacarrinho] = useState([]);
   const [parcelas, setParcelas] = useState([]);
   const [imgprincipal, setImgprincipal] = useState(null);
@@ -40,19 +43,21 @@ export default function PaginaProduto() {
   const [valueFret, setValueFrete] = useState([]);
   const [dadositemCompartilhar, setDadositemCompartilhar] = useState([]);
   const [renderizarPopUp, setRenderizarPopUp] = useState(false);
-  const [estoque, setEstoque] = useState('');
+  const [estoque, setEstoque] = useState("");
 
   useEffect(() => {
     api.get(`/produtos/_id?_id=${_id}`).then((data) => {
       setDataproduto([data.data]);
+      setPegarbrinde([data.data].brinde);
+      setPegarbrindeinfo([data.data].aparecercampobrinde);
     });
     setDatacarrinho(JSON.parse(localStorage.getItem("carrinhorr11") || "[]"));
     api2.get("/edicao").then((data) => {
       setValueFrete(data.data);
-      setParcelas(data.data)
+      setParcelas(data.data);
     });
   }, []);
-
+  console.log(pegarbrindeinfo);
   function mudacor1(item) {
     setImgprincipal(item.cores.corPrimary.imgurl);
     setCor(item.cores.corPrimary.cor1);
@@ -230,7 +235,7 @@ export default function PaginaProduto() {
     // }
     localStorage.setItem(
       "descontoaplicado",
-      JSON.stringify(Number(item.promocao2 === false ? '' : item.desconto))
+      JSON.stringify(Number(item.promocao2 === false ? "" : item.desconto))
     );
 
     const carrinho = JSON.parse(localStorage.getItem("carrinhorr11") || "[]");
@@ -248,7 +253,7 @@ export default function PaginaProduto() {
       valorTotal:
         Number(item.preco.replace(",", ".")) * Number(quantidade).toFixed(2),
       promocao: item.promocao2,
-      desconto: item.promocao2 === false ? '' : item.desconto,
+      desconto: item.promocao2 === false ? "" : item.desconto,
       qtdpromocao: item.promocao2 === false ? 20000 : item.qtdpromocao2,
       peso: item.peso,
       comprimento: item.comprimento,
@@ -277,24 +282,22 @@ export default function PaginaProduto() {
 
   useEffect(() => {
     if (quantidade <= estoque) {
-      document.getElementById('errestoque').setAttribute('style', 'color:#000')
-
+      document.getElementById("errestoque").setAttribute("style", "color:#000");
     }
-
-  }, [quantidade])
+  }, [quantidade]);
 
   function amountplus() {
     if (quantidade >= estoque) {
-      document.getElementById('errestoque').setAttribute('style', 'color:red')
-      return
+      document.getElementById("errestoque").setAttribute("style", "color:red");
+      return;
     }
 
-    setQuantidade(quantidade + 1)
+    setQuantidade(quantidade + 1);
   }
 
   function mudatamanho(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoOne.tamanho1);
-    setEstoque(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade)
+    setEstoque(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -312,7 +315,7 @@ export default function PaginaProduto() {
 
   function mudatamanho2(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2);
-    setEstoque(item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2)
+    setEstoque(item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -329,7 +332,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho3(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoThree.tamanho3);
-    setEstoque(item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3)
+    setEstoque(item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -346,7 +349,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho4(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoFour.tamanho4);
-    setEstoque(item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4)
+    setEstoque(item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -363,7 +366,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho5(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoOne.tamanho5);
-    setEstoque(item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5)
+    setEstoque(item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -380,7 +383,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho6(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6);
-    setEstoque(item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6)
+    setEstoque(item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -397,7 +400,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho7(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoThree.tamanho7);
-    setEstoque(item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7)
+    setEstoque(item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -414,7 +417,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho8(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoFour.tamanho8);
-    setEstoque(item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8)
+    setEstoque(item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -463,7 +466,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho11(item) {
     setTamanho(item.cores.corTertiary.tamanhos.tamanhoThree.tamanho11);
-    setEstoque(item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11)
+    setEstoque(item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -480,7 +483,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho12(item) {
     setTamanho(item.cores.corTertiary.tamanhos.tamanhoFour.tamanho12);
-    setEstoque(item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12)
+    setEstoque(item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -497,7 +500,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho13(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13);
-    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13)
+    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -514,7 +517,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho14(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14);
-    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14)
+    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -531,7 +534,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho15(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15);
-    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15)
+    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -549,7 +552,7 @@ export default function PaginaProduto() {
 
   function mudatamanho16(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16);
-    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16)
+    setEstoque(item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -566,7 +569,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho17(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoOne.tamanho17);
-    setEstoque(item.cores.corFive.tamanhos.tamanhoOne.quantidade17)
+    setEstoque(item.cores.corFive.tamanhos.tamanhoOne.quantidade17);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -583,7 +586,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho18(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoTwo.tamanho18);
-    setEstoque(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18)
+    setEstoque(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -600,7 +603,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho19(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoThree.tamanho19);
-    setEstoque(item.cores.corFive.tamanhos.tamanhoThree.quantidade19)
+    setEstoque(item.cores.corFive.tamanhos.tamanhoThree.quantidade19);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -617,7 +620,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho20(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoFour.tamanho20);
-    setEstoque(item.cores.corFive.tamanhos.tamanhoFour.quantidade20)
+    setEstoque(item.cores.corFive.tamanhos.tamanhoFour.quantidade20);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -634,7 +637,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho21(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoOne.tamanho21);
-    setEstoque(item.cores.corSix.tamanhos.tamanhoOne.quantidade21)
+    setEstoque(item.cores.corSix.tamanhos.tamanhoOne.quantidade21);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -651,7 +654,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho22(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoTwo.tamanho22);
-    setEstoque(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22)
+    setEstoque(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -668,7 +671,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho23(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoThree.tamanho23);
-    setEstoque(item.cores.corSix.tamanhos.tamanhoThree.quantidade23)
+    setEstoque(item.cores.corSix.tamanhos.tamanhoThree.quantidade23);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -685,7 +688,7 @@ export default function PaginaProduto() {
   }
   function mudatamanho24(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoFour.tamanho24);
-    setEstoque(item.cores.corSix.tamanhos.tamanhoFour.quantidade24)
+    setEstoque(item.cores.corSix.tamanhos.tamanhoFour.quantidade24);
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -701,10 +704,6 @@ export default function PaginaProduto() {
       .setAttribute("style", "background:#df0707;color:#fff");
   }
 
-
-
-
-
   function showmodalcompartilhar(item) {
     let mensagem = {
       title: "Olá, estou compartilhando este produto com voçê",
@@ -714,7 +713,6 @@ export default function PaginaProduto() {
     navigator.share(mensagem);
   }
 
-
   return (
     <div className="container-pg-produto">
       <Header back="#de4563"></Header>
@@ -723,11 +721,14 @@ export default function PaginaProduto() {
         return (
           <div className="container-produto" key={item._id}>
             <div className="box-imagens-produto">
-              <div className="img-principal">
+              <div className="img-principal" id="add-focusimg">
                 {imgprincipal == null ? (
-                  <img src={item.cores.corPrimary.imgurl}></img>
+                  <img
+                    id="add-img-focus"
+                    src={item.cores.corPrimary.imgurl}
+                  ></img>
                 ) : (
-                  <img src={imgprincipal}></img>
+                  <img id="add-img-focus" src={imgprincipal}></img>
                 )}
                 {window.screen.width > 500 ? (
                   <div className="box-item-descricao">
@@ -783,9 +784,7 @@ export default function PaginaProduto() {
                 )}
                 {item.cores.corFive.imgurl13 != "" ? (
                   <img
-                    onClick={() =>
-                      setImgprincipal(item.cores.corFive.imgurl13)
-                    }
+                    onClick={() => setImgprincipal(item.cores.corFive.imgurl13)}
                     src={item.cores.corFive.imgurl13}
                   ></img>
                 ) : (
@@ -793,9 +792,7 @@ export default function PaginaProduto() {
                 )}
                 {item.cores.corSix.imgurl16 != "" ? (
                   <img
-                    onClick={() =>
-                      setImgprincipal(item.cores.corSix.imgurl16)
-                    }
+                    onClick={() => setImgprincipal(item.cores.corSix.imgurl16)}
                     src={item.cores.corSix.imgurl16}
                   ></img>
                 ) : (
@@ -845,9 +842,7 @@ export default function PaginaProduto() {
                 )}
                 {item.cores.corFive.imgurl14 != "" ? (
                   <img
-                    onClick={() =>
-                      setImgprincipal(item.cores.corFive.imgurl14)
-                    }
+                    onClick={() => setImgprincipal(item.cores.corFive.imgurl14)}
                     src={item.cores.corFive.imgurl14}
                   ></img>
                 ) : (
@@ -855,9 +850,7 @@ export default function PaginaProduto() {
                 )}
                 {item.cores.corSix.imgurl17 != "" ? (
                   <img
-                    onClick={() =>
-                      setImgprincipal(item.cores.corSix.imgurl17)
-                    }
+                    onClick={() => setImgprincipal(item.cores.corSix.imgurl17)}
                     src={item.cores.corSix.imgurl17}
                   ></img>
                 ) : (
@@ -907,9 +900,7 @@ export default function PaginaProduto() {
                 )}
                 {item.cores.corFive.imgurl15 != "" ? (
                   <img
-                    onClick={() =>
-                      setImgprincipal(item.cores.corFive.imgurl15)
-                    }
+                    onClick={() => setImgprincipal(item.cores.corFive.imgurl15)}
                     src={item.cores.corFive.imgurl15}
                   ></img>
                 ) : (
@@ -917,9 +908,7 @@ export default function PaginaProduto() {
                 )}
                 {item.cores.corSix.imgurl18 != "" ? (
                   <img
-                    onClick={() =>
-                      setImgprincipal(item.cores.corSix.imgurl18)
-                    }
+                    onClick={() => setImgprincipal(item.cores.corSix.imgurl18)}
                     src={item.cores.corSix.imgurl18}
                   ></img>
                 ) : (
@@ -950,12 +939,15 @@ export default function PaginaProduto() {
                   <h2>R${item.preco}</h2>
                 )}
                 <p>
-                  Em até {parcelas.map(item => item.parcelas)[0]}x R$
-                  {Number(item.preco.replace(",", ".") / parcelas.map(item => item.parcelas)[0]).toFixed(2)} sem
-                  juros
+                  Em até {parcelas.map((item) => item.parcelas)[0]}x R$
+                  {Number(
+                    item.preco.replace(",", ".") /
+                      parcelas.map((item) => item.parcelas)[0]
+                  ).toFixed(2)}{" "}
+                  sem juros
                 </p>
                 {item.promocao2 == true &&
-                  datacarrinho.some((item) => item.promocao) != true ? (
+                datacarrinho.some((item) => item.promocao) != true ? (
                   <p style={{ color: "green" }}>
                     Adicionando {item.qtdpromocao2} produtos ou mais voçê ganha{" "}
                     {item.desconto}% de desconto!
@@ -1028,12 +1020,15 @@ export default function PaginaProduto() {
                 )}
               </div>
               <span style={{ marginTop: "15px" }}></span>
-              <span id="errestoque">Selecione o tamanho desejado: {tamanho}  Temos somente {estoque} peças! .</span>
+              <span id="errestoque">
+                Selecione o tamanho desejado: {tamanho} Temos somente {estoque}{" "}
+                peças! .
+              </span>
               <div className="box-escolher-tamanho">
                 {cor === item.cores.corPrimary.cor1 ? (
                   <div>
                     {item.cores.corPrimary.tamanhos.tamanhoOne.tamanho1 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho(item)}
                         className="btn-tamanho"
@@ -1044,7 +1039,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho2(item)}
                         className="btn-tamanho"
@@ -1055,7 +1050,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corPrimary.tamanhos.tamanhoThree.tamanho3 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho3(item)}
                         className="btn-tamanho"
@@ -1066,7 +1061,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corPrimary.tamanhos.tamanhoFour.tamanho4 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho4(item)}
                         className="btn-tamanho"
@@ -1083,7 +1078,7 @@ export default function PaginaProduto() {
                 {cor === item.cores.corSecondary.cor2 ? (
                   <div>
                     {item.cores.corSecondary.tamanhos.tamanhoOne.tamanho5 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho5(item)}
                         className="btn-tamanho"
@@ -1094,7 +1089,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho6(item)}
                         className="btn-tamanho"
@@ -1106,7 +1101,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corSecondary.tamanhos.tamanhoThree.tamanho7 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho7(item)}
                         className="btn-tamanho"
@@ -1118,7 +1113,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corSecondary.tamanhos.tamanhoFour.tamanho8 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho8(item)}
                         className="btn-tamanho"
@@ -1136,7 +1131,7 @@ export default function PaginaProduto() {
                 {cor === item.cores.corTertiary.cor3 ? (
                   <div>
                     {item.cores.corTertiary.tamanhos.tamanhoOne.tamanho9 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho9(item)}
                         className="btn-tamanho"
@@ -1147,7 +1142,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho10(item)}
                         className="btn-tamanho"
@@ -1159,7 +1154,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corTertiary.tamanhos.tamanhoThree.tamanho11 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho11(item)}
                         className="btn-tamanho"
@@ -1171,7 +1166,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corTertiary.tamanhos.tamanhoFour.tamanho12 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho12(item)}
                         className="btn-tamanho"
@@ -1189,7 +1184,7 @@ export default function PaginaProduto() {
                 {cor === item.cores.corQuaternary.cor4 ? (
                   <div>
                     {item.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho13(item)}
                         className="btn-tamanho"
@@ -1200,7 +1195,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho14(item)}
                         className="btn-tamanho"
@@ -1212,7 +1207,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho15(item)}
                         className="btn-tamanho"
@@ -1227,7 +1222,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho16(item)}
                         className="btn-tamanho"
@@ -1241,143 +1236,112 @@ export default function PaginaProduto() {
                     ) : (
                       ""
                     )}
-
-
                   </div>
                 ) : (
                   ""
                 )}
                 {cor === item.cores.corFive.cor5 ? (
                   <div>
-                    {item.cores.corFive.tamanhos.tamanhoOne.tamanho17 !=
-                      "" ? (
+                    {item.cores.corFive.tamanhos.tamanhoOne.tamanho17 != "" ? (
                       <button
                         onClick={() => mudatamanho17(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corFive.tamanhos.tamanhoOne
-                            .tamanho17
-                        }
+                        {item.cores.corFive.tamanhos.tamanhoOne.tamanho17}
                       </button>
                     ) : (
                       ""
                     )}
-                    {item.cores.corFive.tamanhos.tamanhoTwo.tamanho18 !=
-                      "" ? (
+                    {item.cores.corFive.tamanhos.tamanhoTwo.tamanho18 != "" ? (
                       <button
                         onClick={() => mudatamanho18(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corFive.tamanhos.tamanhoTwo
-                            .tamanho18
-                        }
+                        {item.cores.corFive.tamanhos.tamanhoTwo.tamanho18}
                       </button>
                     ) : (
                       ""
                     )}
                     {item.cores.corFive.tamanhos.tamanhoThree.tamanho19 !=
-                      "" ? (
+                    "" ? (
                       <button
                         onClick={() => mudatamanho19(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corFive.tamanhos.tamanhoThree
-                            .tamanho19
-                        }
+                        {item.cores.corFive.tamanhos.tamanhoThree.tamanho19}
                       </button>
                     ) : (
                       ""
                     )}
-                    {item.cores.corFive.tamanhos.tamanhoFour.tamanho20 !=
-                      "" ? (
+                    {item.cores.corFive.tamanhos.tamanhoFour.tamanho20 != "" ? (
                       <button
                         onClick={() => mudatamanho20(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corFive.tamanhos.tamanhoFour
-                            .tamanho20
-                        }
+                        {item.cores.corFive.tamanhos.tamanhoFour.tamanho20}
                       </button>
                     ) : (
                       ""
                     )}
-
-                  </div>) : ''}
-
+                  </div>
+                ) : (
+                  ""
+                )}
 
                 {cor === item.cores.corSix.cor6 ? (
                   <div>
-
-                    {item.cores.corSix.tamanhos.tamanhoOne.tamanho21 !=
-                      "" ? (
+                    {item.cores.corSix.tamanhos.tamanhoOne.tamanho21 != "" ? (
                       <button
                         onClick={() => mudatamanho21(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corSix.tamanhos.tamanhoOne
-                            .tamanho21
-                        }
+                        {item.cores.corSix.tamanhos.tamanhoOne.tamanho21}
                       </button>
                     ) : (
                       ""
                     )}
-                    {item.cores.corSix.tamanhos.tamanhoTwo.tamanho22 !=
-                      "" ? (
+                    {item.cores.corSix.tamanhos.tamanhoTwo.tamanho22 != "" ? (
                       <button
                         onClick={() => mudatamanho22(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corSix.tamanhos.tamanhoTwo
-                            .tamanho22
-                        }
+                        {item.cores.corSix.tamanhos.tamanhoTwo.tamanho22}
                       </button>
                     ) : (
                       ""
                     )}
-                    {item.cores.corSix.tamanhos.tamanhoThree.tamanho23 !=
-                      "" ? (
+                    {item.cores.corSix.tamanhos.tamanhoThree.tamanho23 != "" ? (
                       <button
                         onClick={() => mudatamanho23(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corSix.tamanhos.tamanhoThree
-                            .tamanho23
-                        }
+                        {item.cores.corSix.tamanhos.tamanhoThree.tamanho23}
                       </button>
                     ) : (
                       ""
                     )}
-                    {item.cores.corSix.tamanhos.tamanhoFour.tamanho24 !=
-                      "" ? (
+                    {item.cores.corSix.tamanhos.tamanhoFour.tamanho24 != "" ? (
                       <button
                         onClick={() => mudatamanho24(item)}
                         className="btn-tamanho"
                       >
                         {" "}
-                        {
-                          item.cores.corSix.tamanhos.tamanhoFour
-                            .tamanho24
-                        }
+                        {item.cores.corSix.tamanhos.tamanhoFour.tamanho24}
                       </button>
                     ) : (
                       ""
                     )}
-
-                  </div>) : ''}
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
               {window.screen.width < 500 ? (
                 <div className="box-item-descricao">
@@ -1408,10 +1372,7 @@ export default function PaginaProduto() {
                       -
                     </button>
                     <span id="box-qtd">{quantidade}</span>
-                    <button
-                      className="btnquantidade"
-                      onClick={amountplus}
-                    >
+                    <button className="btnquantidade" onClick={amountplus}>
                       +
                     </button>
                   </div>
@@ -1465,7 +1426,24 @@ export default function PaginaProduto() {
                     ""
                   )}
                 </div>
-                <div style={{ display: 'flex', alignItems: "center" }}><p>Ou se preferir <a target={'_blank'} href="https://api.whatsapp.com/send?phone=5519996883262&fbclid=PAAaa9cuQyhc0Z1ht0GlMzq0TFwhp20VeeiOm9jPpeoekHdxGIekLBpgitVP4" style={{ color: "#4BC358", marginLeft: "5px", fontWeight: "600", textDecoration: "none" }}><BsWhatsapp color="#4BC358"></BsWhatsapp>COMPRE PELO WHATSAPPP</a> </p></div>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <p>
+                    Ou se preferir{" "}
+                    <a
+                      target={"_blank"}
+                      href="https://api.whatsapp.com/send?phone=5519996883262&fbclid=PAAaa9cuQyhc0Z1ht0GlMzq0TFwhp20VeeiOm9jPpeoekHdxGIekLBpgitVP4"
+                      style={{
+                        color: "#4BC358",
+                        marginLeft: "5px",
+                        fontWeight: "600",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <BsWhatsapp color="#4BC358"></BsWhatsapp>COMPRE PELO
+                      WHATSAPPP
+                    </a>{" "}
+                  </p>
+                </div>
                 <div className="list-icons">
                   <div>
                     <AiFillCreditCard color="red"></AiFillCreditCard> Pague em
@@ -1492,10 +1470,17 @@ export default function PaginaProduto() {
                     <FaMoneyBillWave color="red"></FaMoneyBillWave>{" "}
                     <strong>Pague à vista com Pix ou Boleto</strong>
                   </div>
-                  <div>
-                    <GiPresent color="red"></GiPresent>{" "}
-                    <strong>Brindes Especiais em cada compra</strong>
-                  </div>
+
+                  {item.aparecercampobrinde != "false" || "" || null ? (
+                    <div>
+                      <GiPresent color="red"></GiPresent>{" "}
+                      <strong>Brindes Especiais em cada compra</strong>
+                      <br />
+                      <strong>Brinde que acompanha:{item.brinde}</strong>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 <button

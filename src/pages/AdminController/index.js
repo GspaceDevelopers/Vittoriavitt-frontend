@@ -4,7 +4,13 @@ import api from "../../services/api";
 import api2 from "../../services/api2";
 import { BiDotsHorizontalRounded, BiSearch, BiLogIn } from "react-icons/bi";
 import { VscDashboard } from "react-icons/vsc";
-import { MdAddBusiness, MdEdit, MdOutlineMarkEmailUnread, MdSecurity, MdWeb } from "react-icons/md";
+import {
+  MdAddBusiness,
+  MdEdit,
+  MdOutlineMarkEmailUnread,
+  MdSecurity,
+  MdWeb,
+} from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
 import { BsBoxSeam, BsTrash, BsWhatsapp } from "react-icons/bs";
 import { AiOutlineFileSync } from "react-icons/ai";
@@ -26,24 +32,29 @@ export default function AdminController() {
     JSON.parse(localStorage.getItem("sessaouser") || "[]")
   );
 
-  const [senhaverificacao, setSenhaverificacao] = useState('');
-  const [senha, setSenha] = useState('');
-  const [alterasenha, setAlterasenha] = useState('');
-  const [alteraemail, setAlteraemail] = useState('');
-  const [titulopergunta, setTitulopergunta] = useState('');
-  const [textoresposta, setTextoresposta] = useState('');
+  const [senhaverificacao, setSenhaverificacao] = useState("");
+  const [senha, setSenha] = useState("");
+  const [alterasenha, setAlterasenha] = useState("");
+  const [alteraemail, setAlteraemail] = useState("");
+  const [titulopergunta, setTitulopergunta] = useState("");
+  const [textoresposta, setTextoresposta] = useState("");
   const [dataperguntas, setDataperguntas] = useState([]);
+  const [aparecercampobrinde, setAparecercampobrinde] = useState(false);
+  const [brinde, setBrinde] = useState();
+  const [sku, setSku] = useState();
 
   const [modaleditadados, setModaleditadados] = useState(false);
   const [modallistaemails, setModalListaemails] = useState(false);
-  const [modalperguntasfrequentes, setModalperguntasfrequentes] = useState(false);
+  const [modalperguntasfrequentes, setModalperguntasfrequentes] =
+    useState(false);
   const [showpedidos, setShowpedidos] = useState(true);
   const [showdashboard, setShowdeshboard] = useState(false);
   const [showlistaprodutos, setShowlistaprodutos] = useState(false);
   const [modaldeleteverifica, setModaldeleteverifica] = useState(false);
-  const [showmodaldetalhesprodutos, setShowmodaldetalhesproduto] = useState(false);
-  const [modaleditahome, setModaleditahome] = useState(false)
-  const [modallistafranqueados, setModallistafranqueados] = useState(false)
+  const [showmodaldetalhesprodutos, setShowmodaldetalhesproduto] =
+    useState(false);
+  const [modaleditahome, setModaleditahome] = useState(false);
+  const [modallistafranqueados, setModallistafranqueados] = useState(false);
   const [modalstatus, setModalstatus] = useState(false);
   const [modalcadastroprodutos, setModalcadastroprodutos] = useState(false);
   const [modallistacomentarios, setModallistacomentarios] = useState(false);
@@ -65,125 +76,112 @@ export default function AdminController() {
   const [faturamento, setFaturamento] = useState();
   const [detalhesproduto, setDetalhesproduto] = useState([]);
   const [datafranqueados, setDatafranqueados] = useState([]);
-  const [codigo, setCodigo] = useState('');
-  const [corupdate, setCorupdate] = useState('');
-  const [corupdate2, setCorupdate2] = useState('');
-  const [corupdate3, setCorupdate3] = useState('');
-  const [corupdate4, setCorupdate4] = useState('');
-  const [corupdate5, setCorupdate5] = useState('');
-  const [corupdate6, setCorupdate6] = useState('');
-  const [subcategoriaupdate1, setSubcategoriaupdate1] = useState('');
-  const [subcategoriaupdate2, setSubcategoriaupdate2] = useState('');
-  const [subcategoriaupdate3, setSubcategoriaupdate3] = useState('');
-  const [subcategoriaupdate4, setSubcategoriaupdate4] = useState('');
-
-
+  const [codigo, setCodigo] = useState("");
+  const [corupdate, setCorupdate] = useState("");
+  const [corupdate2, setCorupdate2] = useState("");
+  const [corupdate3, setCorupdate3] = useState("");
+  const [corupdate4, setCorupdate4] = useState("");
+  const [corupdate5, setCorupdate5] = useState("");
+  const [corupdate6, setCorupdate6] = useState("");
+  const [subcategoriaupdate1, setSubcategoriaupdate1] = useState("");
+  const [subcategoriaupdate2, setSubcategoriaupdate2] = useState("");
+  const [subcategoriaupdate3, setSubcategoriaupdate3] = useState("");
+  const [subcategoriaupdate4, setSubcategoriaupdate4] = useState("");
 
   const [datacategorias, setDatacategorias] = useState([]);
   const [datacores, setDatacores] = useState([]);
 
-  const [tamanho1, setTamanho1] = useState('')
-  const [tamanho2, setTamanho2] = useState('')
-  const [tamanho3, setTamanho3] = useState('')
-  const [tamanho4, setTamanho4] = useState('')
-  const [tamanho5, setTamanho5] = useState('')
-  const [tamanho6, setTamanho6] = useState('')
-  const [tamanho7, setTamanho7] = useState('')
-  const [tamanho8, setTamanho8] = useState('')
-  const [tamanho9, setTamanho9] = useState('')
-  const [tamanho10, setTamanho10] = useState('')
-  const [tamanho11, setTamanho11] = useState('')
-  const [tamanho12, setTamanho12] = useState('')
-  const [tamanho13, setTamanho13] = useState('')
-  const [tamanho14, setTamanho14] = useState('')
-  const [tamanho15, setTamanho15] = useState('')
-  const [tamanho16, setTamanho16] = useState('')
-  const [tamanho17, setTamanho17] = useState('')
-  const [tamanho18, setTamanho18] = useState('')
-  const [tamanho19, setTamanho19] = useState('')
-  const [tamanho20, setTamanho20] = useState('')
-  const [tamanho21, setTamanho21] = useState('')
-  const [tamanho22, setTamanho22] = useState('')
-  const [tamanho23, setTamanho23] = useState('')
-  const [tamanho24, setTamanho24] = useState('')
+  const [tamanho1, setTamanho1] = useState("");
+  const [tamanho2, setTamanho2] = useState("");
+  const [tamanho3, setTamanho3] = useState("");
+  const [tamanho4, setTamanho4] = useState("");
+  const [tamanho5, setTamanho5] = useState("");
+  const [tamanho6, setTamanho6] = useState("");
+  const [tamanho7, setTamanho7] = useState("");
+  const [tamanho8, setTamanho8] = useState("");
+  const [tamanho9, setTamanho9] = useState("");
+  const [tamanho10, setTamanho10] = useState("");
+  const [tamanho11, setTamanho11] = useState("");
+  const [tamanho12, setTamanho12] = useState("");
+  const [tamanho13, setTamanho13] = useState("");
+  const [tamanho14, setTamanho14] = useState("");
+  const [tamanho15, setTamanho15] = useState("");
+  const [tamanho16, setTamanho16] = useState("");
+  const [tamanho17, setTamanho17] = useState("");
+  const [tamanho18, setTamanho18] = useState("");
+  const [tamanho19, setTamanho19] = useState("");
+  const [tamanho20, setTamanho20] = useState("");
+  const [tamanho21, setTamanho21] = useState("");
+  const [tamanho22, setTamanho22] = useState("");
+  const [tamanho23, setTamanho23] = useState("");
+  const [tamanho24, setTamanho24] = useState("");
 
+  const [quantidade1, setQuantidade1] = useState("");
+  const [quantidade2, setQuantidade2] = useState("");
+  const [quantidade3, setQuantidade3] = useState("");
+  const [quantidade4, setQuantidade4] = useState("");
+  const [quantidade5, setQuantidade5] = useState("");
+  const [quantidade6, setQuantidade6] = useState("");
+  const [quantidade7, setQuantidade7] = useState("");
+  const [quantidade8, setQuantidade8] = useState("");
+  const [quantidade9, setQuantidade9] = useState("");
+  const [quantidade10, setQuantidade10] = useState("");
+  const [quantidade11, setQuantidade11] = useState("");
+  const [quantidade12, setQuantidade12] = useState("");
+  const [quantidade13, setQuantidade13] = useState("");
+  const [quantidade14, setQuantidade14] = useState("");
+  const [quantidade15, setQuantidade15] = useState("");
+  const [quantidade16, setQuantidade16] = useState("");
+  const [quantidade17, setQuantidade17] = useState("");
+  const [quantidade18, setQuantidade18] = useState("");
+  const [quantidade19, setQuantidade19] = useState("");
+  const [quantidade20, setQuantidade20] = useState("");
+  const [quantidade21, setQuantidade21] = useState("");
+  const [quantidade22, setQuantidade22] = useState("");
+  const [quantidade23, setQuantidade23] = useState("");
+  const [quantidade24, setQuantidade24] = useState("");
 
+  const [tipoprodutoupdate, setTipoprodutoupdate] = useState("");
+  const [categoriaupdate, setCategoriaupdate] = useState("");
+  const [decricaoupdate, setDescricaoupdate] = useState("");
+  const [marcaupdate, setMarcaupdade] = useState("");
+  const [precoupdate, setPrcoupdate] = useState("");
+  const [precomaior, setPrecomaior] = useState("");
+  const [promocao, setPromocao] = useState("");
+  const [promocao2, setPromocao2] = useState("");
+  const [qtdpromocao2, setQtdpromocao2] = useState("");
+  const [desconto, setDesconto] = useState("");
+  const [produtoupdate, setProdutoupdate] = useState("");
+  const [dadosedicao, setDadosedicao] = useState([]);
 
+  const [textofretegratis, setTextofretegratis] = useState("");
+  const [titulosessaobanners, setTitulosessaobanners] = useState("");
 
+  const [urlFoto1, setUrlFoto1] = useState("");
+  const [urlFoto2, setUrlFoto2] = useState("");
+  const [urlFoto3, setUrlFoto3] = useState("");
 
+  const [urlmobile1, setUrlmobile1] = useState("");
+  const [urlmobile2, setUrlmobile2] = useState("");
+  const [urlmobile3, setUrlmobile3] = useState("");
 
-  const [quantidade1, setQuantidade1] = useState('')
-  const [quantidade2, setQuantidade2] = useState('')
-  const [quantidade3, setQuantidade3] = useState('')
-  const [quantidade4, setQuantidade4] = useState('')
-  const [quantidade5, setQuantidade5] = useState('')
-  const [quantidade6, setQuantidade6] = useState('')
-  const [quantidade7, setQuantidade7] = useState('')
-  const [quantidade8, setQuantidade8] = useState('')
-  const [quantidade9, setQuantidade9] = useState('')
-  const [quantidade10, setQuantidade10] = useState('')
-  const [quantidade11, setQuantidade11] = useState('')
-  const [quantidade12, setQuantidade12] = useState('')
-  const [quantidade13, setQuantidade13] = useState('')
-  const [quantidade14, setQuantidade14] = useState('')
-  const [quantidade15, setQuantidade15] = useState('')
-  const [quantidade16, setQuantidade16] = useState('')
-  const [quantidade17, setQuantidade17] = useState('')
-  const [quantidade18, setQuantidade18] = useState('')
-  const [quantidade19, setQuantidade19] = useState('')
-  const [quantidade20, setQuantidade20] = useState('')
-  const [quantidade21, setQuantidade21] = useState('')
-  const [quantidade22, setQuantidade22] = useState('')
-  const [quantidade23, setQuantidade23] = useState('')
-  const [quantidade24, setQuantidade24] = useState('')
+  const [urllogo1, setUrllogo1] = useState("");
+  const [urllogo2, setUrllogo2] = useState("");
+  const [urllogo3, setUrllogo3] = useState("");
+  const [urllogo4, setUrllogo4] = useState("");
+  const [urllogo5, setUrllogo5] = useState("");
+  const [urllogo6, setUrllogo6] = useState("");
+  const [urllogo7, setUrllogo7] = useState("");
 
-
-
-
-
-
-  const [tipoprodutoupdate, setTipoprodutoupdate] = useState('')
-  const [categoriaupdate, setCategoriaupdate] = useState('')
-  const [decricaoupdate, setDescricaoupdate] = useState('')
-  const [marcaupdate, setMarcaupdade] = useState('')
-  const [precoupdate, setPrcoupdate] = useState('')
-  const [precomaior, setPrecomaior] = useState('')
-  const [promocao, setPromocao] = useState('')
-  const [promocao2, setPromocao2] = useState('')
-  const [qtdpromocao2, setQtdpromocao2] = useState('')
-  const [desconto, setDesconto] = useState('')
-  const [produtoupdate, setProdutoupdate] = useState('')
-  const [dadosedicao, setDadosedicao] = useState([])
-
-  const [textofretegratis, setTextofretegratis] = useState('')
-  const [titulosessaobanners, setTitulosessaobanners] = useState('')
-
-  const [urlFoto1, setUrlFoto1] = useState('')
-  const [urlFoto2, setUrlFoto2] = useState('')
-  const [urlFoto3, setUrlFoto3] = useState('')
-
-  const [urlmobile1, setUrlmobile1] = useState('')
-  const [urlmobile2, setUrlmobile2] = useState('')
-  const [urlmobile3, setUrlmobile3] = useState('')
-
-
-  const [urllogo1, setUrllogo1] = useState('')
-  const [urllogo2, setUrllogo2] = useState('')
-  const [urllogo3, setUrllogo3] = useState('')
-  const [urllogo4, setUrllogo4] = useState('')
-  const [urllogo5, setUrllogo5] = useState('')
-  const [urllogo6, setUrllogo6] = useState('')
-  const [urllogo7, setUrllogo7] = useState('')
-
-  const [urlbanner1, setUrlbanner1] = useState('')
-  const [urlbanner2, setUrlbanner2] = useState('')
-  const [urlbanner3, setUrlbanner3] = useState('')
-  const [urlbanner4, setUrlbanner4] = useState('')
-  const [urlbanner5, setUrlbanner5] = useState('')
-  const [urlbanner6, setUrlbanner6] = useState('')
-  const [urlbanner7, setUrlbanner7] = useState('')
-  const [bannerpromocao, setBannerpromocao] = useState('')
-  const [bannercentralhome, setBannercentralhome] = useState('')
+  const [urlbanner1, setUrlbanner1] = useState("");
+  const [urlbanner2, setUrlbanner2] = useState("");
+  const [urlbanner3, setUrlbanner3] = useState("");
+  const [urlbanner4, setUrlbanner4] = useState("");
+  const [urlbanner5, setUrlbanner5] = useState("");
+  const [urlbanner6, setUrlbanner6] = useState("");
+  const [urlbanner7, setUrlbanner7] = useState("");
+  const [bannerpromocao, setBannerpromocao] = useState("");
+  const [bannercentralhome, setBannercentralhome] = useState("");
   const [nomefeddback, setNomefeddback] = useState("");
   const [textofeedback, setTextofeedback] = useState("");
   const [peso, setPeso] = useState("");
@@ -195,10 +193,7 @@ export default function AdminController() {
   const [parcelas, setParcelas] = useState("");
   const [bannerpaginaproduto, setBannerpaginaproduto] = useState("");
 
-
-
-
-  const [modelo, setModelo] = useState('')
+  const [modelo, setModelo] = useState("");
 
   useEffect(() => {
     async function loadpedidos() {
@@ -218,11 +213,9 @@ export default function AdminController() {
         setDataprodutos(data.data);
       });
 
-      await api2
-        .get("/pedidos")
-        .then((data) => {
-          setDatapedidos(data.data.reverse());
-        });
+      await api2.get("/pedidos").then((data) => {
+        setDatapedidos(data.data.reverse());
+      });
 
       await api2.get(`/pedidos/status?status=Pacote recebido`).then((data) => {
         setDatapedidos2(data.data);
@@ -242,20 +235,17 @@ export default function AdminController() {
 
       await api.get("/cores").then((item) => {
         setDatacores(item.data);
-
       });
     }
 
     loadpedidos();
   }, []);
 
-
   useEffect(() => {
     api.get("/perguntas").then((item) => {
       setDataperguntas(item.data.reverse());
-
     });
-  }, [dataperguntas])
+  }, [dataperguntas]);
 
   useEffect(() => {
     let soma = 0;
@@ -268,8 +258,6 @@ export default function AdminController() {
       soma += novoarray[i];
     }
     setFaturamento(parseFloat(soma));
-
-
   }, [datapedidos]);
 
   function showmodalstatus(item) {
@@ -426,9 +414,8 @@ export default function AdminController() {
     setModallistafranqueados(false);
     setModalcadastroprodutos(false);
     setModaleditadados(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
   function verdeshboard() {
     setShowpedidos(false);
@@ -440,9 +427,8 @@ export default function AdminController() {
     setModallistafranqueados(false);
     setModalcadastroprodutos(false);
     setModaleditadados(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
 
   function verlistaprodutos() {
@@ -455,86 +441,87 @@ export default function AdminController() {
     setModallistafranqueados(false);
     setModalcadastroprodutos(false);
     setModaleditadados(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
 
   function Modaldetalhesproduto(item) {
     setShowmodaldetalhesproduto(true);
-    setModelo(item.modelo)
-    setMarcaupdade(item.marca)
-    setCategoriaupdate(item.categoria)
-    setTipoprodutoupdate(item.tipo)
-    setDescricaoupdate(item.descricao)
-    setPrcoupdate(item.preco)
-    setPrecomaior(item.precomaior)
-    setPromocao(item.promocao)
-    setPeso(item.peso)
-    setComprimento(item.comprimento)
-    setLargura(item.largura)
-    setAltura(item.altura)
-    setDiametro(item.diametro)
-    setFormato(item.formato)
+    setModelo(item.modelo);
+    setSku(item.sku);
+    setMarcaupdade(item.marca);
+    setCategoriaupdate(item.categoria);
+    setTipoprodutoupdate(item.tipo);
+    setDescricaoupdate(item.descricao);
+    setPrcoupdate(item.preco);
+    setPrecomaior(item.precomaior);
+    setPromocao(item.promocao);
+    setPeso(item.peso);
+    setComprimento(item.comprimento);
+    setLargura(item.largura);
+    setAltura(item.altura);
+    setDiametro(item.diametro);
+    setFormato(item.formato);
     // setPromocao2(item.promocao2)
-    setQtdpromocao2(item.qtdpromocao2)
-    setDesconto(promocao2 === false ? '' : item.desconto)
+    setQtdpromocao2(item.qtdpromocao2);
+    setDesconto(promocao2 === false ? "" : item.desconto);
 
-    setSubcategoriaupdate1(item.subcategoria1)
-    setSubcategoriaupdate2(item.subcategoria2)
-    setSubcategoriaupdate3(item.subcategoria3)
-    setSubcategoriaupdate4(item.subcategoria4)
+    setSubcategoriaupdate1(item.subcategoria1);
+    setSubcategoriaupdate2(item.subcategoria2);
+    setSubcategoriaupdate3(item.subcategoria3);
+    setSubcategoriaupdate4(item.subcategoria4);
 
-    setTamanho1(item.cores.corPrimary.tamanhos.tamanhoOne.tamanho1)
-    setTamanho2(item.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2)
-    setTamanho3(item.cores.corPrimary.tamanhos.tamanhoThree.tamanho3)
-    setTamanho4(item.cores.corPrimary.tamanhos.tamanhoFour.tamanho4)
-    setTamanho5(item.cores.corSecondary.tamanhos.tamanhoOne.tamanho5)
-    setTamanho6(item.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6)
-    setTamanho7(item.cores.corSecondary.tamanhos.tamanhoThree.tamanho7)
-    setTamanho8(item.cores.corSecondary.tamanhos.tamanhoFour.tamanho8)
-    setTamanho9(item.cores.corTertiary.tamanhos.tamanhoOne.tamanho9)
-    setTamanho10(item.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10)
-    setTamanho11(item.cores.corTertiary.tamanhos.tamanhoThree.tamanho11)
-    setTamanho12(item.cores.corTertiary.tamanhos.tamanhoFour.tamanho12)
-    setTamanho13(item.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13)
-    setTamanho14(item.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14)
-    setTamanho15(item.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15)
-    setTamanho16(item.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16)
-    setTamanho17(item.cores.corFive.tamanhos.tamanhoOne.tamanho17)
-    setTamanho18(item.cores.corFive.tamanhos.tamanhoTwo.tamanho18)
-    setTamanho19(item.cores.corFive.tamanhos.tamanhoThree.tamanho19)
-    setTamanho20(item.cores.corFive.tamanhos.tamanhoFour.tamanho20)
-    setTamanho21(item.cores.corSix.tamanhos.tamanhoOne.tamanho21)
-    setTamanho22(item.cores.corSix.tamanhos.tamanhoTwo.tamanho22)
-    setTamanho23(item.cores.corSix.tamanhos.tamanhoThree.tamanho23)
-    setTamanho24(item.cores.corSix.tamanhos.tamanhoFour.tamanho24)
+    setTamanho1(item.cores.corPrimary.tamanhos.tamanhoOne.tamanho1);
+    setTamanho2(item.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2);
+    setTamanho3(item.cores.corPrimary.tamanhos.tamanhoThree.tamanho3);
+    setTamanho4(item.cores.corPrimary.tamanhos.tamanhoFour.tamanho4);
+    setTamanho5(item.cores.corSecondary.tamanhos.tamanhoOne.tamanho5);
+    setTamanho6(item.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6);
+    setTamanho7(item.cores.corSecondary.tamanhos.tamanhoThree.tamanho7);
+    setTamanho8(item.cores.corSecondary.tamanhos.tamanhoFour.tamanho8);
+    setTamanho9(item.cores.corTertiary.tamanhos.tamanhoOne.tamanho9);
+    setTamanho10(item.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10);
+    setTamanho11(item.cores.corTertiary.tamanhos.tamanhoThree.tamanho11);
+    setTamanho12(item.cores.corTertiary.tamanhos.tamanhoFour.tamanho12);
+    setTamanho13(item.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13);
+    setTamanho14(item.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14);
+    setTamanho15(item.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15);
+    setTamanho16(item.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16);
+    setTamanho17(item.cores.corFive.tamanhos.tamanhoOne.tamanho17);
+    setTamanho18(item.cores.corFive.tamanhos.tamanhoTwo.tamanho18);
+    setTamanho19(item.cores.corFive.tamanhos.tamanhoThree.tamanho19);
+    setTamanho20(item.cores.corFive.tamanhos.tamanhoFour.tamanho20);
+    setTamanho21(item.cores.corSix.tamanhos.tamanhoOne.tamanho21);
+    setTamanho22(item.cores.corSix.tamanhos.tamanhoTwo.tamanho22);
+    setTamanho23(item.cores.corSix.tamanhos.tamanhoThree.tamanho23);
+    setTamanho24(item.cores.corSix.tamanhos.tamanhoFour.tamanho24);
 
-
-    setQuantidade1(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade)
-    setQuantidade2(item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2)
-    setQuantidade3(item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3)
-    setQuantidade4(item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4)
-    setQuantidade5(item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5)
-    setQuantidade6(item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6)
-    setQuantidade7(item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7)
-    setQuantidade8(item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8)
-    setQuantidade9(item.cores.corTertiary.tamanhos.tamanhoOne.quantidade9)
-    setQuantidade10(item.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10)
-    setQuantidade11(item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11)
-    setQuantidade12(item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12)
-    setQuantidade13(item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13)
-    setQuantidade14(item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14)
-    setQuantidade15(item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15)
-    setQuantidade16(item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16)
-    setQuantidade17(item.cores.corFive.tamanhos.tamanhoOne.quantidade17)
-    setQuantidade18(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18)
-    setQuantidade19(item.cores.corFive.tamanhos.tamanhoThree.quantidade19)
-    setQuantidade20(item.cores.corFive.tamanhos.tamanhoFour.quantidade20)
-    setQuantidade21(item.cores.corSix.tamanhos.tamanhoOne.quantidade21)
-    setQuantidade22(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22)
-    setQuantidade23(item.cores.corSix.tamanhos.tamanhoThree.quantidade23)
-    setQuantidade24(item.cores.corSix.tamanhos.tamanhoFour.quantidade24)
+    setQuantidade1(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade);
+    setQuantidade2(item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2);
+    setQuantidade3(item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3);
+    setQuantidade4(item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4);
+    setQuantidade5(item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5);
+    setQuantidade6(item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6);
+    setQuantidade7(item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7);
+    setQuantidade8(item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8);
+    setQuantidade9(item.cores.corTertiary.tamanhos.tamanhoOne.quantidade9);
+    setQuantidade10(item.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10);
+    setQuantidade11(item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11);
+    setQuantidade12(item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12);
+    setQuantidade13(item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13);
+    setQuantidade14(item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14);
+    setQuantidade15(
+      item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15
+    );
+    setQuantidade16(item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16);
+    setQuantidade17(item.cores.corFive.tamanhos.tamanhoOne.quantidade17);
+    setQuantidade18(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18);
+    setQuantidade19(item.cores.corFive.tamanhos.tamanhoThree.quantidade19);
+    setQuantidade20(item.cores.corFive.tamanhos.tamanhoFour.quantidade20);
+    setQuantidade21(item.cores.corSix.tamanhos.tamanhoOne.quantidade21);
+    setQuantidade22(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22);
+    setQuantidade23(item.cores.corSix.tamanhos.tamanhoThree.quantidade23);
+    setQuantidade24(item.cores.corSix.tamanhos.tamanhoFour.quantidade24);
 
     setDetalhesproduto(item);
     setModaleditahome(false);
@@ -542,9 +529,8 @@ export default function AdminController() {
     setModallistafranqueados(false);
     setModalcadastroprodutos(false);
     setModaleditadados(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
 
   function vereditahome() {
@@ -557,9 +543,8 @@ export default function AdminController() {
     setModallistafranqueados(false);
     setModalcadastroprodutos(false);
     setModaleditadados(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
   function verlistaemails() {
     setModalListaemails(true);
@@ -571,9 +556,8 @@ export default function AdminController() {
     setModallistafranqueados(false);
     setModalcadastroprodutos(false);
     setModaleditadados(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
   function vercadastroprodutos() {
     setModalcadastroprodutos(true);
@@ -585,9 +569,8 @@ export default function AdminController() {
     setShowdeshboard(false);
     setShowlistaprodutos(false);
     setModaleditadados(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
   function vereditadados() {
     setModaleditadados(true);
@@ -599,12 +582,11 @@ export default function AdminController() {
     setShowpedidos(false);
     setShowdeshboard(false);
     setShowlistaprodutos(false);
-    setModalperguntasfrequentes(false)
-    setModallistacomentarios(false)
-
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
   }
   function vereditaperguntas() {
-    setModalperguntasfrequentes(true)
+    setModalperguntasfrequentes(true);
     setModaleditadados(false);
     setModalcadastroprodutos(false);
     setModallistafranqueados(false);
@@ -614,11 +596,11 @@ export default function AdminController() {
     setShowpedidos(false);
     setShowdeshboard(false);
     setShowlistaprodutos(false);
-    setModallistacomentarios(false)
+    setModallistacomentarios(false);
   }
   function vercadastrocomentarios() {
-    setModallistacomentarios(true)
-    setModalperguntasfrequentes(false)
+    setModallistacomentarios(true);
+    setModalperguntasfrequentes(false);
     setModaleditadados(false);
     setModalcadastroprodutos(false);
     setModallistafranqueados(false);
@@ -630,21 +612,20 @@ export default function AdminController() {
     setShowlistaprodutos(false);
   }
 
-
-
   async function delitemcor(_id) {
-    if (promocao2 == '') {
-      document.getElementById('promo2').setAttribute('style', 'background:red')
-      return
+    if (promocao2 == "") {
+      document.getElementById("promo2").setAttribute("style", "background:red");
+      return;
     }
     let data = {
       headers: {
         Authorization: "Access-Control-Allow-Origin",
       },
       // produto: detalhesproduto.produto,
+      sku: sku,
       precomaior: precomaior,
       preco: precoupdate,
-      modelo: modelo == '' ? detalhesproduto.modelo : modelo,
+      modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -665,22 +646,25 @@ export default function AdminController() {
       formato: formato,
       cores: {
         corPrimary: {
-          imgurl: '',
-          imgurl2: '',
-          imgurl3: '',
-          cor1: '',
+          imgurl: "",
+          imgurl2: "",
+          imgurl3: "",
+          cor1: "",
           tamanhos: {
-            tamanhoOne: { tamanho1: '', quantidade: '' },
-            tamanhoTwo: { tamanho2: '', quantidade2: '' },
-            tamanhoThree: { tamanho3: '', quantidade3: '' },
-            tamanhoFour: { tamanho4: '', quantidade4: '' },
+            tamanhoOne: { tamanho1: "", quantidade: "" },
+            tamanhoTwo: { tamanho2: "", quantidade2: "" },
+            tamanhoThree: { tamanho3: "", quantidade3: "" },
+            tamanhoFour: { tamanho4: "", quantidade4: "" },
           },
         },
         corSecondary: {
           imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
           imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
           imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2: corupdate2 == '' ? detalhesproduto.cores.corSecondary.cor2 : corupdate2,
+          cor2:
+            corupdate2 == ""
+              ? detalhesproduto.cores.corSecondary.cor2
+              : corupdate2,
           tamanhos: {
             tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
             tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
@@ -692,7 +676,10 @@ export default function AdminController() {
           imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
           imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
           imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3: corupdate3 == '' ? detalhesproduto.cores.corTertiary.cor3 : corupdate3,
+          cor3:
+            corupdate3 == ""
+              ? detalhesproduto.cores.corTertiary.cor3
+              : corupdate3,
           tamanhos: {
             tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
             tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
@@ -704,7 +691,10 @@ export default function AdminController() {
           imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
           imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
           imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4: corupdate4 == '' ? detalhesproduto.cores.corQuaternary.cor4 : corupdate4,
+          cor4:
+            corupdate4 == ""
+              ? detalhesproduto.cores.corQuaternary.cor4
+              : corupdate4,
           tamanhos: {
             tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
             tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
@@ -716,7 +706,8 @@ export default function AdminController() {
           imgurl13: detalhesproduto.cores.corFive.imgurl13,
           imgurl14: detalhesproduto.cores.corFive.imgurl14,
           imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5: corupdate5 == '' ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+          cor5:
+            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
             tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
             tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
@@ -728,7 +719,8 @@ export default function AdminController() {
           imgurl16: detalhesproduto.cores.corSix.imgurl16,
           imgurl17: detalhesproduto.cores.corSix.imgurl17,
           imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: corupdate6 == '' ? detalhesproduto.cores.corSix.cor6 : corupdate6,
+          cor6:
+            corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
             tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
             tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
@@ -736,26 +728,26 @@ export default function AdminController() {
             tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
           },
         },
-
       },
-    }
+    };
 
-    api.put(`/produtos/${_id}`, data)
+    api
+      .put(`/produtos/${_id}`, data)
       .then(() => {
-        toast.success('Item atualizado com sucesso!')
+        toast.success("Item atualizado com sucesso!");
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((error) => {
-        alert(error)
-      })
+        alert(error);
+      });
   }
 
   async function delitemcor2(_id) {
-    if (promocao2 == '') {
-      document.getElementById('promo2').setAttribute('style', 'background:red')
-      return
+    if (promocao2 == "") {
+      document.getElementById("promo2").setAttribute("style", "background:red");
+      return;
     }
     let data = {
       headers: {
@@ -763,8 +755,9 @@ export default function AdminController() {
       },
       // produto: detalhesproduto.produto,
       precomaior: precomaior,
+      sku: sku,
       preco: precoupdate,
-      modelo: modelo == '' ? detalhesproduto.modelo : modelo,
+      modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -788,7 +781,8 @@ export default function AdminController() {
           imgurl: detalhesproduto.cores.corPrimary.imgurl,
           imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
           imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+          cor1:
+            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
             tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
             tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -797,22 +791,25 @@ export default function AdminController() {
           },
         },
         corSecondary: {
-          imgurl4: '',
-          imgurl5: '',
-          imgurl6: '',
-          cor2: '',
+          imgurl4: "",
+          imgurl5: "",
+          imgurl6: "",
+          cor2: "",
           tamanhos: {
-            tamanhoOne: { tamanho5: '', quantidade5: '' },
-            tamanhoTwo: { tamanho6: '', quantidade6: '' },
-            tamanhoThree: { tamanho7: '', quantidade7: '' },
-            tamanhoFour: { tamanho8: '', quantidade8: '' },
+            tamanhoOne: { tamanho5: "", quantidade5: "" },
+            tamanhoTwo: { tamanho6: "", quantidade6: "" },
+            tamanhoThree: { tamanho7: "", quantidade7: "" },
+            tamanhoFour: { tamanho8: "", quantidade8: "" },
           },
         },
         corTertiary: {
           imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
           imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
           imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3: corupdate3 == '' ? detalhesproduto.cores.corTertiary.cor3 : corupdate3,
+          cor3:
+            corupdate3 == ""
+              ? detalhesproduto.cores.corTertiary.cor3
+              : corupdate3,
           tamanhos: {
             tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
             tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
@@ -824,7 +821,10 @@ export default function AdminController() {
           imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
           imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
           imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4: corupdate4 == '' ? detalhesproduto.cores.corQuaternary.cor4 : corupdate4,
+          cor4:
+            corupdate4 == ""
+              ? detalhesproduto.cores.corQuaternary.cor4
+              : corupdate4,
           tamanhos: {
             tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
             tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
@@ -836,7 +836,8 @@ export default function AdminController() {
           imgurl13: detalhesproduto.cores.corFive.imgurl13,
           imgurl14: detalhesproduto.cores.corFive.imgurl14,
           imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5: corupdate5 == '' ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+          cor5:
+            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
             tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
             tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
@@ -848,7 +849,8 @@ export default function AdminController() {
           imgurl16: detalhesproduto.cores.corSix.imgurl16,
           imgurl17: detalhesproduto.cores.corSix.imgurl17,
           imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: corupdate6 == '' ? detalhesproduto.cores.corSix.cor6 : corupdate6,
+          cor6:
+            corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
             tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
             tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
@@ -856,26 +858,26 @@ export default function AdminController() {
             tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
           },
         },
-
       },
-    }
+    };
 
-    api.put(`/produtos/${_id}`, data)
+    api
+      .put(`/produtos/${_id}`, data)
       .then(() => {
-        toast.success('Item atualizado com sucesso!')
+        toast.success("Item atualizado com sucesso!");
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((error) => {
-        alert(error)
-      })
+        alert(error);
+      });
   }
 
   async function delitemcor3(_id) {
-    if (promocao2 == '') {
-      document.getElementById('promo2').setAttribute('style', 'background:red')
-      return
+    if (promocao2 == "") {
+      document.getElementById("promo2").setAttribute("style", "background:red");
+      return;
     }
     let data = {
       headers: {
@@ -884,7 +886,8 @@ export default function AdminController() {
       // produto: detalhesproduto.produto,
       precomaior: precomaior,
       preco: precoupdate,
-      modelo: modelo == '' ? detalhesproduto.modelo : modelo,
+      sku: sku,
+      modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -908,7 +911,8 @@ export default function AdminController() {
           imgurl: detalhesproduto.cores.corPrimary.imgurl,
           imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
           imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+          cor1:
+            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
             tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
             tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -920,7 +924,10 @@ export default function AdminController() {
           imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
           imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
           imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2: corupdate2 == '' ? detalhesproduto.cores.corSecondary.cor2 : corupdate2,
+          cor2:
+            corupdate2 == ""
+              ? detalhesproduto.cores.corSecondary.cor2
+              : corupdate2,
           tamanhos: {
             tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
             tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
@@ -929,22 +936,25 @@ export default function AdminController() {
           },
         },
         corTertiary: {
-          imgurl7: '',
-          imgurl8: '',
-          imgurl9: '',
-          cor3: '',
+          imgurl7: "",
+          imgurl8: "",
+          imgurl9: "",
+          cor3: "",
           tamanhos: {
-            tamanhoOne: { tamanho9: '', quantidade9: '' },
-            tamanhoTwo: { tamanho10: '', quantidade10: '' },
-            tamanhoThree: { tamanho11: '', quantidade11: '' },
-            tamanhoFour: { tamanho12: '', quantidade12: '' },
+            tamanhoOne: { tamanho9: "", quantidade9: "" },
+            tamanhoTwo: { tamanho10: "", quantidade10: "" },
+            tamanhoThree: { tamanho11: "", quantidade11: "" },
+            tamanhoFour: { tamanho12: "", quantidade12: "" },
           },
         },
         corQuaternary: {
           imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
           imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
           imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4: corupdate4 == '' ? detalhesproduto.cores.corQuaternary.cor4 : corupdate4,
+          cor4:
+            corupdate4 == ""
+              ? detalhesproduto.cores.corQuaternary.cor4
+              : corupdate4,
           tamanhos: {
             tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
             tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
@@ -956,7 +966,8 @@ export default function AdminController() {
           imgurl13: detalhesproduto.cores.corFive.imgurl13,
           imgurl14: detalhesproduto.cores.corFive.imgurl14,
           imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5: corupdate5 == '' ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+          cor5:
+            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
             tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
             tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
@@ -968,7 +979,8 @@ export default function AdminController() {
           imgurl16: detalhesproduto.cores.corSix.imgurl16,
           imgurl17: detalhesproduto.cores.corSix.imgurl17,
           imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: corupdate6 == '' ? detalhesproduto.cores.corSix.cor6 : corupdate6,
+          cor6:
+            corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
             tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
             tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
@@ -976,25 +988,25 @@ export default function AdminController() {
             tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
           },
         },
-
       },
-    }
+    };
 
-    api.put(`/produtos/${_id}`, data)
+    api
+      .put(`/produtos/${_id}`, data)
       .then(() => {
-        toast.success('Item atualizado com sucesso!')
+        toast.success("Item atualizado com sucesso!");
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((error) => {
-        alert(error)
-      })
+        alert(error);
+      });
   }
   async function delitemcor4(_id) {
-    if (promocao2 == '') {
-      document.getElementById('promo2').setAttribute('style', 'background:red')
-      return
+    if (promocao2 == "") {
+      document.getElementById("promo2").setAttribute("style", "background:red");
+      return;
     }
     let data = {
       headers: {
@@ -1002,8 +1014,10 @@ export default function AdminController() {
       },
       // produto: detalhesproduto.produto,
       precomaior: precomaior,
+      sku: sku,
+
       preco: precoupdate,
-      modelo: modelo == '' ? detalhesproduto.modelo : modelo,
+      modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -1027,7 +1041,8 @@ export default function AdminController() {
           imgurl: detalhesproduto.cores.corPrimary.imgurl,
           imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
           imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+          cor1:
+            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
             tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
             tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -1039,7 +1054,10 @@ export default function AdminController() {
           imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
           imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
           imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2: corupdate2 == '' ? detalhesproduto.cores.corSecondary.cor2 : corupdate2,
+          cor2:
+            corupdate2 == ""
+              ? detalhesproduto.cores.corSecondary.cor2
+              : corupdate2,
           tamanhos: {
             tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
             tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
@@ -1051,7 +1069,10 @@ export default function AdminController() {
           imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
           imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
           imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3: corupdate3 == '' ? detalhesproduto.cores.corTertiary.cor3 : corupdate3,
+          cor3:
+            corupdate3 == ""
+              ? detalhesproduto.cores.corTertiary.cor3
+              : corupdate3,
           tamanhos: {
             tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
             tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
@@ -1060,22 +1081,23 @@ export default function AdminController() {
           },
         },
         corQuaternary: {
-          imgurl10: '',
-          imgurl11: '',
-          imgurl12: '',
-          cor4: '',
+          imgurl10: "",
+          imgurl11: "",
+          imgurl12: "",
+          cor4: "",
           tamanhos: {
-            tamanhoOne: { tamanho13: '', quantidade13: '' },
-            tamanhoTwo: { tamanho14: '', quantidade14: '' },
-            tamanhoThree: { tamanho15: '', quantidade15: '' },
-            tamanhoFour: { tamanho16: '', quantidade16: '' },
+            tamanhoOne: { tamanho13: "", quantidade13: "" },
+            tamanhoTwo: { tamanho14: "", quantidade14: "" },
+            tamanhoThree: { tamanho15: "", quantidade15: "" },
+            tamanhoFour: { tamanho16: "", quantidade16: "" },
           },
         },
         corFive: {
           imgurl13: detalhesproduto.cores.corFive.imgurl13,
           imgurl14: detalhesproduto.cores.corFive.imgurl14,
           imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5: corupdate5 == '' ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+          cor5:
+            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
             tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
             tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
@@ -1087,7 +1109,8 @@ export default function AdminController() {
           imgurl16: detalhesproduto.cores.corSix.imgurl16,
           imgurl17: detalhesproduto.cores.corSix.imgurl17,
           imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: corupdate6 == '' ? detalhesproduto.cores.corSix.cor6 : corupdate6,
+          cor6:
+            corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
             tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
             tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
@@ -1095,25 +1118,25 @@ export default function AdminController() {
             tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
           },
         },
-
       },
-    }
+    };
 
-    api.put(`/produtos/${_id}`, data)
+    api
+      .put(`/produtos/${_id}`, data)
       .then(() => {
-        toast.success('Item atualizado com sucesso!')
+        toast.success("Item atualizado com sucesso!");
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((error) => {
-        alert(error)
-      })
+        alert(error);
+      });
   }
   async function delitemcor5(_id) {
-    if (promocao2 == '') {
-      document.getElementById('promo2').setAttribute('style', 'background:red')
-      return
+    if (promocao2 == "") {
+      document.getElementById("promo2").setAttribute("style", "background:red");
+      return;
     }
     let data = {
       headers: {
@@ -1122,7 +1145,9 @@ export default function AdminController() {
       // produto: detalhesproduto.produto,
       precomaior: precomaior,
       preco: precoupdate,
-      modelo: modelo == '' ? detalhesproduto.modelo : modelo,
+      sku: sku,
+
+      modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -1146,7 +1171,8 @@ export default function AdminController() {
           imgurl: detalhesproduto.cores.corPrimary.imgurl,
           imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
           imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+          cor1:
+            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
             tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
             tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -1158,7 +1184,10 @@ export default function AdminController() {
           imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
           imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
           imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2: corupdate2 == '' ? detalhesproduto.cores.corSecondary.cor2 : corupdate2,
+          cor2:
+            corupdate2 == ""
+              ? detalhesproduto.cores.corSecondary.cor2
+              : corupdate2,
           tamanhos: {
             tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
             tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
@@ -1170,7 +1199,10 @@ export default function AdminController() {
           imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
           imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
           imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3: corupdate3 == '' ? detalhesproduto.cores.corTertiary.cor3 : corupdate3,
+          cor3:
+            corupdate3 == ""
+              ? detalhesproduto.cores.corTertiary.cor3
+              : corupdate3,
           tamanhos: {
             tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
             tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
@@ -1182,7 +1214,10 @@ export default function AdminController() {
           imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
           imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
           imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4: corupdate4 == '' ? detalhesproduto.cores.corQuaternary.cor4 : corupdate4,
+          cor4:
+            corupdate4 == ""
+              ? detalhesproduto.cores.corQuaternary.cor4
+              : corupdate4,
           tamanhos: {
             tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
             tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
@@ -1191,22 +1226,23 @@ export default function AdminController() {
           },
         },
         corFive: {
-          imgurl13: '',
-          imgurl14: '',
-          imgurl15: '',
-          cor5: '',
+          imgurl13: "",
+          imgurl14: "",
+          imgurl15: "",
+          cor5: "",
           tamanhos: {
-            tamanhoOne: { tamanho17: '', quantidade17: '' },
-            tamanhoTwo: { tamanho18: '', quantidade18: '' },
-            tamanhoThree: { tamanho19: '', quantidade19: '' },
-            tamanhoFour: { tamanho20: '', quantidade20: '' },
+            tamanhoOne: { tamanho17: "", quantidade17: "" },
+            tamanhoTwo: { tamanho18: "", quantidade18: "" },
+            tamanhoThree: { tamanho19: "", quantidade19: "" },
+            tamanhoFour: { tamanho20: "", quantidade20: "" },
           },
         },
         corSix: {
           imgurl16: detalhesproduto.cores.corSix.imgurl16,
           imgurl17: detalhesproduto.cores.corSix.imgurl17,
           imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: corupdate6 == '' ? detalhesproduto.cores.corSix.cor6 : corupdate6,
+          cor6:
+            corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
             tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
             tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
@@ -1214,25 +1250,25 @@ export default function AdminController() {
             tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
           },
         },
-
       },
-    }
+    };
 
-    api.put(`/produtos/${_id}`, data)
+    api
+      .put(`/produtos/${_id}`, data)
       .then(() => {
-        toast.success('Item atualizado com sucesso!')
+        toast.success("Item atualizado com sucesso!");
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((error) => {
-        alert(error)
-      })
+        alert(error);
+      });
   }
   async function delitemcor6(_id) {
-    if (promocao2 == '') {
-      document.getElementById('promo2').setAttribute('style', 'background:red')
-      return
+    if (promocao2 == "") {
+      document.getElementById("promo2").setAttribute("style", "background:red");
+      return;
     }
     let data = {
       headers: {
@@ -1240,8 +1276,10 @@ export default function AdminController() {
       },
       // produto: detalhesproduto.produto,
       precomaior: precomaior,
+      sku: sku,
+
       preco: precoupdate,
-      modelo: modelo == '' ? detalhesproduto.modelo : modelo,
+      modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -1265,7 +1303,8 @@ export default function AdminController() {
           imgurl: detalhesproduto.cores.corPrimary.imgurl,
           imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
           imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+          cor1:
+            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
             tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
             tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -1277,7 +1316,10 @@ export default function AdminController() {
           imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
           imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
           imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2: corupdate2 == '' ? detalhesproduto.cores.corSecondary.cor2 : corupdate2,
+          cor2:
+            corupdate2 == ""
+              ? detalhesproduto.cores.corSecondary.cor2
+              : corupdate2,
           tamanhos: {
             tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
             tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
@@ -1289,7 +1331,10 @@ export default function AdminController() {
           imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
           imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
           imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3: corupdate3 == '' ? detalhesproduto.cores.corTertiary.cor3 : corupdate3,
+          cor3:
+            corupdate3 == ""
+              ? detalhesproduto.cores.corTertiary.cor3
+              : corupdate3,
           tamanhos: {
             tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
             tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
@@ -1301,7 +1346,10 @@ export default function AdminController() {
           imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
           imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
           imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4: corupdate4 == '' ? detalhesproduto.cores.corQuaternary.cor4 : corupdate4,
+          cor4:
+            corupdate4 == ""
+              ? detalhesproduto.cores.corQuaternary.cor4
+              : corupdate4,
           tamanhos: {
             tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
             tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
@@ -1313,7 +1361,8 @@ export default function AdminController() {
           imgurl13: detalhesproduto.cores.corFive.imgurl13,
           imgurl14: detalhesproduto.cores.corFive.imgurl14,
           imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5: corupdate5 == '' ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+          cor5:
+            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
             tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
             tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
@@ -1322,36 +1371,36 @@ export default function AdminController() {
           },
         },
         corSix: {
-          imgurl16: '',
-          imgurl17: '',
-          imgurl18: '',
-          cor6: '',
+          imgurl16: "",
+          imgurl17: "",
+          imgurl18: "",
+          cor6: "",
           tamanhos: {
-            tamanhoOne: { tamanho21: '', quantidade21: '' },
-            tamanhoTwo: { tamanho22: '', quantidade22: '' },
-            tamanhoThree: { tamanho23: '', quantidade23: '' },
-            tamanhoFour: { tamanho24: '', quantidade24: '' },
+            tamanhoOne: { tamanho21: "", quantidade21: "" },
+            tamanhoTwo: { tamanho22: "", quantidade22: "" },
+            tamanhoThree: { tamanho23: "", quantidade23: "" },
+            tamanhoFour: { tamanho24: "", quantidade24: "" },
           },
         },
-
       },
-    }
+    };
 
-    api.put(`/produtos/${_id}`, data)
+    api
+      .put(`/produtos/${_id}`, data)
       .then(() => {
-        toast.success('Item atualizado com sucesso!')
+        toast.success("Item atualizado com sucesso!");
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((error) => {
-        alert(error)
-      })
+        alert(error);
+      });
   }
   async function updateitem(_id) {
-    if (promocao2 == '') {
-      document.getElementById('promo2').setAttribute('style', 'background:red')
-      return
+    if (promocao2 == "") {
+      document.getElementById("promo2").setAttribute("style", "background:red");
+      return;
     }
     let data = {
       headers: {
@@ -1359,8 +1408,10 @@ export default function AdminController() {
       },
       // produto: detalhesproduto.produto,
       precomaior: precomaior,
+      sku: sku,
+
       preco: precoupdate,
-      modelo: modelo == '' ? detalhesproduto.modelo : modelo,
+      modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -1384,7 +1435,8 @@ export default function AdminController() {
           imgurl: detalhesproduto.cores.corPrimary.imgurl,
           imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
           imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+          cor1:
+            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
             tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
             tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -1396,7 +1448,10 @@ export default function AdminController() {
           imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
           imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
           imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2: corupdate2 == '' ? detalhesproduto.cores.corSecondary.cor2 : corupdate2,
+          cor2:
+            corupdate2 == ""
+              ? detalhesproduto.cores.corSecondary.cor2
+              : corupdate2,
           tamanhos: {
             tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
             tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
@@ -1408,7 +1463,10 @@ export default function AdminController() {
           imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
           imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
           imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3: corupdate3 == '' ? detalhesproduto.cores.corTertiary.cor3 : corupdate3,
+          cor3:
+            corupdate3 == ""
+              ? detalhesproduto.cores.corTertiary.cor3
+              : corupdate3,
           tamanhos: {
             tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
             tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
@@ -1420,7 +1478,10 @@ export default function AdminController() {
           imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
           imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
           imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4: corupdate4 == '' ? detalhesproduto.cores.corQuaternary.cor4 : corupdate4,
+          cor4:
+            corupdate4 == ""
+              ? detalhesproduto.cores.corQuaternary.cor4
+              : corupdate4,
           tamanhos: {
             tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
             tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
@@ -1432,7 +1493,8 @@ export default function AdminController() {
           imgurl13: detalhesproduto.cores.corFive.imgurl13,
           imgurl14: detalhesproduto.cores.corFive.imgurl14,
           imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5: corupdate5 == '' ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+          cor5:
+            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
             tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
             tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
@@ -1444,7 +1506,8 @@ export default function AdminController() {
           imgurl16: detalhesproduto.cores.corSix.imgurl16,
           imgurl17: detalhesproduto.cores.corSix.imgurl17,
           imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: corupdate6 == '' ? detalhesproduto.cores.corSix.cor6 : corupdate6,
+          cor6:
+            corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
             tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
             tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
@@ -1452,20 +1515,20 @@ export default function AdminController() {
             tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
           },
         },
-
       },
-    }
+    };
 
-    api.put(`/produtos/${_id}`, data)
+    api
+      .put(`/produtos/${_id}`, data)
       .then(() => {
-        toast.success('Item atualizado com sucesso!')
+        toast.success("Item atualizado com sucesso!");
         setTimeout(() => {
-          window.location.reload()
+          window.location.reload();
         }, 2000);
       })
       .catch((error) => {
-        alert(error)
-      })
+        alert(error);
+      });
   }
 
   async function deleteitem(_id) {
@@ -1536,9 +1599,18 @@ export default function AdminController() {
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
         parcelas: parcelas,
-        bannerpaginaprod: bannerpaginaproduto == '' ? dadosedicao.map((item) => item.bannermodalpromocao)[0] : bannerpaginaproduto,
-        bannermodalpromocao: bannerpromocao == '' ? dadosedicao.map((item) => item.bannermodalpromocao)[0] : bannerpromocao,
-        bannercentralhome: bannercentralhome == '' ? dadosedicao.map((item) => item.bannercentralhome)[0] : bannercentralhome,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -1585,20 +1657,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2201,12 +2273,9 @@ export default function AdminController() {
     });
   }, [dataemails]);
 
-
-
   async function mudadados() {
-
-    if (senhaverificacao == '' || alterasenha == '') {
-      toast.error('campos vazios')
+    if (senhaverificacao == "" || alterasenha == "") {
+      toast.error("campos vazios");
       return;
     }
     await firebase
@@ -2214,77 +2283,74 @@ export default function AdminController() {
       .signInWithEmailAndPassword(user.email, senhaverificacao)
       .then(async function (userCredential) {
         userCredential.user.updateEmail(alteraemail);
-        userCredential.user.updatePassword(alterasenha)
+        userCredential.user.updatePassword(alterasenha);
 
         toast.success("Dados alterados com sucesso!");
         setTimeout(() => {
-          sairadm()
+          sairadm();
         }, 1500);
       });
   }
 
   async function addperguntas() {
-    if (titulopergunta == '' || textoresposta == '') {
-      toast.info('Preencha todos os campos!')
-      return
-
+    if (titulopergunta == "" || textoresposta == "") {
+      toast.info("Preencha todos os campos!");
+      return;
     }
-    await api.post('/perguntas', {
-      sumary: titulopergunta,
-      resposta: textoresposta
-    })
-      .then(() => {
-        toast.success('Pergunta adicionada com sucesso!')
-        setTitulopergunta('')
-        setTextoresposta('')
+    await api
+      .post("/perguntas", {
+        sumary: titulopergunta,
+        resposta: textoresposta,
       })
+      .then(() => {
+        toast.success("Pergunta adicionada com sucesso!");
+        setTitulopergunta("");
+        setTextoresposta("");
+      });
   }
   async function updateperguntas(_id) {
-    if (titulopergunta == '' || textoresposta == '') {
-      toast.info('Preencha todos os campos!')
-      return
-
+    if (titulopergunta == "" || textoresposta == "") {
+      toast.info("Preencha todos os campos!");
+      return;
     }
-    await api.put(`/perguntas/${_id}`, {
-      sumary: titulopergunta,
-      resposta: textoresposta
-    })
-      .then(() => {
-        toast.success('Pergunta atualizada com sucesso!')
-        setTitulopergunta('')
-        setTextoresposta('')
+    await api
+      .put(`/perguntas/${_id}`, {
+        sumary: titulopergunta,
+        resposta: textoresposta,
       })
+      .then(() => {
+        toast.success("Pergunta atualizada com sucesso!");
+        setTitulopergunta("");
+        setTextoresposta("");
+      });
   }
 
   async function delpergunta(_id) {
-    await api.delete(`/perguntas/${_id}`)
-      .then(() => {
-        toast.success('Pergunta excluida com sucesso!')
-
-      })
+    await api.delete(`/perguntas/${_id}`).then(() => {
+      toast.success("Pergunta excluida com sucesso!");
+    });
   }
 
   async function criarfeedback() {
-    if (nomefeddback == '' || textofeedback == '') {
-      toast.error('Preencha todos os campos!')
+    if (nomefeddback == "" || textofeedback == "") {
+      toast.error("Preencha todos os campos!");
       return;
     }
-    await api.post('/comentarios', {
-      user: nomefeddback,
-      idproduto: 'String',
-      comentario: textofeedback,
-      printcomentario: 'Boolean',
-      star: 'String',
-      data: `${new Date().getDate() + '/' + new Date().getMonth()}`,
-    })
-      .then(() => {
-        toast.success('Feedback enviado com sucesso!')
-        setTextofeedback('')
-        setNomefeddback('')
+    await api
+      .post("/comentarios", {
+        user: nomefeddback,
+        idproduto: "String",
+        comentario: textofeedback,
+        printcomentario: "Boolean",
+        star: "String",
+        data: `${new Date().getDate() + "/" + new Date().getMonth()}`,
       })
+      .then(() => {
+        toast.success("Feedback enviado com sucesso!");
+        setTextofeedback("");
+        setNomefeddback("");
+      });
   }
-
-
 
   return (
     <div className="container-adm-controller">
@@ -2326,27 +2392,22 @@ export default function AdminController() {
               Controle de estoque
             </button>
             <button onClick={verlistaemails}>
-              <BsWhatsapp size={30}></BsWhatsapp>{" "}
-              Lista de Whatsapps
+              <BsWhatsapp size={30}></BsWhatsapp> Lista de Whatsapps
             </button>
             <button onClick={vereditahome}>
               <BiEdit size={30}></BiEdit> Editar Banners do site
             </button>
             <button onClick={vereditadados}>
-              <MdSecurity size={30}></MdSecurity>{" "}
-              Privacidade
+              <MdSecurity size={30}></MdSecurity> Privacidade
             </button>
             <button onClick={vereditaperguntas}>
-              <BiEdit size={30}></BiEdit>{" "}
-              Editar Perguntas frequentes
+              <BiEdit size={30}></BiEdit> Editar Perguntas frequentes
             </button>
             <button onClick={vercadastrocomentarios}>
-              <BiEdit size={30}></BiEdit>{" "}
-              Cadastrar Comentarios
+              <BiEdit size={30}></BiEdit> Cadastrar Comentarios
             </button>
-            <a href="/" target={'_blank'}>
-              <MdWeb size={30}></MdWeb>{" "}
-              Ver site
+            <a href="/" target={"_blank"}>
+              <MdWeb size={30}></MdWeb> Ver site
             </a>
 
             <button onClick={sair}>
@@ -2380,15 +2441,12 @@ export default function AdminController() {
             </button>
             <button onClick={vereditadados}>
               <MdSecurity size={30}></MdSecurity>{" "}
-
             </button>
             <button onClick={vereditaperguntas}>
               <BiEdit size={30}></BiEdit>{" "}
-
             </button>
-            <a href="/" target={'_blank'}>
+            <a href="/" target={"_blank"}>
               <MdWeb size={30}></MdWeb>{" "}
-
             </a>
 
             <button onClick={sair}>
@@ -2502,27 +2560,22 @@ export default function AdminController() {
             <div className="filter-pedidos">
               <div>
                 <span>Filtrar por:</span>
-
               </div>
 
               <div>
                 <button onClick={filter1}>Todos</button>
-
               </div>
               <div>
                 <button onClick={() => filter(st1)}>
                   Pacotes recebidos {datapedidos2.length}
                 </button>
-
               </div>
               <div>
                 <button onClick={() => filter2(st2)}>
                   Pacotes enviados {datapedidos3.length}
                 </button>
-
               </div>
               <div>
-
                 <button onClick={() => filter3(st3)}>
                   Preparando seu pedido {datapedidos4.length}
                 </button>
@@ -2545,9 +2598,9 @@ export default function AdminController() {
               ></input>
             </div>
             <div id="box-table">
-              <table id="table" border="1" >
+              <table id="table" border="1">
                 <thead>
-                  <tr >
+                  <tr>
                     <th>id </th>
                     <th>Pedidos</th>
                     <th>Cliente</th>
@@ -2691,27 +2744,23 @@ export default function AdminController() {
                     );
                   })}
                 </select>
-
               </div>
 
               <div>
                 <button className="btn-filtro-estoque" onClick={menorpreco}>
                   Menor preço
                 </button>
-
               </div>
               <div>
                 <button className="btn-filtro-estoque" onClick={maiorpreco}>
                   Maior preço
                 </button>
-
               </div>
-
             </div>
             <div id="box-table">
               <table id="table" border="1">
                 <thead>
-                  <tr >
+                  <tr>
                     <th>Foto</th>
                     <th>Modelo</th>
                     <th>Está em promoção?</th>
@@ -2807,13 +2856,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoThree
-                                        .tamanho3
+                                      item.cores.corPrimary.tamanhos
+                                        .tamanhoThree.tamanho3
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoThree
-                                        .quantidade3
+                                      item.cores.corPrimary.tamanhos
+                                        .tamanhoThree.quantidade3
                                     }
                                   </h3>
                                 ) : (
@@ -2868,13 +2917,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos.tamanhoOne
-                                        .tamanho5
+                                      item.cores.corSecondary.tamanhos
+                                        .tamanhoOne.tamanho5
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos.tamanhoOne
-                                        .quantidade5
+                                      item.cores.corSecondary.tamanhos
+                                        .tamanhoOne.quantidade5
                                     }
                                   </h3>
                                 ) : (
@@ -2887,13 +2936,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos.tamanhoTwo
-                                        .tamanho6
+                                      item.cores.corSecondary.tamanhos
+                                        .tamanhoTwo.tamanho6
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos.tamanhoTwo
-                                        .quantidade6
+                                      item.cores.corSecondary.tamanhos
+                                        .tamanhoTwo.quantidade6
                                     }
                                   </h3>
                                 ) : (
@@ -2925,13 +2974,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos.tamanhoFour
-                                        .tamanho8
+                                      item.cores.corSecondary.tamanhos
+                                        .tamanhoFour.tamanho8
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos.tamanhoFour
-                                        .quantidade8
+                                      item.cores.corSecondary.tamanhos
+                                        .tamanhoFour.quantidade8
                                     }
                                   </h3>
                                 ) : (
@@ -3005,13 +3054,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoThree
-                                        .tamanho11
+                                      item.cores.corTertiary.tamanhos
+                                        .tamanhoThree.tamanho11
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoThree
-                                        .quantidade11
+                                      item.cores.corTertiary.tamanhos
+                                        .tamanhoThree.quantidade11
                                     }
                                   </h3>
                                 ) : (
@@ -3024,13 +3073,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoFour
-                                        .tamanho12
+                                      item.cores.corTertiary.tamanhos
+                                        .tamanhoFour.tamanho12
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoFour
-                                        .quantidade12
+                                      item.cores.corTertiary.tamanhos
+                                        .tamanhoFour.quantidade12
                                     }
                                   </h3>
                                 ) : (
@@ -3066,13 +3115,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos.tamanhoOne
-                                        .tamanho13
+                                      item.cores.corQuaternary.tamanhos
+                                        .tamanhoOne.tamanho13
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos.tamanhoOne
-                                        .quantidade13
+                                      item.cores.corQuaternary.tamanhos
+                                        .tamanhoOne.quantidade13
                                     }
                                   </h3>
                                 ) : (
@@ -3085,13 +3134,13 @@ export default function AdminController() {
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos.tamanhoTwo
-                                        .tamanho14
+                                      item.cores.corQuaternary.tamanhos
+                                        .tamanhoTwo.tamanho14
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos.tamanhoTwo
-                                        .quantidade14
+                                      item.cores.corQuaternary.tamanhos
+                                        .tamanhoTwo.quantidade14
                                     }
                                   </h3>
                                 ) : (
@@ -3344,258 +3393,934 @@ export default function AdminController() {
                   );
                 })}
               </table>
-
             </div>
-            {showmodaldetalhesprodutos != false ?
+            {showmodaldetalhesprodutos != false ? (
               <div className="modal-update-produtos">
-                <div className="btnclosemodalproduto"><button onClick={() => setShowmodaldetalhesproduto(false)}>X</button></div>
-                <img src={detalhesproduto.cores.corPrimary.imgurl}></img><br></br>
+                <div className="btnclosemodalproduto">
+                  <button onClick={() => setShowmodaldetalhesproduto(false)}>
+                    X
+                  </button>
+                </div>
+                <img src={detalhesproduto.cores.corPrimary.imgurl}></img>
+                <br></br>
                 <span style={{ color: "#fff" }}>Titulo do Produto</span>
-                <input value={modelo} onChange={(e) => setModelo(e.target.value)} placeholder={detalhesproduto.modelo}></input>
-
+                <input
+                  value={modelo}
+                  onChange={(e) => setModelo(e.target.value)}
+                  placeholder={detalhesproduto.modelo}
+                ></input>
+                <input
+                  type="text"
+                  name="SKU"
+                  id="sku"
+                  placeholder="SKU"
+                  value={sku}
+                  onChange={(e) => setSku(e.target.value)}
+                />
                 <span>Categoria</span>
-                <select value={categoriaupdate} onChange={(e) => setCategoriaupdate(e.target.value)}>
+                <select
+                  value={categoriaupdate}
+                  onChange={(e) => setCategoriaupdate(e.target.value)}
+                >
                   <option>Categorias</option>
-                  {datacategorias.map(item => {
+                  {datacategorias.map((item) => {
                     return (
-                      <option key={item.categoria} value={item.categoria}>{item.categoria}</option>
-                    )
+                      <option key={item.categoria} value={item.categoria}>
+                        {item.categoria}
+                      </option>
+                    );
                   })}
                 </select>
                 <span>Sub-Categorias</span>
-                <input type={'text'} value={subcategoriaupdate1} onChange={(e) => setSubcategoriaupdate1(e.target.value)} placeholder='Sub-categoria 1'></input>
-                <input type={'text'} value={subcategoriaupdate2} onChange={(e) => setSubcategoriaupdate2(e.target.value)} placeholder='Sub-categoria 2'></input>
-                <input type={'text'} value={subcategoriaupdate3} onChange={(e) => setSubcategoriaupdate3(e.target.value)} placeholder='Sub-categoria 3'></input>
-                <input type={'text'} value={subcategoriaupdate4} onChange={(e) => setSubcategoriaupdate4(e.target.value)} placeholder='Sub-categoria 4'></input>
+                <input
+                  type={"text"}
+                  value={subcategoriaupdate1}
+                  onChange={(e) => setSubcategoriaupdate1(e.target.value)}
+                  placeholder="Sub-categoria 1"
+                ></input>
+                <input
+                  type={"text"}
+                  value={subcategoriaupdate2}
+                  onChange={(e) => setSubcategoriaupdate2(e.target.value)}
+                  placeholder="Sub-categoria 2"
+                ></input>
+                <input
+                  type={"text"}
+                  value={subcategoriaupdate3}
+                  onChange={(e) => setSubcategoriaupdate3(e.target.value)}
+                  placeholder="Sub-categoria 3"
+                ></input>
+                <input
+                  type={"text"}
+                  value={subcategoriaupdate4}
+                  onChange={(e) => setSubcategoriaupdate4(e.target.value)}
+                  placeholder="Sub-categoria 4"
+                ></input>
                 <span>Descrição</span>
-                <textarea value={decricaoupdate} onChange={(e) => setDescricaoupdate(e.target.value)}></textarea>
+                <textarea
+                  value={decricaoupdate}
+                  onChange={(e) => setDescricaoupdate(e.target.value)}
+                ></textarea>
                 <span>Preço maior R$</span>
-                <input type='text' value={precomaior} onChange={(e) => setPrecomaior(e.target.value)}></input>
+                <input
+                  type="text"
+                  value={precomaior}
+                  onChange={(e) => setPrecomaior(e.target.value)}
+                ></input>
                 <span>Preço R$</span>
-                <input type='text' value={precoupdate} onChange={(e) => setPrcoupdate(e.target.value)}></input>
-                <span style={{ color: "#fff", marginTop: "20px" }}>Medidas do Pacote</span>
+                <input
+                  type="text"
+                  value={precoupdate}
+                  onChange={(e) => setPrcoupdate(e.target.value)}
+                ></input>
+                <span style={{ color: "#fff", marginTop: "20px" }}>
+                  Medidas do Pacote
+                </span>
 
-                <div style={window.screen.width > 500 ? { display: "flex", width: "50%", alignItems: "center" } : {}}>
-                  <input type={"text"} value={peso} placeholder='peso' onChange={(e) => setPeso(e.target.value)}></input>
-                  <input type={"text"} value={comprimento} placeholder='comprimento' onChange={(e) => setComprimento(e.target.value)}></input>
-                  <input type={"text"} value={altura} placeholder='altura' onChange={(e) => setAltura(e.target.value)}></input>
-                  <input type={"text"} value={largura} placeholder='largura' onChange={(e) => setLargura(e.target.value)}></input>
-                  <input type={"text"} value={diametro} placeholder='diametro' onChange={(e) => setDiametro(e.target.value)}></input>
-                  <input type={"text"} value={formato} placeholder='formato' onChange={(e) => setFormato(e.target.value)}></input>
+                <div
+                  style={
+                    window.screen.width > 500
+                      ? { display: "flex", width: "50%", alignItems: "center" }
+                      : {}
+                  }
+                >
+                  <div>
+                    <label htmlFor="">Peso</label>
+
+                    <input
+                      type={"text"}
+                      value={peso}
+                      placeholder="peso"
+                      onChange={(e) => setPeso(e.target.value)}
+                    ></input>
+                  </div>
+                  <div>
+                    <label htmlFor="">Comprimento</label>
+                    <input
+                      type={"text"}
+                      value={comprimento}
+                      placeholder="comprimento"
+                      onChange={(e) => setComprimento(e.target.value)}
+                    ></input>
+                  </div>
+                  <div>
+                    <label htmlFor="">Altura</label>
+                    <input
+                      type={"text"}
+                      value={altura}
+                      placeholder="altura"
+                      onChange={(e) => setAltura(e.target.value)}
+                    ></input>
+                  </div>
+                  <div>
+                    <label htmlFor="">Largura</label>
+                    <input
+                      type={"text"}
+                      value={largura}
+                      placeholder="largura"
+                      onChange={(e) => setLargura(e.target.value)}
+                    ></input>
+                  </div>
+                  <div>
+                    <label htmlFor="">Diametro</label>
+                    <input
+                      type={"text"}
+                      value={diametro}
+                      placeholder="diametro"
+                      onChange={(e) => setDiametro(e.target.value)}
+                    ></input>
+                  </div>
+                  <div>
+                    <label htmlFor="">Formato</label>
+                    <input
+                      type={"text"}
+                      value={formato}
+                      placeholder="formato"
+                      onChange={(e) => setFormato(e.target.value)}
+                    ></input>
+                  </div>
                 </div>
+                <span>Este produto contem brinde?</span>
+                <select
+                  value={aparecercampobrinde}
+                  onChange={(e) => setAparecercampobrinde(e.target.value)}
+                >
+                  <option value={"true"}>Sim</option>
+                  <option value={"false"}>Não</option>
+                </select>
                 <span>Este produto está em promoção?</span>
-                <select value={promocao} onChange={(e) => setPromocao(e.target.value)}>
-                  <option value={'true'}>Sim</option>
-                  <option value={'false'}>Não</option>
+                <select
+                  value={promocao}
+                  onChange={(e) => setPromocao(e.target.value)}
+                >
+                  <option value={"true"}>Sim</option>
+                  <option value={"false"}>Não</option>
                 </select>
                 <span>Este produto está em promoção por quantidade?</span>
-                <select id="promo2" value={promocao2} onChange={(e) => setPromocao2(e.target.value)}>
+                <select
+                  id="promo2"
+                  value={promocao2}
+                  onChange={(e) => setPromocao2(e.target.value)}
+                >
                   <option>...</option>
-                  <option value={'true'}>Sim</option>
-                  <option value={'false'}>Não</option>
+                  <option value={"true"}>Sim</option>
+                  <option value={"false"}>Não</option>
                 </select>
-                {promocao2 === 'true' ?
+                {promocao2 === "true" ? (
                   <>
                     <span>A partir de quantos ativa a promoção?</span>
-                    <input type='number' value={qtdpromocao2} onChange={(e) => setQtdpromocao2(e.target.value)}></input>
+                    <input
+                      type="number"
+                      value={qtdpromocao2}
+                      onChange={(e) => setQtdpromocao2(e.target.value)}
+                    ></input>
                     <span> % do desconto</span>
-                    <input type='text' value={desconto} onChange={(e) => setDesconto(e.target.value)}></input>
+                    <input
+                      type="text"
+                      value={desconto}
+                      onChange={(e) => setDesconto(e.target.value)}
+                    ></input>
                   </>
-                  : ''
-                }
+                ) : (
+                  ""
+                )}
+                {aparecercampobrinde === "true" ? (
+                  <>
+                    <span>Informe o Brinde que acompanha este produto.</span>
+                    <input
+                      type="text"
+                      value={brinde}
+                      onChange={(e) => {
+                        setBrinde(e.target.value);
+                      }}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
+                <div
+                  style={
+                    window.screen.width > 500
+                      ? { display: "flex", width: "50%" }
+                      : {
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "20px",
+                          width: "100%",
+                        }
+                  }
+                >
+                  {detalhesproduto.cores.corPrimary.cor1 != "" ? (
+                    <div className="box-cores-update">
+                      <p
+                        style={
+                          window.screen.width > 500
+                            ? {
+                                width: "20px",
+                                height: "20px",
+                                background:
+                                  corupdate == ""
+                                    ? detalhesproduto.cores.corPrimary.cor1
+                                    : corupdate,
+                              }
+                            : {
+                                width: "20px",
+                                marginTop: "20px",
+                                height: "20px",
+                                background:
+                                  corupdate == ""
+                                    ? detalhesproduto.cores.corPrimary.cor1
+                                    : corupdate,
+                              }
+                        }
+                      ></p>
+                      <button
+                        id="delitemcor"
+                        onClick={() => delitemcor(detalhesproduto._id)}
+                      >
+                        Deletar item
+                      </button>
+                      <select onChange={(e) => setCorupdate(e.target.value)}>
+                        <option>Cores</option>
+                        {datacores.map((item) => {
+                          return (
+                            <>
+                              <option key={item._id} value={item.cor}>
+                                {item.cor}
+                              </option>
+                            </>
+                          );
+                        })}
+                      </select>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho1}
+                          onChange={(e) => setTamanho1(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos.tamanhoOne
+                              .tamanho1
+                          }
+                        ></input>
+                        <input
+                          value={quantidade1}
+                          onChange={(e) => setQuantidade1(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos.tamanhoOne
+                              .quantidade
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho2}
+                          onChange={(e) => setTamanho2(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos.tamanhoTwo
+                              .tamanho2
+                          }
+                        ></input>
+                        <input
+                          value={quantidade2}
+                          onChange={(e) => setQuantidade2(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos.tamanhoTwo
+                              .quantidade2
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho3}
+                          onChange={(e) => setTamanho3(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos
+                              .tamanhoThree.tamanho3
+                          }
+                        ></input>
+                        <input
+                          value={quantidade3}
+                          onChange={(e) => setQuantidade3(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos
+                              .tamanhoThree.quantidade3
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho4}
+                          onChange={(e) => setTamanho4(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos
+                              .tamanhoFour.tamanho4
+                          }
+                        ></input>
+                        <input
+                          value={quantidade4}
+                          onChange={(e) => setQuantidade4(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corPrimary.tamanhos
+                              .tamanhoFour.quantidade4
+                          }
+                        ></input>
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {detalhesproduto.cores.corSecondary.cor2 != "" ? (
+                    <div className="box-cores-update">
+                      <p
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          background:
+                            corupdate2 == ""
+                              ? detalhesproduto.cores.corSecondary.cor2
+                              : corupdate2,
+                        }}
+                      ></p>
+                      <button
+                        id="delitemcor"
+                        onClick={() => delitemcor2(detalhesproduto._id)}
+                      >
+                        Deletar item
+                      </button>
 
-                <div style={window.screen.width > 500 ? { display: "flex", width: "50%" } : { display: "flex", flexDirection: "column", gap: "20px", width: "100%" }}>
-                  {detalhesproduto.cores.corPrimary.cor1 != '' ? <div className="box-cores-update">
-                    <p style={window.screen.width > 500 ? { width: "20px", height: "20px", background: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate } : { width: "20px", marginTop: "20px", height: "20px", background: corupdate == '' ? detalhesproduto.cores.corPrimary.cor1 : corupdate }}></p>
-                    <button id="delitemcor" onClick={() => delitemcor(detalhesproduto._id)}>Deletar item</button>
-                    <select onChange={(e) => setCorupdate(e.target.value)}>
-                      <option>Cores</option>
-                      {datacores.map(item => {
-                        return (
-                          <>
-                            <option key={item._id} value={item.cor}>{item.cor}</option>
-                          </>
-                        )
-                      })}
-                    </select>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho1} onChange={(e) => setTamanho1(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoOne.tamanho1}></input>
-                      <input value={quantidade1} onChange={(e) => setQuantidade1(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoOne.quantidade}></input>
+                      <select onChange={(e) => setCorupdate2(e.target.value)}>
+                        <option>Cores</option>
+                        {datacores.map((item) => {
+                          return (
+                            <option key={item._id} value={item.cor}>
+                              {item.cor}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho5}
+                          onChange={(e) => setTamanho5(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoOne.tamanho5
+                          }
+                        ></input>
+                        <input
+                          value={quantidade5}
+                          onChange={(e) => setQuantidade5(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoOne.quantidade5
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho6}
+                          onChange={(e) => setTamanho6(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoTwo.tamanho6
+                          }
+                        ></input>
+                        <input
+                          value={quantidade6}
+                          onChange={(e) => setQuantidade6(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoTwo.quantidade6
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho7}
+                          onChange={(e) => setTamanho7(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoThree.tamanho7
+                          }
+                        ></input>
+                        <input
+                          value={quantidade7}
+                          onChange={(e) => setQuantidade7(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoThree.quantidade7
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho8}
+                          onChange={(e) => setTamanho8(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoFour.tamanho8
+                          }
+                        ></input>
+                        <input
+                          value={quantidade8}
+                          onChange={(e) => setQuantidade8(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSecondary.tamanhos
+                              .tamanhoFour.quantidade8
+                          }
+                        ></input>
+                      </div>
                     </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho2} onChange={(e) => setTamanho2(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2}></input>
-                      <input value={quantidade2} onChange={(e) => setQuantidade2(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho3} onChange={(e) => setTamanho3(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoThree.tamanho3}></input>
-                      <input value={quantidade3} onChange={(e) => setQuantidade3(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoThree.quantidade3}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho4} onChange={(e) => setTamanho4(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoFour.tamanho4}></input>
-                      <input value={quantidade4} onChange={(e) => setQuantidade4(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corPrimary.tamanhos.tamanhoFour.quantidade4}></input>
-                    </div>
-                  </div> : ''}
-                  {detalhesproduto.cores.corSecondary.cor2 != '' ? <div className="box-cores-update">
-                    <p style={{ width: "20px", height: "20px", background: corupdate2 == '' ? detalhesproduto.cores.corSecondary.cor2 : corupdate2 }}></p>
-                    <button id="delitemcor" onClick={() => delitemcor2(detalhesproduto._id)}>Deletar item</button>
+                  ) : (
+                    ""
+                  )}
+                  {detalhesproduto.cores.corTertiary.cor3 != "" ? (
+                    <div className="box-cores-update">
+                      <p
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          background:
+                            corupdate3 == ""
+                              ? detalhesproduto.cores.corTertiary.cor3
+                              : corupdate3,
+                        }}
+                      ></p>
+                      <button
+                        id="delitemcor"
+                        onClick={() => delitemcor3(detalhesproduto._id)}
+                      >
+                        Deletar item
+                      </button>
 
-                    <select onChange={(e) => setCorupdate2(e.target.value)}>
-                      <option>Cores</option>
-                      {datacores.map(item => {
-                        return (
-                          <option key={item._id} value={item.cor}>{item.cor}</option>
-                        )
-                      })}
-                    </select>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho5} onChange={(e) => setTamanho5(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoOne.tamanho5}></input>
-                      <input value={quantidade5} onChange={(e) => setQuantidade5(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoOne.quantidade5}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho6} onChange={(e) => setTamanho6(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6}></input>
-                      <input value={quantidade6} onChange={(e) => setQuantidade6(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho7} onChange={(e) => setTamanho7(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoThree.tamanho7}></input>
-                      <input value={quantidade7} onChange={(e) => setQuantidade7(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoThree.quantidade7}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho8} onChange={(e) => setTamanho8(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoFour.tamanho8}></input>
-                      <input value={quantidade8} onChange={(e) => setQuantidade8(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSecondary.tamanhos.tamanhoFour.quantidade8}></input>
-                    </div>
-                  </div> : ''}
-                  {detalhesproduto.cores.corTertiary.cor3 != '' ? <div className="box-cores-update">
-                    <p style={{ width: "20px", height: "20px", background: corupdate3 == '' ? detalhesproduto.cores.corTertiary.cor3 : corupdate3 }}></p>
-                    <button id="delitemcor" onClick={() => delitemcor3(detalhesproduto._id)}>Deletar item</button>
+                      <select onChange={(e) => setCorupdate3(e.target.value)}>
+                        <option>Cores</option>
+                        {datacores.map((item) => {
+                          return (
+                            <option key={item._id} value={item.cor}>
+                              {item.cor}
+                            </option>
+                          );
+                        })}
+                      </select>
 
-                    <select onChange={(e) => setCorupdate3(e.target.value)}>
-                      <option>Cores</option>
-                      {datacores.map(item => {
-                        return (
-                          <option key={item._id} value={item.cor}>{item.cor}</option>
-                        )
-                      })}
-                    </select>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho9}
+                          onChange={(e) => setTamanho9(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoOne.tamanho9
+                          }
+                        ></input>
+                        <input
+                          value={quantidade9}
+                          onChange={(e) => setQuantidade9(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoOne.quantidade9
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho10}
+                          onChange={(e) => setTamanho10(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoTwo.tamanho10
+                          }
+                        ></input>
+                        <input
+                          value={quantidade10}
+                          onChange={(e) => setQuantidade10(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoTwo.quantidade10
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho11}
+                          onChange={(e) => setTamanho11(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoThree.tamanho11
+                          }
+                        ></input>
+                        <input
+                          value={quantidade11}
+                          onChange={(e) => setQuantidade11(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoThree.quantidade11
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho12}
+                          onChange={(e) => setTamanho12(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoFour.tamanho12
+                          }
+                        ></input>
+                        <input
+                          value={quantidade12}
+                          onChange={(e) => setQuantidade12(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corTertiary.tamanhos
+                              .tamanhoFour.quantidade12
+                          }
+                        ></input>
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {detalhesproduto.cores.corQuaternary.cor4 != "" ? (
+                    <div className="box-cores-update">
+                      <p
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          background:
+                            corupdate4 == ""
+                              ? detalhesproduto.cores.corQuaternary.cor4
+                              : corupdate4,
+                        }}
+                      ></p>
+                      <button
+                        id="delitemcor"
+                        onClick={() => delitemcor4(detalhesproduto._id)}
+                      >
+                        Deletar item
+                      </button>
 
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho9} onChange={(e) => setTamanho9(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoOne.tamanho9}></input>
-                      <input value={quantidade9} onChange={(e) => setQuantidade9(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoOne.quantidade9}></input>
+                      <select onChange={(e) => setCorupdate4(e.target.value)}>
+                        <option>Cores</option>
+                        {datacores.map((item) => {
+                          return (
+                            <option key={item._id} value={item.cor}>
+                              {item.cor}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho21}
+                          onChange={(e) => setTamanho13(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoOne.tamanho13
+                          }
+                        ></input>
+                        <input
+                          value={quantidade13}
+                          onChange={(e) => setQuantidade13(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoOne.quantidade13
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho14}
+                          onChange={(e) => setTamanho14(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoTwo.tamanho14
+                          }
+                        ></input>
+                        <input
+                          value={quantidade14}
+                          onChange={(e) => setQuantidade14(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoTwo.quantidade14
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho15}
+                          onChange={(e) => setTamanho15(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoThree.tamanho15
+                          }
+                        ></input>
+                        <input
+                          value={quantidade15}
+                          onChange={(e) => setQuantidade15(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoThree.quantidade15
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho16}
+                          onChange={(e) => setTamanho16(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoFour.tamanho16
+                          }
+                        ></input>
+                        <input
+                          value={quantidade16}
+                          onChange={(e) => setQuantidade16(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corQuaternary.tamanhos
+                              .tamanhoFour.quantidade16
+                          }
+                        ></input>
+                      </div>
                     </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho10} onChange={(e) => setTamanho10(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10}></input>
-                      <input value={quantidade10} onChange={(e) => setQuantidade10(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho11} onChange={(e) => setTamanho11(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoThree.tamanho11}></input>
-                      <input value={quantidade11} onChange={(e) => setQuantidade11(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoThree.quantidade11}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho12} onChange={(e) => setTamanho12(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoFour.tamanho12}></input>
-                      <input value={quantidade12} onChange={(e) => setQuantidade12(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corTertiary.tamanhos.tamanhoFour.quantidade12}></input>
-                    </div>
-                  </div> : ''}
-                  {detalhesproduto.cores.corQuaternary.cor4 != '' ? <div className="box-cores-update">
-                    <p style={{ width: "20px", height: "20px", background: corupdate4 == '' ? detalhesproduto.cores.corQuaternary.cor4 : corupdate4 }}></p>
-                    <button id="delitemcor" onClick={() => delitemcor4(detalhesproduto._id)}>Deletar item</button>
+                  ) : (
+                    ""
+                  )}
+                  {detalhesproduto.cores.corFive.cor4 != "" ? (
+                    <div className="box-cores-update">
+                      <p
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          background:
+                            corupdate5 == ""
+                              ? detalhesproduto.cores.corFive.cor5
+                              : corupdate5,
+                        }}
+                      ></p>
+                      <button
+                        id="delitemcor"
+                        onClick={() => delitemcor5(detalhesproduto._id)}
+                      >
+                        Deletar item
+                      </button>
 
-                    <select onChange={(e) => setCorupdate4(e.target.value)}>
-                      <option>Cores</option>
-                      {datacores.map(item => {
-                        return (
-                          <option key={item._id} value={item.cor}>{item.cor}</option>
-                        )
-                      })}
+                      <select onChange={(e) => setCorupdate5(e.target.value)}>
+                        <option>Cores</option>
+                        {datacores.map((item) => {
+                          return (
+                            <option key={item._id} value={item.cor}>
+                              {item.cor}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho17}
+                          onChange={(e) => setTamanho17(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoOne
+                              .tamanho17
+                          }
+                        ></input>
+                        <input
+                          value={quantidade17}
+                          onChange={(e) => setQuantidade17(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoOne
+                              .quantidade17
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho18}
+                          onChange={(e) => setTamanho18(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoTwo
+                              .tamanho18
+                          }
+                        ></input>
+                        <input
+                          value={quantidade18}
+                          onChange={(e) => setQuantidade18(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoTwo
+                              .quantidade18
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho19}
+                          onChange={(e) => setTamanho19(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoThree
+                              .tamanho19
+                          }
+                        ></input>
+                        <input
+                          value={quantidade19}
+                          onChange={(e) => setQuantidade19(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoThree
+                              .quantidade19
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho20}
+                          onChange={(e) => setTamanho20(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoFour
+                              .tamanho20
+                          }
+                        ></input>
+                        <input
+                          value={quantidade20}
+                          onChange={(e) => setQuantidade20(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corFive.tamanhos.tamanhoFour
+                              .quantidade20
+                          }
+                        ></input>
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {detalhesproduto.cores.corSix.cor4 != "" ? (
+                    <div className="box-cores-update">
+                      <p
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          background:
+                            corupdate6 == ""
+                              ? detalhesproduto.cores.corSix.cor6
+                              : corupdate6,
+                        }}
+                      ></p>
+                      <button
+                        id="delitemcor"
+                        onClick={() => delitemcor6(detalhesproduto._id)}
+                      >
+                        Deletar item
+                      </button>
 
-                    </select>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho21} onChange={(e) => setTamanho13(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13}></input>
-                      <input value={quantidade13} onChange={(e) => setQuantidade13(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13}></input>
+                      <select onChange={(e) => setCorupdate6(e.target.value)}>
+                        <option>Cores</option>
+                        {datacores.map((item) => {
+                          return (
+                            <option key={item._id} value={item.cor}>
+                              {item.cor}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho21}
+                          onChange={(e) => setTamanho21(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoOne
+                              .tamanho21
+                          }
+                        ></input>
+                        <input
+                          value={quantidade21}
+                          onChange={(e) => setQuantidade21(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoOne
+                              .quantidade21
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho22}
+                          onChange={(e) => setTamanho22(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoTwo
+                              .tamanho22
+                          }
+                        ></input>
+                        <input
+                          value={quantidade22}
+                          onChange={(e) => setQuantidade22(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoTwo
+                              .quantidade22
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho23}
+                          onChange={(e) => setTamanho23(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoThree
+                              .tamanho23
+                          }
+                        ></input>
+                        <input
+                          value={quantidade23}
+                          onChange={(e) => setQuantidade23(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoThree
+                              .quantidade23
+                          }
+                        ></input>
+                      </div>
+                      <div className="box-input-tamanho-update">
+                        <input
+                          value={tamanho24}
+                          onChange={(e) => setTamanho24(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoFour
+                              .tamanho24
+                          }
+                        ></input>
+                        <input
+                          value={quantidade24}
+                          onChange={(e) => setQuantidade24(e.target.value)}
+                          className="input-tamanho-update"
+                          placeholder={
+                            detalhesproduto.cores.corSix.tamanhos.tamanhoFour
+                              .quantidade24
+                          }
+                        ></input>
+                      </div>
                     </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho14} onChange={(e) => setTamanho14(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14}></input>
-                      <input value={quantidade14} onChange={(e) => setQuantidade14(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho15} onChange={(e) => setTamanho15(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15}></input>
-                      <input value={quantidade15} onChange={(e) => setQuantidade15(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho16} onChange={(e) => setTamanho16(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16}></input>
-                      <input value={quantidade16} onChange={(e) => setQuantidade16(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16}></input>
-                    </div>
-                  </div> : ''}
-                  {detalhesproduto.cores.corFive.cor4 != '' ? <div className="box-cores-update">
-                    <p style={{ width: "20px", height: "20px", background: corupdate5 == '' ? detalhesproduto.cores.corFive.cor5 : corupdate5 }}></p>
-                    <button id="delitemcor" onClick={() => delitemcor5(detalhesproduto._id)}>Deletar item</button>
-
-                    <select onChange={(e) => setCorupdate5(e.target.value)}>
-                      <option>Cores</option>
-                      {datacores.map(item => {
-                        return (
-                          <option key={item._id} value={item.cor}>{item.cor}</option>
-                        )
-                      })}
-
-                    </select>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho17} onChange={(e) => setTamanho17(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoOne.tamanho17}></input>
-                      <input value={quantidade17} onChange={(e) => setQuantidade17(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoOne.quantidade17}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho18} onChange={(e) => setTamanho18(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoTwo.tamanho18}></input>
-                      <input value={quantidade18} onChange={(e) => setQuantidade18(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoTwo.quantidade18}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho19} onChange={(e) => setTamanho19(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoThree.tamanho19}></input>
-                      <input value={quantidade19} onChange={(e) => setQuantidade19(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoThree.quantidade19}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho20} onChange={(e) => setTamanho20(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoFour.tamanho20}></input>
-                      <input value={quantidade20} onChange={(e) => setQuantidade20(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corFive.tamanhos.tamanhoFour.quantidade20}></input>
-                    </div>
-                  </div> : ''}
-                  {detalhesproduto.cores.corSix.cor4 != '' ? <div className="box-cores-update">
-                    <p style={{ width: "20px", height: "20px", background: corupdate6 == '' ? detalhesproduto.cores.corSix.cor6 : corupdate6 }}></p>
-                    <button id="delitemcor" onClick={() => delitemcor6(detalhesproduto._id)}>Deletar item</button>
-
-                    <select onChange={(e) => setCorupdate6(e.target.value)}>
-                      <option>Cores</option>
-                      {datacores.map(item => {
-                        return (
-                          <option key={item._id} value={item.cor}>{item.cor}</option>
-                        )
-                      })}
-
-                    </select>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho21} onChange={(e) => setTamanho21(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoOne.tamanho21}></input>
-                      <input value={quantidade21} onChange={(e) => setQuantidade21(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoOne.quantidade21}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho22} onChange={(e) => setTamanho22(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoTwo.tamanho22}></input>
-                      <input value={quantidade22} onChange={(e) => setQuantidade22(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoTwo.quantidade22}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho23} onChange={(e) => setTamanho23(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoThree.tamanho23}></input>
-                      <input value={quantidade23} onChange={(e) => setQuantidade23(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoThree.quantidade23}></input>
-                    </div>
-                    <div className="box-input-tamanho-update">
-                      <input value={tamanho24} onChange={(e) => setTamanho24(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoFour.tamanho24}></input>
-                      <input value={quantidade24} onChange={(e) => setQuantidade24(e.target.value)} className="input-tamanho-update" placeholder={detalhesproduto.cores.corSix.tamanhos.tamanhoFour.quantidade24}></input>
-                    </div>
-                  </div> : ''}
-
-
-
-
-
-
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="box-btn-update-delete">
-                  <button onClick={() => updateitem(detalhesproduto._id)} id="update">Atualizar</button>
-                  <button id="delete" onClick={() => setModaldeleteverifica(true)}>Deletar</button>
+                  <button
+                    onClick={() => updateitem(detalhesproduto._id)}
+                    id="update"
+                  >
+                    Atualizar
+                  </button>
+                  <button
+                    id="delete"
+                    onClick={() => setModaldeleteverifica(true)}
+                  >
+                    Deletar
+                  </button>
                 </div>
-              </div> : ''}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           ""
@@ -3636,10 +4361,7 @@ export default function AdminController() {
               </div>
               <div className="box-input-files">
                 <span>Mudar banner central da Home</span>
-                <input
-                  type="file"
-                  onChange={uploadbannercentralhome}
-                ></input>
+                <input type="file" onChange={uploadbannercentralhome}></input>
                 <span>Mudar Imagem Pop-up até ( 700x500) </span>
                 <input type="file" onChange={uploadBannerpromocao}></input>
                 <span>Mudar banner pagina produtos ( 980x140) </span>
@@ -3718,7 +4440,7 @@ export default function AdminController() {
                       justifyContent: "center",
                       alignItems: "center",
                       width: "300px",
-                      gap: "10px"
+                      gap: "10px",
                     }}
                   >
                     <span>Nome: </span>
@@ -3737,60 +4459,118 @@ export default function AdminController() {
           ""
         )}
 
+        {modaleditadados != false ? (
+          <div className="modaleditadados">
+            <div className="title-item-menu">
+              <h2>PRIVACIDADE</h2>
+            </div>
 
-        {modaleditadados != false ? <div className="modaleditadados">
-          <div className="title-item-menu">
-            <h2>PRIVACIDADE</h2>
+            <div className="box-form-edta-acesso">
+              <label>E-mail</label>
+              <input
+                type={"text"}
+                placeholder="Digite um email de sua preferência"
+                onChange={(e) => setAlteraemail(e.target.value)}
+              ></input>
+              <label>Senha</label>
+              <input
+                type={"text"}
+                placeholder="Senha atual"
+                onChange={(e) => setSenhaverificacao(e.target.value)}
+              ></input>
+              <input
+                type={"text"}
+                placeholder="Nova senha"
+                onChange={(e) => setAlterasenha(e.target.value)}
+              ></input>
+              <button onClick={mudadados}>Salvar</button>
+            </div>
           </div>
+        ) : (
+          ""
+        )}
 
-          <div className="box-form-edta-acesso">
-            <label>E-mail</label>
-            <input type={'text'} placeholder='Digite um email de sua preferência' onChange={(e) => setAlteraemail(e.target.value)}></input>
-            <label>Senha</label>
-            <input type={'text'} placeholder='Senha atual' onChange={(e) => setSenhaverificacao(e.target.value)}></input>
-            <input type={'text'} placeholder='Nova senha' onChange={(e) => setAlterasenha(e.target.value)}></input>
-            <button onClick={mudadados}>Salvar</button>
-          </div>
-        </div> : ''}
-
-        {modalperguntasfrequentes != false ?
+        {modalperguntasfrequentes != false ? (
           <div className="modalperguntas">
             <div className="title-item-menu">
               <h2>EDITAR PERGUNTAS FREQUENTES</h2>
             </div>
 
             <div className="box-input-perguntas">
-              <input type={'text'} placeholder='Titulo da Pergunta' value={titulopergunta} onChange={(e) => setTitulopergunta(e.target.value)}></input>
-              <textarea type={'text'} placeholder='Resposta da Pergunta' value={textoresposta} onChange={(e) => setTextoresposta(e.target.value)}></textarea>
+              <input
+                type={"text"}
+                placeholder="Titulo da Pergunta"
+                value={titulopergunta}
+                onChange={(e) => setTitulopergunta(e.target.value)}
+              ></input>
+              <textarea
+                type={"text"}
+                placeholder="Resposta da Pergunta"
+                value={textoresposta}
+                onChange={(e) => setTextoresposta(e.target.value)}
+              ></textarea>
               <button onClick={addperguntas}>Cadastrar pergunta</button>
             </div>
 
-
-
-            {dataperguntas.map(item => {
+            {dataperguntas.map((item) => {
               return (
-                <div key={item._id} className='item-pergunta'>
+                <div key={item._id} className="item-pergunta">
                   <h2>{item.sumary}</h2>
                   <p>{item.resposta}</p>
 
-
-                  <button onClick={() => document.querySelectorAll('.boxeditpergunta')[dataperguntas.findIndex(data => data._id == item._id)].setAttribute('style', 'display:flex')}><MdEdit color='#2d2d2d' size={20}></MdEdit></button>
-                  <button onClick={() => delpergunta(item._id)}><BsTrash color='#2d2d2d' size={20}></BsTrash></button>
+                  <button
+                    onClick={() =>
+                      document
+                        .querySelectorAll(".boxeditpergunta")
+                        [
+                          dataperguntas.findIndex(
+                            (data) => data._id == item._id
+                          )
+                        ].setAttribute("style", "display:flex")
+                    }
+                  >
+                    <MdEdit color="#2d2d2d" size={20}></MdEdit>
+                  </button>
+                  <button onClick={() => delpergunta(item._id)}>
+                    <BsTrash color="#2d2d2d" size={20}></BsTrash>
+                  </button>
                   <div className="boxeditpergunta">
-                    <input type={'text'} placeholder='Titulo da Pergunta' value={titulopergunta} onChange={(e) => setTitulopergunta(e.target.value)}></input>
-                    <textarea type={'text'} placeholder='Resposta da Pergunta' value={textoresposta} onChange={(e) => setTextoresposta(e.target.value)}></textarea>
-                    <button onClick={() => updateperguntas(item._id)}>Atualizar pergunta</button>
-                    <button onClick={() => document.querySelectorAll('.boxeditpergunta')[dataperguntas.findIndex(data => data._id == item._id)].setAttribute('style', 'display:none')}>Cancelar</button>
-
+                    <input
+                      type={"text"}
+                      placeholder="Titulo da Pergunta"
+                      value={titulopergunta}
+                      onChange={(e) => setTitulopergunta(e.target.value)}
+                    ></input>
+                    <textarea
+                      type={"text"}
+                      placeholder="Resposta da Pergunta"
+                      value={textoresposta}
+                      onChange={(e) => setTextoresposta(e.target.value)}
+                    ></textarea>
+                    <button onClick={() => updateperguntas(item._id)}>
+                      Atualizar pergunta
+                    </button>
+                    <button
+                      onClick={() =>
+                        document
+                          .querySelectorAll(".boxeditpergunta")
+                          [
+                            dataperguntas.findIndex(
+                              (data) => data._id == item._id
+                            )
+                          ].setAttribute("style", "display:none")
+                      }
+                    >
+                      Cancelar
+                    </button>
                   </div>
                 </div>
-              )
+              );
             })}
-
-
           </div>
-          : ''}
-
+        ) : (
+          ""
+        )}
 
         {modalcadastroprodutos != false ? (
           <AdminCadastroProdutos></AdminCadastroProdutos>
@@ -3798,21 +4578,30 @@ export default function AdminController() {
           ""
         )}
 
+        {modallistacomentarios != false ? (
+          <div className="modallistacomentarios">
+            <div className="title-item-menu">
+              <h2>GERENCIAR COMENTÁRIOS</h2>
+            </div>
 
-        {modallistacomentarios != false ? <div className="modallistacomentarios">
-          <div className="title-item-menu">
-            <h2>GERENCIAR COMENTÁRIOS</h2>
+            <input
+              type={"text"}
+              placeholder={"Seu nome"}
+              value={nomefeddback}
+              onChange={(e) => setNomefeddback(e.target.value)}
+            ></input>
+            <textarea
+              placeholder="Digite aqui"
+              value={textofeedback}
+              onChange={(e) => setTextofeedback(e.target.value)}
+            ></textarea>
+            <button type="button" onClick={criarfeedback}>
+              Enviar
+            </button>
           </div>
-
-          <input type={'text'} placeholder={'Seu nome'} value={nomefeddback} onChange={(e) => setNomefeddback(e.target.value)}></input>
-          <textarea placeholder="Digite aqui" value={textofeedback} onChange={(e) => setTextofeedback(e.target.value)}></textarea>
-          <button type="button" onClick={criarfeedback}>Enviar</button>
-
-        </div> : ''}
-
-
-
-
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

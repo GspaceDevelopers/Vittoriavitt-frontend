@@ -20,20 +20,15 @@ import Loja3 from "../pages/Loja3";
 import Loja4 from "../pages/Loja4";
 import Mudasenha from "../pages/Mudasenha";
 import Contato from "../pages/Contato";
-import Afiliados from "../pages/Afiliados";
-import Sobrenos from "../pages/sobrenos";
+import Sobrenos from "../pages/Sobrenos";
 import Comocomprar from "../pages/Comocomprar";
 import PerguntasFrequentes from "../pages/PerguntasFrequentes";
-
-
-
 
 export default function RouteApp() {
   return (
     <Switch>
       <Route exact path={"/"} component={Home}></Route>
       <Route exact path={"/cadastroAdmin"} component={CadastroAdmin}></Route>
-      <Route exact path={"/franqueados"} component={Afiliados}></Route>
       <Route exact path={"/login"} component={Login}></Route>
       <Route exact path={"/AdminLogin"} component={AdminLogin}></Route>
       <Route exact path={"/Contato"} component={Contato}></Route>
@@ -48,7 +43,11 @@ export default function RouteApp() {
       <Route exact path={"/Pedidos"} component={Pedidos}></Route>
       <Route exact path={"/Cadastro"} component={Cadastro}></Route>
       <Route exact path={"/comocomprar"} component={Comocomprar}></Route>
-      <Route exact path={"/perguntasfrequentes"} component={PerguntasFrequentes}></Route>
+      <Route
+        exact
+        path={"/perguntasfrequentes"}
+        component={PerguntasFrequentes}
+      ></Route>
       <Route
         exact
         path={"/PoliticadePrivacidade"}
@@ -93,7 +92,6 @@ export default function RouteApp() {
         path={"/PaginaProduto/:_id"}
         component={PaginaProduto}
       ></Route>
-
     </Switch>
   );
 }

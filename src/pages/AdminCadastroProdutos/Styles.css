@@ -175,7 +175,7 @@
 }
 
 .create-products {
-  background-color: #E06F84;
+  background-color: #e06f84;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -467,7 +467,6 @@
   height: 40px;
 }
 
-
 .load {
   width: 100%;
   height: 100vh;
@@ -475,7 +474,6 @@
   position: fixed;
   left: 0;
   z-index: 1000000;
-
 }
 
 .container-modallistacategorias {
@@ -501,7 +499,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 @media (max-width: 500px) {
   .input-categoria {
@@ -582,7 +579,6 @@
 
   .modal-cad-cores button {
     width: 95%;
-
   }
 
   #position-create-product-example {
@@ -671,4 +667,10 @@
 #btn-cad-categoria {
   background-color: #de4563;
   color: #fff;
+}
+
+#select-desconto-promo {
+  margin-top: 10px;
+  width: 150px;
+  height: 40px;
 }

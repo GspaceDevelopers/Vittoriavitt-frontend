@@ -4,7 +4,7 @@ import api from "../../services/api";
 import firebase from "../../services/firebaseconnection";
 import { AuthContext } from "../../Contexts/auth";
 import { toast } from "react-toastify";
-import { BsList, BsTrash } from 'react-icons/bs'
+import { BsList, BsTrash } from "react-icons/bs";
 
 const AdminCadastroProdutos = () => {
   const { user } = useContext(AuthContext);
@@ -22,8 +22,9 @@ const AdminCadastroProdutos = () => {
   const [datacategoriacadastro, setDatacategoriacadastro] = useState([]);
   const [load, setLoad] = useState(false);
   const [modalistacategorias, setModallistacategorias] = useState(false);
-
-
+  const [aparecercampobrinde, setAparecercampobrinde] = useState(false);
+  const [brinde, setBrinde] = useState();
+  const [sku, setSku] = useState();
 
   function modalCorAtualEnglish() {
     setModalcadcores(true);
@@ -220,8 +221,6 @@ const AdminCadastroProdutos = () => {
   const [cor4, setcor4] = useState("");
   const [cor5, setcor5] = useState("");
   const [cor6, setcor6] = useState("");
-
-
 
   const [modelo, setmodelo] = useState("");
   const [descricao, setDescricao] = useState("");
@@ -687,16 +686,29 @@ const AdminCadastroProdutos = () => {
 
   async function uploadImage(e) {
     e.preventDefault();
-    if (modelo == '' || preco == '' || descricao == '' || peso == '' || altura == '' || largura == '' || comprimento == '' || diametro == '' || formato == '') {
-      toast.info('Preencha os campos principais')
+    if (
+      modelo == "" ||
+      preco == "" ||
+      descricao == "" ||
+      peso == "" ||
+      altura == "" ||
+      largura == "" ||
+      comprimento == "" ||
+      diametro == "" ||
+      formato == ""
+    ) {
+      toast.info("Preencha os campos principais");
       return;
     }
-    setLoad(true)
+    setLoad(true);
 
     let data = {
       produto: "",
       modelo: modelo,
       marca: "",
+      brinde: brinde,
+      aparecercampobrinde: aparecercampobrinde,
+      sku: sku,
       tipo: "",
       subcategoria1: subcategoria1.toLowerCase(),
       subcategoria2: subcategoria2.toLowerCase(),
@@ -789,27 +801,24 @@ const AdminCadastroProdutos = () => {
       promocao: promocao,
       promocao2: promocao2,
       qtdpromocao2: qtdpromocao2,
-      desconto: promocao2 == false ? '' : desconto
-
+      desconto: promocao2 == false ? "" : desconto,
     };
-    await api.post("/produtos", data)
-      .then(() => {
-        setLoad(false)
-        toast.success("Item cadastrado com sucesso!");
-        setmodelo("");
-        setDescricao("");
-        setcategoria("");
-        setmarca("");
-        setpreco("");
-        setPrecomaior("");
-        setQtdpromocao2("");
-        setDesconto("");
-        setSubcategoria1("");
-        setSubcategoria2("");
-        setSubcategoria3("");
-        setSubcategoria4("");
-
-      });
+    await api.post("/produtos", data).then(() => {
+      setLoad(false);
+      toast.success("Item cadastrado com sucesso!");
+      setmodelo("");
+      setDescricao("");
+      setcategoria("");
+      setmarca("");
+      setpreco("");
+      setPrecomaior("");
+      setQtdpromocao2("");
+      setDesconto("");
+      setSubcategoria1("");
+      setSubcategoria2("");
+      setSubcategoria3("");
+      setSubcategoria4("");
+    });
   }
 
   function renderplus() {
@@ -830,13 +839,13 @@ const AdminCadastroProdutos = () => {
       toast.info("Campo vazio");
       return;
     }
-    setLoad(true)
+    setLoad(true);
     await api
       .post("/cores", {
         cor: cor,
       })
       .then(() => {
-        setLoad(false)
+        setLoad(false);
         toast.success("Cor cadastrada com sucesso!");
         setModalcadcores(false);
       });
@@ -846,37 +855,39 @@ const AdminCadastroProdutos = () => {
       toast.info("Campo vazio");
       return;
     }
-    setLoad(true)
+    setLoad(true);
     await api
       .post("/categorias", {
         categoria: categoriacadastro,
       })
       .then(() => {
-        setLoad(false)
+        setLoad(false);
         toast.success("categoria cadastrada com sucesso!");
         setModalcadcategorias(false);
       });
   }
 
-
   async function delcategoria(_id) {
-    setLoad(true)
-    await api.delete(`/categorias/${_id}`)
+    setLoad(true);
+    await api
+      .delete(`/categorias/${_id}`)
       .then(() => {
-        toast.success('Categoria excluida com sucesso!')
-        setLoad(false)
-        setModallistacategorias(false)
+        toast.success("Categoria excluida com sucesso!");
+        setLoad(false);
+        setModallistacategorias(false);
       })
-      .catch(() => {
-
-      })
+      .catch(() => {});
   }
-
 
   return (
     <div className="create-products">
-      {load != false ? <div className="load"><h2>Carregando...</h2></div> : ''}
-
+      {load != false ? (
+        <div className="load">
+          <h2>Carregando...</h2>
+        </div>
+      ) : (
+        ""
+      )}
 
       <h1 id="h1-create">Cadastro de produtos</h1>
       <form id="form-create" onSubmit={uploadImage}>
@@ -889,31 +900,62 @@ const AdminCadastroProdutos = () => {
               onChange={(e) => setcategoria(e.target.value)}
             >
               <option> Categoria </option>
-              {datacategoriacadastro.map(item => {
-                return (
-                  <option value={item.categoria}>{item.categoria}</option>
-                )
+              {datacategoriacadastro.map((item) => {
+                return <option value={item.categoria}>{item.categoria}</option>;
               })}
             </select>
-            <button id="btn-cad-categoria" onClick={() => setModalcadcategorias(true)} type="button">+</button>
-            <button id="btn-cad-categoria2" onClick={() => setModallistacategorias(true)} type="button"><BsList></BsList></button>
+            <button
+              id="btn-cad-categoria"
+              onClick={() => setModalcadcategorias(true)}
+              type="button"
+            >
+              +
+            </button>
+            <button
+              id="btn-cad-categoria2"
+              onClick={() => setModallistacategorias(true)}
+              type="button"
+            >
+              <BsList></BsList>
+            </button>
           </div>
 
-          {modalistacategorias != false ?
+          {modalistacategorias != false ? (
             <div className="container-modallistacategorias">
-              <div className='modallistacategorias'>
-                <button style={{ background: "transparent", fontSize: "20px" }} type="button" onClick={() => setModallistacategorias(false)}>X</button>
+              <div className="modallistacategorias">
+                <button
+                  style={{ background: "transparent", fontSize: "20px" }}
+                  type="button"
+                  onClick={() => setModallistacategorias(false)}
+                >
+                  X
+                </button>
                 <h3>Lista de categorias</h3>
-                {datacategoriacadastro.map(item => {
+                {datacategoriacadastro.map((item) => {
                   return (
-                    <div key={item._id} style={{ display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
-                      <span>{item.categoria}</span><button type="button" onClick={() => delcategoria(item._id)}><BsTrash></BsTrash></button>
+                    <div
+                      key={item._id}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <span>{item.categoria}</span>
+                      <button
+                        type="button"
+                        onClick={() => delcategoria(item._id)}
+                      >
+                        <BsTrash></BsTrash>
+                      </button>
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>
-            : ''}
+          ) : (
+            ""
+          )}
           <div className="box-subcategoria">
             <input
               type={"text"}
@@ -948,6 +990,14 @@ const AdminCadastroProdutos = () => {
           placeholder="Titulo do produto"
           value={modelo}
           onChange={(e) => setmodelo(e.target.value)}
+        />{" "}
+        <input
+          type="text"
+          name="SKU"
+          id="sku"
+          placeholder="SKU"
+          value={sku}
+          onChange={(e) => setSku(e.target.value)}
         />
         <div className="input-categoria">
           <input
@@ -1699,7 +1749,6 @@ const AdminCadastroProdutos = () => {
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
         ></textarea>
-
         <span style={{ color: "#fff" }}>Produto está em promoção?</span>
         <select
           id="select-promocao"
@@ -1708,36 +1757,123 @@ const AdminCadastroProdutos = () => {
         >
           <option value="true">Sim</option>
           <option value="false">Não</option>
-        </select><br></br>
-        <span style={{ color: "#fff" }}>Este produto está em promoção por quantidade?</span>
-        <select id="select-promocao" value={promocao2} onChange={(e) => setPromocao2(e.target.value)}>
-          <option>...</option>
-          <option value={'true'}>Sim</option>
-          <option value={'false'}>Não</option>
         </select>
-        {promocao2 === 'true' ?
+        <br></br>
+        <span style={{ color: "#fff" }}>
+          Este produto está em promoção por quantidade?
+        </span>
+        <select
+          id="select-promocao"
+          value={promocao2}
+          onChange={(e) => setPromocao2(e.target.value)}
+        >
+          <option>...</option>
+          <option value={"true"}>Sim</option>
+          <option value={"false"}>Não</option>
+        </select>
+        <br />
+        <span style={{ color: "white", fontWeight: "400" }}>
+          Este produto contem brinde?
+        </span>
+        <select
+          style={{ width: "80%", height: "40px" }}
+          value={aparecercampobrinde}
+          onChange={(e) => setAparecercampobrinde(e.target.value)}
+        >
+          <option value={"true"}>Sim</option>
+          <option value={"false"}>Não</option>
+        </select>
+        <br />
+        {promocao2 === "true" ? (
           <>
-            <span style={{ color: "#fff" }}>A partir de quantos ativa a promoção?</span>
-            <input type='number' value={qtdpromocao2} onChange={(e) => setQtdpromocao2(e.target.value)}></input>
+            <span style={{ color: "#fff" }}>
+              A partir de quantos ativa a promoção?
+            </span>
+            <input
+              type="number"
+              value={qtdpromocao2}
+              onChange={(e) => setQtdpromocao2(e.target.value)}
+            ></input>
             <span style={{ color: "#fff" }}> % do desconto</span>
-            <input type='text' value={desconto} onChange={(e) => setDesconto(e.target.value)}></input>
+            <select
+              name=""
+              id="select-desconto-promo"
+              onChange={(e) => setDesconto(e.target.value)}
+            >
+              <option selected value="...">
+                ...
+              </option>
+              <option value="10">10%</option>
+              <option value="20">20%</option>
+              <option value="30">30%</option>
+              <option value="40">40%</option>
+              <option value="50">50%</option>
+              <option value="60">60%</option>
+              <option value="70">70%</option>
+              <option value="80">80%</option>
+              <option value="90">90%</option>
+            </select>
           </>
-          : ''
-        }
-
-        <span style={{ color: "#fff", marginTop: "20px" }}>Medidas do Pacote</span>
-
-        <div style={window.screen.width > 500 ? { display: "flex", alignItems: "center" } : {}}>
-          <input type={"text"} placeholder='peso' onChange={(e) => setPeso(e.target.value)}></input>
-          <input type={"text"} placeholder='comprimento' onChange={(e) => setComprimento(e.target.value)}></input>
-          <input type={"text"} placeholder='altura' onChange={(e) => setAltura(e.target.value)}></input>
-          <input type={"text"} placeholder='largura' onChange={(e) => setLargura(e.target.value)}></input>
-          <input type={"text"} placeholder='diametro' onChange={(e) => setDiametro(e.target.value)}></input>
-          <input type={"text"} placeholder='formato' onChange={(e) => setFormato(e.target.value)}></input>
+        ) : (
+          ""
+        )}
+        {aparecercampobrinde === "true" ? (
+          <>
+            <span style={{ color: "white", fontWeight: "400" }}>
+              Informe o Brinde que acompanha este produto.
+            </span>
+            <input
+              type="text"
+              value={brinde}
+              onChange={(e) => {
+                setBrinde(e.target.value);
+              }}
+            />
+          </>
+        ) : (
+          ""
+        )}
+        <span style={{ color: "#fff", marginTop: "20px" }}>
+          Medidas do Pacote
+        </span>
+        <div
+          style={
+            window.screen.width > 500
+              ? { display: "flex", alignItems: "center" }
+              : {}
+          }
+        >
+          <input
+            type={"text"}
+            placeholder="peso"
+            onChange={(e) => setPeso(e.target.value)}
+          ></input>
+          <input
+            type={"text"}
+            placeholder="comprimento"
+            onChange={(e) => setComprimento(e.target.value)}
+          ></input>
+          <input
+            type={"text"}
+            placeholder="altura"
+            onChange={(e) => setAltura(e.target.value)}
+          ></input>
+          <input
+            type={"text"}
+            placeholder="largura"
+            onChange={(e) => setLargura(e.target.value)}
+          ></input>
+          <input
+            type={"text"}
+            placeholder="diametro"
+            onChange={(e) => setDiametro(e.target.value)}
+          ></input>
+          <input
+            type={"text"}
+            placeholder="formato"
+            onChange={(e) => setFormato(e.target.value)}
+          ></input>
         </div>
-
-
-
         <button id="submit" type="submit">
           Salvar
         </button>

@@ -11,7 +11,7 @@ import firebase from "../../services/firebaseconnection";
 import { toast } from "react-toastify";
 import { FiMenu, FiUser } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
-import api from '../../services/api'
+import api from "../../services/api";
 
 const BoxSearch = () => {
   const { usercliente, setUsercliente } = useContext(AuthContext);
@@ -29,22 +29,66 @@ const BoxSearch = () => {
 
   useEffect(() => {
     setDatacarrinho(JSON.parse(localStorage.getItem("carrinhorr11") || "[]"));
-
   }, []);
 
   useEffect(() => {
-    api.get('/produtos')
-      .then((data) => {
-        setDatacategorias(data.data.slice(0, 8).filter(item =>
-          item.categoria != 'lingeries' || 'lingerie' || 'roupas intimas' || 'Lingeries' || 'Lingerie' || 'sutiã' || 'body' || 'calcinhas' || 'calcinha' || 'sutiã' || 'body' || 'calcinhas' || 'calcinha' &&
-          item.subcategoria1 != 'ligeries' || 'lingerie' || 'sutiã' || 'body' || 'calcinhas' || 'calcinha' || 'roupas intimas' || 'Lingeries' || 'Lingerie' || 'sutiã' || 'body' || 'calcinhas' || 'calcinha' &&
-          item.subcategoria2 != 'ligeries' || 'lingerie' || 'sutiã' || 'body' || 'calcinhas' || 'calcinha' || 'roupas intimas' || 'Lingeries' || 'Lingerie' || 'sutiã' || 'body' || 'calcinhas' || 'calcinha' &&
-          item.subcategoria3 != 'ligeries' || 'lingerie' || 'roupas intimas' || 'Lingeries' || 'Lingerie' || 'sutiã' || 'body' || 'calcinhas' || 'calcinha' && item.subcategoria4))
-      })
+    api.get("/produtos").then((data) => {
+      setDatacategorias(
+        data.data
+          .slice(0, 8)
+          .filter(
+            (item) =>
+              item.categoria != "lingeries" ||
+              "lingerie" ||
+              "roupas intimas" ||
+              "Lingeries" ||
+              "Lingerie" ||
+              "sutiã" ||
+              "body" ||
+              "calcinhas" ||
+              "calcinha" ||
+              "sutiã" ||
+              "body" ||
+              "calcinhas" ||
+              ("calcinha" && item.subcategoria1 != "ligeries") ||
+              "lingerie" ||
+              "sutiã" ||
+              "body" ||
+              "calcinhas" ||
+              "calcinha" ||
+              "roupas intimas" ||
+              "Lingeries" ||
+              "Lingerie" ||
+              "sutiã" ||
+              "body" ||
+              "calcinhas" ||
+              ("calcinha" && item.subcategoria2 != "ligeries") ||
+              "lingerie" ||
+              "sutiã" ||
+              "body" ||
+              "calcinhas" ||
+              "calcinha" ||
+              "roupas intimas" ||
+              "Lingeries" ||
+              "Lingerie" ||
+              "sutiã" ||
+              "body" ||
+              "calcinhas" ||
+              ("calcinha" && item.subcategoria3 != "ligeries") ||
+              "lingerie" ||
+              "roupas intimas" ||
+              "Lingeries" ||
+              "Lingerie" ||
+              "sutiã" ||
+              "body" ||
+              "calcinhas" ||
+              ("calcinha" && item.subcategoria4)
+          )
+      );
+    });
 
-
-    console.log(datacategorias)
-  }, [])
+    console.log(datacategorias);
+  }, []);
 
   async function logout() {
     await firebase
@@ -66,50 +110,120 @@ const BoxSearch = () => {
   }
 
   function vermenu() {
-    setShowmenu(true)
-
+    setShowmenu(true);
   }
 
   return (
     <div className="conatiner-search-icons">
-      {showmenu != false ?
+      {showmenu != false ? (
         <div className="container-modal-menucomponent">
           <div className="modal-menu-component">
             <div className="box-btns-menu-component">
-              {usercliente != null ? < h2 style={{ fontSize: "17px", textDecoration: "none", position: "absolute", top: "20px" }}><FiUser></FiUser>  Olá {usercliente != null ? usercliente.nome : ''}</h2> : <a style={{ color: "#e06f84" }} href="/login">Login ou <a style={{ color: "#e06f84" }} href="/cadastro">Cadastre-se</a></a>}
-              <button style={{ border: "0", position: "absolute", right: '20px', top: "20px", width: 'auto', fontSize: "20px", color: "#e06f84", background: "transparent" }} onClick={() => setShowmenu(false)} >X</button>
+              {usercliente != null ? (
+                <h2
+                  style={{
+                    fontSize: "17px",
+                    textDecoration: "none",
+                    position: "absolute",
+                    top: "20px",
+                  }}
+                >
+                  <FiUser></FiUser> Olá{" "}
+                  {usercliente != null ? usercliente.nome : ""}
+                </h2>
+              ) : (
+                <a style={{ color: "#e06f84" }} href="/login">
+                  Login ou{" "}
+                  <a style={{ color: "#e06f84" }} href="/cadastro">
+                    Cadastre-se
+                  </a>
+                </a>
+              )}
+              <button
+                style={{
+                  border: "0",
+                  position: "absolute",
+                  right: "20px",
+                  top: "20px",
+                  width: "auto",
+                  fontSize: "20px",
+                  color: "#e06f84",
+                  background: "transparent",
+                }}
+                onClick={() => setShowmenu(false)}
+              >
+                X
+              </button>
               <div className="btn-grup-menu">
+                {datacategorias.map((item) => {
+                  return (
+                    <div key={item._id} className="box-item-categoria-btn">
+                      <details>
+                        <summary>
+                          {item.categoria} <IoIosArrowDown></IoIosArrowDown>
+                        </summary>
 
-                {
-                  datacategorias.map(item => {
-                    return (
-                      <div key={item._id} className='box-item-categoria-btn'>
-                        <details>
-                          <summary >{item.categoria} <IoIosArrowDown></IoIosArrowDown></summary>
-                          {item.subcategoria1 == '' ? '' : <button onClick={() => window.location.href = `/loja4/${item.subcategoria1}`}>{item.subcategoria1}</button>}
-                          {item.subcategoria2 == '' ? '' : <button onClick={() => window.location.href = `/loja4/${item.subcategoria2}`}>{item.subcategoria2}</button>}
-                          {item.subcategoria3 == '' ? '' : <button onClick={() => window.location.href = `/loja4/${item.subcategoria3}`}>{item.subcategoria3}</button>}
-                          {item.subcategoria4 == '' ? '' : <button onClick={() => window.location.href = `/loja4/${item.subcategoria4}`}>{item.subcategoria4}</button>}
-                        </details>
-                      </div>
-                    )
-                  })
-                }
+                        {item.subcategoria1 == "" ? (
+                          ""
+                        ) : (
+                          <button
+                            onClick={() =>
+                              (window.location.href = `/loja4/${item.subcategoria1}`)
+                            }
+                          >
+                            {item.subcategoria1}
+                          </button>
+                        )}
+                        {item.subcategoria2 == "" ? (
+                          ""
+                        ) : (
+                          <button
+                            onClick={() =>
+                              (window.location.href = `/loja4/${item.subcategoria2}`)
+                            }
+                          >
+                            {item.subcategoria2}
+                          </button>
+                        )}
+                        {item.subcategoria3 == "" ? (
+                          ""
+                        ) : (
+                          <button
+                            onClick={() =>
+                              (window.location.href = `/loja4/${item.subcategoria3}`)
+                            }
+                          >
+                            {item.subcategoria3}
+                          </button>
+                        )}
+                        {item.subcategoria4 == "" ? (
+                          ""
+                        ) : (
+                          <button
+                            onClick={() =>
+                              (window.location.href = `/loja4/${item.subcategoria4}`)
+                            }
+                          >
+                            {item.subcategoria4}
+                          </button>
+                        )}
+                      </details>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-
-
-
             <div className="box-btns-menu-component">
-
               <div className="btn-grup-menu">
                 <label>VittoriaVittStore</label>
                 <button onClick={() => (window.location.href = "/sobrenos")}>
                   Sobre nós
                 </button>
                 {usercliente != null ? (
-                  <button onClick={() => (window.location.href = "/minhaconta")}>
+                  <button
+                    onClick={() => (window.location.href = "/minhaconta")}
+                  >
                     Minha conta
                   </button>
                 ) : (
@@ -125,8 +239,9 @@ const BoxSearch = () => {
             </div>
           </div>
         </div>
-        : ''
-      }
+      ) : (
+        ""
+      )}
       <div className="search-icons">
         <div className="menu-home">
           {showmenu != true ? (
@@ -205,9 +320,9 @@ const BoxSearch = () => {
             <img
               src={Shop}
               onClick={() => {
-                datacarrinho.length != 0 ?
-                  window.location.href = "/Carrinho"
-                  : toast.info('Carrinho vazio!')
+                datacarrinho.length != 0
+                  ? (window.location.href = "/Carrinho")
+                  : toast.info("Carrinho vazio!");
               }}
             />
             <span style={{ color: "white" }}>{datacarrinho.length}</span>
@@ -221,8 +336,7 @@ const BoxSearch = () => {
           alt="LOGO"
         />
       </div>
-
-    </div >
+    </div>
   );
 };
 

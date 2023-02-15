@@ -67,12 +67,12 @@ const Contato = () => {
           .querySelectorAll(".sac")[5]
           .setAttribute("style", "border-color:black");
       }
-    
+
       return;
     }
 
     const data = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()} as ${new Date().getHours()}:${new Date().getMinutes()}`;
-   // console.log(data);
+    // console.log(data);
     await api
       .post("/sac", {
         headers: {
@@ -85,7 +85,7 @@ const Contato = () => {
         telefone: telefone,
         cpf: cpf,
         assunto: assunto,
-        numeropedido:numeropedido
+        numeropedido: numeropedido,
       })
       .then(() => {
         toast.success("Mensagem enviada com sucesso,  aguarde nosso retorno!");
@@ -115,51 +115,87 @@ const Contato = () => {
           <div className="div-form-third-son-main-master">
             <div className="div-form-third-son-main">
               {" "}
-              <label >Assunto*</label>
-              <select className="sac" onChenge={(e) => setNome(e.target.value)} t onChange={(e) => setAssunto(e.target.value)} name="" id="">
+              <label>Assunto*</label>
+              <select
+                className="sac"
+                onChenge={(e) => setNome(e.target.value)}
+                t
+                onChange={(e) => setAssunto(e.target.value)}
+                name=""
+                id=""
+              >
                 <option>tipo de assunto</option>
-                <option value={'Problemas com cadastro'}>Problemas com cadastro</option>
-                <option value={'Problemas com a conta'}>Problemas com a conta</option>
-                <option value={'Outros'}>Outros</option>
+                <option value={"Problemas com cadastro"}>
+                  Problemas com cadastro
+                </option>
+                <option value={"Problemas com a conta"}>
+                  Problemas com a conta
+                </option>
+                <option value={"Outros"}>Outros</option>
               </select>
             </div>
             <div className="div-form-third-son-main">
               {" "}
-              <label >Nome*</label>
-              <input className="sac" onChenge={(e) => setNome(e.target.value)} type="text" />
+              <label>Nome*</label>
+              <input
+                className="sac"
+                onChenge={(e) => setNome(e.target.value)}
+                type="text"
+              />
             </div>
           </div>
           <div className="div-form-third-son-main-master">
             <div className="div-form-third-son-main">
               {" "}
-              <label >E-mail*</label>
-              <input className="sac" onChenge={(e) => setEmail(e.target.value)} type="text" />
-            </div>
-
-          </div>
-          <div className="div-form-third-son-main-master">
-            <div className="div-form-third-son-main">
-              {" "}
-              <label >Celular</label>
-              <input className="sac" onChenge={(e) => setTelefone(e.target.value)} type="text" />
-            </div>
-            <div className="div-form-third-son-main">
-              {" "}
-              <label >Número do Pedido (opicional)</label>
-              <input className="sac" onChenge={(e) => setNumeropedido(e.target.value)} type="text" />
+              <label>E-mail*</label>
+              <input
+                className="sac"
+                onChenge={(e) => setEmail(e.target.value)}
+                type="text"
+              />
             </div>
           </div>
           <div className="div-form-third-son-main-master">
             <div className="div-form-third-son-main">
               {" "}
-              <label >CPF*</label>
-              <input className="sac" onChenge={(e) => setCpf(e.target.value)} type="text" />
+              <label>Celular</label>
+              <input
+                className="sac"
+                onChenge={(e) => setTelefone(e.target.value)}
+                type="text"
+              />
+            </div>
+            <div className="div-form-third-son-main">
+              {" "}
+              <label>Número do Pedido (opicional)</label>
+              <input
+                className="sac"
+                onChenge={(e) => setNumeropedido(e.target.value)}
+                type="text"
+              />
+            </div>
+          </div>
+          <div className="div-form-third-son-main-master">
+            <div className="div-form-third-son-main">
+              {" "}
+              <label>CPF*</label>
+              <input
+                className="sac"
+                onChenge={(e) => setCpf(e.target.value)}
+                type="text"
+              />
             </div>
             <div className="div-form-third-son-main"> </div>
           </div>
           <div id="text-area">
             {" "}
-            <textarea name="" id="" cols="30" rows="10" onChange={(e) => setMensagem(e.target.value)}></textarea>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              onChange={(e) => setMensagem(e.target.value)}
+            ></textarea>
           </div>
           <div id="text-area">
             {" "}

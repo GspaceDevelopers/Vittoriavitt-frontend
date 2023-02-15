@@ -105,8 +105,7 @@ export default function Minhaconta() {
     setDevolucoesview(false);
     setMeusdadosview(false);
     setCartoes(false);
-    setModaladdcomentarios(false)
-
+    setModaladdcomentarios(false);
   }
   function vermeuspedidos() {
     setPedidosview(true);
@@ -114,8 +113,7 @@ export default function Minhaconta() {
     setDevolucoesview(false);
     setMeusdadosview(false);
     setCartoes(false);
-    setModaladdcomentarios(false)
-
+    setModaladdcomentarios(false);
   }
   function verminhasdevolucoes() {
     setDevolucoesview(true);
@@ -123,8 +121,7 @@ export default function Minhaconta() {
     setListadesejosview(false);
     setMeusdadosview(false);
     setCartoes(false);
-    setModaladdcomentarios(false)
-
+    setModaladdcomentarios(false);
   }
   function vermeusdados() {
     setMeusdadosview(true);
@@ -132,8 +129,7 @@ export default function Minhaconta() {
     setPedidosview(false);
     setListadesejosview(false);
     setCartoes(false);
-    setModaladdcomentarios(false)
-
+    setModaladdcomentarios(false);
   }
   function vremeuscartoes() {
     setCartoes(true);
@@ -141,11 +137,10 @@ export default function Minhaconta() {
     setDevolucoesview(false);
     setPedidosview(false);
     setListadesejosview(false);
-    setModaladdcomentarios(false)
-
+    setModaladdcomentarios(false);
   }
   function vermodalcomentarios() {
-    setModaladdcomentarios(true)
+    setModaladdcomentarios(true);
     setCartoes(false);
     setMeusdadosview(false);
     setDevolucoesview(false);
@@ -391,23 +386,24 @@ export default function Minhaconta() {
   }
 
   async function criarfeedback() {
-    if (nomefeddback == '' || textofeedback == '') {
-      toast.error('Preencha todos os campos!')
+    if (nomefeddback == "" || textofeedback == "") {
+      toast.error("Preencha todos os campos!");
       return;
     }
-    await api.post('/comentarios', {
-      user: nomefeddback,
-      idproduto: 'String',
-      comentario: textofeedback,
-      printcomentario: 'Boolean',
-      star: 'String',
-      data: `${new Date().getDate() + '/' + new Date().getMonth()}`,
-    })
-      .then(() => {
-        toast.success('Feedback enviado com sucesso!')
-        setTextofeedback('')
-        setNomefeddback('')
+    await api
+      .post("/comentarios", {
+        user: nomefeddback,
+        idproduto: "String",
+        comentario: textofeedback,
+        printcomentario: "Boolean",
+        star: "String",
+        data: `${new Date().getDate() + "/" + new Date().getMonth()}`,
       })
+      .then(() => {
+        toast.success("Feedback enviado com sucesso!");
+        setTextofeedback("");
+        setNomefeddback("");
+      });
   }
 
   return (
@@ -861,19 +857,30 @@ export default function Minhaconta() {
           ""
         )}
 
-
-        {modaladdcomentarios != false ? <div className="modalcomentarios">
-          <div className="titlemenuminhaconta">
-            <h2>Feddback</h2>
+        {modaladdcomentarios != false ? (
+          <div className="modalcomentarios">
+            <div className="titlemenuminhaconta">
+              <h2>Feddback</h2>
+            </div>
+            <input
+              type={"text"}
+              placeholder={"Seu nome"}
+              value={nomefeddback}
+              onChange={(e) => setNomefeddback(e.target.value)}
+            ></input>
+            <textarea
+              placeholder="Digite aqui"
+              value={textofeedback}
+              onChange={(e) => setTextofeedback(e.target.value)}
+            ></textarea>
+            <button type="button" onClick={criarfeedback}>
+              Enviar
+            </button>
           </div>
-          <input type={'text'} placeholder={'Seu nome'} value={nomefeddback} onChange={(e) => setNomefeddback(e.target.value)}></input>
-          <textarea placeholder="Digite aqui" value={textofeedback} onChange={(e) => setTextofeedback(e.target.value)}></textarea>
-          <button type="button" onClick={criarfeedback}>Enviar</button>
-        </div> : ''}
+        ) : (
+          ""
+        )}
       </div>
-
-
-
 
       {formcartaoview != false ? (
         <div className="container-form-cartao-add">
@@ -979,13 +986,6 @@ export default function Minhaconta() {
       ) : (
         ""
       )}
-
-
-
-
-
-
-
 
       {loading != false ? (
         <div className="loading">

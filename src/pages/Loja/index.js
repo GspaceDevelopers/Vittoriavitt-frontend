@@ -12,7 +12,12 @@ import { TbLayoutGrid, TbLayoutCards } from "react-icons/tb";
 import cupom1 from "../../Assets/cupoms/1.png";
 import cupom2 from "../../Assets/cupoms/2.png";
 import cupom3 from "../../Assets/cupoms/3.png";
-
+import cupom4 from "../../Assets/cupoms/20.png";
+import cupom5 from "../../Assets/cupoms/40.png";
+import cupom6 from "../../Assets/cupoms/60.png";
+import cupom7 from "../../Assets/cupoms/70.png";
+import cupom8 from "../../Assets/cupoms/80.png";
+import cupom9 from "../../Assets/cupoms/90.png";
 
 export default function Loja2() {
   const { usercliente } = useContext(AuthContext);
@@ -25,14 +30,12 @@ export default function Loja2() {
   const [precoordem, setPrecoordem] = useState([]);
   const [arrayAlfabetico, setArrayAlfabetico] = useState();
   const [corfiltro, setCorfiltro] = useState([]);
-  const [arraydeCores, setArraydeCores] = useState([])
-
-
+  const [arraydeCores, setArraydeCores] = useState([]);
 
   useEffect(() => {
     document.title = `${produto} 👙  |  Outlet das Lingeries`;
-    const categoriatext = produto.toLowerCase()
-    console.log(categoriatext)
+    const categoriatext = produto.toLowerCase();
+    console.log(categoriatext);
 
     api.get(`/categoria?categoria=${categoriatext}`).then((data) => {
       setDataprodutos(data.data);
@@ -52,11 +55,9 @@ export default function Loja2() {
       );
     });
 
-
-    api.get('/cores')
-      .then((data) => {
-        setArraydeCores(data.data)
-      })
+    api.get("/cores").then((data) => {
+      setArraydeCores(data.data);
+    });
   }, []);
 
   function addfavoritos(item) {
@@ -180,18 +181,18 @@ export default function Loja2() {
       if (window.screen.width < 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:150px");
+          [i].setAttribute("style", "width:150px");
       }
       if (window.screen.width > 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:250px");
+          [i].setAttribute("style", "width:250px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
       }
     }
   }
@@ -202,18 +203,18 @@ export default function Loja2() {
       if (window.screen.width < 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:350px");
+          [i].setAttribute("style", "width:350px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:280px");
+          [i].setAttribute("style", "width:280px");
       }
       if (window.screen.width > 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:300px");
+          [i].setAttribute("style", "width:300px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
       }
     }
   }
@@ -353,6 +354,18 @@ export default function Loja2() {
                     <img id="icon-cupom" src={cupom2}></img>
                   ) : item.desconto == 50 ? (
                     <img id="icon-cupom" src={cupom3}></img>
+                  ) : item.desconto == 20 ? (
+                    <img id="icon-cupom" src={cupom4}></img>
+                  ) : item.desconto == 40 ? (
+                    <img id="icon-cupom" src={cupom5}></img>
+                  ) : item.desconto == 60 ? (
+                    <img id="icon-cupom" src={cupom6}></img>
+                  ) : item.desconto == 70 ? (
+                    <img id="icon-cupom" src={cupom7}></img>
+                  ) : item.desconto == 80 ? (
+                    <img id="icon-cupom" src={cupom8}></img>
+                  ) : item.desconto == 90 ? (
+                    <img id="icon-cupom" src={cupom9}></img>
                   ) : (
                     ""
                   )}
@@ -390,20 +403,20 @@ export default function Loja2() {
                         style={
                           window.screen.width > 500
                             ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "darkgreen",
+                                fontWeight: "600",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                             : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                                color: "darkgreen",
+                                fontWeight: "600",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                                fontSize: "10px",
+                              }
                         }
                       >
                         Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -418,11 +431,11 @@ export default function Loja2() {
                       style={
                         window.screen.width < 450
                           ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                              color: "#666666",
+                              marginBottom: "25px",
+                              fontSize: "11px",
+                              width: "max-content",
+                            }
                           : { color: "#666666", marginBottom: "15px" }
                       }
                     >
@@ -446,15 +459,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corPrimary.imgurl}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
-                              )
-
                             }
                           ></input>
                           <label
@@ -473,14 +485,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corSecondary.imgurl4}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
-                              )
                             }
                           ></input>
                           <label
@@ -499,14 +511,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corTertiary.imgurl7}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
-                              )
                             }
                           ></input>
                           <label
@@ -525,18 +537,20 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corQuaternary.imgurl10}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
-                              )
                             }
                           ></input>
                           <label
-                            style={{ background: item.cores.corQuaternary.cor4 }}
+                            style={{
+                              background: item.cores.corQuaternary.cor4,
+                            }}
                           ></label>
                         </div>
                       ) : (
@@ -551,14 +565,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corFive.imgurl13}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
-                              )
                             }
                           ></input>
                           <label
@@ -577,14 +591,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corSix.imgurl16}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
-                              )
                             }
                           ></input>
                           <label

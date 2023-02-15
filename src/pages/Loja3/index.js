@@ -12,7 +12,12 @@ import { TbLayoutGrid, TbLayoutCards } from "react-icons/tb";
 import cupom1 from "../../Assets/cupoms/1.png";
 import cupom2 from "../../Assets/cupoms/2.png";
 import cupom3 from "../../Assets/cupoms/3.png";
-
+import cupom4 from "../../Assets/cupoms/20.png";
+import cupom5 from "../../Assets/cupoms/40.png";
+import cupom6 from "../../Assets/cupoms/60.png";
+import cupom7 from "../../Assets/cupoms/70.png";
+import cupom8 from "../../Assets/cupoms/80.png";
+import cupom9 from "../../Assets/cupoms/90.png";
 const arraydeCores = [
   "black",
   "blue",
@@ -364,6 +369,18 @@ export default function Loja2() {
                     <img id="icon-cupom" src={cupom2}></img>
                   ) : item.desconto == 50 ? (
                     <img id="icon-cupom" src={cupom3}></img>
+                  ) : item.desconto == 20 ? (
+                    <img id="icon-cupom" src={cupom4}></img>
+                  ) : item.desconto == 40 ? (
+                    <img id="icon-cupom" src={cupom5}></img>
+                  ) : item.desconto == 60 ? (
+                    <img id="icon-cupom" src={cupom6}></img>
+                  ) : item.desconto == 70 ? (
+                    <img id="icon-cupom" src={cupom7}></img>
+                  ) : item.desconto == 80 ? (
+                    <img id="icon-cupom" src={cupom8}></img>
+                  ) : item.desconto == 90 ? (
+                    <img id="icon-cupom" src={cupom9}></img>
                   ) : (
                     ""
                   )}

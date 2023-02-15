@@ -15,6 +15,12 @@ import ModalPromocao from "../../Components/ModalPromocao";
 import cupom1 from "../../Assets/cupoms/1.png";
 import cupom2 from "../../Assets/cupoms/2.png";
 import cupom3 from "../../Assets/cupoms/3.png";
+import cupom4 from "../../Assets/cupoms/20.png";
+import cupom5 from "../../Assets/cupoms/40.png";
+import cupom6 from "../../Assets/cupoms/60.png";
+import cupom7 from "../../Assets/cupoms/70.png";
+import cupom8 from "../../Assets/cupoms/80.png";
+import cupom9 from "../../Assets/cupoms/90.png";
 
 const Home = () => {
   const { usercliente } = useContext(AuthContext);
@@ -29,34 +35,33 @@ const Home = () => {
   const [dataprodutos4, setDataprodutos4] = useState([]);
   const [dataprodutos5, setDataprodutos5] = useState([]);
   const [dataprodutos6, setDataprodutos6] = useState([]);
-  const [clientescadastradoswhatsapp, setClientescadastradoswhatsappodutos] = useState([]);
+  const [clientescadastradoswhatsapp, setClientescadastradoswhatsappodutos] =
+    useState([]);
   const [verificatelefoneuser, setVerificatelefoneuser] = useState([]);
 
   const [dadosedicao, setDadosedicao] = useState([]);
   const [fotocorselecionada, setFotocorselecionada] = useState(null);
 
   useEffect(() => {
-
-
     async function loaditens() {
-      api.get('/emailsclientes')
-        .then((data) => {
-          setClientescadastradoswhatsappodutos(data.data)
-        })
-
+      api.get("/emailsclientes").then((data) => {
+        setClientescadastradoswhatsappodutos(data.data);
+      });
 
       if (usercliente == null) {
-        setVerificatelefoneuser(false)
+        setVerificatelefoneuser(false);
       } else {
-        setVerificatelefoneuser(clientescadastradoswhatsapp.some(user => user.telefone == usercliente.telefone))
+        setVerificatelefoneuser(
+          clientescadastradoswhatsapp.some(
+            (user) => user.telefone == usercliente.telefone
+          )
+        );
       }
-      api.get(`/promocao?promocao=true`)
-        .then((data) => {
-          setDataprodutos(data.data.slice(0, 3));
-          setDataprodutos2(data.data.slice(3, 6))
-          setDataprodutos3(data.data.slice(6, 10))
-        })
-
+      api.get(`/promocao?promocao=true`).then((data) => {
+        setDataprodutos(data.data.slice(0, 3));
+        setDataprodutos2(data.data.slice(3, 6));
+        setDataprodutos3(data.data.slice(6, 10));
+      });
 
       await api.get("/produtos").then((data) => {
         setDataprodutos4(data.data.slice(0, 3));
@@ -68,15 +73,19 @@ const Home = () => {
         setDadosedicao(data.data);
       });
 
-
-      document.getElementById('section3-home').setAttribute('style', `background-image:url(${dadosedicao.map(item => item.bannercentralhome)[0]})`)
+      document
+        .getElementById("section3-home")
+        .setAttribute(
+          "style",
+          `background-image:url(${
+            dadosedicao.map((item) => item.bannercentralhome)[0]
+          })`
+        );
 
       setDatacarrinho(JSON.parse(localStorage.getItem("carrinhorr11") || "[]"));
       ///console.log(verificatelefoneuser)
-
     }
     loaditens();
-
   }, [dadosedicao]);
 
   function addfavoritos(item) {
@@ -151,84 +160,126 @@ const Home = () => {
     const index = dataprodutos.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl2 == '' ? item.cores.corPrimary.imgurl : item.cores.corPrimary.imgurl2}`);
+      [index].setAttribute(
+        "src",
+        `${
+          item.cores.corPrimary.imgurl2 == ""
+            ? item.cores.corPrimary.imgurl
+            : item.cores.corPrimary.imgurl2
+        }`
+      );
   }
   function hoverimg2(item) {
     const index = dataprodutos.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg3(item) {
     const index = dataprodutos2.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem2")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl2 == '' ? item.cores.corPrimary.imgurl : item.cores.corPrimary.imgurl2}`);
+      [index].setAttribute(
+        "src",
+        `${
+          item.cores.corPrimary.imgurl2 == ""
+            ? item.cores.corPrimary.imgurl
+            : item.cores.corPrimary.imgurl2
+        }`
+      );
   }
   function hoverimg4(item) {
     const index = dataprodutos2.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem2")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg5(item) {
     const index = dataprodutos3.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem3")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl2 == '' ? item.cores.corPrimary.imgurl : item.cores.corPrimary.imgurl2}`);
+      [index].setAttribute(
+        "src",
+        `${
+          item.cores.corPrimary.imgurl2 == ""
+            ? item.cores.corPrimary.imgurl
+            : item.cores.corPrimary.imgurl2
+        }`
+      );
   }
   function hoverimg6(item) {
     const index = dataprodutos3.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem3")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg7(item) {
     const index = dataprodutos4.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem4")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl2 == '' ? item.cores.corPrimary.imgurl : item.cores.corPrimary.imgurl2}`);
+      [index].setAttribute(
+        "src",
+        `${
+          item.cores.corPrimary.imgurl2 == ""
+            ? item.cores.corPrimary.imgurl
+            : item.cores.corPrimary.imgurl2
+        }`
+      );
   }
   function hoverimg8(item) {
     const index = dataprodutos4.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem4")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg9(item) {
     const index = dataprodutos5.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem5")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl2 == '' ? item.cores.corPrimary.imgurl : item.cores.corPrimary.imgurl2}`);
+      [index].setAttribute(
+        "src",
+        `${
+          item.cores.corPrimary.imgurl2 == ""
+            ? item.cores.corPrimary.imgurl
+            : item.cores.corPrimary.imgurl2
+        }`
+      );
   }
   function hoverimg10(item) {
     const index = dataprodutos5.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem5")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg11(item) {
     const index = dataprodutos6.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem6")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl2 == '' ? item.cores.corPrimary.imgurl : item.cores.corPrimary.imgurl2}`);
+      [index].setAttribute(
+        "src",
+        `${
+          item.cores.corPrimary.imgurl2 == ""
+            ? item.cores.corPrimary.imgurl
+            : item.cores.corPrimary.imgurl2
+        }`
+      );
   }
   function hoverimg12(item) {
     const index = dataprodutos6.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem6")
-    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   return (
     <div>
       <Header back="trasnsparent" />
-      {verificatelefoneuser == true ? '' : <ModalPromocao></ModalPromocao>}
+      {verificatelefoneuser == true ? "" : <ModalPromocao></ModalPromocao>}
       <div className="container-home">
         <section className="section1-home">
           <Carrossel></Carrossel>
@@ -291,12 +342,36 @@ const Home = () => {
             <h2>PROMOÇÕES</h2>
           </div>
           <article className="box-itens-area-home">
-            <button onClick={right} id="btn-arrow-left"><IoIosArrowBack size={30}></IoIosArrowBack></button>
-            <button onClick={left} id="btn-arrow-right"><IoIosArrowForward size={30}></IoIosArrowForward></button>
+            <button onClick={right} id="btn-arrow-left">
+              <IoIosArrowBack size={30}></IoIosArrowBack>
+            </button>
+            <button onClick={left} id="btn-arrow-right">
+              <IoIosArrowForward size={30}></IoIosArrowForward>
+            </button>
             {dataprodutos.map((item) => {
               return (
                 <div key={item._id} className="item-home">
-                  {item.promocao2 === true && item.desconto == 10 ? <img id="icon-cupom" src={cupom1}></img> : item.desconto == 30 ? <img id="icon-cupom" src={cupom2}></img> : item.desconto == 50 ? <img id="icon-cupom" src={cupom3}></img> : ''}
+                  {item.promocao2 == true && item.desconto == 10 ? (
+                    <img id="icon-cupom" src={cupom1}></img>
+                  ) : item.desconto == 30 ? (
+                    <img id="icon-cupom" src={cupom2}></img>
+                  ) : item.desconto == 50 ? (
+                    <img id="icon-cupom" src={cupom3}></img>
+                  ) : item.desconto == 20 ? (
+                    <img id="icon-cupom" src={cupom4}></img>
+                  ) : item.desconto == 40 ? (
+                    <img id="icon-cupom" src={cupom5}></img>
+                  ) : item.desconto == 60 ? (
+                    <img id="icon-cupom" src={cupom6}></img>
+                  ) : item.desconto == 70 ? (
+                    <img id="icon-cupom" src={cupom7}></img>
+                  ) : item.desconto == 80 ? (
+                    <img id="icon-cupom" src={cupom8}></img>
+                  ) : item.desconto == 90 ? (
+                    <img id="icon-cupom" src={cupom9}></img>
+                  ) : (
+                    ""
+                  )}
                   {fotocorselecionada == null ? (
                     <img
                       onMouseEnter={() => hoverimg1(item)}
@@ -326,10 +401,54 @@ const Home = () => {
                     ></HiHeart>
                   </button>
                   <h3>{item.modelo}</h3>
-                  {item.promocao2 == true ? <p style={window.screen.width > 500 ? { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", height: "60px" } : { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", fontSize: "10px" }}>Comprando {item.qtdpromocao2} produto(s) ou mais voçê ganha {item.desconto}% de desconto!</p> : <div style={{ height: "60px" }}></div>}
+                  {item.promocao2 == true ? (
+                    <p
+                      style={
+                        window.screen.width > 500
+                          ? {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              height: "60px",
+                            }
+                          : {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              fontSize: "10px",
+                            }
+                      }
+                    >
+                      Comprando {item.qtdpromocao2} produto(s) ou mais voçê
+                      ganha {item.desconto}% de desconto!
+                    </p>
+                  ) : (
+                    <div style={{ height: "60px" }}></div>
+                  )}
 
                   <h4>R${item.preco}</h4>
-                  <p style={window.screen.width < 450 ? { color: "#666666", marginBottom: '25px', fontSize: "11px", width: "max-content" } : { color: "#666666", marginBottom: '15px' }}>Em até 7x de {Number(parseFloat(item.preco) / 7).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                  <p
+                    style={
+                      window.screen.width < 450
+                        ? {
+                            color: "#666666",
+                            marginBottom: "25px",
+                            fontSize: "11px",
+                            width: "max-content",
+                          }
+                        : { color: "#666666", marginBottom: "15px" }
+                    }
+                  >
+                    Em até 7x de{" "}
+                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      "pt-br",
+                      { style: "currency", currency: "BRL" }
+                    )}
+                  </p>
                   <div style={{ display: "flex" }} id="label-div-ajus-absolute">
                     {item.cores.corPrimary.cor1 != "" ? (
                       <div>
@@ -340,15 +459,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corPrimary.imgurl}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corPrimary.imgurl}`
-                            )
-
                           }
                         ></input>
                         <label
@@ -367,14 +485,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSecondary.imgurl4}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSecondary.imgurl4}`
-                            )
                           }
                         ></input>
                         <label
@@ -393,14 +511,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corTertiary.imgurl7}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corTertiary.imgurl7}`
-                            )
                           }
                         ></input>
                         <label
@@ -419,14 +537,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corQuaternary.imgurl10}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corQuaternary.imgurl10}`
-                            )
                           }
                         ></input>
                         <label
@@ -445,14 +563,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corFive.imgurl13}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corFive.imgurl13}`
-                            )
                           }
                         ></input>
                         <label
@@ -471,14 +589,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSix.imgurl16}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSix.imgurl16}`
-                            )
                           }
                         ></input>
                         <label
@@ -494,13 +612,36 @@ const Home = () => {
             })}
           </article>
           <article className="box-itens-area-home">
-            <button onClick={right2} id="btn-arrow-left"><IoIosArrowBack size={30}></IoIosArrowBack></button>
-            <button onClick={left2} id="btn-arrow-right"><IoIosArrowForward size={30}></IoIosArrowForward></button>
+            <button onClick={right2} id="btn-arrow-left">
+              <IoIosArrowBack size={30}></IoIosArrowBack>
+            </button>
+            <button onClick={left2} id="btn-arrow-right">
+              <IoIosArrowForward size={30}></IoIosArrowForward>
+            </button>
             {dataprodutos2.map((item) => {
-
               return (
                 <div key={item._id} className="item-home">
-                  {item.promocao2 === true && item.desconto == 10 ? <img id="icon-cupom" src={cupom1}></img> : item.desconto == 30 ? <img id="icon-cupom" src={cupom2}></img> : item.desconto == 50 ? <img id="icon-cupom" src={cupom3}></img> : ''}
+                  {item.promocao2 == true && item.desconto == 10 ? (
+                    <img id="icon-cupom" src={cupom1}></img>
+                  ) : item.desconto == 30 ? (
+                    <img id="icon-cupom" src={cupom2}></img>
+                  ) : item.desconto == 50 ? (
+                    <img id="icon-cupom" src={cupom3}></img>
+                  ) : item.desconto == 20 ? (
+                    <img id="icon-cupom" src={cupom4}></img>
+                  ) : item.desconto == 40 ? (
+                    <img id="icon-cupom" src={cupom5}></img>
+                  ) : item.desconto == 60 ? (
+                    <img id="icon-cupom" src={cupom6}></img>
+                  ) : item.desconto == 70 ? (
+                    <img id="icon-cupom" src={cupom7}></img>
+                  ) : item.desconto == 80 ? (
+                    <img id="icon-cupom" src={cupom8}></img>
+                  ) : item.desconto == 90 ? (
+                    <img id="icon-cupom" src={cupom9}></img>
+                  ) : (
+                    ""
+                  )}
                   {fotocorselecionada == null ? (
                     <img
                       onMouseEnter={() => hoverimg3(item)}
@@ -530,10 +671,54 @@ const Home = () => {
                     ></HiHeart>
                   </button>
                   <h3>{item.modelo}</h3>
-                  {item.promocao2 == true ? <p style={window.screen.width > 500 ? { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", height: "60px" } : { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", fontSize: "10px" }}>Comprando {item.qtdpromocao2} produto(s) ou mais voçê ganha {item.desconto}% de desconto!</p> : <div style={{ height: "60px" }}></div>}
+                  {item.promocao2 == true ? (
+                    <p
+                      style={
+                        window.screen.width > 500
+                          ? {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              height: "60px",
+                            }
+                          : {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              fontSize: "10px",
+                            }
+                      }
+                    >
+                      Comprando {item.qtdpromocao2} produto(s) ou mais voçê
+                      ganha {item.desconto}% de desconto!
+                    </p>
+                  ) : (
+                    <div style={{ height: "60px" }}></div>
+                  )}
 
                   <h4>R${item.preco}</h4>
-                  <p style={window.screen.width < 450 ? { color: "#666666", marginBottom: '25px', fontSize: "11px", width: "max-content" } : { color: "#666666", marginBottom: '15px' }}>Em até 7x de {Number(parseFloat(item.preco) / 7).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                  <p
+                    style={
+                      window.screen.width < 450
+                        ? {
+                            color: "#666666",
+                            marginBottom: "25px",
+                            fontSize: "11px",
+                            width: "max-content",
+                          }
+                        : { color: "#666666", marginBottom: "15px" }
+                    }
+                  >
+                    Em até 7x de{" "}
+                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      "pt-br",
+                      { style: "currency", currency: "BRL" }
+                    )}
+                  </p>
 
                   <div style={{ display: "flex" }} id="label-div-ajus-absolute">
                     {item.cores.corPrimary.cor1 != "" ? (
@@ -545,15 +730,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                            [
-                              dataprodutos2.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos2.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corPrimary.imgurl}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corPrimary.imgurl}`
-                            )
-
                           }
                         ></input>
                         <label
@@ -572,14 +756,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                            [
-                              dataprodutos2.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos2.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSecondary.imgurl4}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSecondary.imgurl4}`
-                            )
                           }
                         ></input>
                         <label
@@ -598,14 +782,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                            [
-                              dataprodutos2.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos2.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corTertiary.imgurl7}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corTertiary.imgurl7}`
-                            )
                           }
                         ></input>
                         <label
@@ -624,14 +808,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                            [
-                              dataprodutos2.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos2.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corQuaternary.imgurl10}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corQuaternary.imgurl10}`
-                            )
                           }
                         ></input>
                         <label
@@ -650,14 +834,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                            [
-                              dataprodutos2.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos2.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corFive.imgurl13}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corFive.imgurl13}`
-                            )
                           }
                         ></input>
                         <label
@@ -676,14 +860,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                            [
-                              dataprodutos2.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos2.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSix.imgurl16}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSix.imgurl16}`
-                            )
                           }
                         ></input>
                         <label
@@ -699,13 +883,24 @@ const Home = () => {
             })}
           </article>
           <article className="box-itens-area-home">
-            <button onClick={right3} id="btn-arrow-left"><IoIosArrowBack size={30}></IoIosArrowBack></button>
-            <button onClick={left3} id="btn-arrow-right"><IoIosArrowForward size={30}></IoIosArrowForward></button>
+            <button onClick={right3} id="btn-arrow-left">
+              <IoIosArrowBack size={30}></IoIosArrowBack>
+            </button>
+            <button onClick={left3} id="btn-arrow-right">
+              <IoIosArrowForward size={30}></IoIosArrowForward>
+            </button>
             {dataprodutos3.map((item) => {
-
               return (
                 <div key={item._id} className="item-home">
-                  {item.promocao2 == true && item.desconto == 10 ? <img id="icon-cupom" src={cupom1}></img> : item.desconto == 30 ? <img id="icon-cupom" src={cupom2}></img> : item.desconto == 50 ? <img id="icon-cupom" src={cupom3}></img> : ''}
+                  {item.promocao2 == true && item.desconto == 10 ? (
+                    <img id="icon-cupom" src={cupom1}></img>
+                  ) : item.desconto == 30 ? (
+                    <img id="icon-cupom" src={cupom2}></img>
+                  ) : item.desconto == 50 ? (
+                    <img id="icon-cupom" src={cupom3}></img>
+                  ) : (
+                    ""
+                  )}
                   {fotocorselecionada == null ? (
                     <img
                       onMouseEnter={() => hoverimg5(item)}
@@ -735,10 +930,54 @@ const Home = () => {
                     ></HiHeart>
                   </button>
                   <h3>{item.modelo}</h3>
-                  {item.promocao2 == true ? <p style={window.screen.width > 500 ? { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", height: "60px" } : { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", fontSize: "10px" }}>Comprando {item.qtdpromocao2} produto(s) ou mais voçê ganha {item.desconto}% de desconto!</p> : <div style={{ height: "60px" }}></div>}
+                  {item.promocao2 == true ? (
+                    <p
+                      style={
+                        window.screen.width > 500
+                          ? {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              height: "60px",
+                            }
+                          : {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              fontSize: "10px",
+                            }
+                      }
+                    >
+                      Comprando {item.qtdpromocao2} produto(s) ou mais voçê
+                      ganha {item.desconto}% de desconto!
+                    </p>
+                  ) : (
+                    <div style={{ height: "60px" }}></div>
+                  )}
 
                   <h4>R${item.preco}</h4>
-                  <p style={window.screen.width < 450 ? { color: "#666666", marginBottom: '25px', fontSize: "11px", width: "max-content" } : { color: "#666666", marginBottom: '15px' }}>Em até 7x de {Number(parseFloat(item.preco) / 7).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                  <p
+                    style={
+                      window.screen.width < 450
+                        ? {
+                            color: "#666666",
+                            marginBottom: "25px",
+                            fontSize: "11px",
+                            width: "max-content",
+                          }
+                        : { color: "#666666", marginBottom: "15px" }
+                    }
+                  >
+                    Em até 7x de{" "}
+                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      "pt-br",
+                      { style: "currency", currency: "BRL" }
+                    )}
+                  </p>
 
                   <div style={{ display: "flex" }} id="label-div-ajus-absolute">
                     {item.cores.corPrimary.cor1 != "" ? (
@@ -750,15 +989,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                            [
-                              dataprodutos3.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos3.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corPrimary.imgurl}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corPrimary.imgurl}`
-                            )
-
                           }
                         ></input>
                         <label
@@ -777,14 +1015,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                            [
-                              dataprodutos3.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos3.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSecondary.imgurl4}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSecondary.imgurl4}`
-                            )
                           }
                         ></input>
                         <label
@@ -803,14 +1041,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                            [
-                              dataprodutos3.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos3.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corTertiary.imgurl7}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corTertiary.imgurl7}`
-                            )
                           }
                         ></input>
                         <label
@@ -829,14 +1067,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                            [
-                              dataprodutos3.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos3.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corQuaternary.imgurl10}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corQuaternary.imgurl10}`
-                            )
                           }
                         ></input>
                         <label
@@ -855,14 +1093,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                            [
-                              dataprodutos3.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos3.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corFive.imgurl13}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corFive.imgurl13}`
-                            )
                           }
                         ></input>
                         <label
@@ -881,14 +1119,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                            [
-                              dataprodutos3.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos3.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSix.imgurl16}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSix.imgurl16}`
-                            )
                           }
                         ></input>
                         <label
@@ -910,14 +1148,25 @@ const Home = () => {
             <h2>NOVIDADES</h2>
           </div>
           <article className="box-itens-area-home">
-            <button onClick={right4} id="btn-arrow-left"><IoIosArrowBack size={30}></IoIosArrowBack></button>
-            <button onClick={left4} id="btn-arrow-right"><IoIosArrowForward size={30}></IoIosArrowForward></button>
+            <button onClick={right4} id="btn-arrow-left">
+              <IoIosArrowBack size={30}></IoIosArrowBack>
+            </button>
+            <button onClick={left4} id="btn-arrow-right">
+              <IoIosArrowForward size={30}></IoIosArrowForward>
+            </button>
 
             {dataprodutos4.map((item) => {
-
               return (
                 <div key={item._id} className="item-home">
-                  {item.promocao2 == true && item.desconto == 10 ? <img id="icon-cupom" src={cupom1}></img> : item.desconto == 30 ? <img id="icon-cupom" src={cupom2}></img> : item.desconto == 50 ? <img id="icon-cupom" src={cupom3}></img> : ''}
+                  {item.promocao2 == true && item.desconto == 10 ? (
+                    <img id="icon-cupom" src={cupom1}></img>
+                  ) : item.desconto == 30 ? (
+                    <img id="icon-cupom" src={cupom2}></img>
+                  ) : item.desconto == 50 ? (
+                    <img id="icon-cupom" src={cupom3}></img>
+                  ) : (
+                    ""
+                  )}
                   {fotocorselecionada == null ? (
                     <img
                       onMouseEnter={() => hoverimg7(item)}
@@ -947,10 +1196,54 @@ const Home = () => {
                     ></HiHeart>
                   </button>
                   <h3>{item.modelo}</h3>
-                  {item.promocao2 == true ? <p style={window.screen.width > 500 ? { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", height: "60px" } : { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", fontSize: "10px" }}>Comprando {item.qtdpromocao2} produto(s) ou mais voçê ganha {item.desconto}% de desconto!</p> : <div style={{ height: "60px" }}></div>}
+                  {item.promocao2 == true ? (
+                    <p
+                      style={
+                        window.screen.width > 500
+                          ? {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              height: "60px",
+                            }
+                          : {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              fontSize: "10px",
+                            }
+                      }
+                    >
+                      Comprando {item.qtdpromocao2} produto(s) ou mais voçê
+                      ganha {item.desconto}% de desconto!
+                    </p>
+                  ) : (
+                    <div style={{ height: "60px" }}></div>
+                  )}
 
                   <h4>R${item.preco}</h4>
-                  <p style={window.screen.width < 450 ? { color: "#666666", marginBottom: '25px', fontSize: "11px", width: "max-content" } : { color: "#666666", marginBottom: '15px' }}>Em até 7x de {Number(parseFloat(item.preco) / 7).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                  <p
+                    style={
+                      window.screen.width < 450
+                        ? {
+                            color: "#666666",
+                            marginBottom: "25px",
+                            fontSize: "11px",
+                            width: "max-content",
+                          }
+                        : { color: "#666666", marginBottom: "15px" }
+                    }
+                  >
+                    Em até 7x de{" "}
+                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      "pt-br",
+                      { style: "currency", currency: "BRL" }
+                    )}
+                  </p>
 
                   <div style={{ display: "flex" }} id="label-div-ajus-absolute">
                     {item.cores.corPrimary.cor1 != "" ? (
@@ -962,15 +1255,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                            [
-                              dataprodutos4.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos4.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corPrimary.imgurl}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corPrimary.imgurl}`
-                            )
-
                           }
                         ></input>
                         <label
@@ -989,14 +1281,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                            [
-                              dataprodutos4.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos4.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSecondary.imgurl4}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSecondary.imgurl4}`
-                            )
                           }
                         ></input>
                         <label
@@ -1015,14 +1307,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                            [
-                              dataprodutos4.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos4.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corTertiary.imgurl7}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corTertiary.imgurl7}`
-                            )
                           }
                         ></input>
                         <label
@@ -1041,14 +1333,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                            [
-                              dataprodutos4.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos4.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corQuaternary.imgurl10}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corQuaternary.imgurl10}`
-                            )
                           }
                         ></input>
                         <label
@@ -1067,14 +1359,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                            [
-                              dataprodutos4.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos4.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corFive.imgurl13}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corFive.imgurl13}`
-                            )
                           }
                         ></input>
                         <label
@@ -1093,14 +1385,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                            [
-                              dataprodutos4.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos4.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSix.imgurl16}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSix.imgurl16}`
-                            )
                           }
                         ></input>
                         <label
@@ -1117,13 +1409,24 @@ const Home = () => {
           </article>
 
           <article className="box-itens-area-home">
-            <button onClick={right5} id="btn-arrow-left"><IoIosArrowBack size={30}></IoIosArrowBack></button>
-            <button onClick={left5} id="btn-arrow-right"><IoIosArrowForward size={30}></IoIosArrowForward></button>
+            <button onClick={right5} id="btn-arrow-left">
+              <IoIosArrowBack size={30}></IoIosArrowBack>
+            </button>
+            <button onClick={left5} id="btn-arrow-right">
+              <IoIosArrowForward size={30}></IoIosArrowForward>
+            </button>
             {dataprodutos5.map((item) => {
-
               return (
                 <div key={item._id} className="item-home">
-                  {item.promocao2 == true && item.desconto == 10 ? <img id="icon-cupom" src={cupom1}></img> : item.desconto == 30 ? <img id="icon-cupom" src={cupom2}></img> : item.desconto == 50 ? <img id="icon-cupom" src={cupom3}></img> : ''}
+                  {item.promocao2 == true && item.desconto == 10 ? (
+                    <img id="icon-cupom" src={cupom1}></img>
+                  ) : item.desconto == 30 ? (
+                    <img id="icon-cupom" src={cupom2}></img>
+                  ) : item.desconto == 50 ? (
+                    <img id="icon-cupom" src={cupom3}></img>
+                  ) : (
+                    ""
+                  )}
                   {fotocorselecionada == null ? (
                     <img
                       onMouseEnter={() => hoverimg9(item)}
@@ -1153,10 +1456,54 @@ const Home = () => {
                     ></HiHeart>
                   </button>
                   <h3>{item.modelo}</h3>
-                  {item.promocao2 == true ? <p style={window.screen.width > 500 ? { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", height: "60px" } : { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", fontSize: "10px" }}>Comprando {item.qtdpromocao2} produto(s) ou mais voçê ganha {item.desconto}% de desconto!</p> : <div style={{ height: "60px" }}></div>}
+                  {item.promocao2 == true ? (
+                    <p
+                      style={
+                        window.screen.width > 500
+                          ? {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              height: "60px",
+                            }
+                          : {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              fontSize: "10px",
+                            }
+                      }
+                    >
+                      Comprando {item.qtdpromocao2} produto(s) ou mais voçê
+                      ganha {item.desconto}% de desconto!
+                    </p>
+                  ) : (
+                    <div style={{ height: "60px" }}></div>
+                  )}
 
                   <h4>R${item.preco}</h4>
-                  <p style={window.screen.width < 450 ? { color: "#666666", marginBottom: '25px', fontSize: "11px", width: "max-content" } : { color: "#666666", marginBottom: '15px' }}>Em até 7x de {Number(parseFloat(item.preco) / 7).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                  <p
+                    style={
+                      window.screen.width < 450
+                        ? {
+                            color: "#666666",
+                            marginBottom: "25px",
+                            fontSize: "11px",
+                            width: "max-content",
+                          }
+                        : { color: "#666666", marginBottom: "15px" }
+                    }
+                  >
+                    Em até 7x de{" "}
+                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      "pt-br",
+                      { style: "currency", currency: "BRL" }
+                    )}
+                  </p>
 
                   <div style={{ display: "flex" }} id="label-div-ajus-absolute">
                     {item.cores.corPrimary.cor1 != "" ? (
@@ -1168,15 +1515,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                            [
-                              dataprodutos5.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos5.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corPrimary.imgurl}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corPrimary.imgurl}`
-                            )
-
                           }
                         ></input>
                         <label
@@ -1195,14 +1541,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                            [
-                              dataprodutos5.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos5.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSecondary.imgurl4}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSecondary.imgurl4}`
-                            )
                           }
                         ></input>
                         <label
@@ -1221,14 +1567,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                            [
-                              dataprodutos5.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos5.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corTertiary.imgurl7}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corTertiary.imgurl7}`
-                            )
                           }
                         ></input>
                         <label
@@ -1247,14 +1593,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                            [
-                              dataprodutos5.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos5.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corQuaternary.imgurl10}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corQuaternary.imgurl10}`
-                            )
                           }
                         ></input>
                         <label
@@ -1273,14 +1619,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                            [
-                              dataprodutos5.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos5.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corFive.imgurl13}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corFive.imgurl13}`
-                            )
                           }
                         ></input>
                         <label
@@ -1299,14 +1645,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                            [
-                              dataprodutos5.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos5.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSix.imgurl16}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSix.imgurl16}`
-                            )
                           }
                         ></input>
                         <label
@@ -1323,12 +1669,24 @@ const Home = () => {
           </article>
 
           <article className="box-itens-area-home">
-            <button onClick={right6} id="btn-arrow-left"><IoIosArrowBack size={30}></IoIosArrowBack></button>
-            <button onClick={left6} id="btn-arrow-right"><IoIosArrowForward size={30}></IoIosArrowForward></button>
+            <button onClick={right6} id="btn-arrow-left">
+              <IoIosArrowBack size={30}></IoIosArrowBack>
+            </button>
+            <button onClick={left6} id="btn-arrow-right">
+              <IoIosArrowForward size={30}></IoIosArrowForward>
+            </button>
             {dataprodutos6.map((item) => {
               return (
                 <div key={item._id} className="item-home">
-                  {item.promocao2 == true && item.desconto == 10 ? <img id="icon-cupom" src={cupom1}></img> : item.desconto == 30 ? <img id="icon-cupom" src={cupom2}></img> : item.desconto == 50 ? <img id="icon-cupom" src={cupom3}></img> : ''}
+                  {item.promocao2 == true && item.desconto == 10 ? (
+                    <img id="icon-cupom" src={cupom1}></img>
+                  ) : item.desconto == 30 ? (
+                    <img id="icon-cupom" src={cupom2}></img>
+                  ) : item.desconto == 50 ? (
+                    <img id="icon-cupom" src={cupom3}></img>
+                  ) : (
+                    ""
+                  )}
 
                   {fotocorselecionada == null ? (
                     <img
@@ -1359,10 +1717,54 @@ const Home = () => {
                     ></HiHeart>
                   </button>
                   <h3>{item.modelo}</h3>
-                  {item.promocao2 == true ? <p style={window.screen.width > 500 ? { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", height: "60px" } : { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", fontSize: "10px" }}>Comprando {item.qtdpromocao2} produto(s) ou mais voçê ganha {item.desconto}% de desconto!</p> : <div style={{ height: "60px" }}></div>}
+                  {item.promocao2 == true ? (
+                    <p
+                      style={
+                        window.screen.width > 500
+                          ? {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              height: "60px",
+                            }
+                          : {
+                              color: "darkgreen",
+                              fontWeight: "600",
+                              background: "rgb(149, 255, 149)",
+                              padding: "5px",
+                              borderRadius: "5px",
+                              fontSize: "10px",
+                            }
+                      }
+                    >
+                      Comprando {item.qtdpromocao2} produto(s) ou mais voçê
+                      ganha {item.desconto}% de desconto!
+                    </p>
+                  ) : (
+                    <div style={{ height: "60px" }}></div>
+                  )}
 
                   <h4>R${item.preco}</h4>
-                  <p style={window.screen.width < 450 ? { color: "#666666", marginBottom: '25px', fontSize: "11px", width: "max-content" } : { color: "#666666", marginBottom: '15px' }}>Em até 7x de {Number(parseFloat(item.preco) / 7).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                  <p
+                    style={
+                      window.screen.width < 450
+                        ? {
+                            color: "#666666",
+                            marginBottom: "25px",
+                            fontSize: "11px",
+                            width: "max-content",
+                          }
+                        : { color: "#666666", marginBottom: "15px" }
+                    }
+                  >
+                    Em até 7x de{" "}
+                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      "pt-br",
+                      { style: "currency", currency: "BRL" }
+                    )}
+                  </p>
 
                   <div style={{ display: "flex" }} id="label-div-ajus-absolute">
                     {item.cores.corPrimary.cor1 != "" ? (
@@ -1374,15 +1776,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                            [
-                              dataprodutos6.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos6.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corPrimary.imgurl}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corPrimary.imgurl}`
-                            )
-
                           }
                         ></input>
                         <label
@@ -1401,14 +1802,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                            [
-                              dataprodutos6.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos6.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSecondary.imgurl4}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSecondary.imgurl4}`
-                            )
                           }
                         ></input>
                         <label
@@ -1427,14 +1828,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                            [
-                              dataprodutos6.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos6.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corTertiary.imgurl7}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corTertiary.imgurl7}`
-                            )
                           }
                         ></input>
                         <label
@@ -1453,14 +1854,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                            [
-                              dataprodutos6.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos6.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corQuaternary.imgurl10}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corQuaternary.imgurl10}`
-                            )
                           }
                         ></input>
                         <label
@@ -1479,14 +1880,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                            [
-                              dataprodutos6.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos6.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corFive.imgurl13}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corFive.imgurl13}`
-                            )
                           }
                         ></input>
                         <label
@@ -1505,14 +1906,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                            [
-                              dataprodutos6.findIndex(
-                                (index) => index._id === item._id
+                              [
+                                dataprodutos6.findIndex(
+                                  (index) => index._id === item._id
+                                )
+                              ].setAttribute(
+                                "src",
+                                `${item.cores.corSix.imgurl16}`
                               )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSix.imgurl16}`
-                            )
                           }
                         ></input>
                         <label
@@ -1527,7 +1928,6 @@ const Home = () => {
               );
             })}
           </article>
-
         </section>
       </div>
       <Footer />

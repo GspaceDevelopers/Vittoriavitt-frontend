@@ -21,7 +21,7 @@ export default function Carrinho() {
   const dispath = useDispatch();
   const { usercliente } = useContext(AuthContext);
 
-  const [tipoentrega, setTipoentrega] = useState('');
+  const [tipoentrega, setTipoentrega] = useState("");
   const [datacarrinho, setDatacarrinho] = useState([]);
   const [dadosfrete, setDadosfrete] = useState([]);
   const [valorfinal, setValorfinal] = useState();
@@ -91,7 +91,7 @@ export default function Carrinho() {
     if (
       (datacarrinho.some((item) => item.promocao) === true &&
         datacarrinho.length >=
-        datacarrinho.map((item) => item.qtdpromocao)[0]) ||
+          datacarrinho.map((item) => item.qtdpromocao)[0]) ||
       somaqtd >= datacarrinho.map((item) => item.qtdpromocao)[0] ||
       datacarrinho.some((item) => item.quantidade >= item.qtdpromocao)
     ) {
@@ -134,7 +134,6 @@ export default function Carrinho() {
       }
     }
 
-
     setItemclicado(
       JSON.parse(localStorage.getItem("descontoaplicado")) || "[]"
     );
@@ -142,7 +141,6 @@ export default function Carrinho() {
     //console.log(frete)
 
     // console.log(dadosentrega.map(item => item.Valor));
-
   }, [dadosfrete, valorfinal]);
 
   function additem(item) {
@@ -190,60 +188,54 @@ export default function Carrinho() {
   }
 
   async function CalcFrete2() {
-
-    if (cep == '') {
-      toast.info('Digite seu cep!')
-      return
+    if (cep == "") {
+      toast.info("Digite seu cep!");
+      return;
     }
-    setLoad(true)
+    setLoad(true);
 
     let url = "https://freteapigspace.herokuapp.com/frete";
     await axios
       .post(url, {
         headers: {
-          'Content-type': 'application/json'
+          "Content-type": "application/json",
         },
-        ceporigem: '28660000',
+        ceporigem: "28660000",
         cepdestino: cep,
-        peso:datacarrinho.map(item => item.peso)[0],
-        comprimento:datacarrinho.map(item => item.comprimento)[0],
-        altura:datacarrinho.map(item => item.altura)[0],
-        largura:datacarrinho.map(item => item.largura)[0],
-        diametro:datacarrinho.map(item => item.diametro)[0],
-        formato:datacarrinho.map(item => item.formato)[0],
+        peso: datacarrinho.map((item) => item.peso)[0],
+        comprimento: datacarrinho.map((item) => item.comprimento)[0],
+        altura: datacarrinho.map((item) => item.altura)[0],
+        largura: datacarrinho.map((item) => item.largura)[0],
+        diametro: datacarrinho.map((item) => item.diametro)[0],
+        formato: datacarrinho.map((item) => item.formato)[0],
       })
       .then((result) => {
-        const arrayCep = result.data
-        console.log(arrayCep)
+        const arrayCep = result.data;
+        console.log(arrayCep);
 
-        setDadosentrega(arrayCep)
-
+        setDadosentrega(arrayCep);
 
         setLoad(false);
-        Viacep.get(`${cep}/json`)
-          .then((data) => {
-            //console.log(data.data);
-            setDadoscep(data.data);
-            setEndereco(data.data.logradouro);
-            setBairro(data.data.bairro);
-            setCidade(data.data.localidade);
-            setEstado(data.data.uf);
-          });
+        Viacep.get(`${cep}/json`).then((data) => {
+          //console.log(data.data);
+          setDadoscep(data.data);
+          setEndereco(data.data.logradouro);
+          setBairro(data.data.bairro);
+          setCidade(data.data.localidade);
+          setEstado(data.data.uf);
+        });
       })
       .catch((error) => {
         console.log(error);
-        toast.info('Verifique seu cep!')
-
+        toast.info("Verifique seu cep!");
       });
-
   }
-
 
   //REQUISIÇÃO CREDITO//
   async function fazerpedido() {
-    if (nome == '' || email == '' || telefone == '' || cpf == '' || cep == '') {
-      toast.info('Preencha todos os campos!')
-      return
+    if (nome == "" || email == "" || telefone == "" || cpf == "" || cep == "") {
+      toast.info("Preencha todos os campos!");
+      return;
     }
     const data = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`;
     const hora = `${new Date().getHours()}:${new Date().getMinutes()}`;
@@ -294,7 +286,7 @@ export default function Carrinho() {
               "Content-type": "application/json",
             },
             idpedido: `${Math.floor(Math.random() * 1000)}`,
-            idLojafranqueada: 'vittoriafitstore',
+            idLojafranqueada: "vittoriafitstore",
             uid: usercliente.uid,
             nomecliente: nome,
             cpf: cpf,
@@ -329,9 +321,9 @@ export default function Carrinho() {
 
   // REQUISIÇÃO PIX//
   async function fazerpedidopix() {
-    if (nome == '' || email == '' || telefone == '' || cpf == '' || cep == '') {
-      toast.info('Preencha todos os campos!')
-      return
+    if (nome == "" || email == "" || telefone == "" || cpf == "" || cep == "") {
+      toast.info("Preencha todos os campos!");
+      return;
     }
     await apidepagamento
       .post("/1/sales/", {
@@ -359,7 +351,7 @@ export default function Carrinho() {
               "Content-type": "application/json",
             },
             idpedido: `${Math.floor(Math.random() * 1000)}`,
-            idLojafranqueada: 'vittoriafitstore',
+            idLojafranqueada: "vittoriafitstore",
             uid: usercliente.uid,
             nomecliente: nome,
             cpf: cpf,
@@ -395,9 +387,9 @@ export default function Carrinho() {
   //REQUISIÇÃO BOLETO//
 
   async function fazerpedidoboleto() {
-    if (nome == '' || email == '' || telefone == '' || cpf == '' || cep == '') {
-      toast.info('Preencha todos os campos!')
-      return
+    if (nome == "" || email == "" || telefone == "" || cpf == "" || cep == "") {
+      toast.info("Preencha todos os campos!");
+      return;
     }
     await apidepagamento
       .post("/1/sales/", {
@@ -449,7 +441,7 @@ export default function Carrinho() {
               "Content-type": "application/json",
             },
             idpedido: `${Math.floor(Math.random() * 1000)}`,
-            idLojafranqueada: 'vittoriafitstore',
+            idLojafranqueada: "vittoriafitstore",
             uid: usercliente.uid,
             nomecliente: nome,
             cpf: cpf,
@@ -583,7 +575,6 @@ export default function Carrinho() {
       <Titlemainallpages name="MEU CARRINHO"></Titlemainallpages>
       <Timer></Timer>
 
-
       {modalcadastro != false ? (
         <div className="modalCadastro">
           <div className="container-cadastro-carrinho">
@@ -660,14 +651,16 @@ export default function Carrinho() {
                 </p>
                 <h3>Endereço para a entrega</h3>
               </div>
-              <div style={{ width: '100%' }}>
+              <div style={{ width: "100%" }}>
                 <input
                   onChange={(e) => setCep(e.target.value)}
                   type="text"
                   placeholder="CEP ex: 08385165"
                   autoComplete={true}
                 ></input>
-                <button id="btncalc" onClick={CalcFrete2}>{load == false ? 'Calcular' : 'Calculando...'}</button>
+                <button id="btncalc" onClick={CalcFrete2}>
+                  {load == false ? "Calcular" : "Calculando..."}
+                </button>
               </div>
               <input
                 value={endereco}
@@ -702,30 +695,53 @@ export default function Carrinho() {
               ></input>
 
               <div className="box-frete">
-
-                {verificafrete != true ?
-                  <h2 style={{ color: "green", textAlign: 'center' }}>Parabéns! Você ganhou Frete Grátis!</h2>
-                  :
+                {verificafrete != true ? (
+                  <h2 style={{ color: "green", textAlign: "center" }}>
+                    Parabéns! Você ganhou Frete Grátis!
+                  </h2>
+                ) : (
                   <>
                     <div>
                       <h2>Correios</h2>
-                      {dadosentrega.map(item => {
+                      {dadosentrega.map((item) => {
                         return (
-                          <div style={{ display: "flex", alignitems: "center", gap: "5px" }} key={item.id}>
-                            <input name="tipo" style={{ width: '15px', height: "15px" }} type={'radio'} value={item.Valor} onChange={(e) => setFrete(e.target.value)} ></input>
-                            <label style={{ display: "flex", alignitems: "center", gap: "5px" }}>{item.Codigo == '04014' ? 'Sedex' : 'Pac'}<p>até {item.PrazoEntrega} dias úteis</p></label>
+                          <div
+                            style={{
+                              display: "flex",
+                              alignitems: "center",
+                              gap: "5px",
+                            }}
+                            key={item.id}
+                          >
+                            <input
+                              name="tipo"
+                              style={{ width: "15px", height: "15px" }}
+                              type={"radio"}
+                              value={item.Valor}
+                              onChange={(e) => setFrete(e.target.value)}
+                            ></input>
+                            <label
+                              style={{
+                                display: "flex",
+                                alignitems: "center",
+                                gap: "5px",
+                              }}
+                            >
+                              {item.Codigo == "04014" ? "Sedex" : "Pac"}
+                              <p>até {item.PrazoEntrega} dias úteis</p>
+                            </label>
                           </div>
-                        )
+                        );
                       })}
                     </div>
                     <div>
                       <h2>R${frete}</h2>
                     </div>
                   </>
-                }
+                )}
               </div>
             </div>
-            {window.screen.width < 500 ?
+            {window.screen.width < 500 ? (
               <div className="box-dados-pedido">
                 <div
                   style={{ display: "flex", alignItems: "center", gap: "10px" }}
@@ -848,9 +864,9 @@ export default function Carrinho() {
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : parseFloat(valorfinal).toLocaleString("pt-br", {
-                            style: "currency",
-                            currency: "BRL",
-                          })}
+                              style: "currency",
+                              currency: "BRL",
+                            })}
                       </h2>
                     </div>
                   </div>
@@ -864,43 +880,44 @@ export default function Carrinho() {
                     >
                       <h2
                         style={
-                          (datacarrinho.some((item) => item.promocao == true) == true &&
+                          (datacarrinho.some((item) => item.promocao == true) ==
+                            true &&
                             datacarrinho.some(
                               (item) => item.quantidade >= item.qtdpromocao
                             )) ||
-                            somaqtd >=
+                          somaqtd >=
                             datacarrinho.map((item) => item.qtdpromocao)[0] ||
-                            datacarrinho.length >=
+                          datacarrinho.length >=
                             datacarrinho.map((item) => item.qtdpromocao)[0]
                             ? {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                             : {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "transparent",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "transparent",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                         }
                       >
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : (datacarrinho.some((item) => item.promocao) ==
-                            true &&
-                            datacarrinho.some(
-                              (item) => item.quantidade >= item.qtdpromocao
-                            )) ||
+                              true &&
+                              datacarrinho.some(
+                                (item) => item.quantidade >= item.qtdpromocao
+                              )) ||
                             somaqtd >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                              datacarrinho.map((item) => item.qtdpromocao)[0] ||
                             datacarrinho.length >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0] 
-                            ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
-                            : ""}
+                              datacarrinho.map((item) => item.qtdpromocao)[0]
+                          ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
+                          : ""}
                       </h2>
 
                       {verificafrete ? (
@@ -937,7 +954,10 @@ export default function Carrinho() {
                     </h2>
                   </div>
                 </div>
-              </div> : ''}
+              </div>
+            ) : (
+              ""
+            )}
             <div className="box-dados-pagamento">
               <div
                 style={{ display: "flex", alignItems: "center", gap: "10px" }}
@@ -1247,9 +1267,9 @@ export default function Carrinho() {
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : parseFloat(valorfinal).toLocaleString("pt-br", {
-                            style: "currency",
-                            currency: "BRL",
-                          })}
+                              style: "currency",
+                              currency: "BRL",
+                            })}
                       </h2>
                     </div>
                   </div>
@@ -1267,39 +1287,39 @@ export default function Carrinho() {
                             datacarrinho.some(
                               (item) => item.quantidade >= item.qtdpromocao
                             )) ||
-                            somaqtd >=
+                          somaqtd >=
                             datacarrinho.map((item) => item.qtdpromocao)[0] ||
-                            datacarrinho.length >=
+                          datacarrinho.length >=
                             datacarrinho.map((item) => item.qtdpromocao)[0]
                             ? {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                             : {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "transparent",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "transparent",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                         }
                       >
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : (datacarrinho.some((item) => item.promocao) ==
-                            true &&
-                            datacarrinho.some(
-                              (item) => item.quantidade >= item.qtdpromocao
-                            )) ||
+                              true &&
+                              datacarrinho.some(
+                                (item) => item.quantidade >= item.qtdpromocao
+                              )) ||
                             somaqtd >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                              datacarrinho.map((item) => item.qtdpromocao)[0] ||
                             datacarrinho.length >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0]
-                            ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
-                            : ""}
+                              datacarrinho.map((item) => item.qtdpromocao)[0]
+                          ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
+                          : ""}
                       </h2>
 
                       {verificafrete ? (
@@ -1350,17 +1370,17 @@ export default function Carrinho() {
           style={
             window.screen.width > 500
               ? {
-                display: "flex",
-                flexDirection: "column",
-                width: "50%",
-                gap: "20px",
-              }
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "50%",
+                  gap: "20px",
+                }
               : {
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-                gap: "20px",
-              }
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  gap: "20px",
+                }
           }
         >
           <div className="box-item">
@@ -1441,7 +1461,6 @@ export default function Carrinho() {
               );
             })}
           </div>
-
         </div>
 
         <div className="box-total">
@@ -1465,9 +1484,9 @@ export default function Carrinho() {
                 {datacarrinho.length == 0
                   ? "R$00,00"
                   : parseFloat(valorfinal).toLocaleString("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
+                      style: "currency",
+                      currency: "BRL",
+                    })}
               </h2>
             </div>
           </div>
@@ -1481,37 +1500,37 @@ export default function Carrinho() {
                     datacarrinho.some(
                       (item) => item.quantidade >= item.qtdpromocao
                     )) ||
-                    somaqtd >= datacarrinho.map((item) => item.qtdpromocao)[0] ||
-                    datacarrinho.length >=
+                  somaqtd >= datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                  datacarrinho.length >=
                     datacarrinho.map((item) => item.qtdpromocao)[0]
                     ? {
-                      color: "green",
-                      fontSize: "14px",
-                      background: "rgb(149, 255, 149)",
-                      padding: "5px",
-                      borderRadius: "5px",
-                    }
+                        color: "green",
+                        fontSize: "14px",
+                        background: "rgb(149, 255, 149)",
+                        padding: "5px",
+                        borderRadius: "5px",
+                      }
                     : {
-                      color: "green",
-                      fontSize: "14px",
-                      background: "transparent",
-                      padding: "5px",
-                      borderRadius: "5px",
-                    }
+                        color: "green",
+                        fontSize: "14px",
+                        background: "transparent",
+                        padding: "5px",
+                        borderRadius: "5px",
+                      }
                 }
               >
                 {datacarrinho.length == 0
                   ? "R$00,00"
                   : (datacarrinho.some((item) => item.promocao) == true &&
-                    datacarrinho.some(
-                      (item) => item.quantidade >= item.qtdpromocao
-                    )) ||
+                      datacarrinho.some(
+                        (item) => item.quantidade >= item.qtdpromocao
+                      )) ||
                     somaqtd >=
-                    datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                      datacarrinho.map((item) => item.qtdpromocao)[0] ||
                     datacarrinho.length >=
-                    datacarrinho.map((item) => item.qtdpromocao)[0]
-                    ? `Desconto de ${itemclicado}% ativado! `
-                    : ""}
+                      datacarrinho.map((item) => item.qtdpromocao)[0]
+                  ? `Desconto de ${itemclicado}% ativado! `
+                  : ""}
               </h2>
               {verificafrete != true ? (
                 <p

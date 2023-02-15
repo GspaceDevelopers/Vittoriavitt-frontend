@@ -31,13 +31,25 @@ export default function Cadastro() {
   function Cadclientes(e) {
     e.preventDefault();
 
-    if (cpf == '' && nome == '' && cep == '' && sexo == '' && endereco == '' && numero == '' && email == '' && telefone == '' && Complemento == '' && estado == '' && senha == '') {
-      toast.error('Preencha todos os campos!')
-      return
+    if (
+      cpf == "" &&
+      nome == "" &&
+      cep == "" &&
+      sexo == "" &&
+      endereco == "" &&
+      numero == "" &&
+      email == "" &&
+      telefone == "" &&
+      Complemento == "" &&
+      estado == "" &&
+      senha == ""
+    ) {
+      toast.error("Preencha todos os campos!");
+      return;
     }
     if (senha != repitasenha) {
-      toast.error('Senhas não conferem')
-      return
+      toast.error("Senhas não conferem");
+      return;
     }
     Cadastroclientes(
       nome,
@@ -55,7 +67,7 @@ export default function Cadastro() {
       pais,
       estado,
       cidade,
-      senha,
+      senha
     );
     toast.success("cadastro realizado com sucesso!");
   }
@@ -128,7 +140,6 @@ export default function Cadastro() {
                   </div>
                 </div>
               </div>
-
             </div>
             <div className="inputs-row">
               <div className="inputs-row-area">

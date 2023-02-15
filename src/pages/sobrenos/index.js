@@ -15,9 +15,7 @@ const Sobrenos = () => {
       <div className="main-sobrenos">
         <div className="main-sobrenos-text">
           <h2>Sobre Nós:</h2>
-          <p>
-             
-          </p>
+          <p></p>
         </div>
         <div className="main-sobrenos-img">
           <div className="img-alinhar">

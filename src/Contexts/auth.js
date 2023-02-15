@@ -65,35 +65,13 @@ export default function AuthProvider({ children }) {
             .auth()
             .createUserWithEmailAndPassword(email, senha)
             .then(async (value) => {
-                let uid = value.user.uid;
-
-              /*  await firebase
-                    .firestore()
-                    .collection(uid)
-                    .doc(uid)
-                    .set({
-                        uid: uid,
-                        nome: nomeAdmin,
-                        telefone: telefone,
-                        email: email,
-                        imgUrl: null,
-                    })
-                    .then(() => {
-                        let data = {
-                            uid: uid,
-                            nome: nomeAdmin,
-                            telefone: telefone,
-                            email: email,
-                            imgUrl: null,
-                        };*/
-                        setUser(data);
-                        toast.success("usuario cadastrado com sucesso");
-                        window.location.href = "/AdminLogin";
-                    })
-                    .catch((error) => {
-                        alert(error);
-                    });
-            });
+                
+                    toast.success("usuario cadastrado com sucesso");
+                    window.location.href = "/AdminLogin";
+                })
+                .catch((error) => {
+                    alert(error);
+                });
     }
 
     //funcao fazer login
@@ -110,14 +88,12 @@ export default function AuthProvider({ children }) {
                     .collection(uid)
                     .doc(uid)
                     .get();
+                };*/
+                // setUser(data);
                 let data = {
                     uid: uid,
-                    nome: Datauser.data().nome,
-                    telefone: Datauser.data().telefone,
-                    email: emailAdmin,
-                    imgUrl: null,
-                };*/
-                setUser(data);
+                    imgUrl: null}
+
                 sotrageUser(data);
                 window.location.href = '/admincontroller'
             })

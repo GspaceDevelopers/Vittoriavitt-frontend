@@ -13,7 +13,6 @@ import cupom1 from "../../Assets/cupoms/1.png";
 import cupom2 from "../../Assets/cupoms/2.png";
 import cupom3 from "../../Assets/cupoms/3.png";
 
-
 export default function Loja2() {
   const { usercliente } = useContext(AuthContext);
 
@@ -26,20 +25,27 @@ export default function Loja2() {
   const [edicao, setEdicao] = useState([]);
   const [arrayAlfabetico, setArrayAlfabetico] = useState();
   const [corfiltro, setCorfiltro] = useState([]);
-  const [arraydeCores, setArraydeCores] = useState([])
+  const [arraydeCores, setArraydeCores] = useState([]);
+  const [quantidadeTotal, setQuantidadeTotal] = useState();
 
   useEffect(() => {
     document.title = `${search} 👙 |  Outlet das Lingeries`;
 
-    const categoriatext = `${(search).toLowerCase()}`
-    console.log(categoriatext)
+    const categoriatext = `${search.toLowerCase()}`;
+    console.log(categoriatext);
 
-    api.get(`/produtos`)
-      .then((data) => {
-        setDataprodutos(data.data.filter(
-          item => item.categoria == search || item.subcategoria1 == search || item.subcategoria2 == search || item.subcategoria3 == search || item.subcategoria4 == search
-        ));
-      });
+    api.get(`/produtos`).then((data) => {
+      setDataprodutos(
+        data.data.filter(
+          (item) =>
+            item.categoria == search ||
+            item.subcategoria1 == search ||
+            item.subcategoria2 == search ||
+            item.subcategoria3 == search ||
+            item.subcategoria4 == search
+        )
+      );
+    });
 
     setPrecoordem(
       dataprodutos.sort((a, b) => {
@@ -51,22 +57,22 @@ export default function Loja2() {
       })
     );
 
+    api.get("/cores").then((data) => {
+      setArraydeCores(data.data);
+    });
 
+    api.get("/edicao").then((data) => {
+      setEdicao(data.data);
+    });
 
-    api.get('/cores')
-      .then((data) => {
-        setArraydeCores(data.data)
-      })
-
-    api.get('/edicao')
-      .then((data) => {
-        setEdicao(data.data)
-      })
-
-    document.querySelector('.banner-loja').setAttribute('style', `background-image:url(${edicao.map(item => item.bannerpaginaprod)[0]})`)
-
-
-
+    document
+      .querySelector(".banner-loja")
+      .setAttribute(
+        "style",
+        `background-image:url(${
+          edicao.map((item) => item.bannerpaginaprod)[0]
+        })`
+      );
   }, [edicao]);
 
   function addfavoritos(item) {
@@ -88,24 +94,20 @@ export default function Loja2() {
   }
 
   async function filterpreco() {
-
     const filtro = dataprodutos.filter(
       (item) =>
         parseFloat(item.preco.replace(",", ".")) >= 0.0 &&
         parseFloat(item.preco.replace(",", ".")) < 50.0
     );
     setDataprodutos(filtro);
-
   }
   async function filterpreco1() {
-
     const filtro = dataprodutos.filter(
       (item) =>
         parseFloat(item.preco.replace(",", ".")) >= 50.0 &&
         parseFloat(item.preco.replace(",", ".")) < 500.0
     );
     setDataprodutos(filtro);
-
   }
 
   function ordernarmaisrecente() {
@@ -117,17 +119,12 @@ export default function Loja2() {
   function ChangePositionProduct() {
     const value = document.getElementById("select-ordenar-produtos-loja").value;
     if (value == "recente") {
-
       setDataprodutos(dataprodutos.reverse());
-
     }
     if (value == "") {
-
       setDataprodutos(dataprodutos);
-
     }
     if (value == "aaz") {
-
       setDataprodutos(
         dataprodutos.sort((a, b) => {
           if (a.modelo < b.modelo) {
@@ -137,10 +134,8 @@ export default function Loja2() {
           }
         })
       );
-
     }
     if (value == "zaa") {
-
       setDataprodutos(
         dataprodutos
           .sort((a, b) => {
@@ -152,10 +147,8 @@ export default function Loja2() {
           })
           .reverse()
       );
-
     }
     if (value == "barato") {
-
       setDataprodutos(
         dataprodutos.sort((a, b) => {
           if (a.preco < b.preco) {
@@ -165,10 +158,8 @@ export default function Loja2() {
           }
         })
       );
-
     }
     if (value == "caro") {
-
       setDataprodutos(
         dataprodutos
           .sort((a, b) => {
@@ -189,18 +180,18 @@ export default function Loja2() {
       if (window.screen.width < 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:150px");
+          [i].setAttribute("style", "width:150px");
       }
       if (window.screen.width > 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:250px");
+          [i].setAttribute("style", "width:250px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
       }
     }
   }
@@ -211,55 +202,57 @@ export default function Loja2() {
       if (window.screen.width < 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:350px");
+          [i].setAttribute("style", "width:350px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:280px");
+          [i].setAttribute("style", "width:280px");
       }
       if (window.screen.width > 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:300px");
+          [i].setAttribute("style", "width:300px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
       }
     }
   }
 
-
-
   async function filtercores(item) {
-    await api.get(`/produtos`)
-      .then((data) => {
-        const array = data.data;
-        setCorfiltro(
-          array.filter(
-            //cor.categoria == search || cor.subcategoria1 == search || cor.subcategoria2 == search || cor.subcategoria3 == search || cor.subcategoria4 == search &&
-            (cor) =>
-              cor.cores.corPrimary.cor1 == item.cor ||
-              cor.cores.corSecondary.cor2 == item.cor ||
-              cor.cores.corTertiary.cor3 == item.cor ||
-              cor.cores.corQuaternary.cor4 == item.cor ||
-              cor.cores.corFive.cor5 == item.cor ||
-              cor.cores.corSix.cor6 == item.cor
-          )
-        );
-        console.log(corfiltro);
-      });
+    await api.get(`/produtos`).then((data) => {
+      const array = data.data;
+      setCorfiltro(
+        array.filter(
+          //cor.categoria == search || cor.subcategoria1 == search || cor.subcategoria2 == search || cor.subcategoria3 == search || cor.subcategoria4 == search &&
+          (cor) =>
+            cor.cores.corPrimary.cor1 == item.cor ||
+            cor.cores.corSecondary.cor2 == item.cor ||
+            cor.cores.corTertiary.cor3 == item.cor ||
+            cor.cores.corQuaternary.cor4 == item.cor ||
+            cor.cores.corFive.cor5 == item.cor ||
+            cor.cores.corSix.cor6 == item.cor
+        )
+      );
+      console.log(corfiltro);
+    });
   }
   useEffect(() => {
     setDataprodutos(corfiltro);
   }, [corfiltro]);
 
-
   function cleanfiltrocor() {
-    api.get(`/produtos`)
-      .then((data) => {
-        setDataprodutos(data.data.filter(
-          item => item.categoria == search || item.subcategoria1 == search || item.subcategoria2 == search || item.subcategoria3 == search || item.subcategoria4 == search
-        ));
-      });
+    api.get(`/produtos`).then((data) => {
+      setDataprodutos(
+        data.data.filter(
+          (item) =>
+            item.categoria == search ||
+            item.subcategoria1 == search ||
+            item.subcategoria2 == search ||
+            item.subcategoria3 == search ||
+            item.subcategoria4 == search
+        )
+      );
+    });
   }
 
   return (
@@ -362,259 +355,331 @@ export default function Loja2() {
               ""
             )}
             {dataprodutos.map((item) => {
-              return (
-                <div key={item._id} className="item-home" id="item-pag-loja">
-                  {item.promocao2 == true && item.desconto == 10 ? (
-                    <img id="icon-cupom" src={cupom1}></img>
-                  ) : item.desconto == 30 ? (
-                    <img id="icon-cupom" src={cupom2}></img>
-                  ) : item.desconto == 50 ? (
-                    <img id="icon-cupom" src={cupom3}></img>
-                  ) : (
-                    ""
-                  )}
+              setQuantidadeTotal(
+                Number(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade) +
+                  Number(
+                    item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2
+                  ) +
+                  Number(
+                    item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3
+                  ) +
+                  Number(
+                    item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4
+                  ) +
+                  Number(
+                    item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5
+                  ) +
+                  Number(
+                    item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6
+                  ) +
+                  Number(
+                    item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7
+                  ) +
+                  Number(
+                    item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8
+                  ) +
+                  Number(
+                    item.cores.corTertiary.tamanhos.tamanhoOne.quantidade9
+                  ) +
+                  Number(
+                    item.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10
+                  ) +
+                  Number(
+                    item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11
+                  ) +
+                  Number(
+                    item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12
+                  ) +
+                  Number(
+                    item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13
+                  ) +
+                  Number(
+                    item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14
+                  ) +
+                  Number(
+                    item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15
+                  ) +
+                  Number(
+                    item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16
+                  ) +
+                  Number(item.cores.corFive.tamanhos.tamanhoOne.quantidade17) +
+                  Number(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18) +
+                  Number(
+                    item.cores.corFive.tamanhos.tamanhoThree.quantidade19
+                  ) +
+                  Number(item.cores.corFive.tamanhos.tamanhoFour.quantidade20) +
+                  Number(item.cores.corSix.tamanhos.tamanhoOne.quantidade21) +
+                  Number(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22) +
+                  Number(item.cores.corSix.tamanhos.tamanhoThree.quantidade23) +
+                  Number(item.cores.corSix.tamanhos.tamanhoFour.quantidade24)
+              );
 
-                  {fotocorselecionada == null ? (
-                    <img
-                      className="imgitem imgitem-pag-loja"
-                      id="imgitem-pag-loja"
-                      onClick={() =>
-                        (window.location.href = `/PaginaProduto/${item._id}`)
-                      }
-                      src={item.cores.corPrimary.imgurl}
-                    ></img>
-                  ) : (
-                    <img
-                      className="imgitem imgitem-pag-loja"
-                      id="imgitem-pag-loja"
-                      onClick={() =>
-                        (window.location.href = `/PaginaProduto/${item._id}`)
-                      }
-                      src={fotocorselecionada}
-                    ></img>
-                  )}
-                  <div className="div-ajust-flex-start">
-                    <button id="btn-fav-home">
-                      <HiHeart
-                        size={20}
-                        onClick={() => addfavoritos(item)}
-                      ></HiHeart>
-                    </button>
+              console.log(`${quantidadeTotal} esse aqui`);
 
-                    <h3>{item.modelo}</h3>
-                    {item.promocao2 == true ? (
-                      <p
-                        style={
-                          window.screen.width > 500
-                            ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
-                            : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
-                        }
-                      >
-                        Comprando {item.qtdpromocao2} produto(s) ou mais voçê
-                        ganha {item.desconto}% de desconto!
-                      </p>
+              {
+                quantidadeTotal > 0 ? (
+                  <div key={item._id} className="item-home" id="item-pag-loja">
+                    {item.promocao2 == true && item.desconto == 10 ? (
+                      <img id="icon-cupom" src={cupom1}></img>
+                    ) : item.desconto == 30 ? (
+                      <img id="icon-cupom" src={cupom2}></img>
+                    ) : item.desconto == 50 ? (
+                      <img id="icon-cupom" src={cupom3}></img>
                     ) : (
-                      <div style={{ width: "100%", height: "48.4px" }}></div>
+                      ""
                     )}
 
-                    <h4>R${item.preco}</h4>
-                    <p
-                      style={
-                        window.screen.width < 450
-                          ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
+                    {fotocorselecionada == null ? (
+                      <img
+                        className="imgitem imgitem-pag-loja"
+                        id="imgitem-pag-loja"
+                        onClick={() =>
+                          (window.location.href = `/PaginaProduto/${item._id}`)
+                        }
+                        src={item.cores.corPrimary.imgurl}
+                      ></img>
+                    ) : (
+                      <img
+                        className="imgitem imgitem-pag-loja"
+                        id="imgitem-pag-loja"
+                        onClick={() =>
+                          (window.location.href = `/PaginaProduto/${item._id}`)
+                        }
+                        src={fotocorselecionada}
+                      ></img>
+                    )}
+                    <div className="div-ajust-flex-start">
+                      <button id="btn-fav-home">
+                        <HiHeart
+                          size={20}
+                          onClick={() => addfavoritos(item)}
+                        ></HiHeart>
+                      </button>
+
+                      <h3>{item.modelo}</h3>
+                      {item.promocao2 == true ? (
+                        <p
+                          style={
+                            window.screen.width > 500
+                              ? {
+                                  color: "darkgreen",
+                                  fontWeight: "600",
+                                  background: "rgb(149, 255, 149)",
+                                  padding: "5px",
+                                  borderRadius: "5px",
+                                }
+                              : {
+                                  color: "darkgreen",
+                                  fontWeight: "600",
+                                  background: "rgb(149, 255, 149)",
+                                  padding: "5px",
+                                  borderRadius: "5px",
+                                  fontSize: "10px",
+                                }
                           }
-                          : { color: "#666666", marginBottom: "15px" }
-                      }
-                    >
-                      Em até 7x de{" "}
-                      {Number(parseFloat(item.preco) / 7).toLocaleString(
-                        "pt-br",
-                        { style: "currency", currency: "BRL" }
+                        >
+                          Comprando {item.qtdpromocao2} produto(s) ou mais voçê
+                          ganha {item.desconto}% de desconto!
+                        </p>
+                      ) : (
+                        <div style={{ width: "100%", height: "48.4px" }}></div>
                       )}
-                    </p>
 
-                    <div
-                      style={{ display: "flex" }}
-                      id="label-div-ajus-absolute"
-                    >
-                      {item.cores.corPrimary.cor1 != "" ? (
-                        <div>
-                          <input
-                            value={item.cores.corPrimary.cor1}
-                            name="cores3"
-                            type="radio"
-                            onChange={() =>
-                              document
-                                .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
-                              )
+                      <h4>R${item.preco}</h4>
+                      <p
+                        style={
+                          window.screen.width < 450
+                            ? {
+                                color: "#666666",
+                                marginBottom: "25px",
+                                fontSize: "11px",
+                                width: "max-content",
+                              }
+                            : { color: "#666666", marginBottom: "15px" }
+                        }
+                      >
+                        Em até 7x de{" "}
+                        {Number(parseFloat(item.preco) / 7).toLocaleString(
+                          "pt-br",
+                          { style: "currency", currency: "BRL" }
+                        )}
+                      </p>
 
-                            }
-                          ></input>
-                          <label
-                            style={{ background: item.cores.corPrimary.cor1 }}
-                          ></label>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {item.cores.corSecondary.cor2 != "" ? (
-                        <div>
-                          <input
-                            value={item.cores.corSecondary.cor2}
-                            name="cores3"
-                            type="radio"
-                            onChange={() =>
-                              document
-                                .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
-                              )
-                            }
-                          ></input>
-                          <label
-                            style={{ background: item.cores.corSecondary.cor2 }}
-                          ></label>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {item.cores.corTertiary.cor3 != "" ? (
-                        <div>
-                          <input
-                            value={item.cores.corTertiary.cor3}
-                            name="cores3"
-                            type="radio"
-                            onChange={() =>
-                              document
-                                .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
-                              )
-                            }
-                          ></input>
-                          <label
-                            style={{ background: item.cores.corTertiary.cor3 }}
-                          ></label>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {item.cores.corQuaternary.cor4 != "" ? (
-                        <div>
-                          <input
-                            value={item.cores.corQuaternary.cor4}
-                            name="cores3"
-                            type="radio"
-                            onChange={() =>
-                              document
-                                .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
-                              )
-                            }
-                          ></input>
-                          <label
-                            style={{ background: item.cores.corQuaternary.cor4 }}
-                          ></label>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {item.cores.corFive.cor5 != "" ? (
-                        <div>
-                          <input
-                            value={item.cores.corFive.cor5}
-                            name="cores3"
-                            type="radio"
-                            onChange={() =>
-                              document
-                                .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
-                              )
-                            }
-                          ></input>
-                          <label
-                            style={{ background: item.cores.corFive.cor5 }}
-                          ></label>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {item.cores.corSix.cor6 != "" ? (
-                        <div>
-                          <input
-                            value={item.cores.corSix.cor6}
-                            name="cores3"
-                            type="radio"
-                            onChange={() =>
-                              document
-                                .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
-                              )
-                            }
-                          ></input>
-                          <label
-                            style={{ background: item.cores.corSix.cor6 }}
-                          ></label>
-                        </div>
-                      ) : (
-                        ""
-                      )}
+                      <div
+                        style={{ display: "flex" }}
+                        id="label-div-ajus-absolute"
+                      >
+                        {item.cores.corPrimary.cor1 != "" ? (
+                          <div>
+                            <input
+                              value={item.cores.corPrimary.cor1}
+                              name="cores3"
+                              type="radio"
+                              onChange={() =>
+                                document
+                                  .querySelectorAll(".imgitem")
+                                  [
+                                    dataprodutos.findIndex(
+                                      (index) => index._id === item._id
+                                    )
+                                  ].setAttribute(
+                                    "src",
+                                    `${item.cores.corPrimary.imgurl}`
+                                  )
+                              }
+                            ></input>
+                            <label
+                              style={{ background: item.cores.corPrimary.cor1 }}
+                            ></label>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {item.cores.corSecondary.cor2 != "" ? (
+                          <div>
+                            <input
+                              value={item.cores.corSecondary.cor2}
+                              name="cores3"
+                              type="radio"
+                              onChange={() =>
+                                document
+                                  .querySelectorAll(".imgitem")
+                                  [
+                                    dataprodutos.findIndex(
+                                      (index) => index._id === item._id
+                                    )
+                                  ].setAttribute(
+                                    "src",
+                                    `${item.cores.corSecondary.imgurl4}`
+                                  )
+                              }
+                            ></input>
+                            <label
+                              style={{
+                                background: item.cores.corSecondary.cor2,
+                              }}
+                            ></label>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {item.cores.corTertiary.cor3 != "" ? (
+                          <div>
+                            <input
+                              value={item.cores.corTertiary.cor3}
+                              name="cores3"
+                              type="radio"
+                              onChange={() =>
+                                document
+                                  .querySelectorAll(".imgitem")
+                                  [
+                                    dataprodutos.findIndex(
+                                      (index) => index._id === item._id
+                                    )
+                                  ].setAttribute(
+                                    "src",
+                                    `${item.cores.corTertiary.imgurl7}`
+                                  )
+                              }
+                            ></input>
+                            <label
+                              style={{
+                                background: item.cores.corTertiary.cor3,
+                              }}
+                            ></label>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {item.cores.corQuaternary.cor4 != "" ? (
+                          <div>
+                            <input
+                              value={item.cores.corQuaternary.cor4}
+                              name="cores3"
+                              type="radio"
+                              onChange={() =>
+                                document
+                                  .querySelectorAll(".imgitem")
+                                  [
+                                    dataprodutos.findIndex(
+                                      (index) => index._id === item._id
+                                    )
+                                  ].setAttribute(
+                                    "src",
+                                    `${item.cores.corQuaternary.imgurl10}`
+                                  )
+                              }
+                            ></input>
+                            <label
+                              style={{
+                                background: item.cores.corQuaternary.cor4,
+                              }}
+                            ></label>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {item.cores.corFive.cor5 != "" ? (
+                          <div>
+                            <input
+                              value={item.cores.corFive.cor5}
+                              name="cores3"
+                              type="radio"
+                              onChange={() =>
+                                document
+                                  .querySelectorAll(".imgitem")
+                                  [
+                                    dataprodutos.findIndex(
+                                      (index) => index._id === item._id
+                                    )
+                                  ].setAttribute(
+                                    "src",
+                                    `${item.cores.corFive.imgurl13}`
+                                  )
+                              }
+                            ></input>
+                            <label
+                              style={{ background: item.cores.corFive.cor5 }}
+                            ></label>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                        {item.cores.corSix.cor6 != "" ? (
+                          <div>
+                            <input
+                              value={item.cores.corSix.cor6}
+                              name="cores3"
+                              type="radio"
+                              onChange={() =>
+                                document
+                                  .querySelectorAll(".imgitem")
+                                  [
+                                    dataprodutos.findIndex(
+                                      (index) => index._id === item._id
+                                    )
+                                  ].setAttribute(
+                                    "src",
+                                    `${item.cores.corSix.imgurl16}`
+                                  )
+                              }
+                            ></input>
+                            <label
+                              style={{ background: item.cores.corSix.cor6 }}
+                            ></label>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
+                ) : (
+                  <>
+                    <div>{quantidadeTotal}</div>
+                  </>
+                );
+              }
             })}
           </div>
         </div>

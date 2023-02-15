@@ -239,7 +239,7 @@ export default function AdminController() {
     }
 
     loadpedidos();
-  }, []);
+  }, [dadosedicao]);
 
   useEffect(() => {
     api.get("/perguntas").then((item) => {
@@ -1587,10 +1587,1457 @@ export default function AdminController() {
     });
   }
 
+  async function tirabanner1() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1: "",
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+
+  async function tirabanner2() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:'',
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  
+  async function tirabanner3() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:'',
+          logo4:
+          urllogo4 == ""
+            ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+            : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner4() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:'',
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner5() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:'',
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner6() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:'',
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner7() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:'',
+        },
+        backgoundhome: {
+          background1:'',
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:'',
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner8() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:urlFoto1 == ""
+          ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+          : urlFoto1,
+          background2:'',
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:'',
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner9() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:urlFoto2 == ""
+          ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+          : urlFoto2,
+          background3:'',
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:'',
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner10() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3: urlFoto3 == ""
+          ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+          : urlFoto3,
+          backgroundmobile1:'',
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:'',
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner11() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1: urlmobile1 == ""
+          ? dadosedicao.map(
+              (item) => item.backgoundhome.backgroundmobile1
+            )[0]
+          : urlmobile1,
+          backgroundmobile2:'',
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:'',
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner12() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:'',
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4:
+            urlbanner4 == ""
+              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              : urlbanner4,
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:'',
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
   async function atualizarhome() {
     setLoad(true);
     await api2
-      .put(`/edicao/63e0fbc240285edbe3fcf57b`, {
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -1710,9 +3157,10 @@ export default function AdminController() {
       })
       .then(() => {
         setLoad(false);
-        toast.success("Homepage atualizada com sucesso!");
+        toast.success("Home atualizada com sucesso!");
       });
   }
+
 
   async function uploadbannercentralhome(e) {
     setLoad(false);
@@ -4346,7 +5794,7 @@ export default function AdminController() {
             </div>
             <div className="form-edita-home">
               <div className="box-input-files">
-                <span>Mudar valor frete gratis</span>
+                <span>Mudar valor frete grátis</span>
                 <input
                   type="number"
                   onChange={(e) => setTextofretegratis(e.target.value)}
@@ -4372,18 +5820,66 @@ export default function AdminController() {
                   Essas Imagens devem ter no maximo 1920×960 e
                   formato(jpeg,jpg,gif,webp) para melhor resolução
                 </strong>
-                <span>Mudar banner Home Descktop Destaque1 </span>
-                <input type="file" onChange={uploadlogo1}></input>
-                <span>Mudar banner Home Descktop Destaque2 </span>
-                <input type="file" onChange={uploadlogo2}></input>
-                <span>Mudar banner Home Descktop Destaque3 </span>
-                <input type="file" onChange={uploadlogo3}></input>
-                <span>Mudar banner Home Descktop Destaque4 </span>
+                <span>Mudar banner Home Computador Destaque1 </span>
+                <div style={{ display: "flex" }}>
+                  <input type="file" onChange={uploadlogo1}></input>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner1}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                </div>
+                <span>Mudar banner Home Computador Destaque2 </span>
+                <div style={{ display: "flex" }}>
+                  <input type="file" onChange={uploadlogo2}></input>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner2}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                </div>
+                <span>Mudar banner Home Computador Destaque3 </span>
+                <div style={{ display: "flex" }}>
+                  <input type="file" onChange={uploadlogo3}></input>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner3}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                </div>
+                <span>Mudar banner Home Computador Destaque4 </span>
+                <div style={{ display: "flex" }}>
                 <input type="file" onChange={uploadlogo4}></input>
-                <span>Mudar banner Home Descktop Destaque5 </span>
+                <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner4}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                </div>
+                <span>Mudar banner Home Computador Destaque5 </span>
+                <div style={{ display: "flex" }}>
                 <input type="file" onChange={uploadlogo5}></input>
-                <span>Mudar banner Home Descktop Destaque6 </span>
+                <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner5}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                </div>
+                <span>Mudar banner Home Computador Destaque6 </span>
+                <div style={{ display: "flex" }}>
                 <input type="file" onChange={uploadlogo6}></input>
+                <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner6}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                </div>
               </div>
 
               {
@@ -4393,22 +5889,71 @@ export default function AdminController() {
                     formato(jpeg,jpg,gif,webp) para melhor resolução
                   </strong>
 
-                  <span>Mudar banner mobile Home1 </span>
+                  <span>Mudar banner Celular Home1 </span>
+                  <div style={{ display: "flex" }}>
                   <input type="file" onChange={uploadbanner1}></input>
-                  <span>Mudar banner mobile Home2 </span>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner7}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                  </div>
+                  <span>Mudar banner Celular Home2 </span>
+                  <div style={{ display: "flex" }}>
                   <input type="file" onChange={uploadbanner2}></input>
-                  <span>Mudar banner mobile Home3 </span>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner8}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                  </div>
+                  <span>Mudar banner Celular Home3 </span>
+                  <div style={{ display: "flex" }}>
                   <input type="file" onChange={uploadbanner3}></input>
-                  <span>Mudar banner mobile Home4 </span>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner9}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                  </div>
+                  <span>Mudar banner Celular Home4 </span>
+                  <div style={{ display: "flex" }}>
                   <input type="file" onChange={uploadbanner4}></input>
-                  <span>Mudar banner mobile Home5 </span>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner10}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                  </div>
+                  <span>Mudar banner Celular Home5 </span>
+                  <div style={{ display: "flex" }}>
                   <input type="file" onChange={uploadbanner5}></input>
-                  <span>Mudar banner mobile Home6 </span>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner11}
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                  </div>
+                  <span>Mudar banner Celular Home6 </span>
+                  <div style={{ display: "flex" }}>
                   <input type="file" onChange={uploadbanner6}></input>
+                  <button
+                    style={{ background: "transparent" }}
+                    onClick={tirabanner12 }
+                  >
+                    <BsTrash color="#fff"></BsTrash>
+                  </button>
+                  </div>
                 </div>
               }
-
-              <button onClick={atualizarhome}>Salvar</button>
+              <button id="btnsalvar" onClick={atualizarhome}>
+                Salvar
+              </button>
             </div>
           </div>
         ) : (

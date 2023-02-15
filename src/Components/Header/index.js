@@ -9,7 +9,6 @@ import { FiTruck } from 'react-icons/fi'
 import "./Styles.css";
 import api2 from "../../services/api2";
 import api from "../../services/api";
-import axios from "axios";
 
 const Header = (props) => {
   const [dadosedicao, setDatdosedicao] = useState([]);

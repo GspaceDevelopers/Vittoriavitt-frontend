@@ -570,7 +570,7 @@ td {
   color: white;
 }
 
-.form-edita-home button {
+.form-edita-home #btnsalvar {
   width: 100px;
   height: 40px;
   color: white;

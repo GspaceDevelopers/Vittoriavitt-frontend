@@ -160,7 +160,16 @@ const BoxSearch = () => {
                     <div key={item._id} className="box-item-categoria-btn">
                       <details>
                         <summary>
-                          {item.categoria} <IoIosArrowDown></IoIosArrowDown>
+                          <button
+                            id="details-menu-boxsearch-clicando-produto"
+                            onClick={() =>
+                              (window.location.href = `/loja4/${item.categoria}`)
+                            }
+                          >
+                            {" "}
+                            {item.categoria}
+                          </button>{" "}
+                          <IoIosArrowDown></IoIosArrowDown>
                         </summary>
 
                         {item.subcategoria1 == "" ? (

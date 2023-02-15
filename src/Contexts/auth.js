@@ -67,7 +67,7 @@ export default function AuthProvider({ children }) {
             .then(async (value) => {
                 let uid = value.user.uid;
 
-                await firebase
+              /*  await firebase
                     .firestore()
                     .collection(uid)
                     .doc(uid)
@@ -85,7 +85,7 @@ export default function AuthProvider({ children }) {
                             telefone: telefone,
                             email: email,
                             imgUrl: null,
-                        };
+                        };*/
                         setUser(data);
                         toast.success("usuario cadastrado com sucesso");
                         window.location.href = "/AdminLogin";
@@ -105,7 +105,7 @@ export default function AuthProvider({ children }) {
             .then(async (value) => {
                 let uid = value.user.uid;
 
-                const Datauser = await firebase
+              /*  const Datauser = await firebase
                     .firestore()
                     .collection(uid)
                     .doc(uid)
@@ -116,7 +116,7 @@ export default function AuthProvider({ children }) {
                     telefone: Datauser.data().telefone,
                     email: emailAdmin,
                     imgUrl: null,
-                };
+                };*/
                 setUser(data);
                 sotrageUser(data);
                 window.location.href = '/admincontroller'

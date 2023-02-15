@@ -13,7 +13,6 @@ import axios from "axios";
 
 const Header = (props) => {
   const [dadosedicao, setDatdosedicao] = useState([]);
-  const [dadosedicao2, setDatdosedicao2] = useState([]);
   const [datacategorias, setDatacategorias] = useState([]);
   const [dataprodutos, setDataprodutos] = useState([]);
 
@@ -25,10 +24,7 @@ const Header = (props) => {
       setDataprodutos(data.data);
     });
 
-    axios.get('https://apivittoriaviitstore.herokuapp.com/edicao')
-      .then((data) => {
-        setDatdosedicao2(data.data);
-      });
+   
 
     api.get('/produtos')
       .then((data) => {
@@ -50,7 +46,7 @@ const Header = (props) => {
         <div className="title-fretegratis">
           <p>
             <FiTruck color='#fff'></FiTruck>  FRETE GRÁTIS ACIMA DE R$
-            {dadosedicao2.map((item) => item.componentetexto1)[0]}
+            {dadosedicao.map((item) => item.componentetexto1)[0]}
           </p>
         </div>
         <div className="header-one-main">

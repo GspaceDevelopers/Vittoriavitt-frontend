@@ -985,20 +985,21 @@ const AdminCadastroProdutos = () => {
         </div>
         <input
           type="text"
-          name="modelo"
-          id="modelo"
-          placeholder="Titulo do produto"
-          value={modelo}
-          onChange={(e) => setmodelo(e.target.value)}
-        />{" "}
-        <input
-          type="text"
           name="SKU"
           id="sku"
           placeholder="SKU"
           value={sku}
           onChange={(e) => setSku(e.target.value)}
         />
+        <input
+          type="text"
+          name="modelo"
+          id="modelo"
+          placeholder="Titulo do produto"
+          value={modelo}
+          onChange={(e) => setmodelo(e.target.value)}
+        />{" "}
+       
         <div className="input-categoria">
           <input
             type="text"

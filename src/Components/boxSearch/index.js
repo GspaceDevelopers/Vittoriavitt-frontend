@@ -32,10 +32,10 @@ const BoxSearch = () => {
   }, []);
 
   useEffect(() => {
-    api.get("/produtos").then((data) => {
+    api.get("/categorias").then((data) => {
       setDatacategorias(
         data.data
-          .slice(0, 8)
+          .slice(0, 100)
           .filter(
             (item) =>
               item.categoria != "lingeries" ||
@@ -50,7 +50,7 @@ const BoxSearch = () => {
               "sutiã" ||
               "body" ||
               "calcinhas" ||
-              ("calcinha" && item.subcategoria1 != "ligeries") ||
+              ("calcinha" && item.sub1 != "ligeries") ||
               "lingerie" ||
               "sutiã" ||
               "body" ||
@@ -62,7 +62,7 @@ const BoxSearch = () => {
               "sutiã" ||
               "body" ||
               "calcinhas" ||
-              ("calcinha" && item.subcategoria2 != "ligeries") ||
+              ("calcinha" && item.sub2 != "ligeries") ||
               "lingerie" ||
               "sutiã" ||
               "body" ||
@@ -74,7 +74,7 @@ const BoxSearch = () => {
               "sutiã" ||
               "body" ||
               "calcinhas" ||
-              ("calcinha" && item.subcategoria3 != "ligeries") ||
+              ("calcinha" && item.sub3 != "ligeries") ||
               "lingerie" ||
               "roupas intimas" ||
               "Lingeries" ||
@@ -82,7 +82,7 @@ const BoxSearch = () => {
               "sutiã" ||
               "body" ||
               "calcinhas" ||
-              ("calcinha" && item.subcategoria4)
+              ("calcinha" && item.sub4)
           )
       );
     });
@@ -172,48 +172,48 @@ const BoxSearch = () => {
                           <IoIosArrowDown></IoIosArrowDown>
                         </summary>
 
-                        {item.subcategoria1 == "" ? (
+                        {item.sub1 == "" ? (
                           ""
                         ) : (
                           <button
                             onClick={() =>
-                              (window.location.href = `/loja4/${item.subcategoria1}`)
+                              (window.location.href = `/loja4/${item.sub1}`)
                             }
                           >
-                            {item.subcategoria1}
+                            {item.sub1}
                           </button>
                         )}
-                        {item.subcategoria2 == "" ? (
+                        {item.sub2 == "" ? (
                           ""
                         ) : (
                           <button
                             onClick={() =>
-                              (window.location.href = `/loja4/${item.subcategoria2}`)
+                              (window.location.href = `/loja4/${item.sub2}`)
                             }
                           >
-                            {item.subcategoria2}
+                            {item.sub2}
                           </button>
                         )}
-                        {item.subcategoria3 == "" ? (
+                        {item.sub3 == "" ? (
                           ""
                         ) : (
                           <button
                             onClick={() =>
-                              (window.location.href = `/loja4/${item.subcategoria3}`)
+                              (window.location.href = `/loja4/${item.sub3}`)
                             }
                           >
-                            {item.subcategoria3}
+                            {item.sub3}
                           </button>
                         )}
-                        {item.subcategoria4 == "" ? (
+                        {item.sub4 == "" ? (
                           ""
                         ) : (
                           <button
                             onClick={() =>
-                              (window.location.href = `/loja4/${item.subcategoria4}`)
+                              (window.location.href = `/loja4/${item.sub4}`)
                             }
                           >
-                            {item.subcategoria4}
+                            {item.sub4}
                           </button>
                         )}
                       </details>

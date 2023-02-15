@@ -804,6 +804,7 @@ const AdminCadastroProdutos = () => {
       desconto: promocao2 == false ? "" : desconto,
     };
     await api.post("/produtos", data).then(() => {
+      cadCategoria();
       setLoad(false);
       toast.success("Item cadastrado com sucesso!");
       setmodelo("");
@@ -856,9 +857,16 @@ const AdminCadastroProdutos = () => {
       return;
     }
     setLoad(true);
+    await api.get("/categorias").then((data) => {
+      const categoriasjaexistentes = [data.data];
+    });
     await api
       .post("/categorias", {
         categoria: categoriacadastro,
+        sub1: subcategoria1.toLowerCase(),
+        sub2: subcategoria2.toLowerCase(),
+        sub3: subcategoria3.toLowerCase(),
+        sub4: subcategoria4.toLowerCase(),
       })
       .then(() => {
         setLoad(false);
@@ -999,7 +1007,6 @@ const AdminCadastroProdutos = () => {
           value={modelo}
           onChange={(e) => setmodelo(e.target.value)}
         />{" "}
-       
         <div className="input-categoria">
           <input
             type="text"

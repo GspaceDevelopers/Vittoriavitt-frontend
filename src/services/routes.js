@@ -20,7 +20,7 @@ import Loja3 from "../pages/Loja3";
 import Loja4 from "../pages/Loja4";
 import Mudasenha from "../pages/Mudasenha";
 import Contato from "../pages/Contato";
-import Sobrenos from "../pages/sobrenos";
+import Sobrenos from "../pages/Sobrenos";
 import Comocomprar from "../pages/Comocomprar";
 import PerguntasFrequentes from "../pages/PerguntasFrequentes";
 

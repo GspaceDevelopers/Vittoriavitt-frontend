@@ -255,6 +255,70 @@ export default function Loja2() {
     });
   }
 
+  useEffect(()=>{
+    dataprodutos.map((item)=>
+    setQuantidadeTotal(
+      Number(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade == '' ? 0 : item.cores.corPrimary.tamanhos.tamanhoOne.quantidade) +
+        Number(
+          item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2
+        ) +
+        Number(
+          item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3
+        ) +
+        Number(
+          item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4
+        ) +
+        Number(
+          item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5
+        ) +
+        Number(
+          item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6
+        ) +
+        Number(
+          item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7
+        ) +
+        Number(
+          item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8
+        ) +
+        Number(
+          item.cores.corTertiary.tamanhos.tamanhoOne.quantidade9
+        ) +
+        Number(
+          item.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10
+        ) +
+        Number(
+          item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11
+        ) +
+        Number(
+          item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12
+        ) +
+        Number(
+          item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13
+        ) +
+        Number(
+          item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14
+        ) +
+        Number(
+          item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15
+        ) +
+        Number(
+          item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16
+        ) +
+        Number(item.cores.corFive.tamanhos.tamanhoOne.quantidade17) +
+        Number(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18) +
+        Number(
+          item.cores.corFive.tamanhos.tamanhoThree.quantidade19
+        ) +
+        Number(item.cores.corFive.tamanhos.tamanhoFour.quantidade20) +
+        Number(item.cores.corSix.tamanhos.tamanhoOne.quantidade21) +
+        Number(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22) +
+        Number(item.cores.corSix.tamanhos.tamanhoThree.quantidade23) +
+        Number(item.cores.corSix.tamanhos.tamanhoFour.quantidade24)
+    )
+)
+console.log(quantidadeTotal)
+  },[quantidadeTotal])
+
   return (
     <div className="container-Loja">
       <Header back="#de4563"></Header>
@@ -355,69 +419,7 @@ export default function Loja2() {
               ""
             )}
             {dataprodutos.map((item) => {
-              setQuantidadeTotal(
-                Number(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade) +
-                  Number(
-                    item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2
-                  ) +
-                  Number(
-                    item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3
-                  ) +
-                  Number(
-                    item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4
-                  ) +
-                  Number(
-                    item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5
-                  ) +
-                  Number(
-                    item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6
-                  ) +
-                  Number(
-                    item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7
-                  ) +
-                  Number(
-                    item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8
-                  ) +
-                  Number(
-                    item.cores.corTertiary.tamanhos.tamanhoOne.quantidade9
-                  ) +
-                  Number(
-                    item.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10
-                  ) +
-                  Number(
-                    item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11
-                  ) +
-                  Number(
-                    item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12
-                  ) +
-                  Number(
-                    item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13
-                  ) +
-                  Number(
-                    item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14
-                  ) +
-                  Number(
-                    item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15
-                  ) +
-                  Number(
-                    item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16
-                  ) +
-                  Number(item.cores.corFive.tamanhos.tamanhoOne.quantidade17) +
-                  Number(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18) +
-                  Number(
-                    item.cores.corFive.tamanhos.tamanhoThree.quantidade19
-                  ) +
-                  Number(item.cores.corFive.tamanhos.tamanhoFour.quantidade20) +
-                  Number(item.cores.corSix.tamanhos.tamanhoOne.quantidade21) +
-                  Number(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22) +
-                  Number(item.cores.corSix.tamanhos.tamanhoThree.quantidade23) +
-                  Number(item.cores.corSix.tamanhos.tamanhoFour.quantidade24)
-              );
-
-              console.log(`${quantidadeTotal} esse aqui`);
-
-              {
-                quantidadeTotal > 0 ? (
+              return(
                   <div key={item._id} className="item-home" id="item-pag-loja">
                     {item.promocao2 == true && item.desconto == 10 ? (
                       <img id="icon-cupom" src={cupom1}></img>
@@ -674,13 +676,9 @@ export default function Loja2() {
                       </div>
                     </div>
                   </div>
-                ) : (
-                  <>
-                    <div>{quantidadeTotal}</div>
-                  </>
-                );
+                ) 
               }
-            })}
+            )}
           </div>
         </div>
       </div>

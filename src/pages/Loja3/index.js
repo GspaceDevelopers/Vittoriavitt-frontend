@@ -55,7 +55,7 @@ export default function Loja2() {
   const [corfiltro, setCorfiltro] = useState([]);
 
   useEffect(() => {
-    document.title = `${desconto}% OFF 🤑  |  Outlet das Lingeries`;
+    document.title = `${desconto}% OFF 🤑  |  VittoriavittStore`;
 
     api.get(`/desconto?desconto=${desconto}`).then((data) => {
       setDataprodutos(data.data);

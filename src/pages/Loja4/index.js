@@ -35,7 +35,7 @@ export default function Loja2() {
   const [quantidadeTotal, setQuantidadeTotal] = useState();
 
   useEffect(() => {
-    document.title = `${search} 👙 |  Outlet das Lingeries`;
+    document.title = `${search} VittoriavittStore`;
 
     const categoriatext = `${search.toLowerCase()}`;
     console.log(categoriatext);

@@ -211,20 +211,21 @@
 
 .box-btns-menu-component button {
   background-color: transparent;
-  font-size: 16px;
   transition: 0.3s ease;
   height: 35px;
   width: 100%;
   text-align: start;
-  padding-left: 10px;
   font-size: 14px;
   color: #e06f84;
+  transition: 0.3s ease;
+  padding-left: 5px;
+  
+}
+.box-btns-menu-component button:hover{
+  color: #ffadbc;
 }
 
-.box-btns-menu-component button:hover {
-  color: #fff;
-  background-color: #e06f84;
-}
+
 
 .btn-grup-menu {
   width: 100%;
@@ -252,6 +253,11 @@
   justify-content: center;
   align-items: center;
   margin-top: 5px;
+  transition: 0.3s ease;
+}
+.box-item-categoria-btn summary:hover{
+  background-color: #aa4b5c;
+  color: #fff;
 }
 
 .box-item-categoria-btn summary::marker {
@@ -346,7 +352,7 @@
   color: black;
 }
 #details-menu-boxsearch-clicando-produto {
-  width: 80%;
+  width: min-content;
   text-transform: uppercase;
   font-weight: 600;
 }

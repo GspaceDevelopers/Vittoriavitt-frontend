@@ -194,6 +194,12 @@ export default function AdminController() {
   const [bannerpaginaproduto, setBannerpaginaproduto] = useState("");
 
   const [modelo, setModelo] = useState("");
+  const [urlbanneredicao1, setUrlbanneredicao1] = useState("");
+  const [urlbanneredicao2, setUrlbanneredicao2] = useState("");
+  const [urlbanneredicao3, setUrlbanneredicao3] = useState("");
+  const [urlbanneredicao4, setUrlbanneredicao4] = useState("");
+  const [urlbanneredicao5, setUrlbanneredicao5] = useState("");
+  const [urlbanneredicao6, setUrlbanneredicao6] = useState("");
 
   useEffect(() => {
     async function loadpedidos() {
@@ -1611,6 +1617,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:'',
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1: "",
           logo2:
@@ -1735,6 +1748,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:'',
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -1859,6 +1879,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:'',
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -1982,6 +2009,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:'',
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2105,6 +2139,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:'',
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2228,6 +2269,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:'',
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2351,6 +2399,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2468,6 +2523,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2587,6 +2649,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2706,6 +2775,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2823,6 +2899,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -2940,6 +3023,13 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -3058,6 +3148,12 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
+            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
+            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
+            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
+            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
+            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
+            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -3799,6 +3895,18 @@ export default function AdminController() {
         setNomefeddback("");
       });
   }
+
+
+  useEffect(()=>{
+
+   
+     //console.log(dadosedicao.map(item => item.componentelogos.logo1)[0])
+  },[])
+
+
+
+
+
 
   return (
     <div className="container-adm-controller">
@@ -5799,6 +5907,7 @@ export default function AdminController() {
                   type="number"
                   onChange={(e) => setTextofretegratis(e.target.value)}
                 ></input>
+              </div>
                 <div className="box-input-files">
                   <span>Mudar Quantidade de Parcelas aceitas</span>
                   <input
@@ -5806,9 +5915,8 @@ export default function AdminController() {
                     onChange={(e) => setParcelas(e.target.value)}
                   ></input>
                 </div>
-              </div>
               <div className="box-input-files">
-                <span>Mudar banner central da Home</span>
+                <span>Mudar banner central da Home -max: 1500x400 - min:1200x300</span>
                 <input type="file" onChange={uploadbannercentralhome}></input>
                 <span>Mudar Imagem Pop-up até ( 700x500) </span>
                 <input type="file" onChange={uploadBannerpromocao}></input>
@@ -5821,64 +5929,81 @@ export default function AdminController() {
                   formato(jpeg,jpg,gif,webp) para melhor resolução
                 </strong>
                 <span>Mudar banner Home Computador Destaque1 </span>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadlogo1}></input>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo1)[0]} alt='Vazio'></img></div>
+                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao1(e.target.value)}></input>
                   <button
-                    style={{ background: "transparent" }}
+                    style={{ background: "transparent",marginLeft:"1rem" }}
                     onClick={tirabanner1}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
                 </div>
                 <span>Mudar banner Home Computador Destaque2 </span>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadlogo2}></input>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo2)[0]} alt='Vazio'></img></div>
+                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao2(e.target.value)}></input>
                   <button
-                    style={{ background: "transparent" }}
+                    style={{ background: "transparent",marginLeft:"1rem" }}
                     onClick={tirabanner2}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+
                 </div>
                 <span>Mudar banner Home Computador Destaque3 </span>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadlogo3}></input>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo3)[0]} alt='Vazio'></img></div>
+                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao3(e.target.value)}></input>
                   <button
-                    style={{ background: "transparent" }}
+                    style={{ background: "transparent",marginLeft:"1rem" }}
                     onClick={tirabanner3}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+
                 </div>
                 <span>Mudar banner Home Computador Destaque4 </span>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex",alignItems:'center' }}>
                 <input type="file" onChange={uploadlogo4}></input>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo4)[0]} alt='Vazio'></img></div>
+                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao4(e.target.value)}></input>
                 <button
-                    style={{ background: "transparent" }}
+                    style={{ background: "transparent",marginLeft:"1rem" }}
                     onClick={tirabanner4}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+
                 </div>
                 <span>Mudar banner Home Computador Destaque5 </span>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex",alignItems:'center' }}>
                 <input type="file" onChange={uploadlogo5}></input>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo5)[0]} alt='Vazio'></img></div>
+                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao5(e.target.value)}></input>
                 <button
-                    style={{ background: "transparent" }}
+                    style={{ background: "transparent",marginLeft:"1rem" }}
                     onClick={tirabanner5}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+
                 </div>
                 <span>Mudar banner Home Computador Destaque6 </span>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex",alignItems:'center' }}>
                 <input type="file" onChange={uploadlogo6}></input>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo6)[0]} alt='Vazio'></img></div>
+                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao6(e.target.value)}></input>
                 <button
-                    style={{ background: "transparent" }}
+                    style={{ background: "transparent",marginLeft:"1rem" }}
                     onClick={tirabanner6}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+
                 </div>
               </div>
 
@@ -5890,7 +6015,7 @@ export default function AdminController() {
                   </strong>
 
                   <span>Mudar banner Celular Home1 </span>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadbanner1}></input>
                   <button
                     style={{ background: "transparent" }}
@@ -5898,9 +6023,11 @@ export default function AdminController() {
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner1)[0]} alt='Vazio'></img></div>
+
                   </div>
                   <span>Mudar banner Celular Home2 </span>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadbanner2}></input>
                   <button
                     style={{ background: "transparent" }}
@@ -5908,9 +6035,11 @@ export default function AdminController() {
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner2)[0]} alt='Vazio'></img></div>
+
                   </div>
                   <span>Mudar banner Celular Home3 </span>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadbanner3}></input>
                   <button
                     style={{ background: "transparent" }}
@@ -5918,9 +6047,11 @@ export default function AdminController() {
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner3)[0]} alt='Vazio'></img></div>
+
                   </div>
                   <span>Mudar banner Celular Home4 </span>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadbanner4}></input>
                   <button
                     style={{ background: "transparent" }}
@@ -5928,9 +6059,11 @@ export default function AdminController() {
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner4)[0]} alt='Vazio'></img></div>
+
                   </div>
                   <span>Mudar banner Celular Home5 </span>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadbanner5}></input>
                   <button
                     style={{ background: "transparent" }}
@@ -5938,9 +6071,11 @@ export default function AdminController() {
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner5)[0]} alt='Vazio'></img></div>
+
                   </div>
                   <span>Mudar banner Celular Home6 </span>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex",alignItems:'center' }}>
                   <input type="file" onChange={uploadbanner6}></input>
                   <button
                     style={{ background: "transparent" }}
@@ -5948,6 +6083,8 @@ export default function AdminController() {
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
+                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner6)[0]} alt='Vazio'></img></div>
+
                   </div>
                 </div>
               }

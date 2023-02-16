@@ -99,22 +99,22 @@ const Carrossel = () => {
       {" "}
       <main className="main-background">
         <ul>
-          <li>
+          <li onClick={()=>window.location.href=`${dadosedicao.map(item => item.url1)[0] == '' ? '/':dadosedicao.map(item => item.url1)}`}>
             <div className="background-image-main-one"></div>
           </li>
-          <li>
+          <li onClick={()=>window.location.href=`${dadosedicao.map(item => item.url2)[0] == '' ? '/':dadosedicao.map(item => item.url2)}`}>
             <div className="background-image-main-two"></div>
           </li>
-          <li>
+          <li onClick={()=>window.location.href=`${dadosedicao.map(item => item.url3)[0] == '' ? '/':dadosedicao.map(item => item.url3)}`}>
             <div className="background-image-main-three"></div>
           </li>
-          <li>
+          <li onClick={()=>window.location.href=`${dadosedicao.map(item => item.url4)[0] == '' ? '/':dadosedicao.map(item => item.url4)}`}>
             <div className="background-image-main-four"></div>
           </li>
-          <li>
+          <li onClick={()=>window.location.href=`${dadosedicao.map(item => item.url5)[0] == '' ? '/':dadosedicao.map(item => item.url5)}`}>
             <div className="background-image-main-five"></div>
           </li>
-          <li>
+          <li onClick={()=>window.location.href=`${dadosedicao.map(item => item.url6)[0] == '' ? '/':dadosedicao.map(item => item.url6)}`}>
             <div className="background-image-main-six"></div>
           </li>
        

@@ -875,6 +875,44 @@ font-size: 14px !important;
 }
 
 
+.box-imgs-item-edit{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.input-img-file-edit{
+  width: 100px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.input-img-file-edit input{
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  cursor: pointer;
+  
+}
+.input-img-file-edit img{
+  position: absolute;
+  pointer-events: none;
+  object-fit: cover;
+  width: 100px;
+  height: 150px;
+}
+.input-img-file-edit p{
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+
 @media(max-width:1300px) {
   .filter-pedidos button {
     width: 100px;

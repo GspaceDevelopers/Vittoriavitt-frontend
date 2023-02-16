@@ -1438,9 +1438,9 @@ export default function AdminController() {
       formato: formato,
       cores: {
         corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+          imgurl: urlimgproduto1 == "" ?  detalhesproduto.cores.corPrimary.imgurl : urlimgproduto1,
+          imgurl2: urlimgproduto2 == "" ?  detalhesproduto.cores.corPrimary.imgurl2 : urlimgproduto2,
+          imgurl3:  urlimgproduto3 == "" ?  detalhesproduto.cores.corPrimary.imgurl3 : urlimgproduto3,
           cor1:
             corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
@@ -1451,9 +1451,9 @@ export default function AdminController() {
           },
         },
         corSecondary: {
-          imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+          imgurl4:  urlimgproduto4 == "" ?  detalhesproduto.cores.corSecondary.imgurl4 : urlimgproduto4,
+          imgurl5: urlimgproduto5 == "" ?  detalhesproduto.cores.corSecondary.imgurl5 : urlimgproduto5,
+          imgurl6:urlimgproduto6 == "" ?  detalhesproduto.cores.corSecondary.imgurl6 : urlimgproduto6,
           cor2:
             corupdate2 == ""
               ? detalhesproduto.cores.corSecondary.cor2
@@ -1466,9 +1466,9 @@ export default function AdminController() {
           },
         },
         corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+          imgurl7: urlimgproduto7 == "" ?  detalhesproduto.cores.corTertiary.imgurl7 : urlimgproduto7,
+          imgurl8: urlimgproduto8 == "" ?  detalhesproduto.cores.corTertiary.imgurl8 : urlimgproduto8,
+          imgurl9: urlimgproduto9 == "" ?  detalhesproduto.cores.corTertiary.imgurl9 : urlimgproduto9,
           cor3:
             corupdate3 == ""
               ? detalhesproduto.cores.corTertiary.cor3
@@ -1481,9 +1481,9 @@ export default function AdminController() {
           },
         },
         corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+          imgurl10: urlimgproduto10 == "" ?  detalhesproduto.cores.corQuaternary.imgurl10 : urlimgproduto10,
+          imgurl11: urlimgproduto11 == "" ?  detalhesproduto.cores.corQuaternary.imgurl11 : urlimgproduto11,
+          imgurl12: urlimgproduto12 == "" ?  detalhesproduto.cores.corQuaternary.imgurl12 : urlimgproduto12,
           cor4:
             corupdate4 == ""
               ? detalhesproduto.cores.corQuaternary.cor4
@@ -1496,9 +1496,9 @@ export default function AdminController() {
           },
         },
         corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
+          imgurl13: urlimgproduto13 == "" ?  detalhesproduto.cores.corFive.imgurl13 : urlimgproduto13,
+          imgurl14: urlimgproduto14 == "" ?  detalhesproduto.cores.corFive.imgurl14 : urlimgproduto14,
+          imgurl15: urlimgproduto15 == "" ?  detalhesproduto.cores.corFive.imgurl15 : urlimgproduto15,
           cor5:
             corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
@@ -1509,9 +1509,9 @@ export default function AdminController() {
           },
         },
         corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
+          imgurl16: urlimgproduto16 == "" ?  detalhesproduto.cores.corSix.imgurl16 : urlimgproduto16,
+          imgurl17: urlimgproduto17 == "" ?  detalhesproduto.cores.corFive.imgurl17 : urlimgproduto17,
+          imgurl18: urlimgproduto18 == "" ?  detalhesproduto.cores.corFive.imgurl18 : urlimgproduto18,
           cor6:
             corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
@@ -3904,6 +3904,440 @@ export default function AdminController() {
   },[])
 
 
+  const [urlimgproduto1,setUrlimgproduto1] = useState('')
+  const [urlimgproduto2,setUrlimgproduto2] = useState('')
+  const [urlimgproduto3,setUrlimgproduto3] = useState('')
+  const [urlimgproduto4,setUrlimgproduto4] = useState('')
+  const [urlimgproduto5,setUrlimgproduto5] = useState('')
+  const [urlimgproduto6,setUrlimgproduto6] = useState('')
+  const [urlimgproduto7,setUrlimgproduto7] = useState('')
+  const [urlimgproduto8,setUrlimgproduto8] = useState('')
+  const [urlimgproduto9,setUrlimgproduto9] = useState('')
+  const [urlimgproduto10,setUrlimgproduto10] = useState('')
+  const [urlimgproduto11,setUrlimgproduto11] = useState('')
+  const [urlimgproduto12,setUrlimgproduto12] = useState('')
+  const [urlimgproduto13,setUrlimgproduto13] = useState('')
+  const [urlimgproduto14,setUrlimgproduto14] = useState('')
+  const [urlimgproduto15,setUrlimgproduto15] = useState('')
+  const [urlimgproduto16,setUrlimgproduto16] = useState('')
+  const [urlimgproduto17,setUrlimgproduto17] = useState('')
+  const [urlimgproduto18,setUrlimgproduto18] = useState('')
+
+  async function mudafotoprod1(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto1(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod2(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto2(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod3(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto3(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod4(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto4(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod5(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto5(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod6(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto6(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod7(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto7(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod8(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto8(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod9(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto9(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod10(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto10(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod11(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto11(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod12(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto12(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod13(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto13(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod14(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto14(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod15(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto15(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod16(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto16(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod17(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto17(String(url))
+          });
+        setLoad(false);
+      });
+  }
+  async function mudafotoprod18(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`imagensprodutos/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`imagensprodutos/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+           setUrlimgproduto18(String(url))
+          });
+        setLoad(false);
+      });
+  }
+
 
 
 
@@ -4957,7 +5391,98 @@ export default function AdminController() {
                     X
                   </button>
                 </div>
+                <div className="box-imgs-item-edit">
+               {detalhesproduto.cores.corPrimary.imgurl !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod1}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
                 <img src={detalhesproduto.cores.corPrimary.imgurl}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corPrimary.imgurl2 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod2}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corPrimary.imgurl2}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corPrimary.imgurl3 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod3}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corPrimary.imgurl3}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corSecondary.imgurl4 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod4}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corSecondary.imgurl4}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corSecondary.imgurl5 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod5}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corSecondary.imgurl5}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corSecondary.imgurl6 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod6}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corSecondary.imgurl6}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corTertiary.imgurl7 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod7}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corTertiary.imgurl7}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corTertiary.imgurl8 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod8}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corTertiary.imgurl8}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corTertiary.imgurl9 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod9}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corTertiary.imgurl9}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corQuaternary.imgurl10 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod10}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corQuaternary.imgurl10}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corQuaternary.imgurl11 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod11}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corQuaternary.imgurl11}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corQuaternary.imgurl12 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod12}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corQuaternary.imgurl12}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corFive.imgurl13 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod13}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corFive.imgurl13}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corFive.imgurl14 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod14}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corFive.imgurl14}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corFive.imgurl15 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod15}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corFive.imgurl15}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corSix.imgurl16 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod16}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corSix.imgurl16}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corSix.imgurl17 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod17}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corSix.imgurl17}></img>
+                </div> : ''}
+               {detalhesproduto.cores.corSix.imgurl18 !=''? <div className="input-img-file-edit">
+                  <input type={'file'} onChenge={mudafotoprod18}></input>
+                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
+                <img src={detalhesproduto.cores.corSix.imgurl18}></img>
+                </div> : ''}
+                </div>
                 <br></br>
                 <span style={{ color: "#fff" }}>Titulo do Produto</span>
                 <input

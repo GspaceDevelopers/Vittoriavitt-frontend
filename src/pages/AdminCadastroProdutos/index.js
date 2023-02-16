@@ -25,6 +25,11 @@ const AdminCadastroProdutos = () => {
   const [aparecercampobrinde, setAparecercampobrinde] = useState(false);
   const [brinde, setBrinde] = useState();
   const [sku, setSku] = useState();
+  const [sub1, setSub1] = useState();
+  const [sub2, setSub2] = useState();
+  const [sub3, setSub3] = useState();
+  const [sub4, setSub4] = useState();
+  const [filtrodesubcategoria, setFiltrodesubcategoria] = useState([]);
 
   function modalCorAtualEnglish() {
     setModalcadcores(true);
@@ -40,6 +45,10 @@ const AdminCadastroProdutos = () => {
     });
     api.get("/categorias").then((item) => {
       setDatacategoriacadastro(item.data);
+      setFiltrodesubcategoria(
+        datacategoriacadastro.filter((item) => item.categoria == categoria)
+      );
+
       // console.log(datacores);
     });
 
@@ -278,7 +287,17 @@ const AdminCadastroProdutos = () => {
 
   const [modalcadcores, setModalcadcores] = useState(false);
   const [modalcadacategorias, setModalcadcategorias] = useState(false);
-
+  useEffect(() => {
+    setLoad(true);
+    api.get("/categorias").then((item) => {
+      setDatacategoriacadastro(item.data);
+      setFiltrodesubcategoria(
+        datacategoriacadastro.filter((item) => item.categoria == categoria)
+      );
+      setLoad(false);
+      // console.log(datacores);
+    });
+  }, [categoria]);
   async function upfoto1(e) {
     const foto1url = e.target.files[0];
     setNomearquivo1(foto1url.name);
@@ -857,9 +876,14 @@ const AdminCadastroProdutos = () => {
       return;
     }
     setLoad(true);
-    await api.get("/categorias").then((data) => {
-      const categoriasjaexistentes = [data.data];
-    });
+    // await api.get("/categorias").then((data) => {
+    //   const categoriasjaexistentes = [data.data];
+    //   if (categoriasjaexistentes.some() == true) {
+    //     api.put(() => {});
+    //   } else {
+    //   }
+    // });
+
     await api
       .post("/categorias", {
         categoria: categoriacadastro,
@@ -905,7 +929,9 @@ const AdminCadastroProdutos = () => {
               id="tipo"
               name="cars"
               value={categoria}
-              onChange={(e) => setcategoria(e.target.value)}
+              onChange={(e) => {
+                setcategoria(e.target.value);
+              }}
             >
               <option> Categoria </option>
               {datacategoriacadastro.map((item) => {
@@ -965,30 +991,83 @@ const AdminCadastroProdutos = () => {
             ""
           )}
           <div className="box-subcategoria">
-            <input
-              type={"text"}
-              value={subcategoria1}
-              onChange={(e) => setSubcategoria1(e.target.value)}
-              placeholder="Sub 1"
-            ></input>
-            <input
-              type={"text"}
-              value={subcategoria2}
-              onChange={(e) => setSubcategoria2(e.target.value)}
-              placeholder="Sub 2"
-            ></input>
-            <input
-              type={"text"}
-              value={subcategoria3}
-              onChange={(e) => setSubcategoria3(e.target.value)}
-              placeholder="Sub 3"
-            ></input>
-            <input
-              type={"text"}
-              value={subcategoria4}
-              onChange={(e) => setSubcategoria4(e.target.value)}
-              placeholder="Sub 4"
-            ></input>
+            <select
+              name="sub1"
+              id="sub1"
+              onChange={(e) => setSub1(e.target.value)}
+            >
+              <option selected value="...">
+                Selecione uma subcategoria
+              </option>
+              {filtrodesubcategoria.map((item) => {
+                return (
+                  <>
+                    <option value={item.sub1}>{item.sub1}</option>
+                    <option value={item.sub2}>{item.sub2}</option>
+                    <option value={item.sub3}>{item.sub3}</option>
+                    <option value={item.sub4}>{item.sub4}</option>
+                  </>
+                );
+              })}
+            </select>
+
+            <select
+              name="sub2"
+              id="sub1"
+              onChange={(e) => setSub2(e.target.value)}
+            >
+              <option selected value="...">
+                Selecione uma subcategoria
+              </option>
+              {filtrodesubcategoria.map((item) => {
+                return (
+                  <>
+                    <option value={item.sub1}>{item.sub1}</option>
+                    <option value={item.sub2}>{item.sub2}</option>
+                    <option value={item.sub3}>{item.sub3}</option>
+                    <option value={item.sub4}>{item.sub4}</option>
+                  </>
+                );
+              })}
+            </select>
+            <select
+              name="sub3"
+              id="sub1"
+              onChange={(e) => setSub3(e.target.value)}
+            >
+              <option selected value="...">
+                Selecione uma subcategoria
+              </option>
+              {filtrodesubcategoria.map((item) => {
+                return (
+                  <>
+                    <option value={item.sub1}>{item.sub1}</option>
+                    <option value={item.sub2}>{item.sub2}</option>
+                    <option value={item.sub3}>{item.sub3}</option>
+                    <option value={item.sub4}>{item.sub4}</option>
+                  </>
+                );
+              })}
+            </select>
+            <select
+              name="sub4"
+              id="sub1"
+              onChange={(e) => setSub4(e.target.value)}
+            >
+              <option selected value="...">
+                Selecione uma subcategoria
+              </option>
+              {filtrodesubcategoria.map((item) => {
+                return (
+                  <>
+                    <option value={item.sub1}>{item.sub1}</option>
+                    <option value={item.sub2}>{item.sub2}</option>
+                    <option value={item.sub3}>{item.sub3}</option>
+                    <option value={item.sub4}>{item.sub4}</option>
+                  </>
+                );
+              })}
+            </select>
           </div>
         </div>
         <input
@@ -1077,6 +1156,33 @@ const AdminCadastroProdutos = () => {
                       placeholder={"Digite uma categoria"}
                       onChange={(e) => setCategoriacadastro(e.target.value)}
                     ></input>
+
+                    <div className="box-subcategoria">
+                      <input
+                        type={"text"}
+                        value={subcategoria1}
+                        onChange={(e) => setSubcategoria1(e.target.value)}
+                        placeholder="Sub 1"
+                      ></input>
+                      <input
+                        type={"text"}
+                        value={subcategoria2}
+                        onChange={(e) => setSubcategoria2(e.target.value)}
+                        placeholder="Sub 2"
+                      ></input>
+                      <input
+                        type={"text"}
+                        value={subcategoria3}
+                        onChange={(e) => setSubcategoria3(e.target.value)}
+                        placeholder="Sub 3"
+                      ></input>
+                      <input
+                        type={"text"}
+                        value={subcategoria4}
+                        onChange={(e) => setSubcategoria4(e.target.value)}
+                        placeholder="Sub 4"
+                      ></input>
+                    </div>
                     <button type="button" onClick={cadCategoria}>
                       Salvar
                     </button>

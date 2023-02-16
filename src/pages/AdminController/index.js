@@ -628,8 +628,9 @@ export default function AdminController() {
         Authorization: "Access-Control-Allow-Origin",
       },
       // produto: detalhesproduto.produto,
-      sku: sku,
       precomaior: precomaior,
+      sku: sku,
+
       preco: precoupdate,
       modelo: modelo == "" ? detalhesproduto.modelo : modelo,
       //marca: marcaupdate,
@@ -652,21 +653,40 @@ export default function AdminController() {
       formato: formato,
       cores: {
         corPrimary: {
-          imgurl: "",
-          imgurl2: "",
-          imgurl3: "",
-          cor1: "",
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+          cor1:
+            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
-            tamanhoOne: { tamanho1: "", quantidade: "" },
-            tamanhoTwo: { tamanho2: "", quantidade2: "" },
-            tamanhoThree: { tamanho3: "", quantidade3: "" },
-            tamanhoFour: { tamanho4: "", quantidade4: "" },
+            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
           },
         },
         corSecondary: {
-          imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
           cor2:
             corupdate2 == ""
               ? detalhesproduto.cores.corSecondary.cor2
@@ -679,9 +699,18 @@ export default function AdminController() {
           },
         },
         corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
           cor3:
             corupdate3 == ""
               ? detalhesproduto.cores.corTertiary.cor3
@@ -694,9 +723,18 @@ export default function AdminController() {
           },
         },
         corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
           cor4:
             corupdate4 == ""
               ? detalhesproduto.cores.corQuaternary.cor4
@@ -709,9 +747,18 @@ export default function AdminController() {
           },
         },
         corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corFive.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
           cor5:
             corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
@@ -722,9 +769,18 @@ export default function AdminController() {
           },
         },
         corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corSix.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corFive.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
           cor6:
             corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
@@ -1438,9 +1494,18 @@ export default function AdminController() {
       formato: formato,
       cores: {
         corPrimary: {
-          imgurl: urlimgproduto1 == "" ?  detalhesproduto.cores.corPrimary.imgurl : urlimgproduto1,
-          imgurl2: urlimgproduto2 == "" ?  detalhesproduto.cores.corPrimary.imgurl2 : urlimgproduto2,
-          imgurl3:  urlimgproduto3 == "" ?  detalhesproduto.cores.corPrimary.imgurl3 : urlimgproduto3,
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
           cor1:
             corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
           tamanhos: {
@@ -1451,9 +1516,18 @@ export default function AdminController() {
           },
         },
         corSecondary: {
-          imgurl4:  urlimgproduto4 == "" ?  detalhesproduto.cores.corSecondary.imgurl4 : urlimgproduto4,
-          imgurl5: urlimgproduto5 == "" ?  detalhesproduto.cores.corSecondary.imgurl5 : urlimgproduto5,
-          imgurl6:urlimgproduto6 == "" ?  detalhesproduto.cores.corSecondary.imgurl6 : urlimgproduto6,
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
           cor2:
             corupdate2 == ""
               ? detalhesproduto.cores.corSecondary.cor2
@@ -1466,9 +1540,18 @@ export default function AdminController() {
           },
         },
         corTertiary: {
-          imgurl7: urlimgproduto7 == "" ?  detalhesproduto.cores.corTertiary.imgurl7 : urlimgproduto7,
-          imgurl8: urlimgproduto8 == "" ?  detalhesproduto.cores.corTertiary.imgurl8 : urlimgproduto8,
-          imgurl9: urlimgproduto9 == "" ?  detalhesproduto.cores.corTertiary.imgurl9 : urlimgproduto9,
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
           cor3:
             corupdate3 == ""
               ? detalhesproduto.cores.corTertiary.cor3
@@ -1481,9 +1564,18 @@ export default function AdminController() {
           },
         },
         corQuaternary: {
-          imgurl10: urlimgproduto10 == "" ?  detalhesproduto.cores.corQuaternary.imgurl10 : urlimgproduto10,
-          imgurl11: urlimgproduto11 == "" ?  detalhesproduto.cores.corQuaternary.imgurl11 : urlimgproduto11,
-          imgurl12: urlimgproduto12 == "" ?  detalhesproduto.cores.corQuaternary.imgurl12 : urlimgproduto12,
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
           cor4:
             corupdate4 == ""
               ? detalhesproduto.cores.corQuaternary.cor4
@@ -1496,9 +1588,18 @@ export default function AdminController() {
           },
         },
         corFive: {
-          imgurl13: urlimgproduto13 == "" ?  detalhesproduto.cores.corFive.imgurl13 : urlimgproduto13,
-          imgurl14: urlimgproduto14 == "" ?  detalhesproduto.cores.corFive.imgurl14 : urlimgproduto14,
-          imgurl15: urlimgproduto15 == "" ?  detalhesproduto.cores.corFive.imgurl15 : urlimgproduto15,
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corFive.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
           cor5:
             corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
           tamanhos: {
@@ -1509,9 +1610,18 @@ export default function AdminController() {
           },
         },
         corSix: {
-          imgurl16: urlimgproduto16 == "" ?  detalhesproduto.cores.corSix.imgurl16 : urlimgproduto16,
-          imgurl17: urlimgproduto17 == "" ?  detalhesproduto.cores.corFive.imgurl17 : urlimgproduto17,
-          imgurl18: urlimgproduto18 == "" ?  detalhesproduto.cores.corFive.imgurl18 : urlimgproduto18,
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corSix.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corFive.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
           cor6:
             corupdate6 == "" ? detalhesproduto.cores.corSix.cor6 : corupdate6,
           tamanhos: {
@@ -1617,12 +1727,27 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:'',
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1: "",
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1: "",
@@ -1748,19 +1873,34 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:'',
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2: "",
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
               : urllogo1,
-          logo2:'',
+          logo2: "",
           logo3:
             urllogo3 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
@@ -1854,7 +1994,7 @@ export default function AdminController() {
         toast.success("Homepage atualizada com sucesso!");
       });
   }
-  
+
   async function tirabanner3() {
     setLoad(true);
     await api2
@@ -1879,12 +2019,27 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:'',
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3: "",
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -1895,11 +2050,11 @@ export default function AdminController() {
             urllogo2 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
               : urllogo2,
-          logo3:'',
+          logo3: "",
           logo4:
-          urllogo4 == ""
-            ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
-            : urllogo4,
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
           logo5:
             urllogo5 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
@@ -2009,12 +2164,27 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:'',
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4: "",
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -2029,7 +2199,7 @@ export default function AdminController() {
             urllogo3 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
               : urllogo3,
-          logo4:'',
+          logo4: "",
           logo5:
             urllogo5 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
@@ -2139,12 +2309,27 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:'',
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5: "",
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -2163,7 +2348,7 @@ export default function AdminController() {
             urllogo4 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
               : urllogo4,
-          logo5:'',
+          logo5: "",
           logo6:
             urllogo6 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
@@ -2269,12 +2454,27 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:'',
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6: "",
 
         componentelogos: {
           logo1:
@@ -2297,7 +2497,7 @@ export default function AdminController() {
             urllogo5 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
               : urllogo5,
-          logo6:'',
+          logo6: "",
           logo7:
             urllogo7 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
@@ -2399,12 +2599,30 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -2431,10 +2649,10 @@ export default function AdminController() {
             urllogo6 == ""
               ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
               : urllogo6,
-          logo7:'',
+          logo7: "",
         },
         backgoundhome: {
-          background1:'',
+          background1: "",
           background2:
             urlFoto2 == ""
               ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
@@ -2467,7 +2685,7 @@ export default function AdminController() {
             ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
-          banner1:'',
+          banner1: "",
           banner2:
             urlbanner2 == ""
               ? dadosedicao.map((item) => item.banners.banner2)[0]
@@ -2523,12 +2741,30 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -2561,10 +2797,11 @@ export default function AdminController() {
               : urllogo7,
         },
         backgoundhome: {
-          background1:urlFoto1 == ""
-          ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
-          : urlFoto1,
-          background2:'',
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2: "",
           background3:
             urlFoto3 == ""
               ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
@@ -2597,7 +2834,7 @@ export default function AdminController() {
             urlbanner1 == ""
               ? dadosedicao.map((item) => item.banners.banner1)[0]
               : urlbanner1,
-          banner2:'',
+          banner2: "",
           banner3:
             urlbanner3 == ""
               ? dadosedicao.map((item) => item.banners.banner3)[0]
@@ -2649,12 +2886,30 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -2691,10 +2946,11 @@ export default function AdminController() {
             urlFoto1 == ""
               ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
               : urlFoto1,
-          background2:urlFoto2 == ""
-          ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
-          : urlFoto2,
-          background3:'',
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3: "",
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
@@ -2727,7 +2983,7 @@ export default function AdminController() {
             urlbanner2 == ""
               ? dadosedicao.map((item) => item.banners.banner2)[0]
               : urlbanner2,
-          banner3:'',
+          banner3: "",
           banner4:
             urlbanner4 == ""
               ? dadosedicao.map((item) => item.banners.banner4)[0]
@@ -2775,136 +3031,30 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
-
-        componentelogos: {
-          logo1:
-            urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
-              : urllogo1,
-          logo2:
-            urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
-              : urllogo2,
-          logo3:
-            urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
-              : urllogo3,
-          logo4:
-            urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
-              : urllogo4,
-          logo5:
-            urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
-              : urllogo5,
-          logo6:
-            urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
-              : urllogo6,
-          logo7:
-            urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
-              : urllogo7,
-        },
-        backgoundhome: {
-          background1:
-            urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
-              : urlFoto1,
-          background2:
-            urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
-              : urlFoto2,
-          background3: urlFoto3 == ""
-          ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
-          : urlFoto3,
-          backgroundmobile1:'',
-          backgroundmobile2:
-            urlmobile2 == ""
-              ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
-              : urlmobile2,
-          backgroundmobile3:
-            urlmobile3 == ""
-              ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
-              : urlmobile3,
-        },
-        componentetexto2:
-          titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
-            : titulosessaobanners,
-        banners: {
-          banner1:
-            urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
-              : urlbanner1,
-          banner2:
-            urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
-              : urlbanner2,
-          banner3:
-            urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
-              : urlbanner3,
-          banner4:'',
-          banner5:
-            urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
-              : urlbanner5,
-          banner6:
-            urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
-              : urlbanner6,
-          banner7:
-            urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
-              : urlbanner7,
-        },
-      })
-      .then(() => {
-        setLoad(false);
-        toast.success("Homepage atualizada com sucesso!");
-      });
-  }
-  async function tirabanner11() {
-    setLoad(true);
-    await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
-        headers: {
-          Authorization: "Access-Control-Allow-Origin",
-        },
-        componentetexto1:
-          textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
-            : textofretegratis,
-        parcelas: parcelas,
-        bannerpaginaprod:
-          bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
-            : bannerpaginaproduto,
-        bannermodalpromocao:
-          bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
-            : bannerpromocao,
-        bannercentralhome:
-          bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
-            : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -2949,12 +3099,156 @@ export default function AdminController() {
             urlFoto3 == ""
               ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
               : urlFoto3,
-          backgroundmobile1: urlmobile1 == ""
-          ? dadosedicao.map(
-              (item) => item.backgoundhome.backgroundmobile1
-            )[0]
-          : urlmobile1,
-          backgroundmobile2:'',
+          backgroundmobile1: "",
+          backgroundmobile2:
+            urlmobile2 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
+              : urlmobile2,
+          backgroundmobile3:
+            urlmobile3 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
+              : urlmobile3,
+        },
+        componentetexto2:
+          titulosessaobanners == ""
+            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            : titulosessaobanners,
+        banners: {
+          banner1:
+            urlbanner1 == ""
+              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              : urlbanner1,
+          banner2:
+            urlbanner2 == ""
+              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              : urlbanner2,
+          banner3:
+            urlbanner3 == ""
+              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              : urlbanner3,
+          banner4: "",
+          banner5:
+            urlbanner5 == ""
+              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              : urlbanner5,
+          banner6:
+            urlbanner6 == ""
+              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              : urlbanner6,
+          banner7:
+            urlbanner7 == ""
+              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              : urlbanner7,
+        },
+      })
+      .then(() => {
+        setLoad(false);
+        toast.success("Homepage atualizada com sucesso!");
+      });
+  }
+  async function tirabanner11() {
+    setLoad(true);
+    await api2
+      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        componentetexto1:
+          textofretegratis == ""
+            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            : textofretegratis,
+        parcelas: parcelas,
+        bannerpaginaprod:
+          bannerpaginaproduto == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpaginaproduto,
+        bannermodalpromocao:
+          bannerpromocao == ""
+            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            : bannerpromocao,
+        bannercentralhome:
+          bannercentralhome == ""
+            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            : bannercentralhome,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
+
+        componentelogos: {
+          logo1:
+            urllogo1 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              : urllogo1,
+          logo2:
+            urllogo2 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              : urllogo2,
+          logo3:
+            urllogo3 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              : urllogo3,
+          logo4:
+            urllogo4 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              : urllogo4,
+          logo5:
+            urllogo5 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              : urllogo5,
+          logo6:
+            urllogo6 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              : urllogo6,
+          logo7:
+            urllogo7 == ""
+              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              : urllogo7,
+        },
+        backgoundhome: {
+          background1:
+            urlFoto1 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              : urlFoto1,
+          background2:
+            urlFoto2 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              : urlFoto2,
+          background3:
+            urlFoto3 == ""
+              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              : urlFoto3,
+          backgroundmobile1:
+            urlmobile1 == ""
+              ? dadosedicao.map(
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
+              : urlmobile1,
+          backgroundmobile2: "",
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
@@ -2983,7 +3277,7 @@ export default function AdminController() {
             urlbanner4 == ""
               ? dadosedicao.map((item) => item.banners.banner4)[0]
               : urlbanner4,
-          banner5:'',
+          banner5: "",
           banner6:
             urlbanner6 == ""
               ? dadosedicao.map((item) => item.banners.banner6)[0]
@@ -3023,12 +3317,30 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
 
         componentelogos: {
           logo1:
@@ -3085,7 +3397,7 @@ export default function AdminController() {
                   (item) => item.backgoundhome.backgroundmobile2
                 )[0]
               : urlmobile2,
-          backgroundmobile3:'',
+          backgroundmobile3: "",
         },
         componentetexto2:
           titulosessaobanners == ""
@@ -3112,7 +3424,7 @@ export default function AdminController() {
             urlbanner5 == ""
               ? dadosedicao.map((item) => item.banners.banner5)[0]
               : urlbanner5,
-          banner6:'',
+          banner6: "",
           banner7:
             urlbanner7 == ""
               ? dadosedicao.map((item) => item.banners.banner7)[0]
@@ -3148,12 +3460,30 @@ export default function AdminController() {
           bannercentralhome == ""
             ? dadosedicao.map((item) => item.bannercentralhome)[0]
             : bannercentralhome,
-            url1:urlbanneredicao1 == ''? dadosedicao.map((item) => item.url1)[0] : urlbanneredicao1,
-            url2:urlbanneredicao2 == ''? dadosedicao.map((item) => item.url2)[0] : urlbanneredicao2,
-            url3:urlbanneredicao3 == ''? dadosedicao.map((item) => item.url3)[0] : urlbanneredicao3,
-            url4:urlbanneredicao4 == ''? dadosedicao.map((item) => item.url4)[0] : urlbanneredicao4,
-            url5:urlbanneredicao5 == ''? dadosedicao.map((item) => item.url5)[0] : urlbanneredicao5,
-            url6:urlbanneredicao6 == ''? dadosedicao.map((item) => item.url6)[0] : urlbanneredicao6,
+        url1:
+          urlbanneredicao1 == ""
+            ? dadosedicao.map((item) => item.url1)[0]
+            : urlbanneredicao1,
+        url2:
+          urlbanneredicao2 == ""
+            ? dadosedicao.map((item) => item.url2)[0]
+            : urlbanneredicao2,
+        url3:
+          urlbanneredicao3 == ""
+            ? dadosedicao.map((item) => item.url3)[0]
+            : urlbanneredicao3,
+        url4:
+          urlbanneredicao4 == ""
+            ? dadosedicao.map((item) => item.url4)[0]
+            : urlbanneredicao4,
+        url5:
+          urlbanneredicao5 == ""
+            ? dadosedicao.map((item) => item.url5)[0]
+            : urlbanneredicao5,
+        url6:
+          urlbanneredicao6 == ""
+            ? dadosedicao.map((item) => item.url6)[0]
+            : urlbanneredicao6,
         componentelogos: {
           logo1:
             urllogo1 == ""
@@ -3256,7 +3586,6 @@ export default function AdminController() {
         toast.success("Home atualizada com sucesso!");
       });
   }
-
 
   async function uploadbannercentralhome(e) {
     setLoad(false);
@@ -3896,32 +4225,28 @@ export default function AdminController() {
       });
   }
 
+  useEffect(() => {
+    //console.log(dadosedicao.map(item => item.componentelogos.logo1)[0])
+  }, []);
 
-  useEffect(()=>{
-
-   
-     //console.log(dadosedicao.map(item => item.componentelogos.logo1)[0])
-  },[])
-
-
-  const [urlimgproduto1,setUrlimgproduto1] = useState('')
-  const [urlimgproduto2,setUrlimgproduto2] = useState('')
-  const [urlimgproduto3,setUrlimgproduto3] = useState('')
-  const [urlimgproduto4,setUrlimgproduto4] = useState('')
-  const [urlimgproduto5,setUrlimgproduto5] = useState('')
-  const [urlimgproduto6,setUrlimgproduto6] = useState('')
-  const [urlimgproduto7,setUrlimgproduto7] = useState('')
-  const [urlimgproduto8,setUrlimgproduto8] = useState('')
-  const [urlimgproduto9,setUrlimgproduto9] = useState('')
-  const [urlimgproduto10,setUrlimgproduto10] = useState('')
-  const [urlimgproduto11,setUrlimgproduto11] = useState('')
-  const [urlimgproduto12,setUrlimgproduto12] = useState('')
-  const [urlimgproduto13,setUrlimgproduto13] = useState('')
-  const [urlimgproduto14,setUrlimgproduto14] = useState('')
-  const [urlimgproduto15,setUrlimgproduto15] = useState('')
-  const [urlimgproduto16,setUrlimgproduto16] = useState('')
-  const [urlimgproduto17,setUrlimgproduto17] = useState('')
-  const [urlimgproduto18,setUrlimgproduto18] = useState('')
+  const [urlimgproduto1, setUrlimgproduto1] = useState("");
+  const [urlimgproduto2, setUrlimgproduto2] = useState("");
+  const [urlimgproduto3, setUrlimgproduto3] = useState("");
+  const [urlimgproduto4, setUrlimgproduto4] = useState("");
+  const [urlimgproduto5, setUrlimgproduto5] = useState("");
+  const [urlimgproduto6, setUrlimgproduto6] = useState("");
+  const [urlimgproduto7, setUrlimgproduto7] = useState("");
+  const [urlimgproduto8, setUrlimgproduto8] = useState("");
+  const [urlimgproduto9, setUrlimgproduto9] = useState("");
+  const [urlimgproduto10, setUrlimgproduto10] = useState("");
+  const [urlimgproduto11, setUrlimgproduto11] = useState("");
+  const [urlimgproduto12, setUrlimgproduto12] = useState("");
+  const [urlimgproduto13, setUrlimgproduto13] = useState("");
+  const [urlimgproduto14, setUrlimgproduto14] = useState("");
+  const [urlimgproduto15, setUrlimgproduto15] = useState("");
+  const [urlimgproduto16, setUrlimgproduto16] = useState("");
+  const [urlimgproduto17, setUrlimgproduto17] = useState("");
+  const [urlimgproduto18, setUrlimgproduto18] = useState("");
 
   async function mudafotoprod1(e) {
     setLoad(true);
@@ -3941,7 +4266,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto1(String(url))
+            setUrlimgproduto1(String(url));
           });
         setLoad(false);
       });
@@ -3964,7 +4289,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto2(String(url))
+            setUrlimgproduto2(String(url));
           });
         setLoad(false);
       });
@@ -3987,7 +4312,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto3(String(url))
+            setUrlimgproduto3(String(url));
           });
         setLoad(false);
       });
@@ -4010,7 +4335,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto4(String(url))
+            setUrlimgproduto4(String(url));
           });
         setLoad(false);
       });
@@ -4033,7 +4358,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto5(String(url))
+            setUrlimgproduto5(String(url));
           });
         setLoad(false);
       });
@@ -4056,7 +4381,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto6(String(url))
+            setUrlimgproduto6(String(url));
           });
         setLoad(false);
       });
@@ -4079,7 +4404,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto7(String(url))
+            setUrlimgproduto7(String(url));
           });
         setLoad(false);
       });
@@ -4102,7 +4427,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto8(String(url))
+            setUrlimgproduto8(String(url));
           });
         setLoad(false);
       });
@@ -4125,7 +4450,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto9(String(url))
+            setUrlimgproduto9(String(url));
           });
         setLoad(false);
       });
@@ -4148,7 +4473,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto10(String(url))
+            setUrlimgproduto10(String(url));
           });
         setLoad(false);
       });
@@ -4171,7 +4496,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto11(String(url))
+            setUrlimgproduto11(String(url));
           });
         setLoad(false);
       });
@@ -4194,7 +4519,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto12(String(url))
+            setUrlimgproduto12(String(url));
           });
         setLoad(false);
       });
@@ -4217,7 +4542,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto13(String(url))
+            setUrlimgproduto13(String(url));
           });
         setLoad(false);
       });
@@ -4240,7 +4565,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto14(String(url))
+            setUrlimgproduto14(String(url));
           });
         setLoad(false);
       });
@@ -4263,7 +4588,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto15(String(url))
+            setUrlimgproduto15(String(url));
           });
         setLoad(false);
       });
@@ -4286,7 +4611,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto16(String(url))
+            setUrlimgproduto16(String(url));
           });
         setLoad(false);
       });
@@ -4309,7 +4634,7 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto17(String(url))
+            setUrlimgproduto17(String(url));
           });
         setLoad(false);
       });
@@ -4332,15 +4657,11 @@ export default function AdminController() {
           .child(img17.name)
           .getDownloadURL()
           .then(async (url) => {
-           setUrlimgproduto18(String(url))
+            setUrlimgproduto18(String(url));
           });
         setLoad(false);
       });
   }
-
-
-
-
 
   return (
     <div className="container-adm-controller">
@@ -5392,96 +5713,193 @@ export default function AdminController() {
                   </button>
                 </div>
                 <div className="box-imgs-item-edit">
-               {detalhesproduto.cores.corPrimary.imgurl !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod1}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corPrimary.imgurl}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corPrimary.imgurl2 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod2}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corPrimary.imgurl2}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corPrimary.imgurl3 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod3}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corPrimary.imgurl3}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corSecondary.imgurl4 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod4}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corSecondary.imgurl4}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corSecondary.imgurl5 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod5}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corSecondary.imgurl5}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corSecondary.imgurl6 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod6}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corSecondary.imgurl6}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corTertiary.imgurl7 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod7}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corTertiary.imgurl7}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corTertiary.imgurl8 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod8}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corTertiary.imgurl8}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corTertiary.imgurl9 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod9}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corTertiary.imgurl9}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corQuaternary.imgurl10 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod10}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corQuaternary.imgurl10}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corQuaternary.imgurl11 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod11}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corQuaternary.imgurl11}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corQuaternary.imgurl12 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod12}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corQuaternary.imgurl12}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corFive.imgurl13 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod13}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corFive.imgurl13}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corFive.imgurl14 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod14}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corFive.imgurl14}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corFive.imgurl15 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod15}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corFive.imgurl15}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corSix.imgurl16 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod16}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corSix.imgurl16}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corSix.imgurl17 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod17}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corSix.imgurl17}></img>
-                </div> : ''}
-               {detalhesproduto.cores.corSix.imgurl18 !=''? <div className="input-img-file-edit">
-                  <input type={'file'} onChenge={mudafotoprod18}></input>
-                  <p><BiEdit color="#fff" size={30}></BiEdit></p>
-                <img src={detalhesproduto.cores.corSix.imgurl18}></img>
-                </div> : ''}
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod1}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corPrimary.imgurl}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod2}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corPrimary.imgurl2}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod3}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corPrimary.imgurl3}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod4}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corSecondary.imgurl4}
+                      ></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod5}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corSecondary.imgurl5}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod6}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corSecondary.imgurl6}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod7}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corTertiary.imgurl7}
+                      ></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod8}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corTertiary.imgurl8}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod9}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corTertiary.imgurl9}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod10}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corQuaternary.imgurl10}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod11}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corQuaternary.imgurl11}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod12}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img
+                        src={detalhesproduto.cores.corQuaternary.imgurl12}
+                      ></img>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod13}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corFive.imgurl13}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod14}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corFive.imgurl14}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod15}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corFive.imgurl15}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod16}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corSix.imgurl16}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod17}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corSix.imgurl17}></img>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="input-img-file-edit">
+                      <input type={"file"} onChange={mudafotoprod18}></input>
+                      <p>
+                        <BiEdit color="#fff" size={30}></BiEdit>
+                      </p>
+                      <img src={detalhesproduto.cores.corSix.imgurl18}></img>
+                    </div>
+                  </div>
                 </div>
                 <br></br>
                 <span style={{ color: "#fff" }}>Titulo do Produto</span>
@@ -6433,15 +6851,17 @@ export default function AdminController() {
                   onChange={(e) => setTextofretegratis(e.target.value)}
                 ></input>
               </div>
-                <div className="box-input-files">
-                  <span>Mudar Quantidade de Parcelas aceitas</span>
-                  <input
-                    type="text"
-                    onChange={(e) => setParcelas(e.target.value)}
-                  ></input>
-                </div>
               <div className="box-input-files">
-                <span>Mudar banner central da Home -max: 1500x400 - min:1200x300</span>
+                <span>Mudar Quantidade de Parcelas aceitas</span>
+                <input
+                  type="text"
+                  onChange={(e) => setParcelas(e.target.value)}
+                ></input>
+              </div>
+              <div className="box-input-files">
+                <span>
+                  Mudar banner central da Home -max: 1500x400 - min:1200x300
+                </span>
                 <input type="file" onChange={uploadbannercentralhome}></input>
                 <span>Mudar Imagem Pop-up até ( 700x500) </span>
                 <input type="file" onChange={uploadBannerpromocao}></input>
@@ -6454,81 +6874,148 @@ export default function AdminController() {
                   formato(jpeg,jpg,gif,webp) para melhor resolução
                 </strong>
                 <span>Mudar banner Home Computador Destaque1 </span>
-                <div style={{ display: "flex",alignItems:'center' }}>
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo1}></input>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo1)[0]} alt='Vazio'></img></div>
-                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao1(e.target.value)}></input>
+                  <div className="box-view-banner">
+                    <img
+                      src={
+                        dadosedicao.map((item) => item.componentelogos.logo1)[0]
+                      }
+                      alt="Vazio"
+                    ></img>
+                  </div>
+                  <input
+                    className="inputurl"
+                    placeholder="Url do banner"
+                    type={"text"}
+                    onChange={(e) => setUrlbanneredicao1(e.target.value)}
+                  ></input>
                   <button
-                    style={{ background: "transparent",marginLeft:"1rem" }}
+                    style={{ background: "transparent", marginLeft: "1rem" }}
                     onClick={tirabanner1}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
                 </div>
                 <span>Mudar banner Home Computador Destaque2 </span>
-                <div style={{ display: "flex",alignItems:'center' }}>
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo2}></input>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo2)[0]} alt='Vazio'></img></div>
-                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao2(e.target.value)}></input>
+                  <div className="box-view-banner">
+                    <img
+                      src={
+                        dadosedicao.map((item) => item.componentelogos.logo2)[0]
+                      }
+                      alt="Vazio"
+                    ></img>
+                  </div>
+                  <input
+                    className="inputurl"
+                    placeholder="Url do banner"
+                    type={"text"}
+                    onChange={(e) => setUrlbanneredicao2(e.target.value)}
+                  ></input>
                   <button
-                    style={{ background: "transparent",marginLeft:"1rem" }}
+                    style={{ background: "transparent", marginLeft: "1rem" }}
                     onClick={tirabanner2}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
-
                 </div>
                 <span>Mudar banner Home Computador Destaque3 </span>
-                <div style={{ display: "flex",alignItems:'center' }}>
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo3}></input>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo3)[0]} alt='Vazio'></img></div>
-                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao3(e.target.value)}></input>
+                  <div className="box-view-banner">
+                    <img
+                      src={
+                        dadosedicao.map((item) => item.componentelogos.logo3)[0]
+                      }
+                      alt="Vazio"
+                    ></img>
+                  </div>
+                  <input
+                    className="inputurl"
+                    placeholder="Url do banner"
+                    type={"text"}
+                    onChange={(e) => setUrlbanneredicao3(e.target.value)}
+                  ></input>
                   <button
-                    style={{ background: "transparent",marginLeft:"1rem" }}
+                    style={{ background: "transparent", marginLeft: "1rem" }}
                     onClick={tirabanner3}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
-
                 </div>
                 <span>Mudar banner Home Computador Destaque4 </span>
-                <div style={{ display: "flex",alignItems:'center' }}>
-                <input type="file" onChange={uploadlogo4}></input>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo4)[0]} alt='Vazio'></img></div>
-                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao4(e.target.value)}></input>
-                <button
-                    style={{ background: "transparent",marginLeft:"1rem" }}
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <input type="file" onChange={uploadlogo4}></input>
+                  <div className="box-view-banner">
+                    <img
+                      src={
+                        dadosedicao.map((item) => item.componentelogos.logo4)[0]
+                      }
+                      alt="Vazio"
+                    ></img>
+                  </div>
+                  <input
+                    className="inputurl"
+                    placeholder="Url do banner"
+                    type={"text"}
+                    onChange={(e) => setUrlbanneredicao4(e.target.value)}
+                  ></input>
+                  <button
+                    style={{ background: "transparent", marginLeft: "1rem" }}
                     onClick={tirabanner4}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
-
                 </div>
                 <span>Mudar banner Home Computador Destaque5 </span>
-                <div style={{ display: "flex",alignItems:'center' }}>
-                <input type="file" onChange={uploadlogo5}></input>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo5)[0]} alt='Vazio'></img></div>
-                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao5(e.target.value)}></input>
-                <button
-                    style={{ background: "transparent",marginLeft:"1rem" }}
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <input type="file" onChange={uploadlogo5}></input>
+                  <div className="box-view-banner">
+                    <img
+                      src={
+                        dadosedicao.map((item) => item.componentelogos.logo5)[0]
+                      }
+                      alt="Vazio"
+                    ></img>
+                  </div>
+                  <input
+                    className="inputurl"
+                    placeholder="Url do banner"
+                    type={"text"}
+                    onChange={(e) => setUrlbanneredicao5(e.target.value)}
+                  ></input>
+                  <button
+                    style={{ background: "transparent", marginLeft: "1rem" }}
                     onClick={tirabanner5}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
-
                 </div>
                 <span>Mudar banner Home Computador Destaque6 </span>
-                <div style={{ display: "flex",alignItems:'center' }}>
-                <input type="file" onChange={uploadlogo6}></input>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.componentelogos.logo6)[0]} alt='Vazio'></img></div>
-                  <input className="inputurl" placeholder="Url do banner" type={'text'} onChange={(e)=> setUrlbanneredicao6(e.target.value)}></input>
-                <button
-                    style={{ background: "transparent",marginLeft:"1rem" }}
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <input type="file" onChange={uploadlogo6}></input>
+                  <div className="box-view-banner">
+                    <img
+                      src={
+                        dadosedicao.map((item) => item.componentelogos.logo6)[0]
+                      }
+                      alt="Vazio"
+                    ></img>
+                  </div>
+                  <input
+                    className="inputurl"
+                    placeholder="Url do banner"
+                    type={"text"}
+                    onChange={(e) => setUrlbanneredicao6(e.target.value)}
+                  ></input>
+                  <button
+                    style={{ background: "transparent", marginLeft: "1rem" }}
                     onClick={tirabanner6}
                   >
                     <BsTrash color="#fff"></BsTrash>
                   </button>
-
                 </div>
               </div>
 
@@ -6540,76 +7027,100 @@ export default function AdminController() {
                   </strong>
 
                   <span>Mudar banner Celular Home1 </span>
-                  <div style={{ display: "flex",alignItems:'center' }}>
-                  <input type="file" onChange={uploadbanner1}></input>
-                  <button
-                    style={{ background: "transparent" }}
-                    onClick={tirabanner7}
-                  >
-                    <BsTrash color="#fff"></BsTrash>
-                  </button>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner1)[0]} alt='Vazio'></img></div>
-
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <input type="file" onChange={uploadbanner1}></input>
+                    <button
+                      style={{ background: "transparent" }}
+                      onClick={tirabanner7}
+                    >
+                      <BsTrash color="#fff"></BsTrash>
+                    </button>
+                    <div className="box-view-banner">
+                      <img
+                        src={dadosedicao.map((item) => item.banners.banner1)[0]}
+                        alt="Vazio"
+                      ></img>
+                    </div>
                   </div>
                   <span>Mudar banner Celular Home2 </span>
-                  <div style={{ display: "flex",alignItems:'center' }}>
-                  <input type="file" onChange={uploadbanner2}></input>
-                  <button
-                    style={{ background: "transparent" }}
-                    onClick={tirabanner8}
-                  >
-                    <BsTrash color="#fff"></BsTrash>
-                  </button>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner2)[0]} alt='Vazio'></img></div>
-
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <input type="file" onChange={uploadbanner2}></input>
+                    <button
+                      style={{ background: "transparent" }}
+                      onClick={tirabanner8}
+                    >
+                      <BsTrash color="#fff"></BsTrash>
+                    </button>
+                    <div className="box-view-banner">
+                      <img
+                        src={dadosedicao.map((item) => item.banners.banner2)[0]}
+                        alt="Vazio"
+                      ></img>
+                    </div>
                   </div>
                   <span>Mudar banner Celular Home3 </span>
-                  <div style={{ display: "flex",alignItems:'center' }}>
-                  <input type="file" onChange={uploadbanner3}></input>
-                  <button
-                    style={{ background: "transparent" }}
-                    onClick={tirabanner9}
-                  >
-                    <BsTrash color="#fff"></BsTrash>
-                  </button>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner3)[0]} alt='Vazio'></img></div>
-
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <input type="file" onChange={uploadbanner3}></input>
+                    <button
+                      style={{ background: "transparent" }}
+                      onClick={tirabanner9}
+                    >
+                      <BsTrash color="#fff"></BsTrash>
+                    </button>
+                    <div className="box-view-banner">
+                      <img
+                        src={dadosedicao.map((item) => item.banners.banner3)[0]}
+                        alt="Vazio"
+                      ></img>
+                    </div>
                   </div>
                   <span>Mudar banner Celular Home4 </span>
-                  <div style={{ display: "flex",alignItems:'center' }}>
-                  <input type="file" onChange={uploadbanner4}></input>
-                  <button
-                    style={{ background: "transparent" }}
-                    onClick={tirabanner10}
-                  >
-                    <BsTrash color="#fff"></BsTrash>
-                  </button>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner4)[0]} alt='Vazio'></img></div>
-
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <input type="file" onChange={uploadbanner4}></input>
+                    <button
+                      style={{ background: "transparent" }}
+                      onClick={tirabanner10}
+                    >
+                      <BsTrash color="#fff"></BsTrash>
+                    </button>
+                    <div className="box-view-banner">
+                      <img
+                        src={dadosedicao.map((item) => item.banners.banner4)[0]}
+                        alt="Vazio"
+                      ></img>
+                    </div>
                   </div>
                   <span>Mudar banner Celular Home5 </span>
-                  <div style={{ display: "flex",alignItems:'center' }}>
-                  <input type="file" onChange={uploadbanner5}></input>
-                  <button
-                    style={{ background: "transparent" }}
-                    onClick={tirabanner11}
-                  >
-                    <BsTrash color="#fff"></BsTrash>
-                  </button>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner5)[0]} alt='Vazio'></img></div>
-
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <input type="file" onChange={uploadbanner5}></input>
+                    <button
+                      style={{ background: "transparent" }}
+                      onClick={tirabanner11}
+                    >
+                      <BsTrash color="#fff"></BsTrash>
+                    </button>
+                    <div className="box-view-banner">
+                      <img
+                        src={dadosedicao.map((item) => item.banners.banner5)[0]}
+                        alt="Vazio"
+                      ></img>
+                    </div>
                   </div>
                   <span>Mudar banner Celular Home6 </span>
-                  <div style={{ display: "flex",alignItems:'center' }}>
-                  <input type="file" onChange={uploadbanner6}></input>
-                  <button
-                    style={{ background: "transparent" }}
-                    onClick={tirabanner12 }
-                  >
-                    <BsTrash color="#fff"></BsTrash>
-                  </button>
-                  <div className="box-view-banner"><img src={dadosedicao.map(item => item.banners.banner6)[0]} alt='Vazio'></img></div>
-
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <input type="file" onChange={uploadbanner6}></input>
+                    <button
+                      style={{ background: "transparent" }}
+                      onClick={tirabanner12}
+                    >
+                      <BsTrash color="#fff"></BsTrash>
+                    </button>
+                    <div className="box-view-banner">
+                      <img
+                        src={dadosedicao.map((item) => item.banners.banner6)[0]}
+                        alt="Vazio"
+                      ></img>
+                    </div>
                   </div>
                 </div>
               }

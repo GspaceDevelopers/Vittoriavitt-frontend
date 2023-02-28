@@ -42,6 +42,14 @@
   background-position: center !important;
   cursor: pointer;
 }
+.background-image-main-six {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover !important;
+  background-repeat: none;
+  background-position: center !important;
+  cursor: pointer;
+}
 
 .main-background {
   height: 100%;
@@ -63,7 +71,7 @@
   height: 100vh;
   width: 100vw;
 
-  animation: slide 18s ease-out infinite;
+  animation: slide 30s ease-out infinite;
 }
 
 @keyframes slide {
@@ -71,34 +79,40 @@
     transform: translateX(0%);
   }
 
-  24% {
+  8% {
     transform: translateX(0%);
   }
 
-  25% {
+  16% {
     transform: translateX(-100%);
   }
-
-  49% {
+  24% {
     transform: translateX(-100%);
   }
-
-  50% {
+  32% {
     transform: translateX(-200%);
   }
-
-  74% {
+  40% {
     transform: translateX(-200%);
   }
-
-  75% {
+  48% {
     transform: translateX(-300%);
   }
-
-  99% {
+  56% {
     transform: translateX(-300%);
   }
-
+  64% {
+    transform: translateX(-400%);
+  }
+  72% {
+    transform: translateX(-400%);
+  }
+  80% {
+    transform: translateX(-500%);
+  }
+  88% {
+    transform: translateX(-500%);
+  }
   100% {
     transform: translateX(0%);
   }
@@ -138,6 +152,12 @@
   }
 
   .background-image-main-five {
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    height: 515px;
+    background-position: center;
+  }
+  .background-image-main-six {
     background-size: cover;
     background-repeat: no-repeat !important;
     height: 515px;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./footer.css";
 import { FaHeart } from "react-icons/fa";
 import api2 from "../../services/api2";
@@ -21,11 +21,20 @@ import insta from "./Component 4.png";
 import whats from "./whats.png";
 import whats2 from "./whatsgrey.png";
 import { toast } from "react-toastify";
+import api from "../../services/api2";
 
 export default function Footer() {
   const [nomecliente, setNomecliente] = useState("");
   const [telefone, setTelefone] = useState("");
   const [checkbox, setCheckbox] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    api.get('/edicao')
+      .then((value) => {
+        setData(value.data)
+      })
+  }, [])
 
   async function cadastrodeemail() {
     if (checkbox == false) {
@@ -172,20 +181,20 @@ export default function Footer() {
           <div className="redes-text-flex-direction">
             <span>Nossas Redes</span>
             <div className="redes-sociais-footer">
-              <a href="https://www.facebook.com/profile.php?id=100079446626873">
+              <a href={data.map(item => item.linkredes.link1)[0]}>
                 <img src={face}></img>
               </a>
-              <a href="https://www.instagram.com/vittoriavitt.store/">
+              <a href={data.map(item => item.linkredes.link2)[0]}>
                 <img src={insta}></img>
               </a>
-              <a href="https://api.whatsapp.com/send?phone=5519996883262&fbclid=PAAaa9cuQyhc0Z1ht0GlMzq0TFwhp20VeeiOm9jPpeoekHdxGIekLBpgitVP4">
+              <a href={data.map(item => item.linkredes.link3)[0]}>
                 <img src={whats}></img>
               </a>
             </div>
             <div className="info-empresa-footer">
-              <p>(22) 99968-83262</p>
-              <p>vendas@vittoriavitt.com.br</p>
-              <p>CNPJ: 36.126.397/0001-00</p>
+              <p>{data.map(item => item.telefoneloja)[0]}</p>
+              <p>{data.map(item => item.emailloja)[0]}</p>
+              <p>{data.map(item => item.cnpjloja)[0]}</p>
             </div>
           </div>
         </div>

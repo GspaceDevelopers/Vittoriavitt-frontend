@@ -32,6 +32,12 @@ export default function AdminController() {
     JSON.parse(localStorage.getItem("sessaouser") || "[]")
   );
 
+  const [link1, setLink1] = useState("");
+  const [link2, setLink2] = useState("");
+  const [link3, setLink3] = useState("");
+  const [emailloja, setEmilloja] = useState("");
+  const [cnpjloja, setCnpjloja] = useState("");
+  const [telefoneloja, setTelefoneloja] = useState("");
   const [senhaverificacao, setSenhaverificacao] = useState("");
   const [senha, setSenha] = useState("");
   const [alterasenha, setAlterasenha] = useState("");
@@ -1899,20 +1905,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -1949,6 +1955,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2045,20 +2059,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2095,6 +2109,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2191,20 +2213,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2241,6 +2263,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2336,20 +2366,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2386,6 +2416,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2481,20 +2519,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2531,6 +2569,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2626,20 +2672,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2676,6 +2722,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2771,20 +2825,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2818,6 +2872,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2916,20 +2978,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2963,6 +3025,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3061,20 +3131,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3108,6 +3178,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3210,14 +3288,14 @@ export default function AdminController() {
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3251,6 +3329,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3352,15 +3438,15 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2: "",
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3394,6 +3480,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3495,14 +3589,14 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3: "",
         },
@@ -3537,6 +3631,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3637,20 +3739,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3687,6 +3789,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
         },
+        linkredes: {
+          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+        },
+        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -6257,11 +6367,11 @@ export default function AdminController() {
                     window.screen.width > 500
                       ? { display: "flex", width: "50%" }
                       : {
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "20px",
-                          width: "100%",
-                        }
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "20px",
+                        width: "100%",
+                      }
                   }
                 >
                   {detalhesproduto.cores.corPrimary.cor1 != "" ? (
@@ -6270,22 +6380,22 @@ export default function AdminController() {
                         style={
                           window.screen.width > 500
                             ? {
-                                width: "20px",
-                                height: "20px",
-                                background:
-                                  corupdate == ""
-                                    ? detalhesproduto.cores.corPrimary.cor1
-                                    : corupdate,
-                              }
+                              width: "20px",
+                              height: "20px",
+                              background:
+                                corupdate == ""
+                                  ? detalhesproduto.cores.corPrimary.cor1
+                                  : corupdate,
+                            }
                             : {
-                                width: "20px",
-                                marginTop: "20px",
-                                height: "20px",
-                                background:
-                                  corupdate == ""
-                                    ? detalhesproduto.cores.corPrimary.cor1
-                                    : corupdate,
-                              }
+                              width: "20px",
+                              marginTop: "20px",
+                              height: "20px",
+                              background:
+                                corupdate == ""
+                                  ? detalhesproduto.cores.corPrimary.cor1
+                                  : corupdate,
+                            }
                         }
                       ></p>
                       <button
@@ -7014,13 +7124,46 @@ export default function AdminController() {
                 ></input>
               </div>
               <div className="box-input-files">
+                <span>Mudar Link das Redes sociais, telefone, email e cnpj</span>
+                <input
+                  type="text"
+                  onChange={(e) => setLink1(e.target.value)}
+                  placeholder='facebook'
+                ></input>
+                <input
+                  type="text"
+                  onChange={(e) => setLink2(e.target.value)}
+                  placeholder='instagran'
+                ></input>
+                <input
+                  type="text"
+                  onChange={(e) => setLink3(e.target.value)}
+                  placeholder='whatsapp'
+                ></input>
+                <input
+                  type="text"
+                  onChange={(e) => setTelefoneloja(e.target.value)}
+                  placeholder='telefone'
+                ></input>
+                <input
+                  type="text"
+                  onChange={(e) => setEmilloja(e.target.value)}
+                  placeholder='email'
+                ></input>
+                <input
+                  type="text"
+                  onChange={(e) => setCnpjloja(e.target.value)}
+                  placeholder='cnpj'
+                ></input>
+              </div>
+              <div className="box-input-files">
                 <span>
                   Mudar banner central da Home -max: 1500x400 - min:1200x300
                 </span>
                 <input type="file" onChange={uploadbannercentralhome}></input>
                 <span>Mudar Imagem Pop-up até ( 700x500) </span>
                 <input type="file" onChange={uploadBannerpromocao}></input>
-                <span>Mudar banner pagina produtos ( 980x140) </span>
+                <span>Mudar banner pagina produtos ( 980x140) se a imagem nao carregar, renomeie o arquivo para um unico nome sem acentos e caracteres especiais!. </span>
                 <input type="file" onChange={uploadBannerpaginaprod}></input>
               </div>
               <div className="box-input-files">
@@ -7499,11 +7642,11 @@ export default function AdminController() {
                     onClick={() =>
                       document
                         .querySelectorAll(".boxeditpergunta")
-                        [
-                          dataperguntas.findIndex(
-                            (data) => data._id == item._id
-                          )
-                        ].setAttribute("style", "display:flex")
+                      [
+                        dataperguntas.findIndex(
+                          (data) => data._id == item._id
+                        )
+                      ].setAttribute("style", "display:flex")
                     }
                   >
                     <MdEdit color="#2d2d2d" size={20}></MdEdit>
@@ -7531,11 +7674,11 @@ export default function AdminController() {
                       onClick={() =>
                         document
                           .querySelectorAll(".boxeditpergunta")
-                          [
-                            dataperguntas.findIndex(
-                              (data) => data._id == item._id
-                            )
-                          ].setAttribute("style", "display:none")
+                        [
+                          dataperguntas.findIndex(
+                            (data) => data._id == item._id
+                          )
+                        ].setAttribute("style", "display:none")
                       }
                     >
                       Cancelar

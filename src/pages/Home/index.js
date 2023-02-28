@@ -69,16 +69,16 @@ const Home = () => {
         setDataprodutos6(data.data.slice(6, 10));
       });
 
-      api2.get("/edicao").then((data) => {
+      api.get("/edicao").then((data) => {
         setDadosedicao(data.data);
       });
+
 
       document
         .getElementById("section3-home")
         .setAttribute(
           "style",
-          `background-image:url(${
-            dadosedicao.map((item) => item.bannercentralhome)[0]
+          `background-image:url(${dadosedicao.map((item) => item.bannercentralhome)[0]
           })`
         );
 
@@ -160,120 +160,114 @@ const Home = () => {
     const index = dataprodutos.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem")
-      [index].setAttribute(
-        "src",
-        `${
-          item.cores.corPrimary.imgurl2 == ""
-            ? item.cores.corPrimary.imgurl
-            : item.cores.corPrimary.imgurl2
-        }`
-      );
+    [index].setAttribute(
+      "src",
+      `${item.cores.corPrimary.imgurl2 == ""
+        ? item.cores.corPrimary.imgurl
+        : item.cores.corPrimary.imgurl2
+      }`
+    );
   }
   function hoverimg2(item) {
     const index = dataprodutos.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem")
-      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg3(item) {
     const index = dataprodutos2.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem2")
-      [index].setAttribute(
-        "src",
-        `${
-          item.cores.corPrimary.imgurl2 == ""
-            ? item.cores.corPrimary.imgurl
-            : item.cores.corPrimary.imgurl2
-        }`
-      );
+    [index].setAttribute(
+      "src",
+      `${item.cores.corPrimary.imgurl2 == ""
+        ? item.cores.corPrimary.imgurl
+        : item.cores.corPrimary.imgurl2
+      }`
+    );
   }
   function hoverimg4(item) {
     const index = dataprodutos2.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem2")
-      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg5(item) {
     const index = dataprodutos3.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem3")
-      [index].setAttribute(
-        "src",
-        `${
-          item.cores.corPrimary.imgurl2 == ""
-            ? item.cores.corPrimary.imgurl
-            : item.cores.corPrimary.imgurl2
-        }`
-      );
+    [index].setAttribute(
+      "src",
+      `${item.cores.corPrimary.imgurl2 == ""
+        ? item.cores.corPrimary.imgurl
+        : item.cores.corPrimary.imgurl2
+      }`
+    );
   }
   function hoverimg6(item) {
     const index = dataprodutos3.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem3")
-      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg7(item) {
     const index = dataprodutos4.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem4")
-      [index].setAttribute(
-        "src",
-        `${
-          item.cores.corPrimary.imgurl2 == ""
-            ? item.cores.corPrimary.imgurl
-            : item.cores.corPrimary.imgurl2
-        }`
-      );
+    [index].setAttribute(
+      "src",
+      `${item.cores.corPrimary.imgurl2 == ""
+        ? item.cores.corPrimary.imgurl
+        : item.cores.corPrimary.imgurl2
+      }`
+    );
   }
   function hoverimg8(item) {
     const index = dataprodutos4.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem4")
-      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg9(item) {
     const index = dataprodutos5.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem5")
-      [index].setAttribute(
-        "src",
-        `${
-          item.cores.corPrimary.imgurl2 == ""
-            ? item.cores.corPrimary.imgurl
-            : item.cores.corPrimary.imgurl2
-        }`
-      );
+    [index].setAttribute(
+      "src",
+      `${item.cores.corPrimary.imgurl2 == ""
+        ? item.cores.corPrimary.imgurl
+        : item.cores.corPrimary.imgurl2
+      }`
+    );
   }
   function hoverimg10(item) {
     const index = dataprodutos5.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem5")
-      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   function hoverimg11(item) {
     const index = dataprodutos6.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem6")
-      [index].setAttribute(
-        "src",
-        `${
-          item.cores.corPrimary.imgurl2 == ""
-            ? item.cores.corPrimary.imgurl
-            : item.cores.corPrimary.imgurl2
-        }`
-      );
+    [index].setAttribute(
+      "src",
+      `${item.cores.corPrimary.imgurl2 == ""
+        ? item.cores.corPrimary.imgurl
+        : item.cores.corPrimary.imgurl2
+      }`
+    );
   }
   function hoverimg12(item) {
     const index = dataprodutos6.findIndex((ind) => ind._id == item._id);
     document
       .querySelectorAll(".imgitem6")
-      [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
+    [index].setAttribute("src", `${item.cores.corPrimary.imgurl}`);
   }
 
   return (
@@ -406,21 +400,21 @@ const Home = () => {
                       style={
                         window.screen.width > 500
                           ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              height: "60px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            height: "60px",
+                          }
                           : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                          }
                       }
                     >
                       Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -435,11 +429,11 @@ const Home = () => {
                     style={
                       window.screen.width < 450
                         ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                          color: "#666666",
+                          marginBottom: "25px",
+                          fontSize: "11px",
+                          width: "max-content",
+                        }
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
@@ -459,14 +453,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
+                            [
+                              dataprodutos.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corPrimary.imgurl}`
+                            )
                           }
                         ></input>
                         <label
@@ -485,14 +479,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
+                            [
+                              dataprodutos.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSecondary.imgurl4}`
+                            )
                           }
                         ></input>
                         <label
@@ -511,14 +505,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
+                            [
+                              dataprodutos.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corTertiary.imgurl7}`
+                            )
                           }
                         ></input>
                         <label
@@ -537,14 +531,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
+                            [
+                              dataprodutos.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corQuaternary.imgurl10}`
+                            )
                           }
                         ></input>
                         <label
@@ -563,14 +557,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
+                            [
+                              dataprodutos.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corFive.imgurl13}`
+                            )
                           }
                         ></input>
                         <label
@@ -589,14 +583,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
+                            [
+                              dataprodutos.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSix.imgurl16}`
+                            )
                           }
                         ></input>
                         <label
@@ -676,21 +670,21 @@ const Home = () => {
                       style={
                         window.screen.width > 500
                           ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              height: "60px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            height: "60px",
+                          }
                           : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                          }
                       }
                     >
                       Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -705,11 +699,11 @@ const Home = () => {
                     style={
                       window.screen.width < 450
                         ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                          color: "#666666",
+                          marginBottom: "25px",
+                          fontSize: "11px",
+                          width: "max-content",
+                        }
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
@@ -730,14 +724,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                              [
-                                dataprodutos2.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
+                            [
+                              dataprodutos2.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corPrimary.imgurl}`
+                            )
                           }
                         ></input>
                         <label
@@ -756,14 +750,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                              [
-                                dataprodutos2.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
+                            [
+                              dataprodutos2.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSecondary.imgurl4}`
+                            )
                           }
                         ></input>
                         <label
@@ -782,14 +776,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                              [
-                                dataprodutos2.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
+                            [
+                              dataprodutos2.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corTertiary.imgurl7}`
+                            )
                           }
                         ></input>
                         <label
@@ -808,14 +802,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                              [
-                                dataprodutos2.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
+                            [
+                              dataprodutos2.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corQuaternary.imgurl10}`
+                            )
                           }
                         ></input>
                         <label
@@ -834,14 +828,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                              [
-                                dataprodutos2.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
+                            [
+                              dataprodutos2.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corFive.imgurl13}`
+                            )
                           }
                         ></input>
                         <label
@@ -860,14 +854,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem2")
-                              [
-                                dataprodutos2.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
+                            [
+                              dataprodutos2.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSix.imgurl16}`
+                            )
                           }
                         ></input>
                         <label
@@ -935,21 +929,21 @@ const Home = () => {
                       style={
                         window.screen.width > 500
                           ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              height: "60px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            height: "60px",
+                          }
                           : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                          }
                       }
                     >
                       Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -964,11 +958,11 @@ const Home = () => {
                     style={
                       window.screen.width < 450
                         ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                          color: "#666666",
+                          marginBottom: "25px",
+                          fontSize: "11px",
+                          width: "max-content",
+                        }
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
@@ -989,14 +983,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                              [
-                                dataprodutos3.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
+                            [
+                              dataprodutos3.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corPrimary.imgurl}`
+                            )
                           }
                         ></input>
                         <label
@@ -1015,14 +1009,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                              [
-                                dataprodutos3.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
+                            [
+                              dataprodutos3.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSecondary.imgurl4}`
+                            )
                           }
                         ></input>
                         <label
@@ -1041,14 +1035,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                              [
-                                dataprodutos3.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
+                            [
+                              dataprodutos3.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corTertiary.imgurl7}`
+                            )
                           }
                         ></input>
                         <label
@@ -1067,14 +1061,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                              [
-                                dataprodutos3.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
+                            [
+                              dataprodutos3.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corQuaternary.imgurl10}`
+                            )
                           }
                         ></input>
                         <label
@@ -1093,14 +1087,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                              [
-                                dataprodutos3.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
+                            [
+                              dataprodutos3.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corFive.imgurl13}`
+                            )
                           }
                         ></input>
                         <label
@@ -1119,14 +1113,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem3")
-                              [
-                                dataprodutos3.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
+                            [
+                              dataprodutos3.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSix.imgurl16}`
+                            )
                           }
                         ></input>
                         <label
@@ -1201,21 +1195,21 @@ const Home = () => {
                       style={
                         window.screen.width > 500
                           ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              height: "60px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            height: "60px",
+                          }
                           : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                          }
                       }
                     >
                       Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -1230,11 +1224,11 @@ const Home = () => {
                     style={
                       window.screen.width < 450
                         ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                          color: "#666666",
+                          marginBottom: "25px",
+                          fontSize: "11px",
+                          width: "max-content",
+                        }
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
@@ -1255,14 +1249,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                              [
-                                dataprodutos4.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
+                            [
+                              dataprodutos4.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corPrimary.imgurl}`
+                            )
                           }
                         ></input>
                         <label
@@ -1281,14 +1275,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                              [
-                                dataprodutos4.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
+                            [
+                              dataprodutos4.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSecondary.imgurl4}`
+                            )
                           }
                         ></input>
                         <label
@@ -1307,14 +1301,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                              [
-                                dataprodutos4.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
+                            [
+                              dataprodutos4.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corTertiary.imgurl7}`
+                            )
                           }
                         ></input>
                         <label
@@ -1333,14 +1327,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                              [
-                                dataprodutos4.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
+                            [
+                              dataprodutos4.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corQuaternary.imgurl10}`
+                            )
                           }
                         ></input>
                         <label
@@ -1359,14 +1353,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                              [
-                                dataprodutos4.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
+                            [
+                              dataprodutos4.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corFive.imgurl13}`
+                            )
                           }
                         ></input>
                         <label
@@ -1385,14 +1379,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem4")
-                              [
-                                dataprodutos4.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
+                            [
+                              dataprodutos4.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSix.imgurl16}`
+                            )
                           }
                         ></input>
                         <label
@@ -1407,7 +1401,6 @@ const Home = () => {
               );
             })}
           </article>
-
           <article className="box-itens-area-home">
             <button onClick={right5} id="btn-arrow-left">
               <IoIosArrowBack size={30}></IoIosArrowBack>
@@ -1461,21 +1454,21 @@ const Home = () => {
                       style={
                         window.screen.width > 500
                           ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              height: "60px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            height: "60px",
+                          }
                           : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                          }
                       }
                     >
                       Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -1490,11 +1483,11 @@ const Home = () => {
                     style={
                       window.screen.width < 450
                         ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                          color: "#666666",
+                          marginBottom: "25px",
+                          fontSize: "11px",
+                          width: "max-content",
+                        }
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
@@ -1515,14 +1508,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                              [
-                                dataprodutos5.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
+                            [
+                              dataprodutos5.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corPrimary.imgurl}`
+                            )
                           }
                         ></input>
                         <label
@@ -1541,14 +1534,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                              [
-                                dataprodutos5.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
+                            [
+                              dataprodutos5.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSecondary.imgurl4}`
+                            )
                           }
                         ></input>
                         <label
@@ -1567,14 +1560,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                              [
-                                dataprodutos5.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
+                            [
+                              dataprodutos5.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corTertiary.imgurl7}`
+                            )
                           }
                         ></input>
                         <label
@@ -1593,14 +1586,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                              [
-                                dataprodutos5.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
+                            [
+                              dataprodutos5.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corQuaternary.imgurl10}`
+                            )
                           }
                         ></input>
                         <label
@@ -1619,14 +1612,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                              [
-                                dataprodutos5.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
+                            [
+                              dataprodutos5.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corFive.imgurl13}`
+                            )
                           }
                         ></input>
                         <label
@@ -1645,14 +1638,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem5")
-                              [
-                                dataprodutos5.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
+                            [
+                              dataprodutos5.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSix.imgurl16}`
+                            )
                           }
                         ></input>
                         <label
@@ -1722,21 +1715,21 @@ const Home = () => {
                       style={
                         window.screen.width > 500
                           ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              height: "60px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            height: "60px",
+                          }
                           : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                            color: "darkgreen",
+                            fontWeight: "600",
+                            background: "rgb(149, 255, 149)",
+                            padding: "5px",
+                            borderRadius: "5px",
+                            fontSize: "10px",
+                          }
                       }
                     >
                       Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -1751,11 +1744,11 @@ const Home = () => {
                     style={
                       window.screen.width < 450
                         ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                          color: "#666666",
+                          marginBottom: "25px",
+                          fontSize: "11px",
+                          width: "max-content",
+                        }
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
@@ -1776,14 +1769,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                              [
-                                dataprodutos6.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
+                            [
+                              dataprodutos6.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corPrimary.imgurl}`
+                            )
                           }
                         ></input>
                         <label
@@ -1802,14 +1795,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                              [
-                                dataprodutos6.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
+                            [
+                              dataprodutos6.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSecondary.imgurl4}`
+                            )
                           }
                         ></input>
                         <label
@@ -1828,14 +1821,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                              [
-                                dataprodutos6.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
+                            [
+                              dataprodutos6.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corTertiary.imgurl7}`
+                            )
                           }
                         ></input>
                         <label
@@ -1854,14 +1847,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                              [
-                                dataprodutos6.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
+                            [
+                              dataprodutos6.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corQuaternary.imgurl10}`
+                            )
                           }
                         ></input>
                         <label
@@ -1880,14 +1873,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                              [
-                                dataprodutos6.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
+                            [
+                              dataprodutos6.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corFive.imgurl13}`
+                            )
                           }
                         ></input>
                         <label
@@ -1906,14 +1899,14 @@ const Home = () => {
                           onChange={() =>
                             document
                               .querySelectorAll(".imgitem6")
-                              [
-                                dataprodutos6.findIndex(
-                                  (index) => index._id === item._id
-                                )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
+                            [
+                              dataprodutos6.findIndex(
+                                (index) => index._id === item._id
                               )
+                            ].setAttribute(
+                              "src",
+                              `${item.cores.corSix.imgurl16}`
+                            )
                           }
                         ></input>
                         <label

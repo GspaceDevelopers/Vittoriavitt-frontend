@@ -194,7 +194,8 @@ export default function Carrinho() {
     }
     setLoad(true);
 
-    let url = "https://freteapigspace.herokuapp.com/frete";
+    //api de frete vittoria url
+    let url = "https://web-production-d9c6d.up.railway.app/frete";
     await axios
       .post(url, {
         headers: {

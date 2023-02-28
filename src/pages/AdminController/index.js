@@ -42,9 +42,18 @@ export default function AdminController() {
   const [aparecercampobrinde, setAparecercampobrinde] = useState(false);
   const [brinde, setBrinde] = useState();
   const [sku, setSku] = useState();
-
+  const [editarcontato, setEditarcontato] = useState(false);
   const [modaleditadados, setModaleditadados] = useState(false);
   const [modallistaemails, setModalListaemails] = useState(false);
+  const [editarsobre, setEditarSobre] = useState(false);
+  const [valuesobre, Setvaluesobre] = useState([]);
+  const [valuecontato, setValuecontato] = useState([]);
+  const [valuecontatomap, setValuecontatomap] = useState();
+  const [valuecontatotexto, setValuecontatotexto] = useState();
+  const [valuecontatonumero, setValuecontatonumero] = useState();
+  const [showPolitica, setShowpolitica] = useState(false);
+  const [valuepoliticaedit, setValuepoliticaedit] = useState([]);
+
   const [modalperguntasfrequentes, setModalperguntasfrequentes] =
     useState(false);
   const [showpedidos, setShowpedidos] = useState(true);
@@ -252,7 +261,27 @@ export default function AdminController() {
       setDataperguntas(item.data.reverse());
     });
   }, [dataperguntas]);
+  useEffect(() => {
+    api.get("/sobre").then((item) => {
+      const array = item.data;
+      Setvaluesobre(array[array.length - 1].sobre);
+    });
+  }, []);
 
+  useEffect(() => {
+    api.get("/politicaedit").then((item) => {
+      const array = item.data;
+      setValuepoliticaedit(array[array.length - 1].politica);
+    });
+  }, []);
+  useEffect(() => {
+    api.get("/contatoedit").then((item) => {
+      const array = item.data;
+      setValuecontatomap(array[array.length - 1].mapa);
+      setValuecontatonumero(array[array.length - 1].numero);
+      setValuecontatotexto(array[array.length - 1].texto);
+    });
+  }, []);
   useEffect(() => {
     let soma = 0;
     let novoarray = [];
@@ -422,6 +451,9 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
+    setEditarSobre(false);
   }
   function verdeshboard() {
     setShowpedidos(false);
@@ -435,8 +467,26 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setEditarcontato(false);
+    setEditarSobre(false);
   }
+  function verpoliticaedit() {
+    setShowpolitica(true);
+    setEditarcontato(false);
+    setModaleditahome(false);
+    setShowmodaldetalhesproduto(false);
+    setShowpedidos(false);
+    setShowdeshboard(false);
+    setShowlistaprodutos(false);
+    setModalListaemails(false);
+    setModallistafranqueados(false);
+    setModalcadastroprodutos(false);
+    setModaleditadados(false);
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
 
+    setEditarSobre(false);
+  }
   function verlistaprodutos() {
     setShowlistaprodutos(true);
     setShowpedidos(false);
@@ -449,6 +499,9 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setShowpolitica(false);
+    setEditarcontato(false);
+    setEditarSobre(false);
   }
 
   function Modaldetalhesproduto(item) {
@@ -537,6 +590,9 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setEditarcontato(false);
+    setEditarSobre(false);
+    setShowpolitica(false);
   }
 
   function vereditahome() {
@@ -551,6 +607,42 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
+  }
+
+  function vereditarcontato() {
+    setEditarcontato(true);
+    setModaleditahome(false);
+    setShowmodaldetalhesproduto(false);
+    setShowpedidos(false);
+    setShowdeshboard(false);
+    setShowlistaprodutos(false);
+    setModalListaemails(false);
+    setModallistafranqueados(false);
+    setModalcadastroprodutos(false);
+    setModaleditadados(false);
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
+    setEditarSobre(false);
+    setShowpolitica(false);
+  }
+  function Sobre() {
+    setEditarSobre(true);
+    setModaleditahome(false);
+    setShowmodaldetalhesproduto(false);
+    setShowpedidos(false);
+    setShowdeshboard(false);
+    setShowlistaprodutos(false);
+    setModalListaemails(false);
+    setModallistafranqueados(false);
+    setModalcadastroprodutos(false);
+    setModaleditadados(false);
+    setModalperguntasfrequentes(false);
+    setModallistacomentarios(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
   }
   function verlistaemails() {
     setModalListaemails(true);
@@ -564,6 +656,9 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
   }
   function vercadastroprodutos() {
     setModalcadastroprodutos(true);
@@ -577,6 +672,9 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
   }
   function vereditadados() {
     setModaleditadados(true);
@@ -590,6 +688,9 @@ export default function AdminController() {
     setShowlistaprodutos(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
   }
   function vereditaperguntas() {
     setModalperguntasfrequentes(true);
@@ -603,6 +704,9 @@ export default function AdminController() {
     setShowdeshboard(false);
     setShowlistaprodutos(false);
     setModallistacomentarios(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
   }
   function vercadastrocomentarios() {
     setModallistacomentarios(true);
@@ -616,6 +720,9 @@ export default function AdminController() {
     setShowpedidos(false);
     setShowdeshboard(false);
     setShowlistaprodutos(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
   }
 
   async function delitemcor(_id) {
@@ -4663,6 +4770,45 @@ export default function AdminController() {
       });
   }
 
+  async function editarSobreNow() {
+    const sobre = document.getElementById("sobre-edit").value;
+    await api
+      .post("/sobre", {
+        sobre: sobre,
+      })
+      .then(() => {
+        toast.success("Sobre atualizado com sucesso");
+        window.location.href = "/admincontroller";
+      });
+  }
+
+  async function editarPoliticaNow() {
+    const politica = document.getElementById("politica-edit").value;
+    await api
+      .post("/politicaedit", {
+        politica: politica,
+      })
+      .then(() => {
+        toast.success("Sobre atualizado com sucesso");
+        window.location.href = "/admincontroller";
+      });
+  }
+  async function editarContatoNow() {
+    const mapa = document.getElementById("mapa-contato").value;
+    const texto = document.getElementById("texto-contato").value;
+    const numero = document.getElementById("numero-contato").value;
+
+    await api
+      .post("/contatoedit", {
+        mapa: mapa,
+        texto: texto,
+        numero: numero,
+      })
+      .then(() => {
+        toast.success("Contato atualizado com sucesso");
+        window.location.href = "/admincontroller";
+      });
+  }
   return (
     <div className="container-adm-controller">
       <div className="menu-bar">
@@ -4707,6 +4853,15 @@ export default function AdminController() {
             </button>
             <button onClick={vereditahome}>
               <BiEdit size={30}></BiEdit> Editar Banners do site
+            </button>
+            <button onClick={Sobre}>
+              <BiEdit size={30}></BiEdit> Editar Sobre
+            </button>
+            <button onClick={verpoliticaedit}>
+              <BiEdit size={30}></BiEdit> Editar Politica de Privacidade
+            </button>
+            <button onClick={vereditarcontato}>
+              <BiEdit size={30}></BiEdit> Editar Contato
             </button>
             <button onClick={vereditadados}>
               <MdSecurity size={30}></MdSecurity> Privacidade
@@ -7132,7 +7287,111 @@ export default function AdminController() {
         ) : (
           ""
         )}
+        {/* editar sobre */}
+        {editarsobre != false ? (
+          <div className="container-editahome">
+            <div className="title-item-menu">
+              <h2>EDITAR SOBRE</h2>
+            </div>
+            <div className="container-form-sobre">
+              <textarea
+                name="sobre"
+                id="sobre-edit"
+                cols="30"
+                rows="10"
+                onChange={(e) => Setvaluesobre(e.target.value)}
+                value={valuesobre}
+              ></textarea>
+            </div>
+            <br />
+            <br />
+            <button
+              className="btn-sobre-salvar"
+              id="btnsalvar"
+              onClick={editarSobreNow}
+            >
+              Salvar
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+        {/* editar politica */}
+        {showPolitica != false ? (
+          <div className="container-editahome">
+            <div className="title-item-menu">
+              <h2>EDITAR POLITICA DE PRIVACIDADE</h2>
+            </div>
+            <div className="container-form-sobre">
+              <textarea
+                name="sobre"
+                id="politica-edit"
+                cols="30"
+                rows="10"
+                onChange={(e) => setValuepoliticaedit(e.target.value)}
+                value={valuepoliticaedit}
+              ></textarea>
+            </div>
+            <br />
+            <br />
+            <button
+              className="btn-sobre-salvar"
+              id="btnsalvar"
+              onClick={editarPoliticaNow}
+            >
+              Salvar
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
 
+        {/* editar politica */}
+        {/* editar sobre end */}
+
+        {/* editar contato page */}
+        {editarcontato != false ? (
+          <div className="container-editahome">
+            <div className="title-item-menu">
+              <h2>EDITAR CONTATO</h2>
+            </div>
+            <input
+              type="text"
+              id="numero-contato"
+              placeholder="Numero de telefone"
+              value={valuecontatonumero}
+              onChange={(e) => setValuecontatonumero(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              value={valuecontatomap}
+              id="mapa-contato"
+              placeholder="mapa url"
+              onChange={(e) => setValuecontatomap(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              id="texto-contato"
+              placeholder="Texto da Pagina de contato"
+              value={valuecontatotexto}
+              onChange={(e) => setValuecontatotexto(e.target.value)}
+            />
+
+            <button
+              className="btn-sobre-salvar"
+              id="btnsalvar"
+              onClick={editarContatoNow}
+            >
+              Salvar
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {/* editar conatato page end */}
         {modallistaemails != false ? (
           <div className="container-lista-emails">
             <div className="title-item-menu">

@@ -1216,3 +1216,28 @@ td {
     /* color of the tracking area */
   }
 }
+#sobre-edit {
+  width: 600px;
+  height: 300px;
+  border: 1px solid;
+}
+.btn-sobre-salvar {
+  width: 100px;
+  height: 40px;
+  color: white;
+  background-color: #ee6f6f;
+
+  transition: 0.3s ease;
+}
+#numero-contato,
+#mapa-contato,
+#texto-contato {
+  width: 300px;
+  height: 40px;
+  border: 1px solid;
+}
+#politica-edit {
+  width: 600px;
+  height: 300px;
+  border: 1px solid;
+}

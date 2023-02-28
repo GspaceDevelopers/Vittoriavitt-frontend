@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../../Components/Footer";
 import Header from "../../Components/Header";
 import Suporte from "../../Assets/Support_service_RR11.svg";
 import "./Styles.css";
 import api from "../../services/api2";
+import api2 from "../../services/api";
 import { toast } from "react-toastify";
 import { borderColor } from "@mui/system";
 import imgBanner from "./Rectangle 61.png";
@@ -17,7 +18,24 @@ const Contato = () => {
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
   const [numeropedido, setNumeropedido] = useState("");
-
+  const [valuecontato, setValuecontato] = useState([]);
+  const [valuecontatomap, setValuecontatomap] = useState();
+  const [valuecontatotexto, setValuecontatotexto] = useState();
+  const [valuecontatonumero, setValuecontatonumero] = useState();
+  useEffect(() => {
+    api2
+      .get("/contatoedit")
+      .then((item) => {
+        const array = item.data;
+        console.log(array);
+        setValuecontatomap(array[array.length - 1].mapa);
+        setValuecontatonumero(array[array.length - 1].numero);
+        setValuecontatotexto(array[array.length - 1].texto);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   async function sendmsg() {
     if (nome == "" || email == "" || mensagem == "") {
       if (nome == "") {
@@ -108,8 +126,8 @@ const Contato = () => {
             Preencha o formulário e retornaremos seu contato o mais breve
             possível
           </p>
-          <span>(22) 99968-83262</span>
-          <p>Atendimento ao cliente: de segunda a sexta das 09:00 às 18:00h.</p>
+          <span>{valuecontatonumero}</span>
+          <p>Atendimento ao cliente: {valuecontatotexto}</p>
         </div>
         <div className="div-form-third-son">
           <div className="div-form-third-son-main-master">
@@ -205,7 +223,7 @@ const Contato = () => {
       </div>
       <div className="div-iframe-maps">
         <Iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3694.4452445296565!2d-42.404852!3d-22.185179400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x97f1cdbddb74dd%3A0xb5a36d7e8cd36194!2sRJ-146%2C%20605%2C%20Bom%20Jardim%20-%20RJ%2C%2028660-000!5e0!3m2!1spt-BR!2sbr!4v1672944370192!5m2!1spt-BR!2sbr"
+          src={String(valuecontatomap)}
           width="1300"
           height="450"
           style="border:0;"

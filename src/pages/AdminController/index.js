@@ -32,6 +32,19 @@ export default function AdminController() {
     JSON.parse(localStorage.getItem("sessaouser") || "[]")
   );
 
+  const [img1cathome, setImg1cathome] = useState("");
+  const [img2cathome, setImg2cathome] = useState("");
+  const [img3cathome, setImg3cathome] = useState("");
+  const [img4cathome, setImg4cathome] = useState("");
+  const [img5cathome, setImg5cathome] = useState("");
+  const [img6cathome, setImg6cathome] = useState("");
+  const [title1cathome, setTitle1cathome] = useState("");
+  const [title2cathome, setTitle2cathome] = useState("");
+  const [title3cathome, setTitle3cathome] = useState("");
+  const [title4cathome, setTitle4cathome] = useState("");
+  const [title5cathome, setTitle5cathome] = useState("");
+  const [title6cathome, setTitle6cathome] = useState("");
+
   const [link1, setLink1] = useState("");
   const [link2, setLink2] = useState("");
   const [link3, setLink3] = useState("");
@@ -1957,13 +1970,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -2111,13 +2160,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -2265,13 +2350,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -2418,13 +2539,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -2571,13 +2728,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -2724,13 +2917,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -2874,13 +3103,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -3027,13 +3292,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -3180,13 +3481,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -3331,13 +3668,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -3482,13 +3855,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -3633,13 +4042,49 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
       })
       .then(() => {
         setLoad(false);
@@ -3797,7 +4242,44 @@ export default function AdminController() {
         },
         telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
         emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        categoriabtnhome1: {
+          img1: img1cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+            : img1cathome,
+          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+        },
+        categoriabtnhome2: {
+          img2: img2cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+            : img2cathome,
+          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+        },
+        categoriabtnhome3: {
+          img3: img3cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+            : img3cathome,
+          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+        },
+        categoriabtnhome4: {
+          img4: img4cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+            : img4cathome,
+          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+        },
+        categoriabtnhome5: {
+          img5: img5cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+            : img5cathome,
+          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+        },
+        categoriabtnhome6: {
+          img6: img6cathome == ""
+            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+            : img6cathome,
+          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+        },
+       
       })
       .then(() => {
         setLoad(false);
@@ -4920,6 +5402,153 @@ export default function AdminController() {
         window.location.href = "/admincontroller";
       });
   }
+
+
+
+
+  async function uploadimgcategoriahome1(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setImg1cathome(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function uploadimgcategoriahome2(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setImg2cathome(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function uploadimgcategoriahome3(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setImg3cathome(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function uploadimgcategoriahome4(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setImg4cathome(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function uploadimgcategoriahome5(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setImg5cathome(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function uploadimgcategoriahome6(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setImg6cathome(String(url));
+          });
+        setLoad(false);
+      });
+  }
+
+
+
+
+
   return (
     <div className="container-adm-controller">
       <div className="menu-bar">
@@ -7167,6 +7796,43 @@ export default function AdminController() {
                 <span>Mudar banner pagina produtos ( 980x140) se a imagem nao carregar, renomeie o arquivo para um unico nome sem acentos e caracteres especiais!. </span>
                 <input type="file" onChange={uploadBannerpaginaprod}></input>
               </div>
+              <div className="box-input-files">
+                <span>
+                  Mudar imagens e titulo das categorias da home - max: 190x190
+                </span>
+                <div style={{ marginTop: "10px" }}>
+                  <p>1° Categoria</p>
+                  <input type="file" onChange={uploadimgcategoriahome1}></input>
+                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle1cathome(e.target.value)}></input>
+                </div>
+                <div style={{ marginTop: "10px" }}>
+                  <p>2° Categoria</p>
+                  <input type="file" onChange={uploadimgcategoriahome2}></input>
+                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle2cathome(e.target.value)}></input>
+                </div>
+                <div style={{ marginTop: "10px" }}>
+                  <p>3° Categoria</p>
+                  <input type="file" onChange={uploadimgcategoriahome3}></input>
+                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle3cathome(e.target.value)}></input>
+                </div>
+                <div style={{ marginTop: "10px" }}>
+                  <p>4° Categoria</p>
+                  <input type="file" onChange={uploadimgcategoriahome4}></input>
+                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle4cathome(e.target.value)}></input>
+                </div>
+                <div style={{ marginTop: "10px" }}>
+                  <p>5° Categoria</p>
+                  <input type="file" onChange={uploadimgcategoriahome5}></input>
+                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle5cathome(e.target.value)}></input>
+                </div>
+                <div style={{ marginTop: "10px" }}>
+                  <p>6° Categoria</p>
+                  <input type="file" onChange={uploadimgcategoriahome6}></input>
+                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle6cathome(e.target.value)}></input>
+                </div>
+              </div>
+
+
               <div className="box-input-files">
                 <strong>
                   Essas Imagens devem ter no maximo 1920×960 e

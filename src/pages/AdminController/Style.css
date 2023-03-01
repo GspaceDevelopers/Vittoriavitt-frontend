@@ -547,6 +547,10 @@ td {
   padding: 20px;
   background-color: #e06f84;
 }
+.box-input-files inputs::placeholder{
+  color: #fff;
+  font-size: 15px;
+}
 
 .form-edita-home {
   width: 100%;

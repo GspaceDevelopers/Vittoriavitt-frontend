@@ -44,6 +44,61 @@ const Home = () => {
 
   useEffect(() => {
     async function loaditens() {
+      api.get("/edicao").then((data) => {
+        setDadosedicao(data.data);
+      });
+
+
+      document
+        .getElementById("section3-home")
+        .setAttribute(
+          "style",
+          `background-image:url(${dadosedicao.map((item) => item.bannercentralhome)[0]
+          })`
+        );
+      document
+        .getElementById("category-btn1")
+        .setAttribute(
+          "style",
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+          })`
+        );
+      document
+        .getElementById("category-btn2")
+        .setAttribute(
+          "style",
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+          })`
+        );
+      document
+        .getElementById("category-btn2-1")
+        .setAttribute(
+          "style",
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+          })`
+        );
+      document
+        .getElementById("category-btn3")
+        .setAttribute(
+          "style",
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+          })`
+        );
+      document
+        .getElementById("category-btn4")
+        .setAttribute(
+          "style",
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+          })`
+        );
+      document
+        .getElementById("category-btn5")
+        .setAttribute(
+          "style",
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+          })`
+        );
+
       api.get("/emailsclientes").then((data) => {
         setClientescadastradoswhatsappodutos(data.data);
       });
@@ -69,18 +124,6 @@ const Home = () => {
         setDataprodutos6(data.data.slice(6, 10));
       });
 
-      api.get("/edicao").then((data) => {
-        setDadosedicao(data.data);
-      });
-
-
-      document
-        .getElementById("section3-home")
-        .setAttribute(
-          "style",
-          `background-image:url(${dadosedicao.map((item) => item.bannercentralhome)[0]
-          })`
-        );
 
       setDatacarrinho(JSON.parse(localStorage.getItem("carrinhorr11") || "[]"));
       ///console.log(verificatelefoneuser)
@@ -290,49 +333,49 @@ const Home = () => {
           </div>
           <div className="category-options">
             <div className="box-category-btns">
-              <span>BODYES</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome1.title1)}</span>
               <button
-                onClick={() => (window.location.href = "/loja4/bodye")}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome1.title1)}`)}
                 id="category-btn1"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>CALCINHAS</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome2.title2)}</span>
               <button
-                onClick={() => (window.location.href = "/loja4/calcinha")}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome2.title2)}`)}
                 id="category-btn2"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>SUTIÃS</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome3.title3)}</span>
               <button
-                onClick={() => (window.location.href = "/loja4/sutiã")}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome3.title3)}`)}
                 id="category-btn2-1"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>LINGERIES</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome4.title4)}</span>
               <button
-                onClick={() => (window.location.href = "/loja4/lingeries")}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome4.title4)}`)}
                 id="category-btn3"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>PIJAMAS</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome5.title5)}</span>
               <button
-                onClick={() => (window.location.href = "/loja4/pijama")}
+                onClick={() => (window.location.href =`/loja4/${dadosedicao.map(item => item.categoriabtnhome5.title5)}`)}
                 id="category-btn4"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>CONFORTAVEL</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome6.title6)}</span>
               <button
-                onClick={() => (window.location.href = "/loja/calcinha")}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome6.title6)}`)}
                 id="category-btn5"
                 className="category1homebtn"
               ></button>

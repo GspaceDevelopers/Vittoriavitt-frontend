@@ -222,16 +222,11 @@ export default function AdminController() {
         window.location.href = "/adminlogin";
         return;
       }
-
       await api2.get("/edicao").then((data) => {
         setDadosedicao(data.data);
       });
       await api2.get("/franquias").then((data) => {
         setDatafranqueados(data.data.reverse());
-      });
-
-      await api.get("/produtos").then((data) => {
-        setDataprodutos(data.data);
       });
 
       await api2.get("/pedidos").then((data) => {
@@ -261,6 +256,12 @@ export default function AdminController() {
 
     loadpedidos();
   }, [dadosedicao]);
+
+  useEffect(() => {
+    api.get("/produtos").then((data) => {
+      setDataprodutos(data.data);
+    });
+  }, [])
 
   useEffect(() => {
     api.get("/perguntas").then((item) => {
@@ -1956,13 +1957,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2110,13 +2111,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2264,13 +2265,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2417,13 +2418,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2570,13 +2571,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2723,13 +2724,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -2873,13 +2874,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3026,13 +3027,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3179,13 +3180,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3330,13 +3331,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3481,13 +3482,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3632,13 +3633,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -3647,7 +3648,7 @@ export default function AdminController() {
   }
   async function atualizarhome() {
     setLoad(true);
-    await api2
+    await api
       .put(`/edicao/63ecc3bae25f69b653d416fc`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
@@ -3790,13 +3791,13 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == ''?  dadosedicao.map((item) => item.link1)[0] : link1,
-          link2: link2 == ''?  dadosedicao.map((item) => item.link2)[0] : link2,
-          link3: link3 == ''?  dadosedicao.map((item) => item.link3)[0] : link3,
+          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
+          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
+          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
         },
-        telefoneloja: telefoneloja == ''?  dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == ''?  dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == ''?  dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
+        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
+        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
+        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja
       })
       .then(() => {
         setLoad(false);
@@ -4370,7 +4371,7 @@ export default function AdminController() {
     }
     await firebase
       .auth()
-      .signInWithEmailAndPassword(user.email, senhaverificacao)
+      .signInWithEmailAndPassword(alteraemail, senhaverificacao)
       .then(async function (userCredential) {
         userCredential.user.updateEmail(alteraemail);
         userCredential.user.updatePassword(alterasenha);

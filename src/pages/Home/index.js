@@ -89,8 +89,14 @@ const Home = () => {
   }, [dadosedicao]);
 
   function addfavoritos(item) {
-    const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
 
+    const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
+    const sessaocliente = JSON.parse(localStorage.getItem("sessaocliente") || "[]");
+
+    if(sessaocliente == null){
+      toast.error('Faça login para adicionar aos favoritos!')
+    }
+    
     let arrayfavoritos = {
       _id: item._id,
       cpf: usercliente.cpf,

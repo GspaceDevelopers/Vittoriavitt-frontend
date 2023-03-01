@@ -180,7 +180,7 @@ export default function Footer() {
           <img src={logo}></img>
           <div className="redes-text-flex-direction">
             <span>Nossas Redes</span>
-            <div className="redes-sociais-footer">
+            {<div className="redes-sociais-footer">
               <a href={data.map(item => item.linkredes.link1)[0]}>
                 <img src={face}></img>
               </a>
@@ -190,7 +190,7 @@ export default function Footer() {
               <a href={data.map(item => item.linkredes.link3)[0]}>
                 <img src={whats}></img>
               </a>
-            </div>
+      </div>}
             <div className="info-empresa-footer">
               <p>{data.map(item => item.telefoneloja)[0]}</p>
               <p>{data.map(item => item.emailloja)[0]}</p>

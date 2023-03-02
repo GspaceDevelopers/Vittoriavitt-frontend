@@ -9311,10 +9311,27 @@ export default function AdminController() {
                       id="select-aprovacao"
                       onChange={(e) => setAprovarComentarioNow(e.target.value)}
                     >
-                      <option value={item.liberar}>{item.liberar}</option>
+                      {/* <option value={item.liberar}>{item.liberar}</option>
+                      {item.liberar != "aprovado" ? (
+                        <option value="aprovado">Aprovado</option>
+                      ) : (
+                        <option value="reprovado">Reprovado</option>
+                      )} */}
+
+                      {/* <option value={item.liberar}>{item.liberar}</option> */}
+                      <option value="...">...</option>
                       <option value="aprovado">Aprovado</option>
                       <option value="reprovado">Reprovado</option>
                     </select>
+                    <strong
+                      style={{
+                        textTransform: "capitalize",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {" "}
+                      {item.liberar}
+                    </strong>
                   </div>
                   <button
                     type="button"

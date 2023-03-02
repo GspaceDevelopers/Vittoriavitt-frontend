@@ -144,7 +144,6 @@ export default function Carrinho() {
   }, [dadosfrete, valorfinal]);
 
   function additem(item) {
-    
     dispath({
       type: "ADD_ITEM",
       item,
@@ -529,7 +528,7 @@ export default function Carrinho() {
       // if (!validarSegundoDigito(cpf)) {
       //   return setCpfstateform("14");
       // }
-      return setCpfstateform("cpf valido");
+      return setCpfstateform("CPF valido");
     }
 
     const cpfState = String(cpf)

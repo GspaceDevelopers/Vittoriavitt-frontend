@@ -21,7 +21,7 @@ import cupom9 from "../../Assets/cupoms/90.png";
 
 export default function Loja2() {
   const { usercliente } = useContext(AuthContext);
-
+  // const {categoria} = useParams()
   const { search } = useParams();
   const [dataprodutos, setDataprodutos] = useState([]);
   const [fotocorselecionada, setFotocorselecionada] = useState();
@@ -39,6 +39,24 @@ export default function Loja2() {
 
     const categoriatext = `${search.toLowerCase()}`;
 
+    api.get("/cores").then((data) => {
+      setArraydeCores(data.data);
+    });
+
+    api.get("/edicao").then((data) => {
+      setEdicao(data.data);
+    });
+
+    document
+      .querySelector(".banner-loja")
+      .setAttribute(
+        "style",
+        `background-image:url(${
+          edicao.map((item) => item.bannerpaginaprod)[0]
+        })`
+      );
+  }, [edicao]);
+  useEffect(() => {
     api.get(`/produtos`).then((data) => {
       setDataprodutos(
         data.data.filter(
@@ -61,23 +79,7 @@ export default function Loja2() {
         }
       })
     );
-
-    api.get("/cores").then((data) => {
-      setArraydeCores(data.data);
-    });
-
-    api.get("/edicao").then((data) => {
-      setEdicao(data.data);
-    });
-
-    document
-      .querySelector(".banner-loja")
-      .setAttribute(
-        "style",
-        `background-image:url(${edicao.map((item) => item.bannerpaginaprod)[0]
-        })`
-      );
-  }, [edicao]);
+  }, []);
 
   function addfavoritos(item) {
     const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
@@ -184,18 +186,18 @@ export default function Loja2() {
       if (window.screen.width < 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:150px");
+          [i].setAttribute("style", "width:150px");
       }
       if (window.screen.width > 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:250px");
+          [i].setAttribute("style", "width:250px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
       }
     }
   }
@@ -206,25 +208,25 @@ export default function Loja2() {
       if (window.screen.width < 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:350px");
+          [i].setAttribute("style", "width:350px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:280px");
+          [i].setAttribute("style", "width:280px");
       }
       if (window.screen.width > 999) {
         document
           .querySelectorAll(".item-home")
-        [i].setAttribute("style", "width:300px");
+          [i].setAttribute("style", "width:300px");
         document
           .querySelectorAll(".imgitem-pag-loja")
-        [i].setAttribute("style", "width:200px");
+          [i].setAttribute("style", "width:200px");
       }
     }
   }
-
+  // filtro de cores
   async function filtercores(item) {
     await api.get(`/produtos`).then((data) => {
-      const array = data.data;
+      const array = data.data.filter((url) => url.categoria == search);
       setCorfiltro(
         array.filter(
           //cor.categoria == search || cor.subcategoria1 == search || cor.subcategoria2 == search || cor.subcategoria3 == search || cor.subcategoria4 == search &&
@@ -365,7 +367,6 @@ export default function Loja2() {
               ""
             )}
             {dataprodutos.map((item) => {
-
               return (
                 <div key={item._id} className="item-home" id="item-pag-loja">
                   {item.promocao2 == true && item.desconto == 10 ? (
@@ -423,20 +424,20 @@ export default function Loja2() {
                         style={
                           window.screen.width > 500
                             ? {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "darkgreen",
+                                fontWeight: "600",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                             : {
-                              color: "darkgreen",
-                              fontWeight: "600",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                              fontSize: "10px",
-                            }
+                                color: "darkgreen",
+                                fontWeight: "600",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                                fontSize: "10px",
+                              }
                         }
                       >
                         Comprando {item.qtdpromocao2} produto(s) ou mais voçê
@@ -451,11 +452,11 @@ export default function Loja2() {
                       style={
                         window.screen.width < 450
                           ? {
-                            color: "#666666",
-                            marginBottom: "25px",
-                            fontSize: "11px",
-                            width: "max-content",
-                          }
+                              color: "#666666",
+                              marginBottom: "25px",
+                              fontSize: "11px",
+                              width: "max-content",
+                            }
                           : { color: "#666666", marginBottom: "15px" }
                       }
                     >
@@ -479,14 +480,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corPrimary.imgurl}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corPrimary.imgurl}`
-                              )
                             }
                           ></input>
                           <label
@@ -505,14 +506,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corSecondary.imgurl4}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSecondary.imgurl4}`
-                              )
                             }
                           ></input>
                           <label
@@ -533,14 +534,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corTertiary.imgurl7}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corTertiary.imgurl7}`
-                              )
                             }
                           ></input>
                           <label
@@ -561,14 +562,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corQuaternary.imgurl10}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corQuaternary.imgurl10}`
-                              )
                             }
                           ></input>
                           <label
@@ -589,14 +590,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corFive.imgurl13}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corFive.imgurl13}`
-                              )
                             }
                           ></input>
                           <label
@@ -615,14 +616,14 @@ export default function Loja2() {
                             onChange={() =>
                               document
                                 .querySelectorAll(".imgitem")
-                              [
-                                dataprodutos.findIndex(
-                                  (index) => index._id === item._id
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corSix.imgurl16}`
                                 )
-                              ].setAttribute(
-                                "src",
-                                `${item.cores.corSix.imgurl16}`
-                              )
                             }
                           ></input>
                           <label

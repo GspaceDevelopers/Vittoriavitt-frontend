@@ -53,6 +53,7 @@ export default function Loja2() {
   const [precoordem, setPrecoordem] = useState([]);
   const [arrayAlfabetico, setArrayAlfabetico] = useState();
   const [corfiltro, setCorfiltro] = useState([]);
+  const [edicao, setEdicao] = useState([]);
 
   useEffect(() => {
     document.title = `${desconto}% OFF 🤑  |  VittoriavittStore`;
@@ -76,6 +77,21 @@ export default function Loja2() {
       );
     });
   }, []);
+
+  useEffect(() => {
+    api.get("/edicao").then((data) => {
+      setEdicao(data.data);
+    });
+
+    document
+      .querySelector(".banner-loja")
+      .setAttribute(
+        "style",
+        `background-image:url(${
+          edicao.map((item) => item.bannerpaginaprod)[0]
+        })`
+      );
+  }, [edicao]);
 
   function addfavoritos(item) {
     const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
@@ -466,161 +482,163 @@ export default function Loja2() {
                       id="label-div-ajus-absolute"
                     >
                       {item.cores.corPrimary.cor1 != "" ? (
-                      <div>
-                        <input
-                          value={item.cores.corPrimary.cor1}
-                          name="cores3"
-                          type="radio"
-                          onChange={() =>
-                            document
-                              .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
-                              )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corPrimary.imgurl}`
-                            )
-                          }
-                        ></input>
-                        <label
-                          style={{ background: item.cores.corPrimary.cor1 }}
-                        ></label>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    {item.cores.corSecondary.cor2 != "" ? (
-                      <div>
-                        <input
-                          value={item.cores.corSecondary.cor2}
-                          name="cores3"
-                          type="radio"
-                          onChange={() =>
-                            document
-                              .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
-                              )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSecondary.imgurl4}`
-                            )
-                          }
-                        ></input>
-                        <label
-                          style={{ background: item.cores.corSecondary.cor2 }}
-                        ></label>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    {item.cores.corTertiary.cor3 != "" ? (
-                      <div>
-                        <input
-                          value={item.cores.corTertiary.cor3}
-                          name="cores3"
-                          type="radio"
-                          onChange={() =>
-                            document
-                              .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
-                              )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corTertiary.imgurl7}`
-                            )
-                          }
-                        ></input>
-                        <label
-                          style={{ background: item.cores.corTertiary.cor3 }}
-                        ></label>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    {item.cores.corQuaternary.cor4 != "" ? (
-                      <div>
-                        <input
-                          value={item.cores.corQuaternary.cor4}
-                          name="cores3"
-                          type="radio"
-                          onChange={() =>
-                            document
-                              .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
-                              )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corQuaternary.imgurl10}`
-                            )
-                          }
-                        ></input>
-                        <label
-                          style={{ background: item.cores.corQuaternary.cor4 }}
-                        ></label>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    {item.cores.corFive.cor5 != "" ? (
-                      <div>
-                        <input
-                          value={item.cores.corFive.cor5}
-                          name="cores3"
-                          type="radio"
-                          onChange={() =>
-                            document
-                              .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
-                              )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corFive.imgurl13}`
-                            )
-                          }
-                        ></input>
-                        <label
-                          style={{ background: item.cores.corFive.cor5 }}
-                        ></label>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    {item.cores.corSix.cor6 != "" ? (
-                      <div>
-                        <input
-                          value={item.cores.corSix.cor6}
-                          name="cores3"
-                          type="radio"
-                          onChange={() =>
-                            document
-                              .querySelectorAll(".imgitem")
-                            [
-                              dataprodutos.findIndex(
-                                (index) => index._id === item._id
-                              )
-                            ].setAttribute(
-                              "src",
-                              `${item.cores.corSix.imgurl16}`
-                            )
-                          }
-                        ></input>
-                        <label
-                          style={{ background: item.cores.corSix.cor6 }}
-                        ></label>
-                      </div>
-                    ) : (
-                      ""
-                    )}
+                        <div>
+                          <input
+                            value={item.cores.corPrimary.cor1}
+                            name="cores3"
+                            type="radio"
+                            onChange={() =>
+                              document
+                                .querySelectorAll(".imgitem")
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corPrimary.imgurl}`
+                                )
+                            }
+                          ></input>
+                          <label
+                            style={{ background: item.cores.corPrimary.cor1 }}
+                          ></label>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {item.cores.corSecondary.cor2 != "" ? (
+                        <div>
+                          <input
+                            value={item.cores.corSecondary.cor2}
+                            name="cores3"
+                            type="radio"
+                            onChange={() =>
+                              document
+                                .querySelectorAll(".imgitem")
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corSecondary.imgurl4}`
+                                )
+                            }
+                          ></input>
+                          <label
+                            style={{ background: item.cores.corSecondary.cor2 }}
+                          ></label>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {item.cores.corTertiary.cor3 != "" ? (
+                        <div>
+                          <input
+                            value={item.cores.corTertiary.cor3}
+                            name="cores3"
+                            type="radio"
+                            onChange={() =>
+                              document
+                                .querySelectorAll(".imgitem")
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corTertiary.imgurl7}`
+                                )
+                            }
+                          ></input>
+                          <label
+                            style={{ background: item.cores.corTertiary.cor3 }}
+                          ></label>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {item.cores.corQuaternary.cor4 != "" ? (
+                        <div>
+                          <input
+                            value={item.cores.corQuaternary.cor4}
+                            name="cores3"
+                            type="radio"
+                            onChange={() =>
+                              document
+                                .querySelectorAll(".imgitem")
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corQuaternary.imgurl10}`
+                                )
+                            }
+                          ></input>
+                          <label
+                            style={{
+                              background: item.cores.corQuaternary.cor4,
+                            }}
+                          ></label>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {item.cores.corFive.cor5 != "" ? (
+                        <div>
+                          <input
+                            value={item.cores.corFive.cor5}
+                            name="cores3"
+                            type="radio"
+                            onChange={() =>
+                              document
+                                .querySelectorAll(".imgitem")
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corFive.imgurl13}`
+                                )
+                            }
+                          ></input>
+                          <label
+                            style={{ background: item.cores.corFive.cor5 }}
+                          ></label>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {item.cores.corSix.cor6 != "" ? (
+                        <div>
+                          <input
+                            value={item.cores.corSix.cor6}
+                            name="cores3"
+                            type="radio"
+                            onChange={() =>
+                              document
+                                .querySelectorAll(".imgitem")
+                                [
+                                  dataprodutos.findIndex(
+                                    (index) => index._id === item._id
+                                  )
+                                ].setAttribute(
+                                  "src",
+                                  `${item.cores.corSix.imgurl16}`
+                                )
+                            }
+                          ></input>
+                          <label
+                            style={{ background: item.cores.corSix.cor6 }}
+                          ></label>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </div>

@@ -397,6 +397,7 @@ export default function Minhaconta() {
         comentario: textofeedback,
         printcomentario: "Boolean",
         star: "String",
+        liberar: "reprovado",
         data: `${new Date().getDate() + "/" + new Date().getMonth()}`,
       })
       .then(() => {
@@ -860,7 +861,7 @@ export default function Minhaconta() {
         {modaladdcomentarios != false ? (
           <div className="modalcomentarios">
             <div className="titlemenuminhaconta">
-              <h2>Feddback</h2>
+              <h2>Feedback</h2>
             </div>
             <input
               type={"text"}

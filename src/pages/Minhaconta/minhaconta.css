@@ -227,14 +227,11 @@
   /* color of the tracking area */
 }
 
-
-
 .modalcomentarios {
   width: calc(100% - 308px);
   margin-left: 30px;
   display: flex;
   flex-direction: column;
-
 }
 
 .modalcomentarios input {
@@ -263,7 +260,14 @@
   font-size: 17px;
   margin-top: 10px;
 }
-
+#select-aprovacao {
+  width: 100px;
+  height: 40px;
+  background-color: #de4563;
+  color: white;
+  font-size: 17px;
+  margin-top: 10px;
+}
 @media (max-width: 500px) {
   .content-minhaconta {
     flex-direction: column;
@@ -282,7 +286,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
   }
 
   .inputareameusdados {
@@ -303,4 +306,10 @@
     margin-left: -35px;
     margin-right: 35px;
   }
+}
+#aprovaroureprovarcommentdiv {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  align-items: center;
 }

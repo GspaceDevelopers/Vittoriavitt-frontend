@@ -30,7 +30,7 @@ const Header = (props) => {
       setDataprodutos(data.data);
     });
 
-    api.get("/produtos").then((data) => {
+    api.get("/categorias").then((data) => {
       setDatacategorias(data.data.slice(0, 4));
     });
 

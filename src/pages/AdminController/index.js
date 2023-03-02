@@ -228,7 +228,17 @@ export default function AdminController() {
   const [urlbanneredicao4, setUrlbanneredicao4] = useState("");
   const [urlbanneredicao5, setUrlbanneredicao5] = useState("");
   const [urlbanneredicao6, setUrlbanneredicao6] = useState("");
+  const [comentariosTitle, setComentariosTitle] = useState([]);
+  const [modalcomment, setModalcomment] = useState(false);
+  const [comentariouser, setComentarioUser] = useState();
+  const [comentarioavaliacao, setComentarioAvaliacao] = useState();
+  const [aprovarComentarioNow, setAprovarComentarioNow] = useState();
 
+  useEffect(() => {
+    api.get("/comentarios").then((data) => {
+      setComentariosTitle(data.data);
+    });
+  }, [comentariosTitle]);
   useEffect(() => {
     async function loadpedidos() {
       if (user == null || user == "" || user == []) {
@@ -274,7 +284,7 @@ export default function AdminController() {
     api.get("/produtos").then((data) => {
       setDataprodutos(data.data);
     });
-  }, [])
+  }, []);
 
   useEffect(() => {
     api.get("/perguntas").then((item) => {
@@ -458,6 +468,23 @@ export default function AdminController() {
   function sair() {
     sairadm();
   }
+  function veraprovareeditarcomment() {
+    setModalcomment(true);
+    setModallistacomentarios(false);
+    setModalperguntasfrequentes(false);
+    setModaleditadados(false);
+    setModalcadastroprodutos(false);
+    setModallistafranqueados(false);
+    setModalListaemails(false);
+    setModaleditahome(false);
+    setShowmodaldetalhesproduto(false);
+    setShowpedidos(false);
+    setShowdeshboard(false);
+    setShowlistaprodutos(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
+  }
 
   function verpedidos() {
     setShowpedidos(true);
@@ -473,6 +500,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarcontato(false);
     setShowpolitica(false);
+    setModalcomment(false);
     setEditarSobre(false);
   }
   function verdeshboard() {
@@ -489,6 +517,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarcontato(false);
     setEditarSobre(false);
+    setModalcomment(false);
   }
   function verpoliticaedit() {
     setShowpolitica(true);
@@ -504,6 +533,7 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setModalcomment(false);
 
     setEditarSobre(false);
   }
@@ -521,6 +551,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setShowpolitica(false);
     setEditarcontato(false);
+    setModalcomment(false);
     setEditarSobre(false);
   }
 
@@ -613,6 +644,7 @@ export default function AdminController() {
     setEditarcontato(false);
     setEditarSobre(false);
     setShowpolitica(false);
+    setModalcomment(false);
   }
 
   function vereditahome() {
@@ -629,6 +661,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarSobre(false);
     setEditarcontato(false);
+    setModalcomment(false);
     setShowpolitica(false);
   }
 
@@ -646,6 +679,7 @@ export default function AdminController() {
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
     setEditarSobre(false);
+    setModalcomment(false);
     setShowpolitica(false);
   }
   function Sobre() {
@@ -661,6 +695,7 @@ export default function AdminController() {
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
+    setModalcomment(false);
     setEditarcontato(false);
     setShowpolitica(false);
   }
@@ -678,6 +713,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarSobre(false);
     setEditarcontato(false);
+    setModalcomment(false);
     setShowpolitica(false);
   }
   function vercadastroprodutos() {
@@ -693,6 +729,7 @@ export default function AdminController() {
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
     setEditarSobre(false);
+    setModalcomment(false);
     setEditarcontato(false);
     setShowpolitica(false);
   }
@@ -710,6 +747,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarSobre(false);
     setEditarcontato(false);
+    setModalcomment(false);
     setShowpolitica(false);
   }
   function vereditaperguntas() {
@@ -726,6 +764,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarSobre(false);
     setEditarcontato(false);
+    setModalcomment(false);
     setShowpolitica(false);
   }
   function vercadastrocomentarios() {
@@ -742,6 +781,7 @@ export default function AdminController() {
     setShowlistaprodutos(false);
     setEditarSobre(false);
     setEditarcontato(false);
+    setModalcomment(false);
     setShowpolitica(false);
   }
 
@@ -1841,7 +1881,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -1919,20 +1962,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -1970,48 +2013,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -2031,7 +2116,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -2109,20 +2197,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2160,48 +2248,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -2221,7 +2351,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -2299,20 +2432,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2350,48 +2483,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -2410,7 +2585,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -2488,20 +2666,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2539,48 +2717,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -2599,7 +2819,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -2677,20 +2900,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2728,48 +2951,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -2788,7 +3053,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -2866,20 +3134,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2917,48 +3185,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -2977,7 +3287,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -3055,20 +3368,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3103,48 +3416,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -3163,7 +3518,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -3244,20 +3602,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3292,48 +3650,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -3352,7 +3752,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -3433,20 +3836,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3481,48 +3884,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -3541,7 +3986,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -3626,14 +4074,14 @@ export default function AdminController() {
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3668,48 +4116,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -3728,7 +4218,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -3812,15 +4305,15 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2: "",
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3855,48 +4348,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -3915,7 +4450,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -3999,14 +4537,14 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3: "",
         },
@@ -4042,48 +4580,90 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
       })
       .then(() => {
@@ -4102,7 +4682,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
+        parcelas:
+          parcelas == ""
+            ? dadosedicao.map((item) => item.parcelas)[0]
+            : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
             ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
@@ -4185,20 +4768,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -4236,50 +4819,91 @@ export default function AdminController() {
               : urlbanner7,
         },
         linkredes: {
-          link1: link1 == '' ? dadosedicao.map((item) => item.linkredes.link1)[0] : link1,
-          link2: link2 == '' ? dadosedicao.map((item) => item.linkredes.link2)[0] : link2,
-          link3: link3 == '' ? dadosedicao.map((item) => item.linkredes.link3)[0] : link3,
+          link1:
+            link1 == ""
+              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              : link1,
+          link2:
+            link2 == ""
+              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              : link2,
+          link3:
+            link3 == ""
+              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              : link3,
         },
-        telefoneloja: telefoneloja == '' ? dadosedicao.map((item) => item.telefoneloja)[0] : telefoneloja,
-        emailloja: emailloja == '' ? dadosedicao.map((item) => item.emailloja)[0] : emailloja,
-        cnpjloja: cnpjloja == '' ? dadosedicao.map((item) => item.cnpjloja)[0] : cnpjloja,
+        telefoneloja:
+          telefoneloja == ""
+            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            : telefoneloja,
+        emailloja:
+          emailloja == ""
+            ? dadosedicao.map((item) => item.emailloja)[0]
+            : emailloja,
+        cnpjloja:
+          cnpjloja == ""
+            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            : cnpjloja,
         categoriabtnhome1: {
-          img1: img1cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
-            : img1cathome,
-          title1:title1cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0] : title1cathome,
+          img1:
+            img1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              : img1cathome,
+          title1:
+            title1cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              : title1cathome,
         },
         categoriabtnhome2: {
-          img2: img2cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
-            : img2cathome,
-          title2:title2cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0] : title2cathome,
+          img2:
+            img2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              : img2cathome,
+          title2:
+            title2cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              : title2cathome,
         },
         categoriabtnhome3: {
-          img3: img3cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
-            : img3cathome,
-          title3:title3cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0] : title3cathome,
+          img3:
+            img3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              : img3cathome,
+          title3:
+            title3cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              : title3cathome,
         },
         categoriabtnhome4: {
-          img4: img4cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
-            : img4cathome,
-          title4:title4cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0] : title4cathome,
+          img4:
+            img4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              : img4cathome,
+          title4:
+            title4cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              : title4cathome,
         },
         categoriabtnhome5: {
-          img5: img5cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
-            : img5cathome,
-          title5:title5cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0] : title5cathome,
+          img5:
+            img5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              : img5cathome,
+          title5:
+            title5cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              : title5cathome,
         },
         categoriabtnhome6: {
-          img6: img6cathome == ""
-            ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
-            : img6cathome,
-          title6:title6cathome == '' ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0] : title6cathome,
+          img6:
+            img6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              : img6cathome,
+          title6:
+            title6cathome == ""
+              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              : title6cathome,
         },
-       
       })
       .then(() => {
         setLoad(false);
@@ -4898,9 +5522,45 @@ export default function AdminController() {
       });
   }
 
+  async function updateComentarios(_id) {
+    if (comentariouser == "" || comentarioavaliacao == "") {
+      toast.info("Preencha todos os campos!");
+      return;
+    }
+    await api
+      .put(`/comentarios/${_id}`, {
+        user: comentariouser,
+        comentario: comentarioavaliacao,
+      })
+      .then(() => {
+        toast.success("Comentários atualizada com sucesso!");
+        setTitulopergunta("");
+        setTextoresposta("");
+        window.location.href = "/adminController";
+      });
+  }
+
+  async function aprovarcomentarioFunction(_id) {
+    await api
+      .put(`/comentarios/${_id}`, {
+        liberar: aprovarComentarioNow,
+      })
+      .then(() => {
+        toast.success("Comentários atualizada com sucesso!");
+        setTitulopergunta("");
+        setTextoresposta("");
+        // window.location.href = "/adminController";
+      });
+  }
   async function delpergunta(_id) {
     await api.delete(`/perguntas/${_id}`).then(() => {
       toast.success("Pergunta excluida com sucesso!");
+    });
+  }
+  async function delComentario(_id) {
+    await api.delete(`/comentarios/${_id}`).then(() => {
+      toast.success("Comentario excluido com sucesso!");
+      // window.location.href = "/admincontroller";
     });
   }
 
@@ -5403,9 +6063,6 @@ export default function AdminController() {
       });
   }
 
-
-
-
   async function uploadimgcategoriahome1(e) {
     setLoad(true);
 
@@ -5545,10 +6202,6 @@ export default function AdminController() {
       });
   }
 
-
-
-
-
   return (
     <div className="container-adm-controller">
       <div className="menu-bar">
@@ -5610,8 +6263,12 @@ export default function AdminController() {
               <BiEdit size={30}></BiEdit> Editar Perguntas frequentes
             </button>
             <button onClick={vercadastrocomentarios}>
-              <BiEdit size={30}></BiEdit> Cadastrar Comentarios
+              <BiEdit size={30}></BiEdit> Cadastrar Comentários
             </button>
+            <button onClick={veraprovareeditarcomment}>
+              <BiEdit size={30}></BiEdit> Editar e Aprovar Comentários
+            </button>
+
             <a href="/" target={"_blank"}>
               <MdWeb size={30}></MdWeb> Ver site
             </a>
@@ -6997,11 +7654,11 @@ export default function AdminController() {
                     window.screen.width > 500
                       ? { display: "flex", width: "50%" }
                       : {
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "20px",
-                        width: "100%",
-                      }
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "20px",
+                          width: "100%",
+                        }
                   }
                 >
                   {detalhesproduto.cores.corPrimary.cor1 != "" ? (
@@ -7010,22 +7667,22 @@ export default function AdminController() {
                         style={
                           window.screen.width > 500
                             ? {
-                              width: "20px",
-                              height: "20px",
-                              background:
-                                corupdate == ""
-                                  ? detalhesproduto.cores.corPrimary.cor1
-                                  : corupdate,
-                            }
+                                width: "20px",
+                                height: "20px",
+                                background:
+                                  corupdate == ""
+                                    ? detalhesproduto.cores.corPrimary.cor1
+                                    : corupdate,
+                              }
                             : {
-                              width: "20px",
-                              marginTop: "20px",
-                              height: "20px",
-                              background:
-                                corupdate == ""
-                                  ? detalhesproduto.cores.corPrimary.cor1
-                                  : corupdate,
-                            }
+                                width: "20px",
+                                marginTop: "20px",
+                                height: "20px",
+                                background:
+                                  corupdate == ""
+                                    ? detalhesproduto.cores.corPrimary.cor1
+                                    : corupdate,
+                              }
                         }
                       ></p>
                       <button
@@ -7754,36 +8411,38 @@ export default function AdminController() {
                 ></input>
               </div>
               <div className="box-input-files">
-                <span>Mudar Link das Redes sociais, telefone, email e cnpj</span>
+                <span>
+                  Mudar Link das Redes sociais, telefone, email e cnpj
+                </span>
                 <input
                   type="text"
                   onChange={(e) => setLink1(e.target.value)}
-                  placeholder='facebook'
+                  placeholder="facebook"
                 ></input>
                 <input
                   type="text"
                   onChange={(e) => setLink2(e.target.value)}
-                  placeholder='instagran'
+                  placeholder="instagran"
                 ></input>
                 <input
                   type="text"
                   onChange={(e) => setLink3(e.target.value)}
-                  placeholder='whatsapp'
+                  placeholder="whatsapp"
                 ></input>
                 <input
                   type="text"
                   onChange={(e) => setTelefoneloja(e.target.value)}
-                  placeholder='telefone'
+                  placeholder="telefone"
                 ></input>
                 <input
                   type="text"
                   onChange={(e) => setEmilloja(e.target.value)}
-                  placeholder='email'
+                  placeholder="email"
                 ></input>
                 <input
                   type="text"
                   onChange={(e) => setCnpjloja(e.target.value)}
-                  placeholder='cnpj'
+                  placeholder="cnpj"
                 ></input>
               </div>
               <div className="box-input-files">
@@ -7793,7 +8452,11 @@ export default function AdminController() {
                 <input type="file" onChange={uploadbannercentralhome}></input>
                 <span>Mudar Imagem Pop-up até ( 700x500) </span>
                 <input type="file" onChange={uploadBannerpromocao}></input>
-                <span>Mudar banner pagina produtos ( 980x140) se a imagem nao carregar, renomeie o arquivo para um unico nome sem acentos e caracteres especiais!. </span>
+                <span>
+                  Mudar banner pagina produtos ( 980x140) se a imagem nao
+                  carregar, renomeie o arquivo para um unico nome sem acentos e
+                  caracteres especiais!.{" "}
+                </span>
                 <input type="file" onChange={uploadBannerpaginaprod}></input>
               </div>
               <div className="box-input-files">
@@ -7803,35 +8466,64 @@ export default function AdminController() {
                 <div style={{ marginTop: "10px" }}>
                   <p>1° Categoria</p>
                   <input type="file" onChange={uploadimgcategoriahome1}></input>
-                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle1cathome(e.target.value)}></input>
+                  <input
+                    style={{ marginTop: "10px", paddingLeft: "5px" }}
+                    type={"text"}
+                    placeholder="titulo da categoria"
+                    onChange={(e) => setTitle1cathome(e.target.value)}
+                  ></input>
                 </div>
                 <div style={{ marginTop: "10px" }}>
                   <p>2° Categoria</p>
                   <input type="file" onChange={uploadimgcategoriahome2}></input>
-                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle2cathome(e.target.value)}></input>
+                  <input
+                    style={{ marginTop: "10px", paddingLeft: "5px" }}
+                    type={"text"}
+                    placeholder="titulo da categoria"
+                    onChange={(e) => setTitle2cathome(e.target.value)}
+                  ></input>
                 </div>
                 <div style={{ marginTop: "10px" }}>
                   <p>3° Categoria</p>
                   <input type="file" onChange={uploadimgcategoriahome3}></input>
-                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle3cathome(e.target.value)}></input>
+                  <input
+                    style={{ marginTop: "10px", paddingLeft: "5px" }}
+                    type={"text"}
+                    placeholder="titulo da categoria"
+                    onChange={(e) => setTitle3cathome(e.target.value)}
+                  ></input>
                 </div>
                 <div style={{ marginTop: "10px" }}>
                   <p>4° Categoria</p>
                   <input type="file" onChange={uploadimgcategoriahome4}></input>
-                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle4cathome(e.target.value)}></input>
+                  <input
+                    style={{ marginTop: "10px", paddingLeft: "5px" }}
+                    type={"text"}
+                    placeholder="titulo da categoria"
+                    onChange={(e) => setTitle4cathome(e.target.value)}
+                  ></input>
                 </div>
                 <div style={{ marginTop: "10px" }}>
                   <p>5° Categoria</p>
                   <input type="file" onChange={uploadimgcategoriahome5}></input>
-                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle5cathome(e.target.value)}></input>
+                  <input
+                    style={{ marginTop: "10px", paddingLeft: "5px" }}
+                    type={"text"}
+                    placeholder="titulo da categoria"
+                    onChange={(e) => setTitle5cathome(e.target.value)}
+                  ></input>
                 </div>
                 <div style={{ marginTop: "10px" }}>
                   <p>6° Categoria</p>
                   <input type="file" onChange={uploadimgcategoriahome6}></input>
-                  <input style={{ marginTop: "10px", paddingLeft: "5px" }} type={'text'} placeholder='titulo da categoria' onChange={(e) => setTitle6cathome(e.target.value)}></input>
+                  <input
+                    style={{ marginTop: "10px", paddingLeft: "5px" }}
+                    type={"text"}
+                    placeholder="titulo da categoria"
+                    onChange={(e) => setTitle6cathome(e.target.value)}
+                  ></input>
                 </div>
               </div>
-
 
               <div className="box-input-files">
                 <strong>
@@ -8309,11 +9001,11 @@ export default function AdminController() {
                     onClick={() =>
                       document
                         .querySelectorAll(".boxeditpergunta")
-                      [
-                        dataperguntas.findIndex(
-                          (data) => data._id == item._id
-                        )
-                      ].setAttribute("style", "display:flex")
+                        [
+                          dataperguntas.findIndex(
+                            (data) => data._id == item._id
+                          )
+                        ].setAttribute("style", "display:flex")
                     }
                   >
                     <MdEdit color="#2d2d2d" size={20}></MdEdit>
@@ -8341,11 +9033,11 @@ export default function AdminController() {
                       onClick={() =>
                         document
                           .querySelectorAll(".boxeditpergunta")
-                        [
-                          dataperguntas.findIndex(
-                            (data) => data._id == item._id
-                          )
-                        ].setAttribute("style", "display:none")
+                          [
+                            dataperguntas.findIndex(
+                              (data) => data._id == item._id
+                            )
+                          ].setAttribute("style", "display:none")
                       }
                     >
                       Cancelar
@@ -8385,6 +9077,95 @@ export default function AdminController() {
             <button type="button" onClick={criarfeedback}>
               Enviar
             </button>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {modalcomment != false ? (
+          <div className="modallistacomentarios">
+            <div className="title-item-menu">
+              <h2>EDITAR E APROVAR COMENTÁRIOS</h2>
+            </div>
+
+            {comentariosTitle.map((item) => {
+              return (
+                <div key={item._id} className="item-pergunta">
+                  <h2>{item.user}</h2>
+                  <p>{item.comentario}</p>
+
+                  <button
+                    className="btn-sumir-background"
+                    onClick={() =>
+                      document
+                        .querySelectorAll(".boxcomentarios")
+                        [
+                          comentariosTitle.findIndex(
+                            (data) => data._id == item._id
+                          )
+                        ].setAttribute("style", "display:flex")
+                    }
+                  >
+                    <MdEdit color="#2d2d2d" size={20}></MdEdit>
+                  </button>
+                  <button
+                    className="btn-sumir-background"
+                    onClick={() => delComentario(item._id)}
+                  >
+                    <BsTrash color="#2d2d2d" size={20}></BsTrash>
+                  </button>
+
+                  <div className="boxcomentarios">
+                    <input
+                      type={"text"}
+                      placeholder="Usuario"
+                      value={comentariouser}
+                      onChange={(e) => setComentarioUser(e.target.value)}
+                    ></input>
+                    <textarea
+                      type={"text"}
+                      placeholder="Avaliação"
+                      value={comentarioavaliacao}
+                      onChange={(e) => setComentarioAvaliacao(e.target.value)}
+                    ></textarea>
+                    <button onClick={() => updateComentarios(item._id)}>
+                      Atualizar comentário
+                    </button>
+                    <button
+                      onClick={() =>
+                        document
+                          .querySelectorAll(".boxcomentarios")
+                          [
+                            comentariosTitle.findIndex(
+                              (data) => data._id == item._id
+                            )
+                          ].setAttribute("style", "display:none")
+                      }
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                  <div id="aprovaroureprovarcommentdiv">
+                    <label htmlFor="">Aprovar/Reprovar Comentário</label>
+                    <select
+                      name="aprovarcomment"
+                      id="select-aprovacao"
+                      onChange={(e) => setAprovarComentarioNow(e.target.value)}
+                    >
+                      <option value={item.liberar}>{item.liberar}</option>
+                      <option value="aprovado">Aprovado</option>
+                      <option value="reprovado">Reprovado</option>
+                    </select>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => aprovarcomentarioFunction(item._id)}
+                  >
+                    Atualizar aprovação
+                  </button>
+                </div>
+              );
+            })}
           </div>
         ) : (
           ""

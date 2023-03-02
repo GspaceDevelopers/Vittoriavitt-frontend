@@ -24,6 +24,7 @@ import Box from "../../img/dashboard/open cardboard box.png";
 import Logo from "../../Assets/logo viit 1.png";
 import firebase from "../../services/firebaseconnection";
 import AdminCadastroProdutos from "../AdminCadastroProdutos";
+import { FiTrash } from "react-icons/fi";
 
 export default function AdminController() {
   const { sairadm } = useContext(AuthContext);
@@ -44,6 +45,10 @@ export default function AdminController() {
   const [title4cathome, setTitle4cathome] = useState("");
   const [title5cathome, setTitle5cathome] = useState("");
   const [title6cathome, setTitle6cathome] = useState("");
+  const [bannercomomobile, setBannercomomobile] = useState("");
+  const [bannercomodesktop, setBannercomodesktop] = useState("");
+  const [bannercomomobileurl, setBannercomomobileurl] = useState("");
+  const [bannercomodesktopurl, setBannercomodesktopurl] = useState("");
 
   const [link1, setLink1] = useState("");
   const [link2, setLink2] = useState("");
@@ -72,6 +77,7 @@ export default function AdminController() {
   const [valuecontatonumero, setValuecontatonumero] = useState();
   const [showPolitica, setShowpolitica] = useState(false);
   const [valuepoliticaedit, setValuepoliticaedit] = useState([]);
+  const [mostrarcomocompraredit, setMostrarcomocompraredit] = useState(false);
 
   const [modalperguntasfrequentes, setModalperguntasfrequentes] =
     useState(false);
@@ -468,8 +474,27 @@ export default function AdminController() {
   function sair() {
     sairadm();
   }
+  function vercomocomprareditar() {
+    setMostrarcomocompraredit(true);
+    setModalcomment(false);
+    setModallistacomentarios(false);
+    setModalperguntasfrequentes(false);
+    setModaleditadados(false);
+    setModalcadastroprodutos(false);
+    setModallistafranqueados(false);
+    setModalListaemails(false);
+    setModaleditahome(false);
+    setShowmodaldetalhesproduto(false);
+    setShowpedidos(false);
+    setShowdeshboard(false);
+    setShowlistaprodutos(false);
+    setEditarSobre(false);
+    setEditarcontato(false);
+    setShowpolitica(false);
+  }
   function veraprovareeditarcomment() {
     setModalcomment(true);
+    setMostrarcomocompraredit(false);
     setModallistacomentarios(false);
     setModalperguntasfrequentes(false);
     setModaleditadados(false);
@@ -501,6 +526,7 @@ export default function AdminController() {
     setEditarcontato(false);
     setShowpolitica(false);
     setModalcomment(false);
+    setMostrarcomocompraredit(false);
     setEditarSobre(false);
   }
   function verdeshboard() {
@@ -517,6 +543,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarcontato(false);
     setEditarSobre(false);
+    setMostrarcomocompraredit(false);
     setModalcomment(false);
   }
   function verpoliticaedit() {
@@ -532,6 +559,7 @@ export default function AdminController() {
     setModalcadastroprodutos(false);
     setModaleditadados(false);
     setModalperguntasfrequentes(false);
+    setMostrarcomocompraredit(false);
     setModallistacomentarios(false);
     setModalcomment(false);
 
@@ -553,6 +581,7 @@ export default function AdminController() {
     setEditarcontato(false);
     setModalcomment(false);
     setEditarSobre(false);
+    setMostrarcomocompraredit(false);
   }
 
   function Modaldetalhesproduto(item) {
@@ -645,6 +674,7 @@ export default function AdminController() {
     setEditarSobre(false);
     setShowpolitica(false);
     setModalcomment(false);
+    setMostrarcomocompraredit(false);
   }
 
   function vereditahome() {
@@ -662,6 +692,7 @@ export default function AdminController() {
     setEditarSobre(false);
     setEditarcontato(false);
     setModalcomment(false);
+    setMostrarcomocompraredit(false);
     setShowpolitica(false);
   }
 
@@ -681,6 +712,7 @@ export default function AdminController() {
     setEditarSobre(false);
     setModalcomment(false);
     setShowpolitica(false);
+    setMostrarcomocompraredit(false);
   }
   function Sobre() {
     setEditarSobre(true);
@@ -698,6 +730,7 @@ export default function AdminController() {
     setModalcomment(false);
     setEditarcontato(false);
     setShowpolitica(false);
+    setMostrarcomocompraredit(false);
   }
   function verlistaemails() {
     setModalListaemails(true);
@@ -712,6 +745,7 @@ export default function AdminController() {
     setModalperguntasfrequentes(false);
     setModallistacomentarios(false);
     setEditarSobre(false);
+    setMostrarcomocompraredit(false);
     setEditarcontato(false);
     setModalcomment(false);
     setShowpolitica(false);
@@ -730,6 +764,7 @@ export default function AdminController() {
     setModallistacomentarios(false);
     setEditarSobre(false);
     setModalcomment(false);
+    setMostrarcomocompraredit(false);
     setEditarcontato(false);
     setShowpolitica(false);
   }
@@ -744,6 +779,7 @@ export default function AdminController() {
     setShowdeshboard(false);
     setShowlistaprodutos(false);
     setModalperguntasfrequentes(false);
+    setMostrarcomocompraredit(false);
     setModallistacomentarios(false);
     setEditarSobre(false);
     setEditarcontato(false);
@@ -756,6 +792,7 @@ export default function AdminController() {
     setModalcadastroprodutos(false);
     setModallistafranqueados(false);
     setModalListaemails(false);
+    setMostrarcomocompraredit(false);
     setModaleditahome(false);
     setShowmodaldetalhesproduto(false);
     setShowpedidos(false);
@@ -772,6 +809,7 @@ export default function AdminController() {
     setModalperguntasfrequentes(false);
     setModaleditadados(false);
     setModalcadastroprodutos(false);
+    setMostrarcomocompraredit(false);
     setModallistafranqueados(false);
     setModalListaemails(false);
     setModaleditahome(false);
@@ -6201,7 +6239,103 @@ export default function AdminController() {
         setLoad(false);
       });
   }
+  // banner como comprar
+  useEffect(() => {
+    api
+      .get("/comocomprar")
+      .then((data) => {
+        setBannercomomobileurl(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  async function upurlcomocomprardesktop(e) {
+    setLoad(true);
 
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setBannercomodesktop(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function upurlcomocomprarmobile(e) {
+    setLoad(true);
+
+    const img17 = e.target.files[0];
+
+    const userUID = user.uid;
+
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setBannercomomobile(String(url));
+          });
+        setLoad(false);
+      });
+  }
+
+  function uparImagemDesktop() {
+    api
+      .put("/comocomprar/6400d7a454d02dd8bff73f7c", {
+        urlbanner:
+          bannercomodesktop == ""
+            ? bannercomomobileurl.map((item) => item.urlbanner)[0]
+            : bannercomodesktop,
+        urlbannermobile:
+          bannercomomobile == ""
+            ? bannercomomobileurl.map((item) => item.urlbanner)[0]
+            : bannercomomobile,
+      })
+      .then(() => {
+        toast.success("Banner carregado com sucesso");
+      });
+  }
+
+  async function apagarimagemDesktop() {
+    await api
+      .put(`/comocomprar/${bannercomomobileurl.map((item) => item._id)[0]}`, {
+        urlbanner: "",
+        urlbannermobile: bannercomomobileurl.map(
+          (item) => item.urlbannermobile
+        )[0],
+      })
+      .then(() => {
+        toast.success("Banner apagado com sucesso");
+      });
+  }
+  async function apagarimagemMobile() {
+    await api
+      .put(`/comocomprar/${bannercomomobileurl.map((item) => item._id)[0]}`, {
+        urlbanner: bannercomomobileurl.map((item) => item.urlbanner)[0],
+        urlbannermobile: "",
+      })
+      .then(() => {
+        toast.success("Banner apagado com sucesso");
+      });
+  }
+
+  // fim do banner como comprar
   return (
     <div className="container-adm-controller">
       <div className="menu-bar">
@@ -6268,7 +6402,9 @@ export default function AdminController() {
             <button onClick={veraprovareeditarcomment}>
               <BiEdit size={30}></BiEdit> Editar e Aprovar Comentários
             </button>
-
+            <button onClick={vercomocomprareditar}>
+              <BiEdit size={30}></BiEdit> Editar Como Comprar
+            </button>
             <a href="/" target={"_blank"}>
               <MdWeb size={30}></MdWeb> Ver site
             </a>
@@ -6584,7 +6720,7 @@ export default function AdminController() {
         {showlistaprodutos != false ? (
           <div className="container-lista-produtos">
             <div className="title-item-menu">
-              <h2>LISTA DE PRODUTOS</h2>
+              <h2>CONTROLE DE ESTOQUE</h2>
             </div>
             <div className="box-filtros-estoque-controller">
               <div>
@@ -8393,7 +8529,7 @@ export default function AdminController() {
         {modaleditahome != false ? (
           <div className="container-editahome">
             <div className="title-item-menu">
-              <h2>EDITAR HOME</h2>
+              <h2>EDITAR BANNERS DO SITE</h2>
             </div>
             <div className="form-edita-home">
               <div className="box-input-files">
@@ -9056,7 +9192,30 @@ export default function AdminController() {
         ) : (
           ""
         )}
+        {mostrarcomocompraredit != false ? (
+          <div className="modallistacomentarios">
+            <div className="title-item-menu">
+              <h2>EDITAR COMO COMPRAR</h2>
+            </div>
 
+            <div className="box-input-files">
+              <span>Mudar Imagem de como Comprar(Desktop = 1366 x 611):</span>
+              <input type="file" onChange={upurlcomocomprardesktop}></input>
+              <FiTrash onClick={apagarimagemDesktop} />
+            </div>
+            <br />
+
+            <div className="box-input-files">
+              <span>Mudar Imagem de como Comprar(Mobile = 600 x 500):</span>
+              <input type="file" onChange={upurlcomocomprarmobile}></input>
+              <FiTrash onClick={apagarimagemMobile} />
+            </div>
+
+            <button onClick={uparImagemDesktop}>Salvar Imagens</button>
+          </div>
+        ) : (
+          ""
+        )}
         {modallistacomentarios != false ? (
           <div className="modallistacomentarios">
             <div className="title-item-menu">

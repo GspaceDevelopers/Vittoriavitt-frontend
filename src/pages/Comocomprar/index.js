@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Titlemainallpages from "../../Components/Titlemainallpages";
 import banner from "../../Assets/paginaproduto.png";
-
+import api from "../../services/api";
 const Comocomprar = () => {
+  const [imgdesktop, setImgdesktop] = useState();
+  useEffect(() => {
+    api.get("/comocomprar").then((result) => {
+      setImgdesktop(result.data);
+    });
+  }, []);
   return (
     <div className="container-comocomprar">
       <Header back="#de4563"></Header>
       <Titlemainallpages name={"Como Comprar"}></Titlemainallpages>
 
       <div className="content-page-comocomprar">
-        <section className="sec1-comocomprar">
+        {window.screen.width > 500 ? (
+          <img
+            src={imgdesktop.map((item) => item.urlbanner)}
+            alt=""
+            srcset=""
+          />
+        ) : (
+          <img
+            src={imgdesktop.map((item) => item.urlbannermobile)}
+            alt=""
+            srcset=""
+          />
+        )}
+        {/* <section className="sec1-comocomprar">
           <h2>POR ONDE COMEÇAR?</h2>
           <br></br>
           <h4>PASSO 1 - SELECIONE SUA PEÇA:</h4>
@@ -89,9 +108,14 @@ const Comocomprar = () => {
             </a>
           </p>
           <br></br>
-        </section>
+        </section> */}
       </div>
-
+      <p>
+        Ler a{" "}
+        <a href="/politicadeprivacidade" target={"_blank"}>
+          Politica de Privacidade
+        </a>
+      </p>
       <Footer></Footer>
     </div>
   );

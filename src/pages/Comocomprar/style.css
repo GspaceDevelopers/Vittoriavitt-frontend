@@ -1,16 +1,19 @@
 .container-comocomprar {
-    width: 100%;
+  width: 100%;
 }
 
 .content-page-comocomprar {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.sec1-comocomprar {
+.content-page-comocomprar img {
+  width: 100%;
+  object-fit: cover;
+}
+/* .sec1-comocomprar {
     width: 90%;
     height: auto;
     display: flex;
@@ -39,4 +42,4 @@
     .sec1-comocomprar img {
         width: 100%;
     }
-}
+} */

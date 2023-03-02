@@ -6,7 +6,7 @@ import Titlemainallpages from "../../Components/Titlemainallpages";
 import banner from "../../Assets/paginaproduto.png";
 import api from "../../services/api";
 const Comocomprar = () => {
-  const [imgdesktop, setImgdesktop] = useState();
+  const [imgdesktop, setImgdesktop] = useState([]);
   useEffect(() => {
     api.get("/comocomprar").then((result) => {
       setImgdesktop(result.data);

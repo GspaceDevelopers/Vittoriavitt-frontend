@@ -8548,7 +8548,7 @@ export default function AdminController() {
               </div>
               <div className="box-input-files">
                 <span>
-                  Mudar Link das Redes sociais, telefone, email e cnpj
+                  Mudar Link das Redes Sociais, Telefone, E-Mail e CNPJ
                 </span>
                 <input
                   type="text"
@@ -8589,7 +8589,7 @@ export default function AdminController() {
                 <span>Mudar Imagem Pop-up até ( 700x500) </span>
                 <input type="file" onChange={uploadBannerpromocao}></input>
                 <span>
-                  Mudar banner pagina produtos ( 980x140) se a imagem nao
+                  Mudar banner página produtos ( 980x140) se a imagem não
                   carregar, renomeie o arquivo para um unico nome sem acentos e
                   caracteres especiais!.{" "}
                 </span>
@@ -8597,7 +8597,7 @@ export default function AdminController() {
               </div>
               <div className="box-input-files">
                 <span>
-                  Mudar imagens e titulo das categorias da home - max: 190x190
+                  Mudar imagens e título das categorias da home - max: 190x190
                 </span>
                 <div style={{ marginTop: "10px" }}>
                   <p>1° Categoria</p>
@@ -8666,7 +8666,7 @@ export default function AdminController() {
                   Essas Imagens devem ter no maximo 1920×960 e
                   formato(jpeg,jpg,gif,webp) para melhor resolução
                 </strong>
-                <span>Mudar banner Home Computador Destaque1 </span>
+                <span>Mudar banner Home Computador Destaque 1 </span>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo1}></input>
                   <div className="box-view-banner">
@@ -8690,7 +8690,7 @@ export default function AdminController() {
                     <BsTrash color="#fff"></BsTrash>
                   </button>
                 </div>
-                <span>Mudar banner Home Computador Destaque2 </span>
+                <span>Mudar banner Home Computador Destaque 2 </span>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo2}></input>
                   <div className="box-view-banner">
@@ -8714,7 +8714,7 @@ export default function AdminController() {
                     <BsTrash color="#fff"></BsTrash>
                   </button>
                 </div>
-                <span>Mudar banner Home Computador Destaque3 </span>
+                <span>Mudar banner Home Computador Destaque 3 </span>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo3}></input>
                   <div className="box-view-banner">
@@ -8738,7 +8738,7 @@ export default function AdminController() {
                     <BsTrash color="#fff"></BsTrash>
                   </button>
                 </div>
-                <span>Mudar banner Home Computador Destaque4 </span>
+                <span>Mudar banner Home Computador Destaque 4 </span>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo4}></input>
                   <div className="box-view-banner">
@@ -8762,7 +8762,7 @@ export default function AdminController() {
                     <BsTrash color="#fff"></BsTrash>
                   </button>
                 </div>
-                <span>Mudar banner Home Computador Destaque5 </span>
+                <span>Mudar banner Home Computador Destaque 5 </span>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo5}></input>
                   <div className="box-view-banner">
@@ -8786,7 +8786,7 @@ export default function AdminController() {
                     <BsTrash color="#fff"></BsTrash>
                   </button>
                 </div>
-                <span>Mudar banner Home Computador Destaque6 </span>
+                <span>Mudar banner Home Computador Destaque 6 </span>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input type="file" onChange={uploadlogo6}></input>
                   <div className="box-view-banner">
@@ -8815,7 +8815,7 @@ export default function AdminController() {
               {
                 <div className="box-input-files">
                   <strong>
-                    Essas Imagens devem ter no maximo 500x600 e
+                    Essas Imagens devem ter no máximo 500x600 e
                     formato(jpeg,jpg,gif,webp) para melhor resolução
                   </strong>
 

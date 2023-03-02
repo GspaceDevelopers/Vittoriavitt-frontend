@@ -13,6 +13,14 @@ export default function Recomendados(props) {
     const [fotocorselecionada, setFotocorselecionada] = useState(null);
 
     const [dataproduto, setDataproduto] = useState([])
+    const [dadosedicao, setDadosedicao] = useState([])
+
+    useEffect(()=>{
+       api.get('/edicao')
+       .then((data)=>{
+        setDadosedicao(data.data)
+       })
+    },[])
     useEffect(() => {
         api.get(`/produto?produto=${props.produto}`)
             .then((data) => {
@@ -100,7 +108,7 @@ export default function Recomendados(props) {
                                 <h3>{item.modelo}</h3>
                                 {item.promocao2 == true ? <p style={window.screen.width > 500 ? { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", height: "60px" } : { color: "darkgreen", fontWeight: "600", background: "rgb(149, 255, 149)", padding: "5px", borderRadius: "5px", fontSize: "10px" }}>Comprando {item.qtdpromocao2} produto(s) ou mais voçê ganha {item.desconto}% de desconto!</p> : <div style={{ height: "60px" }}></div>}
                                 <h4>R${item.preco}</h4>
-                                <p style={{ color: "#666666", marginBottom: '15px' }}>Em até 7x de {Number(parseFloat(item.preco) / 7).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                                <p style={{ color: "#666666", marginBottom: '15px' }}>Em até {dadosedicao.map(data => data.parcelas)[0]}x de {Number(parseFloat(item.preco) / Number(dadosedicao.map(data => data.parcelas)[0])).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
 
                                 <div style={{ display: "flex" }} id="label-div-ajus-absolute">
                                     {item.cores.corPrimary.cor1 != "" ? (

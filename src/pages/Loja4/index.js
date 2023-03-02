@@ -460,11 +460,11 @@ export default function Loja2() {
                           : { color: "#666666", marginBottom: "15px" }
                       }
                     >
-                      Em até 7x de{" "}
-                      {Number(parseFloat(item.preco) / 7).toLocaleString(
-                        "pt-br",
-                        { style: "currency", currency: "BRL" }
-                      )}
+                      Em até {edicao.map(data => data.parcelas)[0]}x de{" "}
+                    {Number(parseFloat(item.preco) / Number(edicao.map(data => data.parcelas)[0])).toLocaleString(
+                      "pt-br",
+                      { style: "currency", currency: "BRL" }
+                    )}
                     </p>
 
                     <div

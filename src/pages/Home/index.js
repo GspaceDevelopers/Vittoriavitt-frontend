@@ -494,8 +494,8 @@ const Home = () => {
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
-                    Em até 7x de{" "}
-                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                    Em até {dadosedicao.map(data => data.parcelas)[0]}x de{" "}
+                    {Number(parseFloat(item.preco) / Number(dadosedicao.map(data => data.parcelas)[0])).toLocaleString(
                       "pt-br",
                       { style: "currency", currency: "BRL" }
                     )}
@@ -764,8 +764,8 @@ const Home = () => {
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
-                    Em até 7x de{" "}
-                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                     Em até {dadosedicao.map(data => data.parcelas)[0]}x de{" "}
+                    {Number(parseFloat(item.preco) / Number(dadosedicao.map(data => data.parcelas)[0])).toLocaleString(
                       "pt-br",
                       { style: "currency", currency: "BRL" }
                     )}
@@ -1023,8 +1023,8 @@ const Home = () => {
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
-                    Em até 7x de{" "}
-                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      Em até {dadosedicao.map(data => data.parcelas)[0]}x de{" "}
+                    {Number(parseFloat(item.preco) / Number(dadosedicao.map(data => data.parcelas)[0])).toLocaleString(
                       "pt-br",
                       { style: "currency", currency: "BRL" }
                     )}
@@ -1289,8 +1289,8 @@ const Home = () => {
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
-                    Em até 7x de{" "}
-                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                     Em até {dadosedicao.map(data => data.parcelas)[0]}x de{" "}
+                    {Number(parseFloat(item.preco) / Number(dadosedicao.map(data => data.parcelas)[0])).toLocaleString(
                       "pt-br",
                       { style: "currency", currency: "BRL" }
                     )}
@@ -1548,8 +1548,8 @@ const Home = () => {
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
-                    Em até 7x de{" "}
-                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                     Em até {dadosedicao.map(data => data.parcelas)[0]}x de{" "}
+                    {Number(parseFloat(item.preco) / Number(dadosedicao.map(data => data.parcelas)[0])).toLocaleString(
                       "pt-br",
                       { style: "currency", currency: "BRL" }
                     )}
@@ -1809,8 +1809,8 @@ const Home = () => {
                         : { color: "#666666", marginBottom: "15px" }
                     }
                   >
-                    Em até 7x de{" "}
-                    {Number(parseFloat(item.preco) / 7).toLocaleString(
+                      Em até {dadosedicao.map(data => data.parcelas)[0]}x de{" "}
+                    {Number(parseFloat(item.preco) / Number(dadosedicao.map(data => data.parcelas)[0])).toLocaleString(
                       "pt-br",
                       { style: "currency", currency: "BRL" }
                     )}

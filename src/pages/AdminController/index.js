@@ -25,6 +25,7 @@ import Logo from "../../Assets/logo viit 1.png";
 import firebase from "../../services/firebaseconnection";
 import AdminCadastroProdutos from "../AdminCadastroProdutos";
 import { FiTrash } from "react-icons/fi";
+import { width } from "@mui/system";
 
 export default function AdminController() {
   const { sairadm } = useContext(AuthContext);
@@ -258,9 +259,42 @@ export default function AdminController() {
         setDatafranqueados(data.data.reverse());
       });
 
+
+
+      await api.get("/categorias").then((data) => {
+        setDatacategorias(data.data);
+      });
+
+      await api.get("/cores").then((item) => {
+        setDatacores(item.data);
+      });
+    }
+
+    setTextofretegratis(dadosedicao.map(item => item.componentetexto1)[0])
+    setParcelas(dadosedicao.map(item => item.parcelas)[0])
+    setLink1(dadosedicao.map(item => item.linkredes.link1)[0])
+    setLink2(dadosedicao.map(item => item.linkredes.link2)[0])
+    setLink3(dadosedicao.map(item => item.linkredes.link3)[0])
+    setTelefoneloja(dadosedicao.map(item => item.telefoneloja)[0])
+    setEmilloja(dadosedicao.map(item => item.emailloja)[0])
+    setCnpjloja(dadosedicao.map(item => item.cnpjloja)[0])
+    setTitle1cathome(dadosedicao.map(item => item.categoriabtnhome1.title1)[0])
+    setTitle2cathome(dadosedicao.map(item => item.categoriabtnhome2.title2)[0])
+    setTitle3cathome(dadosedicao.map(item => item.categoriabtnhome3.title3)[0])
+    setTitle4cathome(dadosedicao.map(item => item.categoriabtnhome4.title4)[0])
+    setTitle5cathome(dadosedicao.map(item => item.categoriabtnhome5.title5)[0])
+    setTitle6cathome(dadosedicao.map(item => item.categoriabtnhome6.title6)[0])
+
+    loadpedidos();
+  }, [dadosedicao]);
+
+
+  useEffect(() => {
+
+    async function loaddatapedidos() {
       await api2.get("/pedidos").then((data) => {
         setDatapedidos(data.data.reverse());
-      });
+      })
 
       await api2.get(`/pedidos/status?status=Pacote recebido`).then((data) => {
         setDatapedidos2(data.data);
@@ -273,18 +307,9 @@ export default function AdminController() {
         .then((data) => {
           setDatapedidos4(data.data);
         });
-
-      await api.get("/categorias").then((data) => {
-        setDatacategorias(data.data);
-      });
-
-      await api.get("/cores").then((item) => {
-        setDatacores(item.data);
-      });
     }
-
-    loadpedidos();
-  }, [dadosedicao]);
+    loaddatapedidos()
+  }, [])
 
   useEffect(() => {
     api.get("/produtos").then((data) => {
@@ -292,11 +317,16 @@ export default function AdminController() {
     });
   }, []);
 
+
+
   useEffect(() => {
     api.get("/perguntas").then((item) => {
       setDataperguntas(item.data.reverse());
     });
   }, [dataperguntas]);
+
+
+
   useEffect(() => {
     api.get("/sobre").then((item) => {
       const array = item.data;
@@ -2000,20 +2030,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2235,20 +2265,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2470,20 +2500,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2704,20 +2734,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2938,20 +2968,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3172,20 +3202,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3406,20 +3436,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3640,20 +3670,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3874,20 +3904,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -4112,14 +4142,14 @@ export default function AdminController() {
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -4343,15 +4373,15 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2: "",
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -4575,14 +4605,14 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3: "",
         },
@@ -4806,20 +4836,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile1
+              )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile2
+              )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
-                )[0]
+                (item) => item.backgoundhome.backgroundmobile3
+              )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -6335,6 +6365,1831 @@ export default function AdminController() {
       });
   }
 
+
+  // FUNÇÃO QUE ABRE O MODALZINHO DE EDITAR AS PERGUNTAS FREQUENTES
+  function viewModaleditaperguntas(item) {
+    document
+      .querySelectorAll(".boxeditpergunta")
+    [
+      dataperguntas.findIndex(
+        (data) => data._id == item._id
+      )
+    ].setAttribute("style", "display:flex")
+    setTitulopergunta(item.sumary)
+    setTextoresposta(item.resposta)
+  }
+
+
+  async function delimg1(_id) {
+    await api.put(`/produtosimg/${_id}`,
+      {
+
+        cores: {
+          corPrimary: {
+            imgurl: '',
+            imgurl2:
+              urlimgproduto2 == ""
+                ? detalhesproduto.cores.corPrimary.imgurl2
+                : urlimgproduto2,
+            imgurl3:
+              urlimgproduto3 == ""
+                ? detalhesproduto.cores.corPrimary.imgurl3
+                : urlimgproduto3,
+
+          },
+          corSecondary: {
+            imgurl4:
+              urlimgproduto4 == ""
+                ? detalhesproduto.cores.corSecondary.imgurl4
+                : urlimgproduto4,
+            imgurl5:
+              urlimgproduto5 == ""
+                ? detalhesproduto.cores.corSecondary.imgurl5
+                : urlimgproduto5,
+            imgurl6:
+              urlimgproduto6 == ""
+                ? detalhesproduto.cores.corSecondary.imgurl6
+                : urlimgproduto6,
+
+          },
+          corTertiary: {
+            imgurl7:
+              urlimgproduto7 == ""
+                ? detalhesproduto.cores.corTertiary.imgurl7
+                : urlimgproduto7,
+            imgurl8:
+              urlimgproduto8 == ""
+                ? detalhesproduto.cores.corTertiary.imgurl8
+                : urlimgproduto8,
+            imgurl9:
+              urlimgproduto9 == ""
+                ? detalhesproduto.cores.corTertiary.imgurl9
+                : urlimgproduto9,
+
+          },
+          corQuaternary: {
+            imgurl10:
+              urlimgproduto10 == ""
+                ? detalhesproduto.cores.corQuaternary.imgurl10
+                : urlimgproduto10,
+            imgurl11:
+              urlimgproduto11 == ""
+                ? detalhesproduto.cores.corQuaternary.imgurl11
+                : urlimgproduto11,
+            imgurl12:
+              urlimgproduto12 == ""
+                ? detalhesproduto.cores.corQuaternary.imgurl12
+                : urlimgproduto12,
+
+          },
+          corFive: {
+            imgurl13:
+              urlimgproduto13 == ""
+                ? detalhesproduto.cores.corFive.imgurl13
+                : urlimgproduto13,
+            imgurl14:
+              urlimgproduto14 == ""
+                ? detalhesproduto.cores.corFive.imgurl14
+                : urlimgproduto14,
+            imgurl15:
+              urlimgproduto15 == ""
+                ? detalhesproduto.cores.corFive.imgurl15
+                : urlimgproduto15,
+
+          },
+          corSix: {
+            imgurl16:
+              urlimgproduto16 == ""
+                ? detalhesproduto.cores.corSix.imgurl16
+                : urlimgproduto16,
+            imgurl17:
+              urlimgproduto17 == ""
+                ? detalhesproduto.cores.corFive.imgurl17
+                : urlimgproduto17,
+            imgurl18:
+              urlimgproduto18 == ""
+                ? detalhesproduto.cores.corFive.imgurl18
+                : urlimgproduto18,
+
+          },
+        },
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+      })
+      .catch((err) => {
+        console.log('AQUI', err)
+      })
+
+  }
+  async function delimg2(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2: "",
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg3(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3: "",
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg4(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4: "",
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg5(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5: "",
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg6(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6: "",
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg7(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7: "",
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg8(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8: "",
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+
+  async function delimg9(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9: "",
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+
+  async function delimg10(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10: "",
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg11(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11: "",
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg12(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12: "",
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg13(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13: "",
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg14(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corFive.imgurl13
+              : urlimgproduto13,
+          imgurl14: "",
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg15(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corFive.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15: "",
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corFive.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg16(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corFive.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16: "",
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corSix.imgurl17
+              : urlimgproduto17,
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg17(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corFive.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corSix.imgurl16
+              : urlimgproduto16,
+          imgurl17: "",
+          imgurl18:
+            urlimgproduto18 == ""
+              ? detalhesproduto.cores.corFive.imgurl18
+              : urlimgproduto18,
+
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+  }
+  async function delimg18(_id) {
+    await api.put(`/produtosimg/${_id}`, {
+      headers: {
+        Authorization: "Access-Control-Allow-Origin",
+      },
+      cores: {
+        corPrimary: {
+          imgurl:
+            urlimgproduto1 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl
+              : urlimgproduto1,
+          imgurl2:
+            urlimgproduto2 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl2
+              : urlimgproduto2,
+          imgurl3:
+            urlimgproduto3 == ""
+              ? detalhesproduto.cores.corPrimary.imgurl3
+              : urlimgproduto3,
+
+        },
+        corSecondary: {
+          imgurl4:
+            urlimgproduto4 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl4
+              : urlimgproduto4,
+          imgurl5:
+            urlimgproduto5 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl5
+              : urlimgproduto5,
+          imgurl6:
+            urlimgproduto6 == ""
+              ? detalhesproduto.cores.corSecondary.imgurl6
+              : urlimgproduto6,
+
+
+        },
+        corTertiary: {
+          imgurl7:
+            urlimgproduto7 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl7
+              : urlimgproduto7,
+          imgurl8:
+            urlimgproduto8 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl8
+              : urlimgproduto8,
+          imgurl9:
+            urlimgproduto9 == ""
+              ? detalhesproduto.cores.corTertiary.imgurl9
+              : urlimgproduto9,
+
+        },
+        corQuaternary: {
+          imgurl10:
+            urlimgproduto10 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl10
+              : urlimgproduto10,
+          imgurl11:
+            urlimgproduto11 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl11
+              : urlimgproduto11,
+          imgurl12:
+            urlimgproduto12 == ""
+              ? detalhesproduto.cores.corQuaternary.imgurl12
+              : urlimgproduto12,
+
+        },
+        corFive: {
+          imgurl13:
+            urlimgproduto13 == ""
+              ? detalhesproduto.cores.corFive.imgurl13
+              : urlimgproduto13,
+          imgurl14:
+            urlimgproduto14 == ""
+              ? detalhesproduto.cores.corFive.imgurl14
+              : urlimgproduto14,
+          imgurl15:
+            urlimgproduto15 == ""
+              ? detalhesproduto.cores.corFive.imgurl15
+              : urlimgproduto15,
+
+        },
+        corSix: {
+          imgurl16:
+            urlimgproduto16 == ""
+              ? detalhesproduto.cores.corSix.imgurl16
+              : urlimgproduto16,
+          imgurl17:
+            urlimgproduto17 == ""
+              ? detalhesproduto.cores.corFive.imgurl17
+              : urlimgproduto17,
+          imgurl18: "",
+        },
+      },
+    }).then(() => {
+      toast.success('foto excluida com sucesso!')
+    })
+
+
+  }
+
+
+
+
+
+
+
+
+
   // fim do banner como comprar
   return (
     <div className="container-adm-controller">
@@ -7409,6 +9264,9 @@ export default function AdminController() {
                       </p>
                       <img src={detalhesproduto.cores.corPrimary.imgurl}></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg1(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
                   <div>
                     <div className="input-img-file-edit">
@@ -7418,6 +9276,9 @@ export default function AdminController() {
                       </p>
                       <img src={detalhesproduto.cores.corPrimary.imgurl2}></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg2(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
                   <div>
                     <div className="input-img-file-edit">
@@ -7426,6 +9287,9 @@ export default function AdminController() {
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
                       <img src={detalhesproduto.cores.corPrimary.imgurl3}></img>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg3(detalhesproduto._id)}></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -7438,6 +9302,9 @@ export default function AdminController() {
                         src={detalhesproduto.cores.corSecondary.imgurl4}
                       ></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg4(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
                   <div>
                     <div className="input-img-file-edit">
@@ -7448,6 +9315,9 @@ export default function AdminController() {
                       <img
                         src={detalhesproduto.cores.corSecondary.imgurl5}
                       ></img>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg5(detalhesproduto._id)}></FiTrash>
                     </div>
                   </div>
 
@@ -7461,6 +9331,9 @@ export default function AdminController() {
                         src={detalhesproduto.cores.corSecondary.imgurl6}
                       ></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg6(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
 
                   <div>
@@ -7473,6 +9346,9 @@ export default function AdminController() {
                         src={detalhesproduto.cores.corTertiary.imgurl7}
                       ></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg7(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
                   <div>
                     <div className="input-img-file-edit">
@@ -7483,6 +9359,9 @@ export default function AdminController() {
                       <img
                         src={detalhesproduto.cores.corTertiary.imgurl8}
                       ></img>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg8(detalhesproduto._id)}></FiTrash>
                     </div>
                   </div>
 
@@ -7496,6 +9375,9 @@ export default function AdminController() {
                         src={detalhesproduto.cores.corTertiary.imgurl9}
                       ></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg9(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
 
                   <div>
@@ -7507,6 +9389,9 @@ export default function AdminController() {
                       <img
                         src={detalhesproduto.cores.corQuaternary.imgurl10}
                       ></img>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg10(detalhesproduto._id)}></FiTrash>
                     </div>
                   </div>
 
@@ -7520,6 +9405,9 @@ export default function AdminController() {
                         src={detalhesproduto.cores.corQuaternary.imgurl11}
                       ></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg11(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
 
                   <div>
@@ -7532,6 +9420,9 @@ export default function AdminController() {
                         src={detalhesproduto.cores.corQuaternary.imgurl12}
                       ></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg12(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
 
                   <div>
@@ -7542,6 +9433,9 @@ export default function AdminController() {
                       </p>
                       <img src={detalhesproduto.cores.corFive.imgurl13}></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg13(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
                   <div>
                     <div className="input-img-file-edit">
@@ -7550,6 +9444,9 @@ export default function AdminController() {
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
                       <img src={detalhesproduto.cores.corFive.imgurl14}></img>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg14(detalhesproduto._id)}></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -7560,6 +9457,9 @@ export default function AdminController() {
                       </p>
                       <img src={detalhesproduto.cores.corFive.imgurl15}></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg15(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
                   <div>
                     <div className="input-img-file-edit">
@@ -7568,6 +9468,9 @@ export default function AdminController() {
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
                       <img src={detalhesproduto.cores.corSix.imgurl16}></img>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg16(detalhesproduto._id)}></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -7578,6 +9481,9 @@ export default function AdminController() {
                       </p>
                       <img src={detalhesproduto.cores.corSix.imgurl17}></img>
                     </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg17(detalhesproduto._id)}></FiTrash>
+                    </div>
                   </div>
                   <div>
                     <div className="input-img-file-edit">
@@ -7586,6 +9492,9 @@ export default function AdminController() {
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
                       <img src={detalhesproduto.cores.corSix.imgurl18}></img>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                      <FiTrash color='#fff' onClick={() => delimg18(detalhesproduto._id)}></FiTrash>
                     </div>
                   </div>
                 </div>
@@ -7790,11 +9699,11 @@ export default function AdminController() {
                     window.screen.width > 500
                       ? { display: "flex", width: "50%" }
                       : {
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "20px",
-                          width: "100%",
-                        }
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "20px",
+                        width: "100%",
+                      }
                   }
                 >
                   {detalhesproduto.cores.corPrimary.cor1 != "" ? (
@@ -7803,22 +9712,22 @@ export default function AdminController() {
                         style={
                           window.screen.width > 500
                             ? {
-                                width: "20px",
-                                height: "20px",
-                                background:
-                                  corupdate == ""
-                                    ? detalhesproduto.cores.corPrimary.cor1
-                                    : corupdate,
-                              }
+                              width: "20px",
+                              height: "20px",
+                              background:
+                                corupdate == ""
+                                  ? detalhesproduto.cores.corPrimary.cor1
+                                  : corupdate,
+                            }
                             : {
-                                width: "20px",
-                                marginTop: "20px",
-                                height: "20px",
-                                background:
-                                  corupdate == ""
-                                    ? detalhesproduto.cores.corPrimary.cor1
-                                    : corupdate,
-                              }
+                              width: "20px",
+                              marginTop: "20px",
+                              height: "20px",
+                              background:
+                                corupdate == ""
+                                  ? detalhesproduto.cores.corPrimary.cor1
+                                  : corupdate,
+                            }
                         }
                       ></p>
                       <button
@@ -8536,6 +10445,7 @@ export default function AdminController() {
                 <span>Mudar valor frete grátis</span>
                 <input
                   type="number"
+                  value={textofretegratis}
                   onChange={(e) => setTextofretegratis(e.target.value)}
                 ></input>
               </div>
@@ -8543,6 +10453,7 @@ export default function AdminController() {
                 <span>Mudar Quantidade de Parcelas aceitas</span>
                 <input
                   type="text"
+                  value={parcelas}
                   onChange={(e) => setParcelas(e.target.value)}
                 ></input>
               </div>
@@ -8552,31 +10463,37 @@ export default function AdminController() {
                 </span>
                 <input
                   type="text"
+                  value={link1}
                   onChange={(e) => setLink1(e.target.value)}
                   placeholder="facebook"
                 ></input>
                 <input
                   type="text"
+                  value={link2}
                   onChange={(e) => setLink2(e.target.value)}
                   placeholder="instagran"
                 ></input>
                 <input
                   type="text"
+                  value={link3}
                   onChange={(e) => setLink3(e.target.value)}
                   placeholder="whatsapp"
                 ></input>
                 <input
                   type="text"
+                  value={telefoneloja}
                   onChange={(e) => setTelefoneloja(e.target.value)}
                   placeholder="telefone"
                 ></input>
                 <input
                   type="text"
+                  value={emailloja}
                   onChange={(e) => setEmilloja(e.target.value)}
                   placeholder="email"
                 ></input>
                 <input
                   type="text"
+                  value={cnpjloja}
                   onChange={(e) => setCnpjloja(e.target.value)}
                   placeholder="cnpj"
                 ></input>
@@ -8605,6 +10522,7 @@ export default function AdminController() {
                   <input
                     style={{ marginTop: "10px", paddingLeft: "5px" }}
                     type={"text"}
+                    value={title1cathome}
                     placeholder="titulo da categoria"
                     onChange={(e) => setTitle1cathome(e.target.value)}
                   ></input>
@@ -8615,6 +10533,7 @@ export default function AdminController() {
                   <input
                     style={{ marginTop: "10px", paddingLeft: "5px" }}
                     type={"text"}
+                    value={title2cathome}
                     placeholder="titulo da categoria"
                     onChange={(e) => setTitle2cathome(e.target.value)}
                   ></input>
@@ -8625,6 +10544,7 @@ export default function AdminController() {
                   <input
                     style={{ marginTop: "10px", paddingLeft: "5px" }}
                     type={"text"}
+                    value={title3cathome}
                     placeholder="titulo da categoria"
                     onChange={(e) => setTitle3cathome(e.target.value)}
                   ></input>
@@ -8635,6 +10555,7 @@ export default function AdminController() {
                   <input
                     style={{ marginTop: "10px", paddingLeft: "5px" }}
                     type={"text"}
+                    value={title4cathome}
                     placeholder="titulo da categoria"
                     onChange={(e) => setTitle4cathome(e.target.value)}
                   ></input>
@@ -8645,6 +10566,7 @@ export default function AdminController() {
                   <input
                     style={{ marginTop: "10px", paddingLeft: "5px" }}
                     type={"text"}
+                    value={title5cathome}
                     placeholder="titulo da categoria"
                     onChange={(e) => setTitle5cathome(e.target.value)}
                   ></input>
@@ -8655,6 +10577,7 @@ export default function AdminController() {
                   <input
                     style={{ marginTop: "10px", paddingLeft: "5px" }}
                     type={"text"}
+                    value={title6cathome}
                     placeholder="titulo da categoria"
                     onChange={(e) => setTitle6cathome(e.target.value)}
                   ></input>
@@ -9134,15 +11057,7 @@ export default function AdminController() {
                   <p>{item.resposta}</p>
 
                   <button
-                    onClick={() =>
-                      document
-                        .querySelectorAll(".boxeditpergunta")
-                        [
-                          dataperguntas.findIndex(
-                            (data) => data._id == item._id
-                          )
-                        ].setAttribute("style", "display:flex")
-                    }
+                    onClick={() => viewModaleditaperguntas(item)}
                   >
                     <MdEdit color="#2d2d2d" size={20}></MdEdit>
                   </button>
@@ -9154,7 +11069,7 @@ export default function AdminController() {
                       type={"text"}
                       placeholder="Titulo da Pergunta"
                       value={titulopergunta}
-                      onChange={(e) => setTitulopergunta(e.target.value)}
+                      onChange={(e) => setTitulopergunta(titulopergunta == '' ? item.sumary : e.target.value)}
                     ></input>
                     <textarea
                       type={"text"}
@@ -9169,11 +11084,11 @@ export default function AdminController() {
                       onClick={() =>
                         document
                           .querySelectorAll(".boxeditpergunta")
-                          [
-                            dataperguntas.findIndex(
-                              (data) => data._id == item._id
-                            )
-                          ].setAttribute("style", "display:none")
+                        [
+                          dataperguntas.findIndex(
+                            (data) => data._id == item._id
+                          )
+                        ].setAttribute("style", "display:none")
                       }
                     >
                       Cancelar
@@ -9258,11 +11173,11 @@ export default function AdminController() {
                     onClick={() =>
                       document
                         .querySelectorAll(".boxcomentarios")
-                        [
-                          comentariosTitle.findIndex(
-                            (data) => data._id == item._id
-                          )
-                        ].setAttribute("style", "display:flex")
+                      [
+                        comentariosTitle.findIndex(
+                          (data) => data._id == item._id
+                        )
+                      ].setAttribute("style", "display:flex")
                     }
                   >
                     <MdEdit color="#2d2d2d" size={20}></MdEdit>
@@ -9294,11 +11209,11 @@ export default function AdminController() {
                       onClick={() =>
                         document
                           .querySelectorAll(".boxcomentarios")
-                          [
-                            comentariosTitle.findIndex(
-                              (data) => data._id == item._id
-                            )
-                          ].setAttribute("style", "display:none")
+                        [
+                          comentariosTitle.findIndex(
+                            (data) => data._id == item._id
+                          )
+                        ].setAttribute("style", "display:none")
                       }
                     >
                       Cancelar

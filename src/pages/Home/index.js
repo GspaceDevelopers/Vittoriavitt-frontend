@@ -42,13 +42,14 @@ const Home = () => {
   const [dadosedicao, setDadosedicao] = useState([]);
   const [fotocorselecionada, setFotocorselecionada] = useState(null);
 
-  useEffect(() => {
-    async function loaditens() {
-      api.get("/edicao").then((data) => {
+  useEffect(()=>{
+
+    async function loadLayout(){
+
+     await api.get("/edicao").then((data) => {
         setDadosedicao(data.data);
       });
-
-
+  
       document
         .getElementById("section3-home")
         .setAttribute(
@@ -98,8 +99,15 @@ const Home = () => {
           `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
           })`
         );
+    }
+    loadLayout()
 
-      api.get("/emailsclientes").then((data) => {
+  },[dadosedicao])
+
+  useEffect(() => {
+    async function loaditens() {
+
+      await api.get("/emailsclientes").then((data) => {
         setClientescadastradoswhatsappodutos(data.data);
       });
 
@@ -112,7 +120,7 @@ const Home = () => {
           )
         );
       }
-      api.get(`/promocao?promocao=true`).then((data) => {
+      await api.get(`/promocao?promocao=true`).then((data) => {
         setDataprodutos(data.data.slice(0, 3));
         setDataprodutos2(data.data.slice(3, 6));
         setDataprodutos3(data.data.slice(6, 10));
@@ -129,7 +137,7 @@ const Home = () => {
       ///console.log(verificatelefoneuser)
     }
     loaditens();
-  }, [dadosedicao]);
+  }, []);
 
   function addfavoritos(item) {
 

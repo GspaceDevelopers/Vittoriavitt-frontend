@@ -144,6 +144,7 @@ export default function Carrinho() {
   }, [dadosfrete, valorfinal]);
 
   function additem(item) {
+    
     dispath({
       type: "ADD_ITEM",
       item,
@@ -212,7 +213,7 @@ export default function Carrinho() {
       })
       .then((result) => {
         const arrayCep = result.data;
-        console.log(arrayCep);
+        //console.log(arrayCep);
 
         setDadosentrega(arrayCep);
 

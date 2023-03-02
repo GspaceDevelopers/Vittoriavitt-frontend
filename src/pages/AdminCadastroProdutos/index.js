@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import "./Styles.css";
 import api from "../../services/api";
 import firebase from "../../services/firebaseconnection";
@@ -38,19 +38,8 @@ const AdminCadastroProdutos = () => {
     }
   }
 
-  useEffect(() => {
-    api.get("/cores").then((item) => {
-      setDatacores(item.data);
-      //console.log(datacores);
-    });
-    api.get("/categorias").then((item) => {
-      setDatacategoriacadastro(item.data);
-      setFiltrodesubcategoria(
-        datacategoriacadastro.filter((item) => item.categoria == categoria)
-      );
 
-      // console.log(datacores);
-    });
+  useEffect(() => {
 
     if (cont == 0) {
       document
@@ -287,17 +276,28 @@ const AdminCadastroProdutos = () => {
 
   const [modalcadcores, setModalcadcores] = useState(false);
   const [modalcadacategorias, setModalcadcategorias] = useState(false);
+
   useEffect(() => {
-    setLoad(true);
-    api.get("/categorias").then((item) => {
-      setDatacategoriacadastro(item.data);
-      setFiltrodesubcategoria(
-        datacategoriacadastro.filter((item) => item.categoria == categoria)
-      );
-      setLoad(false);
-      // console.log(datacores);
-    });
-  }, [categoria]);
+
+    async function loadCategorias() {
+      setLoad(true);
+      await api.get("/categorias").then((item) => {
+        setDatacategoriacadastro(item.data);
+        setFiltrodesubcategoria(
+          datacategoriacadastro.filter((item) => item.categoria == categoria)
+        );
+      });
+      await api.get("/cores").then((item) => {
+        setDatacores(item.data);
+        setLoad(false);
+      });
+    } 
+    loadCategorias()
+  }, [modalcadacategorias,modalcadcores,modalistacategorias]);
+
+
+
+
   async function upfoto1(e) {
     const foto1url = e.target.files[0];
     setNomearquivo1(foto1url.name);
@@ -908,7 +908,7 @@ const AdminCadastroProdutos = () => {
         setLoad(false);
         setModallistacategorias(false);
       })
-      .catch(() => {});
+      .catch(() => { });
   }
 
   return (

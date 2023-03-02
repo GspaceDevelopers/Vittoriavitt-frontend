@@ -1841,10 +1841,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -2031,10 +2031,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -2221,10 +2221,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -2410,10 +2410,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -2599,10 +2599,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -2788,10 +2788,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -2977,10 +2977,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -3163,10 +3163,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -3352,10 +3352,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -3541,10 +3541,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -3728,10 +3728,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -3915,10 +3915,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
@@ -4102,10 +4102,10 @@ export default function AdminController() {
           textofretegratis == ""
             ? dadosedicao.map((item) => item.componentetexto1)[0]
             : textofretegratis,
-        parcelas: parcelas,
+        parcelas: parcelas == '' ? dadosedicao.map((item) => item.parcelas)[0] : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""

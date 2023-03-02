@@ -10,9 +10,6 @@ export default function AuthProvider({ children }) {
     const [usercliente, setUsercliente] = useState()
     const [modalSideBar, setModalSideBar] = useState(false);
 
-
-
-
     useEffect(() => {
         function loadsessao() {
             const sessao = JSON.parse(localStorage.getItem("sessaouser"));
@@ -26,7 +23,7 @@ export default function AuthProvider({ children }) {
             }
         }
         loadsessao();
-    }, [usercliente]);
+    }, []);
 
     return (
         <AuthContext.Provider

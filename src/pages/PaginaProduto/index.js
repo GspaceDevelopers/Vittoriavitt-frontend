@@ -12,7 +12,6 @@ import { BsWhatsapp } from "react-icons/bs";
 import regua from "../../Assets/regua.png";
 import cabide from "../../Assets/cabide.png";
 import { AuthContext } from "../../Contexts/auth";
-import axios from "axios";
 import Comentarios from "../../Components/Comentarios";
 //icons//
 
@@ -26,7 +25,6 @@ import api2 from "../../services/api2";
 
 export default function PaginaProduto() {
   const { _id } = useParams();
-  const { usercliente } = useContext(AuthContext);
 
   const [dataproduto, setDataproduto] = useState([]);
   const [pegarbrinde, setPegarbrinde] = useState();
@@ -57,7 +55,8 @@ export default function PaginaProduto() {
       setParcelas(data.data);
     });
   }, []);
-  console.log(pegarbrindeinfo);
+
+
   function mudacor1(item) {
     setImgprincipal(item.cores.corPrimary.imgurl);
     setCor(item.cores.corPrimary.cor1);
@@ -247,6 +246,7 @@ export default function PaginaProduto() {
       cor: cor,
       tamanho: tamanho,
       quantidade: quantidade,
+      estoque:estoque,
       preco: item.preco.replace(",", "."),
       imgurl: imgprincipal,
       descricao: item.descricao,
@@ -289,6 +289,7 @@ export default function PaginaProduto() {
   function amountplus() {
     if (quantidade >= estoque) {
       document.getElementById("errestoque").setAttribute("style", "color:red");
+     // setQuantidade(estoque)
       return;
     }
 
@@ -298,7 +299,7 @@ export default function PaginaProduto() {
   function mudatamanho(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoOne.tamanho1);
     setEstoque(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade);
-
+    setQuantidade(1)
     document
       .querySelectorAll(".btn-tamanho")[0]
       .setAttribute("style", "background:#df0707;color:#fff");
@@ -316,6 +317,7 @@ export default function PaginaProduto() {
   function mudatamanho2(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2);
     setEstoque(item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -333,6 +335,7 @@ export default function PaginaProduto() {
   function mudatamanho3(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoThree.tamanho3);
     setEstoque(item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -350,6 +353,7 @@ export default function PaginaProduto() {
   function mudatamanho4(item) {
     setTamanho(item.cores.corPrimary.tamanhos.tamanhoFour.tamanho4);
     setEstoque(item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -367,6 +371,7 @@ export default function PaginaProduto() {
   function mudatamanho5(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoOne.tamanho5);
     setEstoque(item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -384,6 +389,7 @@ export default function PaginaProduto() {
   function mudatamanho6(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6);
     setEstoque(item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -401,6 +407,7 @@ export default function PaginaProduto() {
   function mudatamanho7(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoThree.tamanho7);
     setEstoque(item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -418,6 +425,7 @@ export default function PaginaProduto() {
   function mudatamanho8(item) {
     setTamanho(item.cores.corSecondary.tamanhos.tamanhoFour.tamanho8);
     setEstoque(item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -435,6 +443,8 @@ export default function PaginaProduto() {
   function mudatamanho9(item) {
     setTamanho(item.cores.corTertiary.tamanhos.tamanhoOne.tamanho9);
     setEstoque(item.cores.corTertiary.tamanhos.tamanhoOne.quantidade9);
+    setQuantidade(1)
+
     document
       .querySelectorAll(".btn-tamanho")[0]
       .setAttribute("style", "background:#df0707;color:#fff");
@@ -451,6 +461,8 @@ export default function PaginaProduto() {
   function mudatamanho10(item) {
     setTamanho(item.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10);
     setEstoque(item.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10);
+    setQuantidade(1)
+
     document
       .querySelectorAll(".btn-tamanho")[0]
       .setAttribute("style", "background:#fff;color:#000");
@@ -467,6 +479,7 @@ export default function PaginaProduto() {
   function mudatamanho11(item) {
     setTamanho(item.cores.corTertiary.tamanhos.tamanhoThree.tamanho11);
     setEstoque(item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -484,6 +497,7 @@ export default function PaginaProduto() {
   function mudatamanho12(item) {
     setTamanho(item.cores.corTertiary.tamanhos.tamanhoFour.tamanho12);
     setEstoque(item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -501,6 +515,7 @@ export default function PaginaProduto() {
   function mudatamanho13(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13);
     setEstoque(item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -518,6 +533,7 @@ export default function PaginaProduto() {
   function mudatamanho14(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14);
     setEstoque(item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -535,6 +551,7 @@ export default function PaginaProduto() {
   function mudatamanho15(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15);
     setEstoque(item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -553,6 +570,7 @@ export default function PaginaProduto() {
   function mudatamanho16(item) {
     setTamanho(item.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16);
     setEstoque(item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -570,6 +588,7 @@ export default function PaginaProduto() {
   function mudatamanho17(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoOne.tamanho17);
     setEstoque(item.cores.corFive.tamanhos.tamanhoOne.quantidade17);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -587,6 +606,7 @@ export default function PaginaProduto() {
   function mudatamanho18(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoTwo.tamanho18);
     setEstoque(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -604,6 +624,7 @@ export default function PaginaProduto() {
   function mudatamanho19(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoThree.tamanho19);
     setEstoque(item.cores.corFive.tamanhos.tamanhoThree.quantidade19);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -621,6 +642,7 @@ export default function PaginaProduto() {
   function mudatamanho20(item) {
     setTamanho(item.cores.corFive.tamanhos.tamanhoFour.tamanho20);
     setEstoque(item.cores.corFive.tamanhos.tamanhoFour.quantidade20);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -638,6 +660,7 @@ export default function PaginaProduto() {
   function mudatamanho21(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoOne.tamanho21);
     setEstoque(item.cores.corSix.tamanhos.tamanhoOne.quantidade21);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -655,6 +678,7 @@ export default function PaginaProduto() {
   function mudatamanho22(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoTwo.tamanho22);
     setEstoque(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -672,6 +696,7 @@ export default function PaginaProduto() {
   function mudatamanho23(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoThree.tamanho23);
     setEstoque(item.cores.corSix.tamanhos.tamanhoThree.quantidade23);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -689,6 +714,7 @@ export default function PaginaProduto() {
   function mudatamanho24(item) {
     setTamanho(item.cores.corSix.tamanhos.tamanhoFour.tamanho24);
     setEstoque(item.cores.corSix.tamanhos.tamanhoFour.quantidade24);
+    setQuantidade(1)
 
     document
       .querySelectorAll(".btn-tamanho")[0]
@@ -705,6 +731,7 @@ export default function PaginaProduto() {
   }
 
   function showmodalcompartilhar(item) {
+    
     let mensagem = {
       title: "Olá, estou compartilhando este produto com voçê",
       text: `Vittoriavitt\n ${item.modelo} \n R$${item.preco}`,

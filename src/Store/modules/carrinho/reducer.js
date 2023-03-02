@@ -1,4 +1,5 @@
 import produce from "immer";
+import { toast } from "react-toastify";
 
 export default function Carrinho(state = [], action) {
     // const dataitem = useSelector(dat => dat.carrinho)
@@ -16,6 +17,12 @@ export default function Carrinho(state = [], action) {
                /* if (draft[itemindex].promocao == true && draft[itemindex].quantidade >= draft[itemindex].qtdpromocao) {
                     
                 }*/
+
+                if( draft[itemindex].estoque == draft[itemindex].quantidade){
+                    toast.info(`Quantidade de estoque disponível ${draft[itemindex].estoque}`)
+                    window.preventDefoult()
+                    return
+                }
 
                 if (itemindex >= 0) {
                     draft[itemindex].quantidade += 1

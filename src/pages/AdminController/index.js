@@ -11567,19 +11567,19 @@ export default function AdminController() {
                   type="text"
                   value={link1}
                   onChange={(e) => setLink1(e.target.value)}
-                  placeholder="facebook"
+                  placeholder="Ícone 1"
                 ></input>
                 <input
                   type="text"
                   value={link2}
                   onChange={(e) => setLink2(e.target.value)}
-                  placeholder="instagran"
+                  placeholder="Ícone 2"
                 ></input>
                 <input
                   type="text"
                   value={link3}
                   onChange={(e) => setLink3(e.target.value)}
-                  placeholder="whatsapp"
+                  placeholder="Ícone 3"
                 ></input>
                 <input
                   type="text"
@@ -11616,11 +11616,11 @@ export default function AdminController() {
               </div>
               <div className="box-input-files">
                 <span>Mudar Icones das redes sociais</span>
-                <span>Facebook</span>
+                <span>Ícone 1</span>
                 <input type="file" onChange={uploadicone1}></input>
-                <span>Instagram</span>
+                <span>Ícone 2</span>
                 <input type="file" onChange={uploadicone2}></input>
-                <span>WhatsApp</span>
+                <span>Ícone 3</span>
                 <input type="file" onChange={uploadicone3}></input>
               </div>
               <div className="box-input-files">

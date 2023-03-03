@@ -26,11 +26,11 @@ import api2 from "../../services/api2";
 export default function PaginaProduto() {
   const { _id } = useParams();
 
+  const [datacarrinho, setDatacarrinho] = useState([]);
   const [dataproduto, setDataproduto] = useState([]);
   const [pegarbrinde, setPegarbrinde] = useState();
   const [pegarbrindeinfo, setPegarbrindeinfo] = useState();
 
-  const [datacarrinho, setDatacarrinho] = useState([]);
   const [parcelas, setParcelas] = useState([]);
   const [imgprincipal, setImgprincipal] = useState(null);
   const [cor, setCor] = useState("");
@@ -43,19 +43,90 @@ export default function PaginaProduto() {
   const [renderizarPopUp, setRenderizarPopUp] = useState(false);
   const [estoque, setEstoque] = useState("");
 
-  useEffect(() => {
+  useEffect(()=>{
     api.get(`/produtos/_id?_id=${_id}`).then((data) => {
       setDataproduto([data.data]);
       setPegarbrinde([data.data].brinde);
       setPegarbrindeinfo([data.data].aparecercampobrinde);
     });
+  },[])
+
+  useEffect(() => {
     setDatacarrinho(JSON.parse(localStorage.getItem("carrinhorr11") || "[]"));
     api2.get("/edicao").then((data) => {
       setValueFrete(data.data);
       setParcelas(data.data);
     });
-  }, []);
+    //console.log(datacarrinho)
+  }, [dataproduto]);
 
+  
+  function additemcarrinho(item) {
+    const filter = datacarrinho.some(dat => dat.imgurl == item.imgurl && dat.cor == item.cor && dat.tamanho == item.tamanho )
+
+    const carrinho = JSON.parse(localStorage.getItem("carrinhorr11") || "[]")
+
+
+    if(filter){
+      toast.info(`Item com o tamanho e cor escolhido ja está no carrinho, para adicionar mais vá no carrinho.`)
+      return
+    }
+
+
+    if (quantidade == 0) {
+      toast.error("Quantidade minima: 1");
+      return;
+    }
+    if (cor == "") {
+      toast.error("Escolha uma cor");
+      return;
+    }
+    if (tamanho == "") {
+      toast.error("Escolha um tamanho");
+      return;
+    }
+    // if (usercliente == null) {
+    //     toast.info('Faça login, ou cadastre-se para adicionar!')
+    //     return
+    // }
+    localStorage.setItem(
+      "descontoaplicado",
+      JSON.stringify(Number(item.promocao2 === false ? "" : item.desconto))
+    );
+
+
+    let datacarrinho = {
+      _id: item._id,
+      pid: Math.floor(Math.random() * 1000),
+      modelo: item.modelo,
+      cor: cor,
+      tamanho: tamanho,
+      quantidade: quantidade,
+      estoque: estoque,
+      preco: item.preco.replace(",", "."),
+      imgurl: imgprincipal,
+      descricao: item.descricao,
+      valorTotal:
+        Number(item.preco.replace(",", ".")) * Number(quantidade).toFixed(2),
+      promocao: item.promocao2,
+      desconto: item.promocao2 === false ? "" : item.desconto,
+      qtdpromocao: item.promocao2 === false ? 20000 : item.qtdpromocao2,
+      peso: item.peso,
+      comprimento: item.comprimento,
+      altura: item.altura,
+      largura: item.largura,
+      diametro: item.diametro,
+      formato: item.formato,
+    };
+    //carrinho.push(datacarrinho);
+
+    localStorage.setItem("carrinhorr11", JSON.stringify(carrinho));
+
+    toast.success("Item adicionado ao carrinho");
+    setTimeout(() => {
+      window.location.href = "/carrinho";
+    }, 2000);
+  }
 
   function mudacor1(item) {
     setImgprincipal(item.cores.corPrimary.imgurl);
@@ -215,72 +286,6 @@ export default function PaginaProduto() {
       );
   }
 
-  function additemcarrinho(item) {
-
-    const data = JSON.parse(localStorage.getItem('carrinhorr11') || '[]')
-
-    const filter = data.filter(dat => dat.imgurl == item.imgurl )
-
-    if (filter.length == estoque) {
-      toast.error(`Quantidade disponivel: ${estoque}`);
-      return;
-
-    }
-    if (quantidade == 0) {
-      toast.error("Quantidade minima: 1");
-      return;
-    }
-    if (cor == "") {
-      toast.error("Escolha uma cor");
-      return;
-    }
-    if (tamanho == "") {
-      toast.error("Escolha um tamanho");
-      return;
-    }
-    // if (usercliente == null) {
-    //     toast.info('Faça login, ou cadastre-se para adicionar!')
-    //     return
-    // }
-    localStorage.setItem(
-      "descontoaplicado",
-      JSON.stringify(Number(item.promocao2 === false ? "" : item.desconto))
-    );
-
-    const carrinho = JSON.parse(localStorage.getItem("carrinhorr11") || "[]");
-
-    let datacarrinho = {
-      _id: item._id,
-      pid: Math.floor(Math.random() * 1000),
-      modelo: item.modelo,
-      cor: cor,
-      tamanho: tamanho,
-      quantidade: quantidade,
-      estoque: estoque,
-      preco: item.preco.replace(",", "."),
-      imgurl: imgprincipal,
-      descricao: item.descricao,
-      valorTotal:
-        Number(item.preco.replace(",", ".")) * Number(quantidade).toFixed(2),
-      promocao: item.promocao2,
-      desconto: item.promocao2 === false ? "" : item.desconto,
-      qtdpromocao: item.promocao2 === false ? 20000 : item.qtdpromocao2,
-      peso: item.peso,
-      comprimento: item.comprimento,
-      altura: item.altura,
-      largura: item.largura,
-      diametro: item.diametro,
-      formato: item.formato,
-    };
-    carrinho.push(datacarrinho);
-
-    localStorage.setItem("carrinhorr11", JSON.stringify(carrinho));
-
-    toast.success("Item adicionado ao carrinho");
-    setTimeout(() => {
-      window.location.href = "/carrinho";
-    }, 2000);
-  }
 
   function subitrairqtd() {
     if (quantidade == 0) {

@@ -325,6 +325,10 @@ export default function AdminController() {
   useEffect(() => {
     api.get("/produtos").then((data) => {
       setDataprodutos(data.data);
+      if (data.data.promocao == false) {
+        // VERIFY DESCONTO ATUALIZAR
+        setDesconto("");
+      }
     });
   }, [dataprodutos]);
 

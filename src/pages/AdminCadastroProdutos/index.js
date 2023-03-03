@@ -850,7 +850,6 @@ const AdminCadastroProdutos = () => {
 
   async function cadCor() {
     if (cor == "") {
-      toast.info("Campo vazio");
       return;
     }
     setLoad(true);
@@ -866,7 +865,6 @@ const AdminCadastroProdutos = () => {
   }
   async function cadCategoria() {
     if (categoriacadastro == "") {
-      toast.info("Campo vazio");
       return;
     }
     setLoad(true);

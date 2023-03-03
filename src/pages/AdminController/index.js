@@ -279,10 +279,15 @@ export default function AdminController() {
       setComentariosTitle(data.data);
     });
   }, [comentariosTitle]);
+
+  
   useEffect(() => {
     const emailuser = JSON.parse(localStorage.getItem("sessaouser"));
     setEmailatual(emailuser.email);
   }, [modaleditadados]);
+
+
+
   useEffect(() => {
     async function loadpedidos() {
       if (user == null || user == "" || user == []) {
@@ -11607,20 +11612,18 @@ export default function AdminController() {
               </div>
               <div className="box-input-files">
                 <span>
-                  Mudar banner central da Home (-max: 1500x400 - min:1200x300)
+                Mudar banner central da Home (máx.: 1500x400 - min.:1200x300)
                 </span>
                 <input type="file" onChange={uploadbannercentralhome}></input>
-                <span>Mudar Imagem Pop-up até ( 700x500) </span>
+                <span>Mudar Imagem Pop-up (máx.: 700x500) </span>
                 <input type="file" onChange={uploadBannerpromocao}></input>
                 <span>
-                  Mudar banner página produtos ( 980x140) se a imagem não
-                  carregar, renomeie o arquivo para um unico nome sem acentos e
-                  caracteres especiais!.{" "}
+                Mudar banner página produtos (980x140) se a imagem não carregar, renomeie o arquivo para um único nome sem acentos e caracteres especiais!{" "}
                 </span>
                 <input type="file" onChange={uploadBannerpaginaprod}></input>
               </div>
               <div className="box-input-files">
-                <span>Mudar Icones das redes sociais</span>
+                <span>Mudar Ícones das redes sociais</span>
                 <span>Ícone 1</span>
                 <input type="file" onChange={uploadicone1}></input>
                 <span>Ícone 2</span>
@@ -11630,7 +11633,7 @@ export default function AdminController() {
               </div>
               <div className="box-input-files">
                 <span>
-                  Mudar imagens e título das categorias da home - max: 190x190
+                Mudar imagens e título das categorias da home (máx.: 190x190)
                 </span>
                 <div style={{ marginTop: "10px" }}>
                   <p>1° Categoria</p>
@@ -11702,8 +11705,7 @@ export default function AdminController() {
 
               <div className="box-input-files">
                 <strong>
-                  Essas Imagens devem ter no máximo 1920×960 e
-                  formato(jpeg,jpg,gif,webp) para melhor resolução
+                Essas Imagens devem ter no máximo 1920×960 e formato (jpeg, jpg, gif, webp) para melhor resolução.
                 </strong>
                 <span>Mudar banner Home Computador Destaque 1 </span>
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -11854,8 +11856,7 @@ export default function AdminController() {
               {
                 <div className="box-input-files">
                   <strong>
-                    Essas Imagens devem ter no máximo 500x600 e
-                    formato(jpeg,jpg,gif,webp) para melhor resolução
+                  Essas Imagens devem ter no máximo 500x600 e formato (jpeg, jpg, gif, webp) para melhor resolução.
                   </strong>
 
                   <span>Mudar banner Celular Home1 </span>
@@ -11874,7 +11875,7 @@ export default function AdminController() {
                       ></img>
                     </div>
                   </div>
-                  <span>Mudar banner Celular Home2 </span>
+                  <span>Mudar banner Celular Home 2 </span>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <input type="file" onChange={uploadbanner2}></input>
                     <button
@@ -11890,7 +11891,7 @@ export default function AdminController() {
                       ></img>
                     </div>
                   </div>
-                  <span>Mudar banner Celular Home3 </span>
+                  <span>Mudar banner Celular Home 3 </span>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <input type="file" onChange={uploadbanner3}></input>
                     <button
@@ -11906,7 +11907,7 @@ export default function AdminController() {
                       ></img>
                     </div>
                   </div>
-                  <span>Mudar banner Celular Home4 </span>
+                  <span>Mudar banner Celular Home 4 </span>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <input type="file" onChange={uploadbanner4}></input>
                     <button
@@ -11922,7 +11923,7 @@ export default function AdminController() {
                       ></img>
                     </div>
                   </div>
-                  <span>Mudar banner Celular Home5 </span>
+                  <span>Mudar banner Celular Home 5 </span>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <input type="file" onChange={uploadbanner5}></input>
                     <button
@@ -11938,7 +11939,7 @@ export default function AdminController() {
                       ></img>
                     </div>
                   </div>
-                  <span>Mudar banner Celular Home6 </span>
+                  <span>Mudar banner Celular Home 6 </span>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <input type="file" onChange={uploadbanner6}></input>
                     <button

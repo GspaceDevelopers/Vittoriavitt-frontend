@@ -63,7 +63,7 @@ const Header = (props) => {
         (item) => item.desconto == "40" && item.promocao2 == false
       ) &&
       dataprodutos.some(
-        (item) => item.desconto == "" && item.promocao2 == false
+        (item) => item.promocao == false && item.promocao2 == false
       )
     ) {
       document

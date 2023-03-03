@@ -61,6 +61,7 @@ export default function AdminController() {
   const [senha, setSenha] = useState("");
   const [alterasenha, setAlterasenha] = useState("");
   const [alteraemail, setAlteraemail] = useState("");
+  const [emailatual, setEmailatual] = useState("");
   const [titulopergunta, setTitulopergunta] = useState("");
   const [textoresposta, setTextoresposta] = useState("");
   const [dataperguntas, setDataperguntas] = useState([]);
@@ -284,8 +285,10 @@ export default function AdminController() {
     setTitle4cathome(dadosedicao.map(item => item.categoriabtnhome4.title4)[0])
     setTitle5cathome(dadosedicao.map(item => item.categoriabtnhome5.title5)[0])
     setTitle6cathome(dadosedicao.map(item => item.categoriabtnhome6.title6)[0])
+    const emailuser = JSON.parse(localStorage.getItem('sessaouser'))
+    setEmailatual(emailuser.email)
 
-    loadpedidos();
+    loadpedidos();  
 
   }, [dadosedicao]);
 
@@ -5546,7 +5549,7 @@ export default function AdminController() {
     }
     await firebase
       .auth()
-      .signInWithEmailAndPassword(alteraemail, senhaverificacao)
+      .signInWithEmailAndPassword(emailatual, senhaverificacao)
       .then(async function (userCredential) {
         userCredential.user.updateEmail(alteraemail);
         userCredential.user.updatePassword(alterasenha);
@@ -5555,7 +5558,10 @@ export default function AdminController() {
         setTimeout(() => {
           sairadm();
         }, 1500);
-      });
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
   }
 
   async function addperguntas() {
@@ -6390,7 +6396,7 @@ export default function AdminController() {
         // produto: detalhesproduto.produto,
         precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -6495,9 +6501,9 @@ export default function AdminController() {
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
-          },
-      
-  
+        },
+
+
       }).then(() => {
         toast.success('foto excluida com sucesso!')
         setShowmodaldetalhesproduto(false)
@@ -6508,15 +6514,15 @@ export default function AdminController() {
 
   }
   async function delimg2(_id) {
-    await api.put(`/produtos/${_id}`,  
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -6537,109 +6543,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: '',
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: '',
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg3(_id) {
-    await api.put(`/produtos/${_id}`,  
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -6660,109 +6666,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: '',
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: '',
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg4(_id) {
-    await api.put(`/produtos/${_id}`, 
-     {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -6783,109 +6789,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: '',
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4: '',
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg5(_id) {
-    await api.put(`/produtos/${_id}`,  
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -6906,109 +6912,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: '',
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: '',
-          imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg6(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7029,109 +7035,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: '',
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:'',
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg7(_id) {
-    await api.put(`/produtos/${_id}`, 
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7152,109 +7158,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: '',
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: '',
-          imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg8(_id) {
-    await api.put(`/produtos/${_id}`, 
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7275,110 +7281,110 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: '',
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8: '',
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
 
   async function delimg9(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7399,110 +7405,110 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: '',
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9:'',
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
 
   async function delimg10(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7523,109 +7529,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: '',
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: '',
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg11(_id) {
-    await api.put(`/produtos/${_id}`, 
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7646,109 +7652,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: '',
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: '',
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg12(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7769,109 +7775,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: '',
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: '',
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg13(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -7892,109 +7898,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: '',
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: '',
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg14(_id) {
-    await api.put(`/produtos/${_id}`, 
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -8015,109 +8021,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: '',
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: '',
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg15(_id) {
-    await api.put(`/produtos/${_id}`, 
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+    await api.put(`/produtos/${_id}`,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -8138,109 +8144,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: '',
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: '',
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg16(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -8261,109 +8267,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: "",
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: "",
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg17(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -8384,109 +8390,109 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl17,
+            imgurl17: '',
+            imgurl18: detalhesproduto.cores.corSix.imgurl18,
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl17,
-          imgurl17: '',
-          imgurl18: detalhesproduto.cores.corSix.imgurl18,
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
   }
   async function delimg18(_id) {
     await api.put(`/produtos/${_id}`,
-    {
-      headers: {
-        Authorization: "Access-Control-Allow-Origin",
-      },
-      // produto: detalhesproduto.produto,
-     precomaior: detalhesproduto.precomaior,
+      {
+        headers: {
+          Authorization: "Access-Control-Allow-Origin",
+        },
+        // produto: detalhesproduto.produto,
+        precomaior: detalhesproduto.precomaior,
         sku: detalhesproduto.sku,
-  
+
         preco: detalhesproduto.preco,
         modelo: detalhesproduto.modelo,
         //marca: marcaupdate,
@@ -8507,97 +8513,97 @@ export default function AdminController() {
         largura: detalhesproduto.largura,
         diametro: detalhesproduto.diametro,
         formato: detalhesproduto.formato,
-      cores: {
-        corPrimary: {
-          imgurl: detalhesproduto.cores.corPrimary.imgurl,
-          imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-          imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
-          cor1:
-            corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
-          tamanhos: {
-            tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
-            tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
-            tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
-            tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+        cores: {
+          corPrimary: {
+            imgurl: detalhesproduto.cores.corPrimary.imgurl,
+            imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
+            imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
+            cor1:
+              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+            tamanhos: {
+              tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
+              tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
+              tamanhoThree: { tamanho3: tamanho3, quantidade3: quantidade3 },
+              tamanhoFour: { tamanho4: tamanho4, quantidade4: quantidade4 },
+            },
+          },
+          corSecondary: {
+            imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
+            imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
+            imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
+            cor2:
+              corupdate2 == ""
+                ? detalhesproduto.cores.corSecondary.cor2
+                : corupdate2,
+            tamanhos: {
+              tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
+              tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
+              tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
+              tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
+            },
+          },
+          corTertiary: {
+            imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
+            imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
+            imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
+            cor3:
+              corupdate3 == ""
+                ? detalhesproduto.cores.corTertiary.cor3
+                : corupdate3,
+            tamanhos: {
+              tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
+              tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
+              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
+            },
+          },
+          corQuaternary: {
+            imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
+            imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
+            imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
+            cor4:
+              corupdate4 == ""
+                ? detalhesproduto.cores.corQuaternary.cor4
+                : corupdate4,
+            tamanhos: {
+              tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
+              tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
+              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
+            },
+          },
+          corFive: {
+            imgurl13: detalhesproduto.cores.corFive.imgurl13,
+            imgurl14: detalhesproduto.cores.corFive.imgurl14,
+            imgurl15: detalhesproduto.cores.corFive.imgurl15,
+            cor5:
+              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+            tamanhos: {
+              tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
+              tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
+              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
+            },
+          },
+          corSix: {
+            imgurl16: detalhesproduto.cores.corSix.imgurl16,
+            imgurl17: detalhesproduto.cores.corSix.imgurl17,
+            imgurl18: '',
+            cor6: detalhesproduto.cores.corSix.cor6,
+            tamanhos: {
+              tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
+              tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
+              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
+            },
           },
         },
-        corSecondary: {
-          imgurl4:detalhesproduto.cores.corSecondary.imgurl4,
-          imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-          imgurl6:detalhesproduto.cores.corSecondary.imgurl6,
-          cor2:
-            corupdate2 == ""
-              ? detalhesproduto.cores.corSecondary.cor2
-              : corupdate2,
-          tamanhos: {
-            tamanhoOne: { tamanho5: tamanho5, quantidade5: quantidade5 },
-            tamanhoTwo: { tamanho6: tamanho6, quantidade6: quantidade6 },
-            tamanhoThree: { tamanho7: tamanho7, quantidade7: quantidade7 },
-            tamanhoFour: { tamanho8: tamanho8, quantidade8: quantidade8 },
-          },
-        },
-        corTertiary: {
-          imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-          imgurl8:  detalhesproduto.cores.corTertiary.imgurl8,
-          imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
-          cor3:
-            corupdate3 == ""
-              ? detalhesproduto.cores.corTertiary.cor3
-              : corupdate3,
-          tamanhos: {
-            tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
-            tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-            tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
-            tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
-          },
-        },
-        corQuaternary: {
-          imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-          imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-          imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
-          cor4:
-            corupdate4 == ""
-              ? detalhesproduto.cores.corQuaternary.cor4
-              : corupdate4,
-          tamanhos: {
-            tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
-            tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-            tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
-            tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
-          },
-        },
-        corFive: {
-          imgurl13: detalhesproduto.cores.corFive.imgurl13,
-          imgurl14: detalhesproduto.cores.corFive.imgurl14,
-          imgurl15: detalhesproduto.cores.corFive.imgurl15,
-          cor5:
-            corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
-          tamanhos: {
-            tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
-            tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-            tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
-            tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
-          },
-        },
-        corSix: {
-          imgurl16: detalhesproduto.cores.corSix.imgurl16,
-          imgurl17: detalhesproduto.cores.corSix.imgurl17,
-          imgurl18: '',
-          cor6: detalhesproduto.cores.corSix.cor6,
-          tamanhos: {
-            tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
-            tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-            tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
-            tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
-          },
-        },
-      },
-    
 
-    }).then(() => {
-      toast.success('foto excluida com sucesso!')
-      setShowmodaldetalhesproduto(false)
-    })
+
+      }).then(() => {
+        toast.success('foto excluida com sucesso!')
+        setShowmodaldetalhesproduto(false)
+      })
 
 
   }
@@ -9682,7 +9688,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corPrimary.imgurl == '' ? urlimgproduto1 :detalhesproduto.cores.corPrimary.imgurl }></img>
+                      <img src={detalhesproduto.cores.corPrimary.imgurl == '' ? urlimgproduto1 : detalhesproduto.cores.corPrimary.imgurl}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg1(detalhesproduto._id)}></FiTrash>
@@ -9694,7 +9700,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corPrimary.imgurl2 == '' ? urlimgproduto2 :detalhesproduto.cores.corPrimary.imgurl2 }></img>
+                      <img src={detalhesproduto.cores.corPrimary.imgurl2 == '' ? urlimgproduto2 : detalhesproduto.cores.corPrimary.imgurl2}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg2(detalhesproduto._id)}></FiTrash>
@@ -9706,7 +9712,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corPrimary.imgurl3 == '' ? urlimgproduto3 :detalhesproduto.cores.corPrimary.imgurl3 }></img>
+                      <img src={detalhesproduto.cores.corPrimary.imgurl3 == '' ? urlimgproduto3 : detalhesproduto.cores.corPrimary.imgurl3}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg3(detalhesproduto._id)}></FiTrash>
@@ -9718,7 +9724,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSecondary.imgurl4 == '' ? urlimgproduto4 :detalhesproduto.cores.corSecondary.imgurl4 }></img>
+                      <img src={detalhesproduto.cores.corSecondary.imgurl4 == '' ? urlimgproduto4 : detalhesproduto.cores.corSecondary.imgurl4}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg4(detalhesproduto._id)}></FiTrash>
@@ -9730,7 +9736,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSecondary.imgurl5 == '' ? urlimgproduto5 :detalhesproduto.cores.corSecondary.imgurl5 }></img>
+                      <img src={detalhesproduto.cores.corSecondary.imgurl5 == '' ? urlimgproduto5 : detalhesproduto.cores.corSecondary.imgurl5}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg5(detalhesproduto._id)}></FiTrash>
@@ -9743,7 +9749,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSecondary.imgurl6 == '' ? urlimgproduto6 :detalhesproduto.cores.corSecondary.imgurl6 }></img>
+                      <img src={detalhesproduto.cores.corSecondary.imgurl6 == '' ? urlimgproduto6 : detalhesproduto.cores.corSecondary.imgurl6}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg6(detalhesproduto._id)}></FiTrash>
@@ -9756,7 +9762,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corTertiary.imgurl7 == '' ? urlimgproduto7 :detalhesproduto.cores.corTertiary.imgurl7 }></img>
+                      <img src={detalhesproduto.cores.corTertiary.imgurl7 == '' ? urlimgproduto7 : detalhesproduto.cores.corTertiary.imgurl7}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg7(detalhesproduto._id)}></FiTrash>
@@ -9768,7 +9774,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corTertiary.imgurl8 == '' ? urlimgproduto8 :detalhesproduto.cores.corTertiary.imgurl8 }></img>
+                      <img src={detalhesproduto.cores.corTertiary.imgurl8 == '' ? urlimgproduto8 : detalhesproduto.cores.corTertiary.imgurl8}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg8(detalhesproduto._id)}></FiTrash>
@@ -9781,7 +9787,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corTertiary.imgurl9 == '' ? urlimgproduto9 :detalhesproduto.cores.corTertiary.imgurl9 }></img>
+                      <img src={detalhesproduto.cores.corTertiary.imgurl9 == '' ? urlimgproduto9 : detalhesproduto.cores.corTertiary.imgurl9}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg9(detalhesproduto._id)}></FiTrash>
@@ -9794,7 +9800,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corQuaternary.imgurl10 == '' ? urlimgproduto10 :detalhesproduto.cores.corQuaternary.imgurl10 }></img>
+                      <img src={detalhesproduto.cores.corQuaternary.imgurl10 == '' ? urlimgproduto10 : detalhesproduto.cores.corQuaternary.imgurl10}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg10(detalhesproduto._id)}></FiTrash>
@@ -9807,7 +9813,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corQuaternary.imgurl11 == '' ? urlimgproduto11 :detalhesproduto.cores.corQuaternary.imgurl11 }></img>
+                      <img src={detalhesproduto.cores.corQuaternary.imgurl11 == '' ? urlimgproduto11 : detalhesproduto.cores.corQuaternary.imgurl11}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg11(detalhesproduto._id)}></FiTrash>
@@ -9820,7 +9826,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corQuaternary.imgurl12 == '' ? urlimgproduto12 :detalhesproduto.cores.corQuaternary.imgurl12 }></img>
+                      <img src={detalhesproduto.cores.corQuaternary.imgurl12 == '' ? urlimgproduto12 : detalhesproduto.cores.corQuaternary.imgurl12}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg12(detalhesproduto._id)}></FiTrash>
@@ -9833,7 +9839,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corFive.imgurl13 == '' ? urlimgproduto13 :detalhesproduto.cores.corFive.imgurl13 }></img>
+                      <img src={detalhesproduto.cores.corFive.imgurl13 == '' ? urlimgproduto13 : detalhesproduto.cores.corFive.imgurl13}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg13(detalhesproduto._id)}></FiTrash>
@@ -9845,7 +9851,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corFive.imgurl14 == '' ? urlimgproduto14 :detalhesproduto.cores.corFive.imgurl14 }></img>
+                      <img src={detalhesproduto.cores.corFive.imgurl14 == '' ? urlimgproduto14 : detalhesproduto.cores.corFive.imgurl14}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg14(detalhesproduto._id)}></FiTrash>
@@ -9857,7 +9863,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corFive.imgurl15 == '' ? urlimgproduto15 :detalhesproduto.cores.corFive.imgurl15 }></img>
+                      <img src={detalhesproduto.cores.corFive.imgurl15 == '' ? urlimgproduto15 : detalhesproduto.cores.corFive.imgurl15}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg15(detalhesproduto._id)}></FiTrash>
@@ -9869,7 +9875,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSix.imgurl16 == '' ? urlimgproduto16 :detalhesproduto.cores.corSix.imgurl16 }></img>
+                      <img src={detalhesproduto.cores.corSix.imgurl16 == '' ? urlimgproduto16 : detalhesproduto.cores.corSix.imgurl16}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg16(detalhesproduto._id)}></FiTrash>
@@ -9881,7 +9887,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSix.imgurl17 == '' ? urlimgproduto17 :detalhesproduto.cores.corSix.imgurl17 }></img>
+                      <img src={detalhesproduto.cores.corSix.imgurl17 == '' ? urlimgproduto17 : detalhesproduto.cores.corSix.imgurl17}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg17(detalhesproduto._id)}></FiTrash>
@@ -9893,7 +9899,7 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSix.imgurl18 == '' ? urlimgproduto18 :detalhesproduto.cores.corSix.imgurl18 }></img>
+                      <img src={detalhesproduto.cores.corSix.imgurl18 == '' ? urlimgproduto18 : detalhesproduto.cores.corSix.imgurl18}></img>
                     </div>
                     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                       <FiTrash color='#fff' onClick={() => delimg18(detalhesproduto._id)}></FiTrash>
@@ -10108,7 +10114,7 @@ export default function AdminController() {
                       }
                   }
                 >
-                  {detalhesproduto.cores.corPrimary.cor1 != "" ? (
+                  {(
                     <div className="box-cores-update">
                       <p
                         style={
@@ -10132,12 +10138,12 @@ export default function AdminController() {
                             }
                         }
                       ></p>
-                      <button
+                      {detalhesproduto.cores.corPrimary.cor1 != '' ? <button
                         id="delitemcor"
                         onClick={() => delitemcor(detalhesproduto._id)}
                       >
                         Deletar item
-                      </button>
+                      </button> : ''}
                       <select onChange={(e) => setCorupdate(e.target.value)}>
                         <option>Cores</option>
                         {datacores.map((item) => {
@@ -10231,10 +10237,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  ) : (
-                    ""
                   )}
-                  {detalhesproduto.cores.corSecondary.cor2 != "" ? (
+                  {(
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10246,12 +10250,12 @@ export default function AdminController() {
                               : corupdate2,
                         }}
                       ></p>
-                      <button
+                      {detalhesproduto.cores.corSecondary.cor2 != '' ? <button
                         id="delitemcor"
                         onClick={() => delitemcor2(detalhesproduto._id)}
                       >
                         Deletar item
-                      </button>
+                      </button> : ''}
 
                       <select onChange={(e) => setCorupdate2(e.target.value)}>
                         <option>Cores</option>
@@ -10344,10 +10348,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  ) : (
-                    ""
                   )}
-                  {detalhesproduto.cores.corTertiary.cor3 != "" ? (
+                  {(
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10359,13 +10361,13 @@ export default function AdminController() {
                               : corupdate3,
                         }}
                       ></p>
-                      <button
+                      {detalhesproduto.cores.corTertiary.cor3 != '' ? <button
                         id="delitemcor"
                         onClick={() => delitemcor3(detalhesproduto._id)}
                       >
                         Deletar item
                       </button>
-
+                        : ''}
                       <select onChange={(e) => setCorupdate3(e.target.value)}>
                         <option>Cores</option>
                         {datacores.map((item) => {
@@ -10458,10 +10460,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  ) : (
-                    ""
                   )}
-                  {detalhesproduto.cores.corQuaternary.cor4 != "" ? (
+                  {(
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10473,13 +10473,13 @@ export default function AdminController() {
                               : corupdate4,
                         }}
                       ></p>
-                      <button
+                      {detalhesproduto.cores.corQuaternary.cor4 != '' ? <button
                         id="delitemcor"
                         onClick={() => delitemcor4(detalhesproduto._id)}
                       >
                         Deletar item
-                      </button>
-
+                      </button> : ''
+                      }
                       <select onChange={(e) => setCorupdate4(e.target.value)}>
                         <option>Cores</option>
                         {datacores.map((item) => {
@@ -10571,10 +10571,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  ) : (
-                    ""
                   )}
-                  {detalhesproduto.cores.corFive.cor4 != "" ? (
+                  {(
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10586,12 +10584,12 @@ export default function AdminController() {
                               : corupdate5,
                         }}
                       ></p>
-                      <button
+                      {detalhesproduto.cores.corFive.cor5 != '' ? <button
                         id="delitemcor"
                         onClick={() => delitemcor5(detalhesproduto._id)}
                       >
                         Deletar item
-                      </button>
+                      </button> : ''}
 
                       <select onChange={(e) => setCorupdate5(e.target.value)}>
                         <option>Cores</option>
@@ -10684,10 +10682,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  ) : (
-                    ""
                   )}
-                  {detalhesproduto.cores.corSix.cor4 != "" ? (
+                  {(
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10699,12 +10695,12 @@ export default function AdminController() {
                               : corupdate6,
                         }}
                       ></p>
-                      <button
+                      {detalhesproduto.cores.corSix.cor6 != '' ? <button
                         id="delitemcor"
                         onClick={() => delitemcor6(detalhesproduto._id)}
                       >
                         Deletar item
-                      </button>
+                      </button> : ''}
 
                       <select onChange={(e) => setCorupdate6(e.target.value)}>
                         <option>Cores</option>
@@ -10797,8 +10793,6 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  ) : (
-                    ""
                   )}
                 </div>
                 <div className="box-btn-update-delete">
@@ -11407,6 +11401,12 @@ export default function AdminController() {
 
             <div className="box-form-edta-acesso">
               <label>E-mail</label>
+              <input
+                type={"text"}
+                value={emailatual == null ? '' : emailatual}
+                placeholder="Digite seu email atual"
+                onChange={(e) => setEmailatual(e.target.value)}
+              ></input>
               <input
                 type={"text"}
                 placeholder="Digite um email de sua preferência"

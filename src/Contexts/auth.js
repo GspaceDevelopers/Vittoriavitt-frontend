@@ -62,13 +62,13 @@ export default function AuthProvider({ children }) {
             .auth()
             .createUserWithEmailAndPassword(email, senha)
             .then(async (value) => {
-                
-                    toast.success("usuario cadastrado com sucesso");
-                    window.location.href = "/AdminLogin";
-                })
-                .catch((error) => {
-                    alert(error);
-                });
+
+                toast.success("usuario cadastrado com sucesso");
+                window.location.href = "/AdminLogin";
+            })
+            .catch((error) => {
+                alert(error);
+            });
     }
 
     //funcao fazer login
@@ -80,16 +80,18 @@ export default function AuthProvider({ children }) {
             .then(async (value) => {
                 let uid = value.user.uid;
 
-              /*  const Datauser = await firebase
-                    .firestore()
-                    .collection(uid)
-                    .doc(uid)
-                    .get();
-                };*/
-                // setUser(data);
+                /* const Datauser = await firebase
+                      .firestore()
+                      .collection(uid)
+                      .doc(uid)
+                      .get();*/
+
                 let data = {
                     uid: uid,
-                    imgUrl: null}
+                    imgUrl: null,
+                    email: emailAdmin,
+                }
+                setUser(data);
 
                 sotrageUser(data);
                 window.location.href = '/admincontroller'

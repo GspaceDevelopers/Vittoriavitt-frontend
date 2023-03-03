@@ -2182,9 +2182,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -2421,9 +2421,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -2660,9 +2660,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -2898,9 +2898,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3136,9 +3136,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3374,9 +3374,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3609,9 +3609,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3847,9 +3847,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4085,9 +4085,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4321,9 +4321,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4557,9 +4557,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4793,9 +4793,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -5036,9 +5036,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);

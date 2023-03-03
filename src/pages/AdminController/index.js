@@ -245,33 +245,8 @@ export default function AdminController() {
   const [comentarioavaliacao, setComentarioAvaliacao] = useState();
   const [aprovarComentarioNow, setAprovarComentarioNow] = useState();
 
-  useEffect(() => {
-    api.get("/comentarios").then((data) => {
-      setComentariosTitle(data.data);
-    });
-  }, [comentariosTitle]);
-  useEffect(() => {
-    async function loadpedidos() {
-      if (user == null || user == "" || user == []) {
-        window.location.href = "/adminlogin";
-        return;
-      }
-      await api2.get("/edicao").then((data) => {
-        setDadosedicao(data.data);
-      });
-      await api2.get("/franquias").then((data) => {
-        setDatafranqueados(data.data.reverse());
-      });
 
-      await api.get("/categorias").then((data) => {
-        setDatacategorias(data.data);
-      });
-
-      await api.get("/cores").then((item) => {
-        setDatacores(item.data);
-      });
-    }
-
+  useEffect(()=>{
     setTextofretegratis(dadosedicao.map((item) => item.componentetexto1)[0]);
     setParcelas(dadosedicao.map((item) => item.parcelas)[0]);
     setLink1(dadosedicao.map((item) => item.linkredes.link1)[0]);
@@ -298,11 +273,46 @@ export default function AdminController() {
     setTitle6cathome(
       dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
     );
+  },[modaleditahome])
+
+
+  useEffect(() => {
+    api.get("/comentarios").then((data) => {
+      setComentariosTitle(data.data);
+    });
+  }, [comentariosTitle]);
+
+
+  useEffect(() => {
+    async function loadpedidos() {
+      if (user == null || user == "" || user == []) {
+        window.location.href = "/adminlogin";
+        return;
+      }
+      await api2.get("/edicao").then((data) => {
+        setDadosedicao(data.data);
+      });
+      await api2.get("/franquias").then((data) => {
+        setDatafranqueados(data.data.reverse());
+      });
+
+      await api.get("/categorias").then((data) => {
+        setDatacategorias(data.data);
+      });
+
+      await api.get("/cores").then((item) => {
+        setDatacores(item.data);
+      });
+    }
+
+   
     const emailuser = JSON.parse(localStorage.getItem("sessaouser"));
     setEmailatual(emailuser.email);
 
     loadpedidos();
   }, [dadosedicao]);
+
+
 
   useEffect(() => {
     async function loaddatapedidos() {
@@ -4789,7 +4799,7 @@ export default function AdminController() {
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0] 
               : img3cathome,
           title3:
             title3cathome == ""

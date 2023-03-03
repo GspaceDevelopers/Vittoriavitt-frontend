@@ -216,6 +216,16 @@ export default function PaginaProduto() {
   }
 
   function additemcarrinho(item) {
+
+    const data = JSON.parse(localStorage.getItem('carrinhorr11') || '[]')
+
+    const filter = data.filter(dat => dat.imgurl == item.imgurl )
+
+    if (filter.length == estoque) {
+      toast.error(`Quantidade disponivel: ${estoque}`);
+      return;
+
+    }
     if (quantidade == 0) {
       toast.error("Quantidade minima: 1");
       return;
@@ -246,7 +256,7 @@ export default function PaginaProduto() {
       cor: cor,
       tamanho: tamanho,
       quantidade: quantidade,
-      estoque:estoque,
+      estoque: estoque,
       preco: item.preco.replace(",", "."),
       imgurl: imgprincipal,
       descricao: item.descricao,
@@ -289,7 +299,7 @@ export default function PaginaProduto() {
   function amountplus() {
     if (quantidade >= estoque) {
       document.getElementById("errestoque").setAttribute("style", "color:red");
-     // setQuantidade(estoque)
+      // setQuantidade(estoque)
       return;
     }
 
@@ -731,7 +741,7 @@ export default function PaginaProduto() {
   }
 
   function showmodalcompartilhar(item) {
-    
+
     let mensagem = {
       title: "Olá, estou compartilhando este produto com voçê",
       text: `Vittoriavitt\n ${item.modelo} \n R$${item.preco}`,
@@ -969,12 +979,12 @@ export default function PaginaProduto() {
                   Em até {parcelas.map((item) => item.parcelas)[0]}x R$
                   {Number(
                     item.preco.replace(",", ".") /
-                      parcelas.map((item) => item.parcelas)[0]
+                    parcelas.map((item) => item.parcelas)[0]
                   ).toFixed(2)}{" "}
                   sem juros
                 </p>
                 {item.promocao2 == true &&
-                datacarrinho.some((item) => item.promocao) != true ? (
+                  datacarrinho.some((item) => item.promocao) != true ? (
                   <p style={{ color: "green" }}>
                     Adicionando {item.qtdpromocao2} produtos ou mais voçê ganha{" "}
                     {item.desconto}% de desconto!
@@ -1055,7 +1065,7 @@ export default function PaginaProduto() {
                 {cor === item.cores.corPrimary.cor1 ? (
                   <div>
                     {item.cores.corPrimary.tamanhos.tamanhoOne.tamanho1 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho(item)}
                         className="btn-tamanho"
@@ -1066,7 +1076,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho2(item)}
                         className="btn-tamanho"
@@ -1077,7 +1087,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corPrimary.tamanhos.tamanhoThree.tamanho3 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho3(item)}
                         className="btn-tamanho"
@@ -1088,7 +1098,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corPrimary.tamanhos.tamanhoFour.tamanho4 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho4(item)}
                         className="btn-tamanho"
@@ -1105,7 +1115,7 @@ export default function PaginaProduto() {
                 {cor === item.cores.corSecondary.cor2 ? (
                   <div>
                     {item.cores.corSecondary.tamanhos.tamanhoOne.tamanho5 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho5(item)}
                         className="btn-tamanho"
@@ -1116,7 +1126,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho6(item)}
                         className="btn-tamanho"
@@ -1128,7 +1138,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corSecondary.tamanhos.tamanhoThree.tamanho7 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho7(item)}
                         className="btn-tamanho"
@@ -1140,7 +1150,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corSecondary.tamanhos.tamanhoFour.tamanho8 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho8(item)}
                         className="btn-tamanho"
@@ -1158,7 +1168,7 @@ export default function PaginaProduto() {
                 {cor === item.cores.corTertiary.cor3 ? (
                   <div>
                     {item.cores.corTertiary.tamanhos.tamanhoOne.tamanho9 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho9(item)}
                         className="btn-tamanho"
@@ -1169,7 +1179,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho10(item)}
                         className="btn-tamanho"
@@ -1181,7 +1191,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corTertiary.tamanhos.tamanhoThree.tamanho11 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho11(item)}
                         className="btn-tamanho"
@@ -1193,7 +1203,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corTertiary.tamanhos.tamanhoFour.tamanho12 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho12(item)}
                         className="btn-tamanho"
@@ -1211,7 +1221,7 @@ export default function PaginaProduto() {
                 {cor === item.cores.corQuaternary.cor4 ? (
                   <div>
                     {item.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho13(item)}
                         className="btn-tamanho"
@@ -1222,7 +1232,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho14(item)}
                         className="btn-tamanho"
@@ -1234,7 +1244,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho15(item)}
                         className="btn-tamanho"
@@ -1249,7 +1259,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho16(item)}
                         className="btn-tamanho"
@@ -1292,7 +1302,7 @@ export default function PaginaProduto() {
                       ""
                     )}
                     {item.cores.corFive.tamanhos.tamanhoThree.tamanho19 !=
-                    "" ? (
+                      "" ? (
                       <button
                         onClick={() => mudatamanho19(item)}
                         className="btn-tamanho"

@@ -1941,7 +1941,7 @@ const AdminCadastroProdutos = () => {
           ""
         )}
         <span style={{ color: "#fff", marginTop: "20px" }}>
-          Medidas do Pacote(Peso(g), medida(cm), formato(sempre 2))
+          Medidas do Pacote(peso(kg), medida(cm), formato(sempre 2))
           <br />
           Colocar somente o número
         </span>
@@ -1954,7 +1954,7 @@ const AdminCadastroProdutos = () => {
         >
           <input
             type={"text"}
-            placeholder="peso(g)"
+            placeholder="peso(kg)"
             onChange={(e) => setPeso(e.target.value)}
           ></input>
           <input

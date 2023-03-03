@@ -21,6 +21,7 @@ const Header = (props) => {
   const [dadosedicao, setDatdosedicao] = useState([]);
   const [datacategorias, setDatacategorias] = useState([]);
   const [dataprodutos, setDataprodutos] = useState([]);
+  const [produtosquantidade, setProdutosquantidade] = useState();
 
   useEffect(() => {
     api2.get("/edicao").then((data) => {
@@ -28,44 +29,21 @@ const Header = (props) => {
     });
     api2.get("/produtos").then((data) => {
       setDataprodutos(data.data);
+      setProdutosquantidade(dataprodutos.length);
     });
 
     api.get("/categorias").then((data) => {
       setDatacategorias(data.data.slice(0, 4));
     });
 
-    if (
-      dataprodutos.some(
-        (item) => item.desconto == "10" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "30" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "50" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "60" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "70" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "80" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "90" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "20" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.desconto == "40" && item.promocao2 == false
-      ) &&
-      dataprodutos.some(
-        (item) => item.promocao == false && item.promocao2 == false
-      )
-    ) {
+    if (dataprodutos.some((item) => item.promocao2 == true)) {
+      document
+        .querySelector(".header-one-main")
+        .setAttribute("style", "display:flex;");
+      document
+        .querySelector(".title-fretegratis")
+        .setAttribute("style", "height:40px; font-size:20px");
+    } else {
       document
         .querySelector(".header-one-main")
         .setAttribute("style", "display:none;");

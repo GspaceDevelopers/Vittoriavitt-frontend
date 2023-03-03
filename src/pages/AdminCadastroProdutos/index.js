@@ -38,9 +38,7 @@ const AdminCadastroProdutos = () => {
     }
   }
 
-
   useEffect(() => {
-
     if (cont == 0) {
       document
         .querySelectorAll(".box-inputs-tamanhos")[0]
@@ -278,7 +276,6 @@ const AdminCadastroProdutos = () => {
   const [modalcadacategorias, setModalcadcategorias] = useState(false);
 
   useEffect(() => {
-
     async function loadCategorias() {
       setLoad(true);
       await api.get("/categorias").then((item) => {
@@ -291,12 +288,9 @@ const AdminCadastroProdutos = () => {
         setDatacores(item.data);
         setLoad(false);
       });
-    } 
-    loadCategorias()
-  }, [modalcadacategorias,modalcadcores,modalistacategorias]);
-
-
-
+    }
+    loadCategorias();
+  }, [modalcadacategorias, modalcadcores, modalistacategorias, categoria]);
 
   async function upfoto1(e) {
     const foto1url = e.target.files[0];
@@ -908,7 +902,7 @@ const AdminCadastroProdutos = () => {
         setLoad(false);
         setModallistacategorias(false);
       })
-      .catch(() => { });
+      .catch(() => {});
   }
 
   return (
@@ -1894,6 +1888,7 @@ const AdminCadastroProdutos = () => {
           value={aparecercampobrinde}
           onChange={(e) => setAparecercampobrinde(e.target.value)}
         >
+          <option value="...">...</option>
           <option value={"true"}>Sim</option>
           <option value={"false"}>Não</option>
         </select>

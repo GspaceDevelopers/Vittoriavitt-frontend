@@ -260,8 +260,6 @@ export default function AdminController() {
         setDatafranqueados(data.data.reverse());
       });
 
-
-
       await api.get("/categorias").then((data) => {
         setDatacategorias(data.data);
       });
@@ -271,34 +269,43 @@ export default function AdminController() {
       });
     }
 
-    setTextofretegratis(dadosedicao.map(item => item.componentetexto1)[0])
-    setParcelas(dadosedicao.map(item => item.parcelas)[0])
-    setLink1(dadosedicao.map(item => item.linkredes.link1)[0])
-    setLink2(dadosedicao.map(item => item.linkredes.link2)[0])
-    setLink3(dadosedicao.map(item => item.linkredes.link3)[0])
-    setTelefoneloja(dadosedicao.map(item => item.telefoneloja)[0])
-    setEmilloja(dadosedicao.map(item => item.emailloja)[0])
-    setCnpjloja(dadosedicao.map(item => item.cnpjloja)[0])
-    setTitle1cathome(dadosedicao.map(item => item.categoriabtnhome1.title1)[0])
-    setTitle2cathome(dadosedicao.map(item => item.categoriabtnhome2.title2)[0])
-    setTitle3cathome(dadosedicao.map(item => item.categoriabtnhome3.title3)[0])
-    setTitle4cathome(dadosedicao.map(item => item.categoriabtnhome4.title4)[0])
-    setTitle5cathome(dadosedicao.map(item => item.categoriabtnhome5.title5)[0])
-    setTitle6cathome(dadosedicao.map(item => item.categoriabtnhome6.title6)[0])
-    const emailuser = JSON.parse(localStorage.getItem('sessaouser'))
-    setEmailatual(emailuser.email)
+    setTextofretegratis(dadosedicao.map((item) => item.componentetexto1)[0]);
+    setParcelas(dadosedicao.map((item) => item.parcelas)[0]);
+    setLink1(dadosedicao.map((item) => item.linkredes.link1)[0]);
+    setLink2(dadosedicao.map((item) => item.linkredes.link2)[0]);
+    setLink3(dadosedicao.map((item) => item.linkredes.link3)[0]);
+    setTelefoneloja(dadosedicao.map((item) => item.telefoneloja)[0]);
+    setEmilloja(dadosedicao.map((item) => item.emailloja)[0]);
+    setCnpjloja(dadosedicao.map((item) => item.cnpjloja)[0]);
+    setTitle1cathome(
+      dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+    );
+    setTitle2cathome(
+      dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+    );
+    setTitle3cathome(
+      dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+    );
+    setTitle4cathome(
+      dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+    );
+    setTitle5cathome(
+      dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+    );
+    setTitle6cathome(
+      dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+    );
+    const emailuser = JSON.parse(localStorage.getItem("sessaouser"));
+    setEmailatual(emailuser.email);
 
-    loadpedidos();  
-
+    loadpedidos();
   }, [dadosedicao]);
 
-
   useEffect(() => {
-
     async function loaddatapedidos() {
       await api2.get("/pedidos").then((data) => {
         setDatapedidos(data.data.reverse());
-      })
+      });
 
       await api2.get(`/pedidos/status?status=Pacote recebido`).then((data) => {
         setDatapedidos2(data.data);
@@ -312,8 +319,8 @@ export default function AdminController() {
           setDatapedidos4(data.data);
         });
     }
-    loaddatapedidos()
-  }, [])
+    loaddatapedidos();
+  }, []);
 
   useEffect(() => {
     api.get("/produtos").then((data) => {
@@ -321,15 +328,11 @@ export default function AdminController() {
     });
   }, [dataprodutos]);
 
-
-
   useEffect(() => {
     api.get("/perguntas").then((item) => {
       setDataperguntas(item.data.reverse());
     });
   }, [dataperguntas]);
-
-
 
   useEffect(() => {
     api.get("/sobre").then((item) => {
@@ -1713,6 +1716,8 @@ export default function AdminController() {
 
       preco: precoupdate,
       modelo: modelo == "" ? detalhesproduto.modelo : modelo,
+      aparecercampobrinde: aparecercampobrinde,
+      brinde: brinde,
       //marca: marcaupdate,
       //tipo: tipoprodutoupdate,
       categoria: categoriaupdate,
@@ -2034,20 +2039,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2269,20 +2274,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2504,20 +2509,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2738,20 +2743,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -2972,20 +2977,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3206,20 +3211,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3440,20 +3445,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3674,20 +3679,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -3908,20 +3913,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -4146,14 +4151,14 @@ export default function AdminController() {
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -4377,15 +4382,15 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2: "",
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -4609,14 +4614,14 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3: "",
         },
@@ -4840,20 +4845,20 @@ export default function AdminController() {
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile1
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile1
+                )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile2
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile2
+                )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                (item) => item.backgoundhome.backgroundmobile3
-              )[0]
+                  (item) => item.backgoundhome.backgroundmobile3
+                )[0]
               : urlmobile3,
         },
         componentetexto2:
@@ -5559,9 +5564,9 @@ export default function AdminController() {
           sairadm();
         }, 1500);
       })
-      .catch((err)=>{
-        console.log(err)
-      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   async function addperguntas() {
@@ -6372,24 +6377,21 @@ export default function AdminController() {
       });
   }
 
-
   // FUNÇÃO QUE ABRE O MODALZINHO DE EDITAR AS PERGUNTAS FREQUENTES
   function viewModaleditaperguntas(item) {
     document
       .querySelectorAll(".boxeditpergunta")
-    [
-      dataperguntas.findIndex(
-        (data) => data._id == item._id
-      )
-    ].setAttribute("style", "display:flex")
-    setTitulopergunta(item.sumary)
-    setTextoresposta(item.resposta)
+      [dataperguntas.findIndex((data) => data._id == item._id)].setAttribute(
+        "style",
+        "display:flex"
+      );
+    setTitulopergunta(item.sumary);
+    setTextoresposta(item.resposta);
   }
-
 
   async function delimg1(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -6419,11 +6421,13 @@ export default function AdminController() {
         formato: detalhesproduto.formato,
         cores: {
           corPrimary: {
-            imgurl: '',
+            imgurl: "",
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -6457,7 +6461,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -6472,7 +6479,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -6481,11 +6491,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -6497,25 +6512,26 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
+      })
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
       })
       .catch((err) => {
-        console.log('AQUI', err)
-      })
-
+        console.log("AQUI", err);
+      });
   }
   async function delimg2(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -6546,10 +6562,12 @@ export default function AdminController() {
         cores: {
           corPrimary: {
             imgurl: detalhesproduto.cores.corPrimary.imgurl,
-            imgurl2: '',
+            imgurl2: "",
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -6583,7 +6601,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -6598,7 +6619,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -6607,11 +6631,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -6623,22 +6652,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg3(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -6670,9 +6700,11 @@ export default function AdminController() {
           corPrimary: {
             imgurl: detalhesproduto.cores.corPrimary.imgurl,
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
-            imgurl3: '',
+            imgurl3: "",
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -6706,7 +6738,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -6721,7 +6756,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -6730,11 +6768,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -6746,22 +6789,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg4(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -6795,7 +6839,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -6804,7 +6850,7 @@ export default function AdminController() {
             },
           },
           corSecondary: {
-            imgurl4: '',
+            imgurl4: "",
             imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
             imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
             cor2:
@@ -6829,7 +6875,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -6844,7 +6893,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -6853,11 +6905,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -6869,22 +6926,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg5(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -6918,7 +6976,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -6928,7 +6988,7 @@ export default function AdminController() {
           },
           corSecondary: {
             imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
-            imgurl5: '',
+            imgurl5: "",
             imgurl6: detalhesproduto.cores.corSecondary.imgurl6,
             cor2:
               corupdate2 == ""
@@ -6952,7 +7012,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -6967,7 +7030,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -6976,11 +7042,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -6992,22 +7063,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg6(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7041,7 +7113,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7052,7 +7126,7 @@ export default function AdminController() {
           corSecondary: {
             imgurl4: detalhesproduto.cores.corSecondary.imgurl4,
             imgurl5: detalhesproduto.cores.corSecondary.imgurl5,
-            imgurl6: '',
+            imgurl6: "",
             cor2:
               corupdate2 == ""
                 ? detalhesproduto.cores.corSecondary.cor2
@@ -7075,7 +7149,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -7090,7 +7167,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -7099,11 +7179,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7115,22 +7200,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg7(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7164,7 +7250,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7188,7 +7276,7 @@ export default function AdminController() {
             },
           },
           corTertiary: {
-            imgurl7: '',
+            imgurl7: "",
             imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
             imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
             cor3:
@@ -7198,7 +7286,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -7213,7 +7304,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -7222,11 +7316,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7238,22 +7337,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg8(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7287,7 +7387,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7312,7 +7414,7 @@ export default function AdminController() {
           },
           corTertiary: {
             imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
-            imgurl8: '',
+            imgurl8: "",
             imgurl9: detalhesproduto.cores.corTertiary.imgurl9,
             cor3:
               corupdate3 == ""
@@ -7321,7 +7423,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -7336,7 +7441,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -7345,11 +7453,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7361,23 +7474,24 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
 
   async function delimg9(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7411,7 +7525,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7437,7 +7553,7 @@ export default function AdminController() {
           corTertiary: {
             imgurl7: detalhesproduto.cores.corTertiary.imgurl7,
             imgurl8: detalhesproduto.cores.corTertiary.imgurl8,
-            imgurl9: '',
+            imgurl9: "",
             cor3:
               corupdate3 == ""
                 ? detalhesproduto.cores.corTertiary.cor3
@@ -7445,7 +7561,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -7460,7 +7579,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -7469,11 +7591,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7485,23 +7612,24 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
 
   async function delimg10(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7535,7 +7663,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7569,12 +7699,15 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
           corQuaternary: {
-            imgurl10: '',
+            imgurl10: "",
             imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
             imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
             cor4:
@@ -7584,7 +7717,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -7593,11 +7729,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7609,22 +7750,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg11(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7658,7 +7800,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7692,13 +7836,16 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
           corQuaternary: {
             imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
-            imgurl11: '',
+            imgurl11: "",
             imgurl12: detalhesproduto.cores.corQuaternary.imgurl12,
             cor4:
               corupdate4 == ""
@@ -7707,7 +7854,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -7716,11 +7866,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7732,22 +7887,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg12(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7781,7 +7937,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7815,14 +7973,17 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
           corQuaternary: {
             imgurl10: detalhesproduto.cores.corQuaternary.imgurl10,
             imgurl11: detalhesproduto.cores.corQuaternary.imgurl11,
-            imgurl12: '',
+            imgurl12: "",
             cor4:
               corupdate4 == ""
                 ? detalhesproduto.cores.corQuaternary.cor4
@@ -7830,7 +7991,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -7839,11 +8003,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7855,22 +8024,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg13(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -7904,7 +8074,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -7938,7 +8110,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -7953,20 +8128,28 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
           corFive: {
-            imgurl13: '',
+            imgurl13: "",
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -7978,22 +8161,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg14(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -8027,7 +8211,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -8061,7 +8247,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -8076,20 +8265,28 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
           corFive: {
             imgurl13: detalhesproduto.cores.corFive.imgurl13,
-            imgurl14: '',
+            imgurl14: "",
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -8101,22 +8298,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg15(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -8150,7 +8348,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -8184,7 +8384,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -8199,20 +8402,28 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
           corFive: {
             imgurl13: detalhesproduto.cores.corFive.imgurl13,
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
-            imgurl15: '',
+            imgurl15: "",
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -8224,22 +8435,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg16(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -8273,7 +8485,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -8307,7 +8521,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -8322,7 +8539,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -8331,11 +8551,16 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
@@ -8347,22 +8572,23 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg17(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -8396,7 +8622,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -8430,7 +8658,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -8445,7 +8676,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -8454,38 +8688,44 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
           corSix: {
             imgurl16: detalhesproduto.cores.corSix.imgurl17,
-            imgurl17: '',
+            imgurl17: "",
             imgurl18: detalhesproduto.cores.corSix.imgurl18,
             cor6: detalhesproduto.cores.corSix.cor6,
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
   async function delimg18(_id) {
-    await api.put(`/produtos/${_id}`,
-      {
+    await api
+      .put(`/produtos/${_id}`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -8519,7 +8759,9 @@ export default function AdminController() {
             imgurl2: detalhesproduto.cores.corPrimary.imgurl2,
             imgurl3: detalhesproduto.cores.corPrimary.imgurl3,
             cor1:
-              corupdate == "" ? detalhesproduto.cores.corPrimary.cor1 : corupdate,
+              corupdate == ""
+                ? detalhesproduto.cores.corPrimary.cor1
+                : corupdate,
             tamanhos: {
               tamanhoOne: { tamanho1: tamanho1, quantidade: quantidade1 },
               tamanhoTwo: { tamanho2: tamanho2, quantidade2: quantidade2 },
@@ -8553,7 +8795,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho9: tamanho9, quantidade9: quantidade9 },
               tamanhoTwo: { tamanho10: tamanho10, quantidade10: quantidade10 },
-              tamanhoThree: { tamanho11: tamanho11, quantidade11: quantidade11 },
+              tamanhoThree: {
+                tamanho11: tamanho11,
+                quantidade11: quantidade11,
+              },
               tamanhoFour: { tamanho12: tamanho12, quantidade12: quantidade12 },
             },
           },
@@ -8568,7 +8813,10 @@ export default function AdminController() {
             tamanhos: {
               tamanhoOne: { tamanho13: tamanho13, quantidade13: quantidade13 },
               tamanhoTwo: { tamanho14: tamanho14, quantidade14: quantidade14 },
-              tamanhoThree: { tamanho15: tamanho15, quantidade15: quantidade15 },
+              tamanhoThree: {
+                tamanho15: tamanho15,
+                quantidade15: quantidade15,
+              },
               tamanhoFour: { tamanho16: tamanho16, quantidade16: quantidade16 },
             },
           },
@@ -8577,44 +8825,41 @@ export default function AdminController() {
             imgurl14: detalhesproduto.cores.corFive.imgurl14,
             imgurl15: detalhesproduto.cores.corFive.imgurl15,
             cor5:
-              corupdate5 == "" ? detalhesproduto.cores.corFive.cor5 : corupdate5,
+              corupdate5 == ""
+                ? detalhesproduto.cores.corFive.cor5
+                : corupdate5,
             tamanhos: {
               tamanhoOne: { tamanho17: tamanho17, quantidade17: quantidade17 },
               tamanhoTwo: { tamanho18: tamanho18, quantidade18: quantidade18 },
-              tamanhoThree: { tamanho19: tamanho19, quantidade19: quantidade19 },
+              tamanhoThree: {
+                tamanho19: tamanho19,
+                quantidade19: quantidade19,
+              },
               tamanhoFour: { tamanho20: tamanho20, quantidade20: quantidade20 },
             },
           },
           corSix: {
             imgurl16: detalhesproduto.cores.corSix.imgurl16,
             imgurl17: detalhesproduto.cores.corSix.imgurl17,
-            imgurl18: '',
+            imgurl18: "",
             cor6: detalhesproduto.cores.corSix.cor6,
             tamanhos: {
               tamanhoOne: { tamanho21: tamanho21, quantidade21: quantidade21 },
               tamanhoTwo: { tamanho22: tamanho22, quantidade22: quantidade22 },
-              tamanhoThree: { tamanho23: tamanho23, quantidade23: quantidade23 },
+              tamanhoThree: {
+                tamanho23: tamanho23,
+                quantidade23: quantidade23,
+              },
               tamanhoFour: { tamanho24: tamanho24, quantidade24: quantidade24 },
             },
           },
         },
-
-
-      }).then(() => {
-        toast.success('foto excluida com sucesso!')
-        setShowmodaldetalhesproduto(false)
       })
-
-
+      .then(() => {
+        toast.success("foto excluida com sucesso!");
+        setShowmodaldetalhesproduto(false);
+      });
   }
-
-
-
-
-
-
-
-
 
   // fim do banner como comprar
   return (
@@ -9688,10 +9933,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corPrimary.imgurl == '' ? urlimgproduto1 : detalhesproduto.cores.corPrimary.imgurl}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corPrimary.imgurl == ""
+                            ? urlimgproduto1
+                            : detalhesproduto.cores.corPrimary.imgurl
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg1(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg1(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9700,10 +9960,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corPrimary.imgurl2 == '' ? urlimgproduto2 : detalhesproduto.cores.corPrimary.imgurl2}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corPrimary.imgurl2 == ""
+                            ? urlimgproduto2
+                            : detalhesproduto.cores.corPrimary.imgurl2
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg2(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg2(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9712,10 +9987,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corPrimary.imgurl3 == '' ? urlimgproduto3 : detalhesproduto.cores.corPrimary.imgurl3}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corPrimary.imgurl3 == ""
+                            ? urlimgproduto3
+                            : detalhesproduto.cores.corPrimary.imgurl3
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg3(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg3(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9724,10 +10014,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSecondary.imgurl4 == '' ? urlimgproduto4 : detalhesproduto.cores.corSecondary.imgurl4}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corSecondary.imgurl4 == ""
+                            ? urlimgproduto4
+                            : detalhesproduto.cores.corSecondary.imgurl4
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg4(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg4(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9736,10 +10041,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSecondary.imgurl5 == '' ? urlimgproduto5 : detalhesproduto.cores.corSecondary.imgurl5}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corSecondary.imgurl5 == ""
+                            ? urlimgproduto5
+                            : detalhesproduto.cores.corSecondary.imgurl5
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg5(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg5(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
 
@@ -9749,10 +10069,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSecondary.imgurl6 == '' ? urlimgproduto6 : detalhesproduto.cores.corSecondary.imgurl6}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corSecondary.imgurl6 == ""
+                            ? urlimgproduto6
+                            : detalhesproduto.cores.corSecondary.imgurl6
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg6(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg6(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
 
@@ -9762,10 +10097,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corTertiary.imgurl7 == '' ? urlimgproduto7 : detalhesproduto.cores.corTertiary.imgurl7}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corTertiary.imgurl7 == ""
+                            ? urlimgproduto7
+                            : detalhesproduto.cores.corTertiary.imgurl7
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg7(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg7(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9774,10 +10124,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corTertiary.imgurl8 == '' ? urlimgproduto8 : detalhesproduto.cores.corTertiary.imgurl8}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corTertiary.imgurl8 == ""
+                            ? urlimgproduto8
+                            : detalhesproduto.cores.corTertiary.imgurl8
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg8(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg8(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
 
@@ -9787,10 +10152,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corTertiary.imgurl9 == '' ? urlimgproduto9 : detalhesproduto.cores.corTertiary.imgurl9}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corTertiary.imgurl9 == ""
+                            ? urlimgproduto9
+                            : detalhesproduto.cores.corTertiary.imgurl9
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg9(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg9(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
 
@@ -9800,10 +10180,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corQuaternary.imgurl10 == '' ? urlimgproduto10 : detalhesproduto.cores.corQuaternary.imgurl10}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corQuaternary.imgurl10 == ""
+                            ? urlimgproduto10
+                            : detalhesproduto.cores.corQuaternary.imgurl10
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg10(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg10(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
 
@@ -9813,10 +10208,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corQuaternary.imgurl11 == '' ? urlimgproduto11 : detalhesproduto.cores.corQuaternary.imgurl11}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corQuaternary.imgurl11 == ""
+                            ? urlimgproduto11
+                            : detalhesproduto.cores.corQuaternary.imgurl11
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg11(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg11(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
 
@@ -9826,10 +10236,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corQuaternary.imgurl12 == '' ? urlimgproduto12 : detalhesproduto.cores.corQuaternary.imgurl12}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corQuaternary.imgurl12 == ""
+                            ? urlimgproduto12
+                            : detalhesproduto.cores.corQuaternary.imgurl12
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg12(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg12(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
 
@@ -9839,10 +10264,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corFive.imgurl13 == '' ? urlimgproduto13 : detalhesproduto.cores.corFive.imgurl13}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corFive.imgurl13 == ""
+                            ? urlimgproduto13
+                            : detalhesproduto.cores.corFive.imgurl13
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg13(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg13(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9851,10 +10291,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corFive.imgurl14 == '' ? urlimgproduto14 : detalhesproduto.cores.corFive.imgurl14}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corFive.imgurl14 == ""
+                            ? urlimgproduto14
+                            : detalhesproduto.cores.corFive.imgurl14
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg14(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg14(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9863,10 +10318,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corFive.imgurl15 == '' ? urlimgproduto15 : detalhesproduto.cores.corFive.imgurl15}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corFive.imgurl15 == ""
+                            ? urlimgproduto15
+                            : detalhesproduto.cores.corFive.imgurl15
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg15(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg15(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9875,10 +10345,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSix.imgurl16 == '' ? urlimgproduto16 : detalhesproduto.cores.corSix.imgurl16}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corSix.imgurl16 == ""
+                            ? urlimgproduto16
+                            : detalhesproduto.cores.corSix.imgurl16
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg16(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg16(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9887,10 +10372,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSix.imgurl17 == '' ? urlimgproduto17 : detalhesproduto.cores.corSix.imgurl17}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corSix.imgurl17 == ""
+                            ? urlimgproduto17
+                            : detalhesproduto.cores.corSix.imgurl17
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg17(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg17(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                   <div>
@@ -9899,10 +10399,25 @@ export default function AdminController() {
                       <p>
                         <BiEdit color="#fff" size={30}></BiEdit>
                       </p>
-                      <img src={detalhesproduto.cores.corSix.imgurl18 == '' ? urlimgproduto18 : detalhesproduto.cores.corSix.imgurl18}></img>
+                      <img
+                        src={
+                          detalhesproduto.cores.corSix.imgurl18 == ""
+                            ? urlimgproduto18
+                            : detalhesproduto.cores.corSix.imgurl18
+                        }
+                      ></img>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                      <FiTrash color='#fff' onClick={() => delimg18(detalhesproduto._id)}></FiTrash>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <FiTrash
+                        color="#fff"
+                        onClick={() => delimg18(detalhesproduto._id)}
+                      ></FiTrash>
                     </div>
                   </div>
                 </div>
@@ -10049,6 +10564,8 @@ export default function AdminController() {
                   value={aparecercampobrinde}
                   onChange={(e) => setAparecercampobrinde(e.target.value)}
                 >
+                  {" "}
+                  <option value={"..."}>...</option>
                   <option value={"true"}>Sim</option>
                   <option value={"false"}>Não</option>
                 </select>
@@ -10107,43 +10624,47 @@ export default function AdminController() {
                     window.screen.width > 500
                       ? { display: "flex", width: "50%" }
                       : {
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "20px",
-                        width: "100%",
-                      }
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "20px",
+                          width: "100%",
+                        }
                   }
                 >
-                  {(
+                  {
                     <div className="box-cores-update">
                       <p
                         style={
                           window.screen.width > 500
                             ? {
-                              width: "20px",
-                              height: "20px",
-                              background:
-                                corupdate == ""
-                                  ? detalhesproduto.cores.corPrimary.cor1
-                                  : corupdate,
-                            }
+                                width: "20px",
+                                height: "20px",
+                                background:
+                                  corupdate == ""
+                                    ? detalhesproduto.cores.corPrimary.cor1
+                                    : corupdate,
+                              }
                             : {
-                              width: "20px",
-                              marginTop: "20px",
-                              height: "20px",
-                              background:
-                                corupdate == ""
-                                  ? detalhesproduto.cores.corPrimary.cor1
-                                  : corupdate,
-                            }
+                                width: "20px",
+                                marginTop: "20px",
+                                height: "20px",
+                                background:
+                                  corupdate == ""
+                                    ? detalhesproduto.cores.corPrimary.cor1
+                                    : corupdate,
+                              }
                         }
                       ></p>
-                      {detalhesproduto.cores.corPrimary.cor1 != '' ? <button
-                        id="delitemcor"
-                        onClick={() => delitemcor(detalhesproduto._id)}
-                      >
-                        Deletar item
-                      </button> : ''}
+                      {detalhesproduto.cores.corPrimary.cor1 != "" ? (
+                        <button
+                          id="delitemcor"
+                          onClick={() => delitemcor(detalhesproduto._id)}
+                        >
+                          Deletar item
+                        </button>
+                      ) : (
+                        ""
+                      )}
                       <select onChange={(e) => setCorupdate(e.target.value)}>
                         <option>Cores</option>
                         {datacores.map((item) => {
@@ -10237,8 +10758,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  )}
-                  {(
+                  }
+                  {
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10250,12 +10771,16 @@ export default function AdminController() {
                               : corupdate2,
                         }}
                       ></p>
-                      {detalhesproduto.cores.corSecondary.cor2 != '' ? <button
-                        id="delitemcor"
-                        onClick={() => delitemcor2(detalhesproduto._id)}
-                      >
-                        Deletar item
-                      </button> : ''}
+                      {detalhesproduto.cores.corSecondary.cor2 != "" ? (
+                        <button
+                          id="delitemcor"
+                          onClick={() => delitemcor2(detalhesproduto._id)}
+                        >
+                          Deletar item
+                        </button>
+                      ) : (
+                        ""
+                      )}
 
                       <select onChange={(e) => setCorupdate2(e.target.value)}>
                         <option>Cores</option>
@@ -10348,8 +10873,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  )}
-                  {(
+                  }
+                  {
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10361,13 +10886,16 @@ export default function AdminController() {
                               : corupdate3,
                         }}
                       ></p>
-                      {detalhesproduto.cores.corTertiary.cor3 != '' ? <button
-                        id="delitemcor"
-                        onClick={() => delitemcor3(detalhesproduto._id)}
-                      >
-                        Deletar item
-                      </button>
-                        : ''}
+                      {detalhesproduto.cores.corTertiary.cor3 != "" ? (
+                        <button
+                          id="delitemcor"
+                          onClick={() => delitemcor3(detalhesproduto._id)}
+                        >
+                          Deletar item
+                        </button>
+                      ) : (
+                        ""
+                      )}
                       <select onChange={(e) => setCorupdate3(e.target.value)}>
                         <option>Cores</option>
                         {datacores.map((item) => {
@@ -10460,8 +10988,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  )}
-                  {(
+                  }
+                  {
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10473,13 +11001,16 @@ export default function AdminController() {
                               : corupdate4,
                         }}
                       ></p>
-                      {detalhesproduto.cores.corQuaternary.cor4 != '' ? <button
-                        id="delitemcor"
-                        onClick={() => delitemcor4(detalhesproduto._id)}
-                      >
-                        Deletar item
-                      </button> : ''
-                      }
+                      {detalhesproduto.cores.corQuaternary.cor4 != "" ? (
+                        <button
+                          id="delitemcor"
+                          onClick={() => delitemcor4(detalhesproduto._id)}
+                        >
+                          Deletar item
+                        </button>
+                      ) : (
+                        ""
+                      )}
                       <select onChange={(e) => setCorupdate4(e.target.value)}>
                         <option>Cores</option>
                         {datacores.map((item) => {
@@ -10571,8 +11102,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  )}
-                  {(
+                  }
+                  {
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10584,12 +11115,16 @@ export default function AdminController() {
                               : corupdate5,
                         }}
                       ></p>
-                      {detalhesproduto.cores.corFive.cor5 != '' ? <button
-                        id="delitemcor"
-                        onClick={() => delitemcor5(detalhesproduto._id)}
-                      >
-                        Deletar item
-                      </button> : ''}
+                      {detalhesproduto.cores.corFive.cor5 != "" ? (
+                        <button
+                          id="delitemcor"
+                          onClick={() => delitemcor5(detalhesproduto._id)}
+                        >
+                          Deletar item
+                        </button>
+                      ) : (
+                        ""
+                      )}
 
                       <select onChange={(e) => setCorupdate5(e.target.value)}>
                         <option>Cores</option>
@@ -10682,8 +11217,8 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  )}
-                  {(
+                  }
+                  {
                     <div className="box-cores-update">
                       <p
                         style={{
@@ -10695,12 +11230,16 @@ export default function AdminController() {
                               : corupdate6,
                         }}
                       ></p>
-                      {detalhesproduto.cores.corSix.cor6 != '' ? <button
-                        id="delitemcor"
-                        onClick={() => delitemcor6(detalhesproduto._id)}
-                      >
-                        Deletar item
-                      </button> : ''}
+                      {detalhesproduto.cores.corSix.cor6 != "" ? (
+                        <button
+                          id="delitemcor"
+                          onClick={() => delitemcor6(detalhesproduto._id)}
+                        >
+                          Deletar item
+                        </button>
+                      ) : (
+                        ""
+                      )}
 
                       <select onChange={(e) => setCorupdate6(e.target.value)}>
                         <option>Cores</option>
@@ -10793,7 +11332,7 @@ export default function AdminController() {
                         ></input>
                       </div>
                     </div>
-                  )}
+                  }
                 </div>
                 <div className="box-btn-update-delete">
                   <button
@@ -11403,7 +11942,7 @@ export default function AdminController() {
               <label>E-mail</label>
               <input
                 type={"text"}
-                value={emailatual == null ? '' : emailatual}
+                value={emailatual == null ? "" : emailatual}
                 placeholder="Digite seu email atual"
                 onChange={(e) => setEmailatual(e.target.value)}
               ></input>
@@ -11458,9 +11997,7 @@ export default function AdminController() {
                   <h2>{item.sumary}</h2>
                   <p>{item.resposta}</p>
 
-                  <button
-                    onClick={() => viewModaleditaperguntas(item)}
-                  >
+                  <button onClick={() => viewModaleditaperguntas(item)}>
                     <MdEdit color="#2d2d2d" size={20}></MdEdit>
                   </button>
                   <button onClick={() => delpergunta(item._id)}>
@@ -11471,7 +12008,11 @@ export default function AdminController() {
                       type={"text"}
                       placeholder="Titulo da Pergunta"
                       value={titulopergunta}
-                      onChange={(e) => setTitulopergunta(titulopergunta == '' ? item.sumary : e.target.value)}
+                      onChange={(e) =>
+                        setTitulopergunta(
+                          titulopergunta == "" ? item.sumary : e.target.value
+                        )
+                      }
                     ></input>
                     <textarea
                       type={"text"}
@@ -11486,11 +12027,11 @@ export default function AdminController() {
                       onClick={() =>
                         document
                           .querySelectorAll(".boxeditpergunta")
-                        [
-                          dataperguntas.findIndex(
-                            (data) => data._id == item._id
-                          )
-                        ].setAttribute("style", "display:none")
+                          [
+                            dataperguntas.findIndex(
+                              (data) => data._id == item._id
+                            )
+                          ].setAttribute("style", "display:none")
                       }
                     >
                       Cancelar
@@ -11575,11 +12116,11 @@ export default function AdminController() {
                     onClick={() =>
                       document
                         .querySelectorAll(".boxcomentarios")
-                      [
-                        comentariosTitle.findIndex(
-                          (data) => data._id == item._id
-                        )
-                      ].setAttribute("style", "display:flex")
+                        [
+                          comentariosTitle.findIndex(
+                            (data) => data._id == item._id
+                          )
+                        ].setAttribute("style", "display:flex")
                     }
                   >
                     <MdEdit color="#2d2d2d" size={20}></MdEdit>
@@ -11611,11 +12152,11 @@ export default function AdminController() {
                       onClick={() =>
                         document
                           .querySelectorAll(".boxcomentarios")
-                        [
-                          comentariosTitle.findIndex(
-                            (data) => data._id == item._id
-                          )
-                        ].setAttribute("style", "display:none")
+                          [
+                            comentariosTitle.findIndex(
+                              (data) => data._id == item._id
+                            )
+                          ].setAttribute("style", "display:none")
                       }
                     >
                       Cancelar

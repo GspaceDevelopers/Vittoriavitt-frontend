@@ -25,7 +25,7 @@ import api2 from "../../services/api2";
 
 export default function PaginaProduto() {
   const { _id } = useParams();
-
+  
   const [datacarrinho, setDatacarrinho] = useState([]);
   const [dataproduto, setDataproduto] = useState([]);
   const [pegarbrinde, setPegarbrinde] = useState();
@@ -52,20 +52,21 @@ export default function PaginaProduto() {
   },[])
 
   useEffect(() => {
-    setDatacarrinho(JSON.parse(localStorage.getItem("carrinhorr11") || "[]"));
     api2.get("/edicao").then((data) => {
       setValueFrete(data.data);
       setParcelas(data.data);
     });
+    setDatacarrinho(JSON.parse(localStorage.getItem("carrinhorr11") || "[]"));
     //console.log(datacarrinho)
   }, [dataproduto]);
-
   
-  function additemcarrinho(item) {
-    const filter = datacarrinho.some(dat => dat.imgurl == item.imgurl && dat.cor == item.cor && dat.tamanho == item.tamanho )
+  
+  async function additemcarrinho(item) {
+    
+    const carrinho = await JSON.parse(localStorage.getItem("carrinhorr11") || "[]")
 
-    const carrinho = JSON.parse(localStorage.getItem("carrinhorr11") || "[]")
 
+    const filter = carrinho.some(dat => dat.modelo == item.modelo &&  dat.cor == cor && dat.tamanho == tamanho )
 
     if(filter){
       toast.info(`Item com o tamanho e cor escolhido ja está no carrinho, para adicionar mais vá no carrinho.`)
@@ -118,7 +119,7 @@ export default function PaginaProduto() {
       diametro: item.diametro,
       formato: item.formato,
     };
-    //carrinho.push(datacarrinho);
+    carrinho.push(datacarrinho);
 
     localStorage.setItem("carrinhorr11", JSON.stringify(carrinho));
 

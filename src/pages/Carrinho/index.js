@@ -91,7 +91,7 @@ export default function Carrinho() {
     if (
       (datacarrinho.some((item) => item.promocao) === true &&
         datacarrinho.length >=
-        datacarrinho.map((item) => item.qtdpromocao)[0]) ||
+          datacarrinho.map((item) => item.qtdpromocao)[0]) ||
       somaqtd >= datacarrinho.map((item) => item.qtdpromocao)[0] ||
       datacarrinho.some((item) => item.quantidade >= item.qtdpromocao)
     ) {
@@ -552,18 +552,18 @@ export default function Carrinho() {
     function validarCpf(cpf) {
       console.log(cpf.length);
       if (cpf.length != 10) {
-        return setCpfstateform("não valido");
+        return setCpfstateform("CPF Inválido");
       }
       if (!validarRepetido(cpf)) {
-        return setCpfstateform("não valido");
+        return setCpfstateform("CPF Inválido");
       }
       if (!validarPrimeiroDigito(cpf)) {
-        return setCpfstateform("não valido");
+        return setCpfstateform("CPF Inválido");
       }
       // if (!validarSegundoDigito(cpf)) {
       //   return setCpfstateform("14");
       // }
-      return setCpfstateform("CPF valido");
+      return setCpfstateform("CPF Válido");
     }
 
     const cpfState = String(cpf)
@@ -900,9 +900,9 @@ export default function Carrinho() {
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : parseFloat(valorfinal).toLocaleString("pt-br", {
-                            style: "currency",
-                            currency: "BRL",
-                          })}
+                              style: "currency",
+                              currency: "BRL",
+                            })}
                       </h2>
                     </div>
                   </div>
@@ -921,39 +921,39 @@ export default function Carrinho() {
                             datacarrinho.some(
                               (item) => item.quantidade >= item.qtdpromocao
                             )) ||
-                            somaqtd >=
+                          somaqtd >=
                             datacarrinho.map((item) => item.qtdpromocao)[0] ||
-                            datacarrinho.length >=
+                          datacarrinho.length >=
                             datacarrinho.map((item) => item.qtdpromocao)[0]
                             ? {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                             : {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "transparent",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "transparent",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                         }
                       >
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : (datacarrinho.some((item) => item.promocao) ==
-                            true &&
-                            datacarrinho.some(
-                              (item) => item.quantidade >= item.qtdpromocao
-                            )) ||
+                              true &&
+                              datacarrinho.some(
+                                (item) => item.quantidade >= item.qtdpromocao
+                              )) ||
                             somaqtd >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                              datacarrinho.map((item) => item.qtdpromocao)[0] ||
                             datacarrinho.length >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0]
-                            ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
-                            : ""}
+                              datacarrinho.map((item) => item.qtdpromocao)[0]
+                          ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
+                          : ""}
                       </h2>
 
                       {verificafrete ? (
@@ -1303,9 +1303,9 @@ export default function Carrinho() {
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : parseFloat(valorfinal).toLocaleString("pt-br", {
-                            style: "currency",
-                            currency: "BRL",
-                          })}
+                              style: "currency",
+                              currency: "BRL",
+                            })}
                       </h2>
                     </div>
                   </div>
@@ -1323,39 +1323,39 @@ export default function Carrinho() {
                             datacarrinho.some(
                               (item) => item.quantidade >= item.qtdpromocao
                             )) ||
-                            somaqtd >=
+                          somaqtd >=
                             datacarrinho.map((item) => item.qtdpromocao)[0] ||
-                            datacarrinho.length >=
+                          datacarrinho.length >=
                             datacarrinho.map((item) => item.qtdpromocao)[0]
                             ? {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "rgb(149, 255, 149)",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "rgb(149, 255, 149)",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                             : {
-                              color: "green",
-                              fontSize: "14px",
-                              background: "transparent",
-                              padding: "5px",
-                              borderRadius: "5px",
-                            }
+                                color: "green",
+                                fontSize: "14px",
+                                background: "transparent",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }
                         }
                       >
                         {datacarrinho.length == 0
                           ? "R$00,00"
                           : (datacarrinho.some((item) => item.promocao) ==
-                            true &&
-                            datacarrinho.some(
-                              (item) => item.quantidade >= item.qtdpromocao
-                            )) ||
+                              true &&
+                              datacarrinho.some(
+                                (item) => item.quantidade >= item.qtdpromocao
+                              )) ||
                             somaqtd >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                              datacarrinho.map((item) => item.qtdpromocao)[0] ||
                             datacarrinho.length >=
-                            datacarrinho.map((item) => item.qtdpromocao)[0]
-                            ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
-                            : ""}
+                              datacarrinho.map((item) => item.qtdpromocao)[0]
+                          ? `Você ganhou ${itemclicado}% de desconto em sua compra, Aproveite agora! `
+                          : ""}
                       </h2>
 
                       {verificafrete ? (
@@ -1406,17 +1406,17 @@ export default function Carrinho() {
           style={
             window.screen.width > 500
               ? {
-                display: "flex",
-                flexDirection: "column",
-                width: "50%",
-                gap: "20px",
-              }
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "50%",
+                  gap: "20px",
+                }
               : {
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-                gap: "20px",
-              }
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  gap: "20px",
+                }
           }
         >
           <div className="box-item">
@@ -1520,9 +1520,9 @@ export default function Carrinho() {
                 {datacarrinho.length == 0
                   ? "R$00,00"
                   : parseFloat(valorfinal).toLocaleString("pt-br", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
+                      style: "currency",
+                      currency: "BRL",
+                    })}
               </h2>
             </div>
           </div>
@@ -1536,37 +1536,37 @@ export default function Carrinho() {
                     datacarrinho.some(
                       (item) => item.quantidade >= item.qtdpromocao
                     )) ||
-                    somaqtd >= datacarrinho.map((item) => item.qtdpromocao)[0] ||
-                    datacarrinho.length >=
+                  somaqtd >= datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                  datacarrinho.length >=
                     datacarrinho.map((item) => item.qtdpromocao)[0]
                     ? {
-                      color: "green",
-                      fontSize: "14px",
-                      background: "rgb(149, 255, 149)",
-                      padding: "5px",
-                      borderRadius: "5px",
-                    }
+                        color: "green",
+                        fontSize: "14px",
+                        background: "rgb(149, 255, 149)",
+                        padding: "5px",
+                        borderRadius: "5px",
+                      }
                     : {
-                      color: "green",
-                      fontSize: "14px",
-                      background: "transparent",
-                      padding: "5px",
-                      borderRadius: "5px",
-                    }
+                        color: "green",
+                        fontSize: "14px",
+                        background: "transparent",
+                        padding: "5px",
+                        borderRadius: "5px",
+                      }
                 }
               >
                 {datacarrinho.length == 0
                   ? "R$00,00"
                   : (datacarrinho.some((item) => item.promocao) == true &&
-                    datacarrinho.some(
-                      (item) => item.quantidade >= item.qtdpromocao
-                    )) ||
+                      datacarrinho.some(
+                        (item) => item.quantidade >= item.qtdpromocao
+                      )) ||
                     somaqtd >=
-                    datacarrinho.map((item) => item.qtdpromocao)[0] ||
+                      datacarrinho.map((item) => item.qtdpromocao)[0] ||
                     datacarrinho.length >=
-                    datacarrinho.map((item) => item.qtdpromocao)[0]
-                    ? `Desconto de ${itemclicado}% ativado! `
-                    : ""}
+                      datacarrinho.map((item) => item.qtdpromocao)[0]
+                  ? `Desconto de ${itemclicado}% ativado! `
+                  : ""}
               </h2>
               {verificafrete != true ? (
                 <p

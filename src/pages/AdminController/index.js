@@ -245,8 +245,7 @@ export default function AdminController() {
   const [comentarioavaliacao, setComentarioAvaliacao] = useState();
   const [aprovarComentarioNow, setAprovarComentarioNow] = useState();
 
-
-  useEffect(()=>{
+  useEffect(() => {
     setTextofretegratis(dadosedicao.map((item) => item.componentetexto1)[0]);
     setParcelas(dadosedicao.map((item) => item.parcelas)[0]);
     setLink1(dadosedicao.map((item) => item.linkredes.link1)[0]);
@@ -273,16 +272,17 @@ export default function AdminController() {
     setTitle6cathome(
       dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
     );
-  },[modaleditahome])
-
+  }, [modaleditahome]);
 
   useEffect(() => {
     api.get("/comentarios").then((data) => {
       setComentariosTitle(data.data);
     });
   }, [comentariosTitle]);
-
-
+  useEffect(() => {
+    const emailuser = JSON.parse(localStorage.getItem("sessaouser"));
+    setEmailatual(emailuser.email);
+  }, [modaleditadados]);
   useEffect(() => {
     async function loadpedidos() {
       if (user == null || user == "" || user == []) {
@@ -305,14 +305,8 @@ export default function AdminController() {
       });
     }
 
-   
-    const emailuser = JSON.parse(localStorage.getItem("sessaouser"));
-    setEmailatual(emailuser.email);
-
     loadpedidos();
   }, [dadosedicao]);
-
-
 
   useEffect(() => {
     async function loaddatapedidos() {
@@ -1742,7 +1736,7 @@ export default function AdminController() {
       promocao: promocao,
       promocao2: promocao2,
       qtdpromocao2: qtdpromocao2,
-      desconto: desconto,
+      desconto: detalhesproduto.promocao2 == false ? "" : desconto,
       subcategoria1: subcategoriaupdate1,
       subcategoria2: subcategoriaupdate2,
       subcategoria3: subcategoriaupdate3,
@@ -4799,7 +4793,7 @@ export default function AdminController() {
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0] 
+              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
@@ -5760,6 +5754,7 @@ export default function AdminController() {
       .post("/comentarios", {
         user: nomefeddback,
         idproduto: "String",
+        liberar: "aprovado",
         comentario: textofeedback,
         printcomentario: "Boolean",
         star: "String",
@@ -10670,7 +10665,7 @@ export default function AdminController() {
                   onChange={(e) => setPrcoupdate(e.target.value)}
                 ></input>
                 <span style={{ color: "#fff", marginTop: "20px" }}>
-                  Medidas do Pacote
+                  Medidas do Pacote - CORREIOS
                 </span>
 
                 <div
@@ -10736,7 +10731,7 @@ export default function AdminController() {
                     ></input>
                   </div>
                 </div>
-                <span>Este produto contem brinde?</span>
+                <span>Este produto contém brinde?</span>
                 <select
                   value={aparecercampobrinde}
                   onChange={(e) => setAparecercampobrinde(e.target.value)}
@@ -11595,24 +11590,24 @@ export default function AdminController() {
                   type="text"
                   value={telefoneloja}
                   onChange={(e) => setTelefoneloja(e.target.value)}
-                  placeholder="telefone"
+                  placeholder="Telefone"
                 ></input>
                 <input
                   type="text"
                   value={emailloja}
                   onChange={(e) => setEmilloja(e.target.value)}
-                  placeholder="email"
+                  placeholder="E-mail"
                 ></input>
                 <input
                   type="text"
                   value={cnpjloja}
                   onChange={(e) => setCnpjloja(e.target.value)}
-                  placeholder="cnpj"
+                  placeholder="CNPJ"
                 ></input>
               </div>
               <div className="box-input-files">
                 <span>
-                  Mudar banner central da Home -max: 1500x400 - min:1200x300
+                  Mudar banner central da Home (-max: 1500x400 - min:1200x300)
                 </span>
                 <input type="file" onChange={uploadbannercentralhome}></input>
                 <span>Mudar Imagem Pop-up até ( 700x500) </span>
@@ -11707,7 +11702,7 @@ export default function AdminController() {
 
               <div className="box-input-files">
                 <strong>
-                  Essas Imagens devem ter no maximo 1920×960 e
+                  Essas Imagens devem ter no máximo 1920×960 e
                   formato(jpeg,jpg,gif,webp) para melhor resolução
                 </strong>
                 <span>Mudar banner Home Computador Destaque 1 </span>
@@ -12128,7 +12123,7 @@ export default function AdminController() {
               <label>E-mail</label>
               <input
                 type={"text"}
-                value={emailatual == null ? "" : emailatual}
+                value={emailatual}
                 placeholder="Digite seu email atual"
                 onChange={(e) => setEmailatual(e.target.value)}
               ></input>
@@ -12243,14 +12238,20 @@ export default function AdminController() {
             </div>
 
             <div className="box-input-files">
-              <span>Mudar Imagem de como Comprar(Desktop = 1366 x 611):</span>
+              <span>
+                Mudar Imagem de como Comprar(Mínimo recomendado Desktop = 1366 x
+                611):
+              </span>
               <input type="file" onChange={upurlcomocomprardesktop}></input>
               <FiTrash onClick={apagarimagemDesktop} />
             </div>
             <br />
 
             <div className="box-input-files">
-              <span>Mudar Imagem de como Comprar(Mobile = 600 x 500):</span>
+              <span>
+                Mudar Imagem de como Comprar(Mínimo recomendado Mobile = 600 x
+                500):
+              </span>
               <input type="file" onChange={upurlcomocomprarmobile}></input>
               <FiTrash onClick={apagarimagemMobile} />
             </div>

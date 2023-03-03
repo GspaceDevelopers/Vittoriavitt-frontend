@@ -1879,7 +1879,7 @@ const AdminCadastroProdutos = () => {
         </select>
         <br />
         <span style={{ color: "white", fontWeight: "400" }}>
-          Este produto contem brinde?
+          Este produto contém brinde?
         </span>
         <select
           style={{ width: "80%", height: "40px" }}

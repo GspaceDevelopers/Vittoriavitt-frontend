@@ -2182,14 +2182,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
 
@@ -2421,14 +2424,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
 
@@ -2660,14 +2666,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner4() {
@@ -2898,14 +2907,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner5() {
@@ -3136,14 +3148,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner6() {
@@ -3374,14 +3389,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner7() {
@@ -3609,14 +3627,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner8() {
@@ -3847,14 +3868,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner9() {
@@ -4085,14 +4109,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner10() {
@@ -4321,14 +4348,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner11() {
@@ -4557,14 +4587,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function tirabanner12() {
@@ -4793,14 +4826,17 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload()
+        window.location.reload();
       });
   }
   async function atualizarhome() {
@@ -5036,9 +5072,12 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
-        icon1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
-        icon2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
-        icon3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
+        icon1:
+          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+        icon2:
+          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+        icon3:
+          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -8919,81 +8958,75 @@ export default function AdminController() {
       });
   }
 
+  async function uploadicone1(e) {
+    setLoad(true);
 
+    const img17 = e.target.files[0];
 
- async function uploadicone1(e){
-  setLoad(true);
+    const userUID = user.uid;
 
-  const img17 = e.target.files[0];
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setIcone1(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function uploadicone2(e) {
+    setLoad(true);
 
-  const userUID = user.uid;
+    const img17 = e.target.files[0];
 
-  await firebase
-    .storage()
-    .ref(`edicaopagina/${userUID}/${img17.name}`)
-    .put(img17)
-    .then(async () => {
-      await firebase
-        .storage()
-        .ref(`edicaopagina/${userUID}`)
-        .child(img17.name)
-        .getDownloadURL()
-        .then(async (url) => {
-          setIcone1(String(url));
-        });
-      setLoad(false);
-    });
- }
- async function uploadicone2(e){
-  setLoad(true);
+    const userUID = user.uid;
 
-  const img17 = e.target.files[0];
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setIcone2(String(url));
+          });
+        setLoad(false);
+      });
+  }
+  async function uploadicone3(e) {
+    setLoad(true);
 
-  const userUID = user.uid;
+    const img17 = e.target.files[0];
 
-  await firebase
-    .storage()
-    .ref(`edicaopagina/${userUID}/${img17.name}`)
-    .put(img17)
-    .then(async () => {
-      await firebase
-        .storage()
-        .ref(`edicaopagina/${userUID}`)
-        .child(img17.name)
-        .getDownloadURL()
-        .then(async (url) => {
-          setIcone2(String(url));
-        });
-      setLoad(false);
-    });
- }
- async function uploadicone3(e){
-  setLoad(true);
+    const userUID = user.uid;
 
-  const img17 = e.target.files[0];
-
-  const userUID = user.uid;
-
-  await firebase
-    .storage()
-    .ref(`edicaopagina/${userUID}/${img17.name}`)
-    .put(img17)
-    .then(async () => {
-      await firebase
-        .storage()
-        .ref(`edicaopagina/${userUID}`)
-        .child(img17.name)
-        .getDownloadURL()
-        .then(async (url) => {
-          setIcone3(String(url));
-        });
-      setLoad(false);
-    });
- }
-
-
-
-
+    await firebase
+      .storage()
+      .ref(`edicaopagina/${userUID}/${img17.name}`)
+      .put(img17)
+      .then(async () => {
+        await firebase
+          .storage()
+          .ref(`edicaopagina/${userUID}`)
+          .child(img17.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            setIcone3(String(url));
+          });
+        setLoad(false);
+      });
+  }
 
   // fim do banner como comprar
   return (
@@ -11582,14 +11615,12 @@ export default function AdminController() {
                 <input type="file" onChange={uploadBannerpaginaprod}></input>
               </div>
               <div className="box-input-files">
-                <span>
-                  Mudar Icones das redes sociais
-                </span>
-                <span>icone1</span>
+                <span>Mudar Icones das redes sociais</span>
+                <span>Facebook</span>
                 <input type="file" onChange={uploadicone1}></input>
-                <span>icone2</span>
+                <span>Instagram</span>
                 <input type="file" onChange={uploadicone2}></input>
-                <span>icone3</span>
+                <span>WhatsApp</span>
                 <input type="file" onChange={uploadicone3}></input>
               </div>
               <div className="box-input-files">

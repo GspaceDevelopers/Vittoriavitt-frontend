@@ -34,7 +34,7 @@ export default function Footer() {
       .then((value) => {
         setData(value.data)
       })
-  }, [])
+  }, [data])
 
   async function cadastrodeemail() {
     if (checkbox == false) {
@@ -182,13 +182,13 @@ export default function Footer() {
             <span>Nossas Redes</span>
             {<div className="redes-sociais-footer">
               <a href={data.map(item => item.linkredes.link1)[0]}>
-                <img src={face}></img>
+                <img src={data.map(item => item.icone1)[0] == ''? face : data.map(item => item.icone1)[0] }></img>
               </a>
               <a href={data.map(item => item.linkredes.link2)[0]}>
-                <img src={insta}></img>
+                <img src={data.map(item => item.icone2)[0] == ''? insta : data.map(item => item.icone2)[0]}></img>
               </a>
               <a href={data.map(item => item.linkredes.link3)[0]}>
-                <img src={whats}></img>
+                <img src={data.map(item => item.icone3)[0] == ''? whats : data.map(item => item.icone3)[0]}></img>
               </a>
       </div>}
             <div className="info-empresa-footer">

@@ -50,6 +50,9 @@ export default function AdminController() {
   const [bannercomodesktop, setBannercomodesktop] = useState("");
   const [bannercomomobileurl, setBannercomomobileurl] = useState("");
   const [bannercomodesktopurl, setBannercomodesktopurl] = useState("");
+  const [icone1, setIcone1] = useState("");
+  const [icone2, setIcone2] = useState("");
+  const [icone3, setIcone3] = useState("");
 
   const [link1, setLink1] = useState("");
   const [link2, setLink2] = useState("");
@@ -2179,10 +2182,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
 
@@ -2414,10 +2421,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
 
@@ -2649,10 +2660,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner4() {
@@ -2883,10 +2898,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner5() {
@@ -3117,10 +3136,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner6() {
@@ -3351,10 +3374,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner7() {
@@ -3582,10 +3609,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner8() {
@@ -3816,10 +3847,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner9() {
@@ -4050,10 +4085,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner10() {
@@ -4282,10 +4321,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner11() {
@@ -4514,10 +4557,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function tirabanner12() {
@@ -4746,10 +4793,14 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
+        window.location.reload()
       });
   }
   async function atualizarhome() {
@@ -4985,6 +5036,9 @@ export default function AdminController() {
               ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
               : title6cathome,
         },
+        icone1:icone1 == ''? dadosedicao.map(item => item.icone1)[0]:icone1,
+        icone2:icone2 == '' ? dadosedicao.map(item => item.icone2)[0] : icone2,
+        icone3:icone3 == ''? dadosedicao.map(item => item.icone3)[0]:icone3,
       })
       .then(() => {
         setLoad(false);
@@ -8865,6 +8919,82 @@ export default function AdminController() {
       });
   }
 
+
+
+ async function uploadicone1(e){
+  setLoad(true);
+
+  const img17 = e.target.files[0];
+
+  const userUID = user.uid;
+
+  await firebase
+    .storage()
+    .ref(`edicaopagina/${userUID}/${img17.name}`)
+    .put(img17)
+    .then(async () => {
+      await firebase
+        .storage()
+        .ref(`edicaopagina/${userUID}`)
+        .child(img17.name)
+        .getDownloadURL()
+        .then(async (url) => {
+          setIcone1(String(url));
+        });
+      setLoad(false);
+    });
+ }
+ async function uploadicone2(e){
+  setLoad(true);
+
+  const img17 = e.target.files[0];
+
+  const userUID = user.uid;
+
+  await firebase
+    .storage()
+    .ref(`edicaopagina/${userUID}/${img17.name}`)
+    .put(img17)
+    .then(async () => {
+      await firebase
+        .storage()
+        .ref(`edicaopagina/${userUID}`)
+        .child(img17.name)
+        .getDownloadURL()
+        .then(async (url) => {
+          setIcone2(String(url));
+        });
+      setLoad(false);
+    });
+ }
+ async function uploadicone3(e){
+  setLoad(true);
+
+  const img17 = e.target.files[0];
+
+  const userUID = user.uid;
+
+  await firebase
+    .storage()
+    .ref(`edicaopagina/${userUID}/${img17.name}`)
+    .put(img17)
+    .then(async () => {
+      await firebase
+        .storage()
+        .ref(`edicaopagina/${userUID}`)
+        .child(img17.name)
+        .getDownloadURL()
+        .then(async (url) => {
+          setIcone3(String(url));
+        });
+      setLoad(false);
+    });
+ }
+
+
+
+
+
   // fim do banner como comprar
   return (
     <div className="container-adm-controller">
@@ -11450,6 +11580,17 @@ export default function AdminController() {
                   caracteres especiais!.{" "}
                 </span>
                 <input type="file" onChange={uploadBannerpaginaprod}></input>
+              </div>
+              <div className="box-input-files">
+                <span>
+                  Mudar Icones das redes sociais
+                </span>
+                <span>icone1</span>
+                <input type="file" onChange={uploadicone1}></input>
+                <span>icone2</span>
+                <input type="file" onChange={uploadicone2}></input>
+                <span>icone3</span>
+                <input type="file" onChange={uploadicone3}></input>
               </div>
               <div className="box-input-files">
                 <span>

@@ -342,7 +342,7 @@ export default function AdminController() {
         setDesconto("");
       }
     });
-  }, [dataprodutos]);
+  }, []);
 
   useEffect(() => {
     api.get("/perguntas").then((item) => {

@@ -4,24 +4,16 @@ import 'firebase/firestore';
 import 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAUDGbAgnxPBUsVMCerSnJ5n4XiUAElMdU",
-    authDomain: "vittoriavitt-539a1.firebaseapp.com",
-    projectId: "vittoriavitt-539a1",
-    storageBucket: "vittoriavitt-539a1.appspot.com",
-    messagingSenderId: "852759829393",
-    appId: "1:852759829393:web:5dbdc6fb4fda97c78a9830",
-    measurementId: "G-JKQFQPFY0S"
-  };
+  apiKey: "AIzaSyB8cYqkaXkY9eBp5B7HpZJY3GlJdZG84Ik",
+  authDomain: "vittoriavittstore.firebaseapp.com",
+  projectId: "vittoriavittstore",
+  storageBucket: "vittoriavittstore.appspot.com",
+  messagingSenderId: "104367851885",
+  appId: "1:104367851885:web:ca82d016fcb16cb44b7264",
+  measurementId: "G-HBDQBH8HY7"
+};
   
-  /*const firebaseConfig = {
-    apiKey: "AIzaSyAUDGbAgnxPBUsVMCerSnJ5n4XiUAElMdU",
-    authDomain: "vittoriavitt-539a1.firebaseapp.com",
-    projectId: "vittoriavitt-539a1",
-    storageBucket: "vittoriavitt-539a1.appspot.com",
-    messagingSenderId: "852759829393",
-    appId: "1:852759829393:web:5dbdc6fb4fda97c78a9830",
-    measurementId: "G-JKQFQPFY0S"
-};*/
+
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }

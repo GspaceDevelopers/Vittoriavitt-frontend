@@ -54,49 +54,49 @@ const Home = () => {
         .getElementById("section3-home")
         .setAttribute(
           "style",
-          `background-image:url(${dadosedicao.map((item) => item.bannercentralhome)[0]
+          `background-image:url(${dadosedicao.map((item) => item?.bannercentralhome)[0]
           })`
         );
       document
         .getElementById("category-btn1")
         .setAttribute(
           "style",
-          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome1?.img1)[0]
           })`
         );
       document
         .getElementById("category-btn2")
         .setAttribute(
           "style",
-          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome2?.img2)[0]
           })`
         );
       document
         .getElementById("category-btn2-1")
         .setAttribute(
           "style",
-          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome3?.img3)[0]
           })`
         );
       document
         .getElementById("category-btn3")
         .setAttribute(
           "style",
-          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome4?.img4)[0]
           })`
         );
       document
         .getElementById("category-btn4")
         .setAttribute(
           "style",
-          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome5?.img5)[0]
           })`
         );
       document
         .getElementById("category-btn5")
         .setAttribute(
           "style",
-          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+          `background-image:url(${dadosedicao.map((item) => item.categoriabtnhome6?.img6)[0]
           })`
         );
     }
@@ -341,49 +341,49 @@ const Home = () => {
           </div>
           <div className="category-options">
             <div className="box-category-btns">
-              <span>{dadosedicao.map(item => item.categoriabtnhome1.title1)}</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome1?.title1)}</span>
               <button
-                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome1.title1)}`)}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome1?.title1)}`)}
                 id="category-btn1"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>{dadosedicao.map(item => item.categoriabtnhome2.title2)}</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome2?.title2)}</span>
               <button
-                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome2.title2)}`)}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome2?.title2)}`)}
                 id="category-btn2"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>{dadosedicao.map(item => item.categoriabtnhome3.title3)}</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome3?.title3)}</span>
               <button
-                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome3.title3)}`)}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome3?.title3)}`)}
                 id="category-btn2-1"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>{dadosedicao.map(item => item.categoriabtnhome4.title4)}</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome4?.title4)}</span>
               <button
-                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome4.title4)}`)}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome4?.title4)}`)}
                 id="category-btn3"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>{dadosedicao.map(item => item.categoriabtnhome5.title5)}</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome5?.title5)}</span>
               <button
-                onClick={() => (window.location.href =`/loja4/${dadosedicao.map(item => item.categoriabtnhome5.title5)}`)}
+                onClick={() => (window.location.href =`/loja4/${dadosedicao.map(item => item.categoriabtnhome5?.title5)}`)}
                 id="category-btn4"
                 className="category1homebtn"
               ></button>
             </div>
             <div className="box-category-btns">
-              <span>{dadosedicao.map(item => item.categoriabtnhome6.title6)}</span>
+              <span>{dadosedicao.map(item => item.categoriabtnhome6?.title6)}</span>
               <button
-                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome6.title6)}`)}
+                onClick={() => (window.location.href = `/loja4/${dadosedicao.map(item => item.categoriabtnhome6?.title6)}`)}
                 id="category-btn5"
                 className="category1homebtn"
               ></button>

@@ -246,31 +246,31 @@ export default function AdminController() {
   const [aprovarComentarioNow, setAprovarComentarioNow] = useState();
 
   useEffect(() => {
-    setTextofretegratis(dadosedicao.map((item) => item.componentetexto1)[0]);
-    setParcelas(dadosedicao.map((item) => item.parcelas)[0]);
-    setLink1(dadosedicao.map((item) => item.linkredes?.link1)[0]);
-    setLink2(dadosedicao.map((item) => item.linkredes?.link2)[0]);
-    setLink3(dadosedicao.map((item) => item.linkredes?.link3)[0]);
-    setTelefoneloja(dadosedicao.map((item) => item.telefoneloja)[0]);
-    setEmilloja(dadosedicao.map((item) => item.emailloja)[0]);
-    setCnpjloja(dadosedicao.map((item) => item.cnpjloja)[0]);
+    setTextofretegratis(dadosedicao.map((item) => item?.componentetexto1)[0]);
+    setParcelas(dadosedicao.map((item) => item?.parcelas)[0]);
+    setLink1(dadosedicao.map((item) => item?.linkredes?.link1)[0]);
+    setLink2(dadosedicao.map((item) => item?.linkredes?.link2)[0]);
+    setLink3(dadosedicao.map((item) => item?.linkredes?.link3)[0]);
+    setTelefoneloja(dadosedicao.map((item) => item?.telefoneloja)[0]);
+    setEmilloja(dadosedicao.map((item) => item?.emailloja)[0]);
+    setCnpjloja(dadosedicao.map((item) => item?.cnpjloja)[0]);
     setTitle1cathome(
-      dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+      dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
     );
     setTitle2cathome(
-      dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+      dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
     );
     setTitle3cathome(
-      dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+      dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
     );
     setTitle4cathome(
-      dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+      dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
     );
     setTitle5cathome(
-      dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+      dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
     );
     setTitle6cathome(
-      dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+      dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
     );
   }, [modaleditahome]);
 
@@ -306,7 +306,7 @@ export default function AdminController() {
       });
 
       await api.get("/cores").then((item) => {
-        setDatacores(item.data);
+        setDatacores(item?.data);
       });
     }
 
@@ -346,26 +346,26 @@ export default function AdminController() {
 
   useEffect(() => {
     api.get("/perguntas").then((item) => {
-      setDataperguntas(item.data.reverse());
+      setDataperguntas(item?.data.reverse());
     });
   }, [dataperguntas]);
 
   useEffect(() => {
     api.get("/sobre").then((item) => {
-      const array = item.data;
+      const array = item?.data;
       Setvaluesobre(array[array.length - 1].sobre);
     });
   }, []);
 
   useEffect(() => {
     api.get("/politicaedit").then((item) => {
-      const array = item.data;
+      const array = item?.data;
       setValuepoliticaedit(array[array.length - 1].politica);
     });
   }, []);
   useEffect(() => {
     api.get("/contatoedit").then((item) => {
-      const array = item.data;
+      const array = item?.data;
       setValuecontatomap(array[array.length - 1].mapa);
       setValuecontatonumero(array[array.length - 1].numero);
       setValuecontatotexto(array[array.length - 1].texto);
@@ -375,7 +375,7 @@ export default function AdminController() {
     let soma = 0;
     let novoarray = [];
     datapedidos.map((item) => {
-      novoarray.push(parseFloat(item.valor));
+      novoarray.push(parseFloat(item?.valor));
     });
 
     for (let i = 0; i < novoarray.length; i++) {
@@ -639,81 +639,81 @@ export default function AdminController() {
 
   function Modaldetalhesproduto(item) {
     setShowmodaldetalhesproduto(true);
-    setModelo(item.modelo);
-    setSku(item.sku);
-    setMarcaupdade(item.marca);
-    setCategoriaupdate(item.categoria);
-    setTipoprodutoupdate(item.tipo);
-    setDescricaoupdate(item.descricao);
-    setPrcoupdate(item.preco);
-    setPrecomaior(item.precomaior);
-    setPromocao(item.promocao);
-    setPeso(item.peso);
-    setComprimento(item.comprimento);
-    setLargura(item.largura);
-    setAltura(item.altura);
-    setDiametro(item.diametro);
-    setFormato(item.formato);
-    // setPromocao2(item.promocao2)
-    setQtdpromocao2(item.qtdpromocao2);
-    setDesconto(promocao2 === false ? "" : item.desconto);
+    setModelo(item?.modelo);
+    setSku(item?.sku);
+    setMarcaupdade(item?.marca);
+    setCategoriaupdate(item?.categoria);
+    setTipoprodutoupdate(item?.tipo);
+    setDescricaoupdate(item?.descricao);
+    setPrcoupdate(item?.preco);
+    setPrecomaior(item?.precomaior);
+    setPromocao(item?.promocao);
+    setPeso(item?.peso);
+    setComprimento(item?.comprimento);
+    setLargura(item?.largura);
+    setAltura(item?.altura);
+    setDiametro(item?.diametro);
+    setFormato(item?.formato);
+    // setPromocao2(item?.promocao2)
+    setQtdpromocao2(item?.qtdpromocao2);
+    setDesconto(promocao2 === false ? "" : item?.desconto);
 
-    setSubcategoriaupdate1(item.subcategoria1);
-    setSubcategoriaupdate2(item.subcategoria2);
-    setSubcategoriaupdate3(item.subcategoria3);
-    setSubcategoriaupdate4(item.subcategoria4);
+    setSubcategoriaupdate1(item?.subcategoria1);
+    setSubcategoriaupdate2(item?.subcategoria2);
+    setSubcategoriaupdate3(item?.subcategoria3);
+    setSubcategoriaupdate4(item?.subcategoria4);
 
-    setTamanho1(item.cores.corPrimary.tamanhos.tamanhoOne.tamanho1);
-    setTamanho2(item.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2);
-    setTamanho3(item.cores.corPrimary.tamanhos.tamanhoThree.tamanho3);
-    setTamanho4(item.cores.corPrimary.tamanhos.tamanhoFour.tamanho4);
-    setTamanho5(item.cores.corSecondary.tamanhos.tamanhoOne.tamanho5);
-    setTamanho6(item.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6);
-    setTamanho7(item.cores.corSecondary.tamanhos.tamanhoThree.tamanho7);
-    setTamanho8(item.cores.corSecondary.tamanhos.tamanhoFour.tamanho8);
-    setTamanho9(item.cores.corTertiary.tamanhos.tamanhoOne.tamanho9);
-    setTamanho10(item.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10);
-    setTamanho11(item.cores.corTertiary.tamanhos.tamanhoThree.tamanho11);
-    setTamanho12(item.cores.corTertiary.tamanhos.tamanhoFour.tamanho12);
-    setTamanho13(item.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13);
-    setTamanho14(item.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14);
-    setTamanho15(item.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15);
-    setTamanho16(item.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16);
-    setTamanho17(item.cores.corFive.tamanhos.tamanhoOne.tamanho17);
-    setTamanho18(item.cores.corFive.tamanhos.tamanhoTwo.tamanho18);
-    setTamanho19(item.cores.corFive.tamanhos.tamanhoThree.tamanho19);
-    setTamanho20(item.cores.corFive.tamanhos.tamanhoFour.tamanho20);
-    setTamanho21(item.cores.corSix.tamanhos.tamanhoOne.tamanho21);
-    setTamanho22(item.cores.corSix.tamanhos.tamanhoTwo.tamanho22);
-    setTamanho23(item.cores.corSix.tamanhos.tamanhoThree.tamanho23);
-    setTamanho24(item.cores.corSix.tamanhos.tamanhoFour.tamanho24);
+    setTamanho1(item?.cores.corPrimary.tamanhos.tamanhoOne.tamanho1);
+    setTamanho2(item?.cores.corPrimary.tamanhos.tamanhoTwo.tamanho2);
+    setTamanho3(item?.cores.corPrimary.tamanhos.tamanhoThree.tamanho3);
+    setTamanho4(item?.cores.corPrimary.tamanhos.tamanhoFour.tamanho4);
+    setTamanho5(item?.cores.corSecondary.tamanhos.tamanhoOne.tamanho5);
+    setTamanho6(item?.cores.corSecondary.tamanhos.tamanhoTwo.tamanho6);
+    setTamanho7(item?.cores.corSecondary.tamanhos.tamanhoThree.tamanho7);
+    setTamanho8(item?.cores.corSecondary.tamanhos.tamanhoFour.tamanho8);
+    setTamanho9(item?.cores.corTertiary.tamanhos.tamanhoOne.tamanho9);
+    setTamanho10(item?.cores.corTertiary.tamanhos.tamanhoTwo.tamanho10);
+    setTamanho11(item?.cores.corTertiary.tamanhos.tamanhoThree.tamanho11);
+    setTamanho12(item?.cores.corTertiary.tamanhos.tamanhoFour.tamanho12);
+    setTamanho13(item?.cores.corQuaternary.tamanhos.tamanhoOne.tamanho13);
+    setTamanho14(item?.cores.corQuaternary.tamanhos.tamanhoTwo.tamanho14);
+    setTamanho15(item?.cores.corQuaternary.tamanhos.tamanhoThree.tamanho15);
+    setTamanho16(item?.cores.corQuaternary.tamanhos.tamanhoFour.tamanho16);
+    setTamanho17(item?.cores.corFive.tamanhos.tamanhoOne.tamanho17);
+    setTamanho18(item?.cores.corFive.tamanhos.tamanhoTwo.tamanho18);
+    setTamanho19(item?.cores.corFive.tamanhos.tamanhoThree.tamanho19);
+    setTamanho20(item?.cores.corFive.tamanhos.tamanhoFour.tamanho20);
+    setTamanho21(item?.cores.corSix.tamanhos.tamanhoOne.tamanho21);
+    setTamanho22(item?.cores.corSix.tamanhos.tamanhoTwo.tamanho22);
+    setTamanho23(item?.cores.corSix.tamanhos.tamanhoThree.tamanho23);
+    setTamanho24(item?.cores.corSix.tamanhos.tamanhoFour.tamanho24);
 
-    setQuantidade1(item.cores.corPrimary.tamanhos.tamanhoOne.quantidade);
-    setQuantidade2(item.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2);
-    setQuantidade3(item.cores.corPrimary.tamanhos.tamanhoThree.quantidade3);
-    setQuantidade4(item.cores.corPrimary.tamanhos.tamanhoFour.quantidade4);
-    setQuantidade5(item.cores.corSecondary.tamanhos.tamanhoOne.quantidade5);
-    setQuantidade6(item.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6);
-    setQuantidade7(item.cores.corSecondary.tamanhos.tamanhoThree.quantidade7);
-    setQuantidade8(item.cores.corSecondary.tamanhos.tamanhoFour.quantidade8);
-    setQuantidade9(item.cores.corTertiary.tamanhos.tamanhoOne.quantidade9);
-    setQuantidade10(item.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10);
-    setQuantidade11(item.cores.corTertiary.tamanhos.tamanhoThree.quantidade11);
-    setQuantidade12(item.cores.corTertiary.tamanhos.tamanhoFour.quantidade12);
-    setQuantidade13(item.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13);
-    setQuantidade14(item.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14);
+    setQuantidade1(item?.cores.corPrimary.tamanhos.tamanhoOne.quantidade);
+    setQuantidade2(item?.cores.corPrimary.tamanhos.tamanhoTwo.quantidade2);
+    setQuantidade3(item?.cores.corPrimary.tamanhos.tamanhoThree.quantidade3);
+    setQuantidade4(item?.cores.corPrimary.tamanhos.tamanhoFour.quantidade4);
+    setQuantidade5(item?.cores.corSecondary.tamanhos.tamanhoOne.quantidade5);
+    setQuantidade6(item?.cores.corSecondary.tamanhos.tamanhoTwo.quantidade6);
+    setQuantidade7(item?.cores.corSecondary.tamanhos.tamanhoThree.quantidade7);
+    setQuantidade8(item?.cores.corSecondary.tamanhos.tamanhoFour.quantidade8);
+    setQuantidade9(item?.cores.corTertiary.tamanhos.tamanhoOne.quantidade9);
+    setQuantidade10(item?.cores.corTertiary.tamanhos.tamanhoTwo.quantidade10);
+    setQuantidade11(item?.cores.corTertiary.tamanhos.tamanhoThree.quantidade11);
+    setQuantidade12(item?.cores.corTertiary.tamanhos.tamanhoFour.quantidade12);
+    setQuantidade13(item?.cores.corQuaternary.tamanhos.tamanhoOne.quantidade13);
+    setQuantidade14(item?.cores.corQuaternary.tamanhos.tamanhoTwo.quantidade14);
     setQuantidade15(
-      item.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15
+      item?.cores.corQuaternary.tamanhos.tamanhoThree.quantidade15
     );
-    setQuantidade16(item.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16);
-    setQuantidade17(item.cores.corFive.tamanhos.tamanhoOne.quantidade17);
-    setQuantidade18(item.cores.corFive.tamanhos.tamanhoTwo.quantidade18);
-    setQuantidade19(item.cores.corFive.tamanhos.tamanhoThree.quantidade19);
-    setQuantidade20(item.cores.corFive.tamanhos.tamanhoFour.quantidade20);
-    setQuantidade21(item.cores.corSix.tamanhos.tamanhoOne.quantidade21);
-    setQuantidade22(item.cores.corSix.tamanhos.tamanhoTwo.quantidade22);
-    setQuantidade23(item.cores.corSix.tamanhos.tamanhoThree.quantidade23);
-    setQuantidade24(item.cores.corSix.tamanhos.tamanhoFour.quantidade24);
+    setQuantidade16(item?.cores.corQuaternary.tamanhos.tamanhoFour.quantidade16);
+    setQuantidade17(item?.cores.corFive.tamanhos.tamanhoOne.quantidade17);
+    setQuantidade18(item?.cores.corFive.tamanhos.tamanhoTwo.quantidade18);
+    setQuantidade19(item?.cores.corFive.tamanhos.tamanhoThree.quantidade19);
+    setQuantidade20(item?.cores.corFive.tamanhos.tamanhoFour.quantidade20);
+    setQuantidade21(item?.cores.corSix.tamanhos.tamanhoOne.quantidade21);
+    setQuantidade22(item?.cores.corSix.tamanhos.tamanhoTwo.quantidade22);
+    setQuantidade23(item?.cores.corSix.tamanhos.tamanhoThree.quantidade23);
+    setQuantidade24(item?.cores.corSix.tamanhos.tamanhoFour.quantidade24);
 
     setDetalhesproduto(item);
     setModaleditahome(false);
@@ -1972,231 +1972,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1: "",
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1: "",
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -2214,231 +2214,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2: "",
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2: "",
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -2456,231 +2456,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3: "",
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3: "",
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -2697,231 +2697,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4: "",
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4: "",
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -2938,231 +2938,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5: "",
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5: "",
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3179,231 +3179,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6: "",
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6: "",
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3420,73 +3420,73 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7: "",
         },
@@ -3494,153 +3494,153 @@ export default function AdminController() {
           background1: "",
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1: "",
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3657,231 +3657,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2: "",
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2: "",
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -3898,231 +3898,231 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3: "",
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3: "",
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4139,229 +4139,229 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1: "",
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4: "",
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4378,229 +4378,229 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2: "",
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5: "",
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4617,229 +4617,229 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
 
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3: "",
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6: "",
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -4856,236 +4856,236 @@ export default function AdminController() {
         },
         componentetexto1:
           textofretegratis == ""
-            ? dadosedicao.map((item) => item.componentetexto1)[0]
+            ? dadosedicao.map((item) => item?.componentetexto1)[0]
             : textofretegratis,
         parcelas:
           parcelas == ""
-            ? dadosedicao.map((item) => item.parcelas)[0]
+            ? dadosedicao.map((item) => item?.parcelas)[0]
             : parcelas,
         bannerpaginaprod:
           bannerpaginaproduto == ""
-            ? dadosedicao.map((item) => item.bannerpaginaprod)[0]
+            ? dadosedicao.map((item) => item?.bannerpaginaprod)[0]
             : bannerpaginaproduto,
         bannermodalpromocao:
           bannerpromocao == ""
-            ? dadosedicao.map((item) => item.bannermodalpromocao)[0]
+            ? dadosedicao.map((item) => item?.bannermodalpromocao)[0]
             : bannerpromocao,
         bannercentralhome:
           bannercentralhome == ""
-            ? dadosedicao.map((item) => item.bannercentralhome)[0]
+            ? dadosedicao.map((item) => item?.bannercentralhome)[0]
             : bannercentralhome,
         url1:
           urlbanneredicao1 == ""
-            ? dadosedicao.map((item) => item.url1)[0]
+            ? dadosedicao.map((item) => item?.url1)[0]
             : urlbanneredicao1,
         url2:
           urlbanneredicao2 == ""
-            ? dadosedicao.map((item) => item.url2)[0]
+            ? dadosedicao.map((item) => item?.url2)[0]
             : urlbanneredicao2,
         url3:
           urlbanneredicao3 == ""
-            ? dadosedicao.map((item) => item.url3)[0]
+            ? dadosedicao.map((item) => item?.url3)[0]
             : urlbanneredicao3,
         url4:
           urlbanneredicao4 == ""
-            ? dadosedicao.map((item) => item.url4)[0]
+            ? dadosedicao.map((item) => item?.url4)[0]
             : urlbanneredicao4,
         url5:
           urlbanneredicao5 == ""
-            ? dadosedicao.map((item) => item.url5)[0]
+            ? dadosedicao.map((item) => item?.url5)[0]
             : urlbanneredicao5,
         url6:
           urlbanneredicao6 == ""
-            ? dadosedicao.map((item) => item.url6)[0]
+            ? dadosedicao.map((item) => item?.url6)[0]
             : urlbanneredicao6,
         componentelogos: {
           logo1:
             urllogo1 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo1)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
               : urllogo1,
           logo2:
             urllogo2 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo2)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
               : urllogo2,
           logo3:
             urllogo3 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo3)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
               : urllogo3,
           logo4:
             urllogo4 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo4)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
               : urllogo4,
           logo5:
             urllogo5 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo5)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
               : urllogo5,
           logo6:
             urllogo6 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo6)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
               : urllogo6,
           logo7:
             urllogo7 == ""
-              ? dadosedicao.map((item) => item.componentelogos.logo7)[0]
+              ? dadosedicao.map((item) => item?.componentelogos?.logo7)[0]
               : urllogo7,
         },
         backgoundhome: {
           background1:
             urlFoto1 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background1)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background1)[0]
               : urlFoto1,
           background2:
             urlFoto2 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background2)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background2)[0]
               : urlFoto2,
           background3:
             urlFoto3 == ""
-              ? dadosedicao.map((item) => item.backgoundhome.background3)[0]
+              ? dadosedicao.map((item) => item?.backgoundhome?.background3)[0]
               : urlFoto3,
           backgroundmobile1:
             urlmobile1 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile1
+                  (item) => item?.backgoundhome?.backgroundmobile1
                 )[0]
               : urlmobile1,
           backgroundmobile2:
             urlmobile2 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile2
+                  (item) => item?.backgoundhome?.backgroundmobile2
                 )[0]
               : urlmobile2,
           backgroundmobile3:
             urlmobile3 == ""
               ? dadosedicao.map(
-                  (item) => item.backgoundhome.backgroundmobile3
+                  (item) => item?.backgoundhome?.backgroundmobile3
                 )[0]
               : urlmobile3,
         },
         componentetexto2:
           titulosessaobanners == ""
-            ? dadosedicao.map((item) => item.itemcomponentetexto2)[0]
+            ? dadosedicao.map((item) => item?.itemcomponentetexto2)[0]
             : titulosessaobanners,
         banners: {
           banner1:
             urlbanner1 == ""
-              ? dadosedicao.map((item) => item.banners.banner1)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner1)[0]
               : urlbanner1,
           banner2:
             urlbanner2 == ""
-              ? dadosedicao.map((item) => item.banners.banner2)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner2)[0]
               : urlbanner2,
           banner3:
             urlbanner3 == ""
-              ? dadosedicao.map((item) => item.banners.banner3)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner3)[0]
               : urlbanner3,
           banner4:
             urlbanner4 == ""
-              ? dadosedicao.map((item) => item.banners.banner4)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner4)[0]
               : urlbanner4,
           banner5:
             urlbanner5 == ""
-              ? dadosedicao.map((item) => item.banners.banner5)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner5)[0]
               : urlbanner5,
           banner6:
             urlbanner6 == ""
-              ? dadosedicao.map((item) => item.banners.banner6)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner6)[0]
               : urlbanner6,
           banner7:
             urlbanner7 == ""
-              ? dadosedicao.map((item) => item.banners.banner7)[0]
+              ? dadosedicao.map((item) => item?.banners?.banner7)[0]
               : urlbanner7,
         },
         linkredes: {
           link1:
             link1 == ""
-              ? dadosedicao.map((item) => item.linkredes.link1)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link1)[0]
               : link1,
           link2:
             link2 == ""
-              ? dadosedicao.map((item) => item.linkredes.link2)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link2)[0]
               : link2,
           link3:
             link3 == ""
-              ? dadosedicao.map((item) => item.linkredes.link3)[0]
+              ? dadosedicao.map((item) => item?.linkredes?.link3)[0]
               : link3,
         },
         telefoneloja:
           telefoneloja == ""
-            ? dadosedicao.map((item) => item.telefoneloja)[0]
+            ? dadosedicao.map((item) => item?.telefoneloja)[0]
             : telefoneloja,
         emailloja:
           emailloja == ""
-            ? dadosedicao.map((item) => item.emailloja)[0]
+            ? dadosedicao.map((item) => item?.emailloja)[0]
             : emailloja,
         cnpjloja:
           cnpjloja == ""
-            ? dadosedicao.map((item) => item.cnpjloja)[0]
+            ? dadosedicao.map((item) => item?.cnpjloja)[0]
             : cnpjloja,
         categoriabtnhome1: {
           img1:
             img1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.img1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.img1)[0]
               : img1cathome,
           title1:
             title1cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome1.title1)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome1?.title1)[0]
               : title1cathome,
         },
         categoriabtnhome2: {
           img2:
             img2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.img2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.img2)[0]
               : img2cathome,
           title2:
             title2cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome2.title2)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome2?.title2)[0]
               : title2cathome,
         },
         categoriabtnhome3: {
           img3:
             img3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.img3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.img3)[0]
               : img3cathome,
           title3:
             title3cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome3.title3)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome3?.title3)[0]
               : title3cathome,
         },
         categoriabtnhome4: {
           img4:
             img4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.img4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.img4)[0]
               : img4cathome,
           title4:
             title4cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome4.title4)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome4?.title4)[0]
               : title4cathome,
         },
         categoriabtnhome5: {
           img5:
             img5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.img5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.img5)[0]
               : img5cathome,
           title5:
             title5cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome5.title5)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome5?.title5)[0]
               : title5cathome,
         },
         categoriabtnhome6: {
           img6:
             img6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.img6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.img6)[0]
               : img6cathome,
           title6:
             title6cathome == ""
-              ? dadosedicao.map((item) => item.categoriabtnhome6.title6)[0]
+              ? dadosedicao.map((item) => item?.categoriabtnhome6?.title6)[0]
               : title6cathome,
         },
         icon1:
-          icone1 == "" ? dadosedicao.map((item) => item.icone1)[0] : icone1,
+          icone1 == "" ? dadosedicao.map((item) => item?.icone1)[0] : icone1,
         icon2:
-          icone2 == "" ? dadosedicao.map((item) => item.icone2)[0] : icone2,
+          icone2 == "" ? dadosedicao.map((item) => item?.icone2)[0] : icone2,
         icon3:
-          icone3 == "" ? dadosedicao.map((item) => item.icone3)[0] : icone3,
+          icone3 == "" ? dadosedicao.map((item) => item?.icone3)[0] : icone3,
       })
       .then(() => {
         setLoad(false);
@@ -5596,14 +5596,14 @@ export default function AdminController() {
   }
 
   function marcaremail(item) {
-    /* if (arrayemails.some(data => data.email == item.email) == true) {
+    /* if (arrayemails.some(data => data.email == item?.email) == true) {
        return
      }
-     let index = dadosedicao.findIndex(data => data.email == item.email)
+     let index = dadosedicao.findIndex(data => data.email == item?.email)
    
      let lista = []
      document.querySelectorAll('.checkboxemail')[index].setAttribute('checked', true)
-     lista.push(item.email)
+     lista.push(item?.email)
    
    
      localStorage.setItem('listaemailoutlet', JSON.stringify(lista))
@@ -5616,15 +5616,15 @@ export default function AdminController() {
 
     let lista = [];
     document.querySelectorAll(".checkboxemail").forEach((item) => {
-      item.setAttribute("checked", "true");
-      lista.push(item.value);
+      item?.setAttribute("checked", "true");
+      lista.push(item?.value);
     });
     localStorage.setItem("listaemailoutlet", JSON.stringify(lista));
   }
 
   function liparlista() {
     document.querySelectorAll(".checkboxemail").forEach((item) => {
-      item.setAttribute("checked", "false");
+      item?.setAttribute("checked", "false");
     });
     localStorage.setItem("listaemailoutlet", JSON.stringify([]));
     window.location.reload();
@@ -5641,7 +5641,7 @@ export default function AdminController() {
   }
 
   function delemail(item) {
-    api2.delete(`/emailsclientes/${item._id}`).then(() => {
+    api2.delete(`/emailsclientes/${item?._id}`).then(() => {
       toast.success("Email excluido com sucesso");
     });
   }
@@ -5772,7 +5772,7 @@ export default function AdminController() {
   }
 
   useEffect(() => {
-    //console.log(dadosedicao.map(item => item.componentelogos.logo1)[0])
+    //console.log(dadosedicao.map(item => item?.componentelogos?.logo1)[0])
   }, []);
 
   const [urlimgproduto1, setUrlimgproduto1] = useState("");
@@ -6448,11 +6448,11 @@ export default function AdminController() {
       .put("/comocomprar/6400d7a454d02dd8bff73f7c", {
         urlbanner:
           bannercomodesktop == ""
-            ? bannercomomobileurl.map((item) => item.urlbanner)[0]
+            ? bannercomomobileurl.map((item) => item?.urlbanner)[0]
             : bannercomodesktop,
         urlbannermobile:
           bannercomomobile == ""
-            ? bannercomomobileurl.map((item) => item.urlbanner)[0]
+            ? bannercomomobileurl.map((item) => item?.urlbanner)[0]
             : bannercomomobile,
       })
       .then(() => {
@@ -6462,10 +6462,10 @@ export default function AdminController() {
 
   async function apagarimagemDesktop() {
     await api
-      .put(`/comocomprar/${bannercomomobileurl.map((item) => item._id)[0]}`, {
+      .put(`/comocomprar/${bannercomomobileurl.map((item) => item?._id)[0]}`, {
         urlbanner: "",
         urlbannermobile: bannercomomobileurl.map(
-          (item) => item.urlbannermobile
+          (item) => item?.urlbannermobile
         )[0],
       })
       .then(() => {
@@ -6474,8 +6474,8 @@ export default function AdminController() {
   }
   async function apagarimagemMobile() {
     await api
-      .put(`/comocomprar/${bannercomomobileurl.map((item) => item._id)[0]}`, {
-        urlbanner: bannercomomobileurl.map((item) => item.urlbanner)[0],
+      .put(`/comocomprar/${bannercomomobileurl.map((item) => item?._id)[0]}`, {
+        urlbanner: bannercomomobileurl.map((item) => item?.urlbanner)[0],
         urlbannermobile: "",
       })
       .then(() => {
@@ -6487,12 +6487,12 @@ export default function AdminController() {
   function viewModaleditaperguntas(item) {
     document
       .querySelectorAll(".boxeditpergunta")
-      [dataperguntas.findIndex((data) => data._id == item._id)].setAttribute(
+      [dataperguntas.findIndex((data) => data._id == item?._id)].setAttribute(
         "style",
         "display:flex"
       );
-    setTitulopergunta(item.sumary);
-    setTextoresposta(item.resposta);
+    setTitulopergunta(item?.sumary);
+    setTextoresposta(item?.resposta);
   }
 
   async function delimg1(_id) {
@@ -9320,22 +9320,22 @@ export default function AdminController() {
                 ) : (
                   datapedidos.map((item) => {
                     return (
-                      <tbody id="table" key={item._id}>
+                      <tbody id="table" key={item?._id}>
                         <tr>
-                          <td>{item.idpedido}</td>
-                          <td>{item.produto.modelo}</td>
-                          <td>{item.nomecliente}</td>
-                          <td>{item.cpf}</td>
+                          <td>{item?.idpedido}</td>
+                          <td>{item?.produto.modelo}</td>
+                          <td>{item?.nomecliente}</td>
+                          <td>{item?.cpf}</td>
                           <td>
-                            {item.endereco} {item.complemento}
+                            {item?.endereco} {item?.complemento}
                           </td>
-                          <td>{item.cep}</td>
+                          <td>{item?.cep}</td>
                           <td>
-                            {item.data} {item.hora}
+                            {item?.data} {item?.hora}
                           </td>
-                          <td>{item.status}</td>
+                          <td>{item?.status}</td>
                           <td>
-                            {parseFloat(item.valor).toLocaleString("pt-br", {
+                            {parseFloat(item?.valor).toLocaleString("pt-br", {
                               style: "currency",
                               currency: "BRL",
                             })}
@@ -9439,8 +9439,8 @@ export default function AdminController() {
                   <option>Categorias</option>
                   {datacategorias.map((item) => {
                     return (
-                      <option key={item.categoria} value={item.categoria}>
-                        {item.categoria}
+                      <option key={item?.categoria} value={item?.categoria}>
+                        {item?.categoria}
                       </option>
                     );
                   })}
@@ -9478,31 +9478,31 @@ export default function AdminController() {
                   return (
                     <tbody
                       id="table"
-                      key={item._id}
+                      key={item?._id}
                       onClick={() => Modaldetalhesproduto(item)}
                     >
                       <tr>
                         <td>
                           <img
                             style={{ width: "100px" }}
-                            src={item.cores.corPrimary.imgurl}
+                            src={item?.cores.corPrimary.imgurl}
                           ></img>
                         </td>
-                        <td>{item.modelo}</td>
-                        <td>{item.promocao == true ? "Sim" : "Não"}</td>
+                        <td>{item?.modelo}</td>
+                        <td>{item?.promocao == true ? "Sim" : "Não"}</td>
                         <td>
-                          {item.promocao2 == true
-                            ? `Sim a partir de ${item.qtdpromocao2} produtos, ${item.desconto}%`
+                          {item?.promocao2 == true
+                            ? `Sim a partir de ${item?.qtdpromocao2} produtos, ${item?.desconto}%`
                             : "Não"}{" "}
                         </td>
                         <td>
-                          {item.cores.corPrimary.cor1 != "" ? (
+                          {item?.cores.corPrimary.cor1 != "" ? (
                             <div className="box-cores-tamanhos-adm">
                               <h2
                                 style={{
                                   width: "20px",
                                   height: "20px",
-                                  background: item.cores.corPrimary.cor1,
+                                  background: item?.cores.corPrimary.cor1,
                                 }}
                               ></h2>
                               <div
@@ -9512,76 +9512,76 @@ export default function AdminController() {
                                   flexDirection: "column",
                                 }}
                               >
-                                {item.cores.corPrimary.tamanhos.tamanhoOne
+                                {item?.cores.corPrimary.tamanhos.tamanhoOne
                                   .tamanho1 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoOne
+                                      item?.cores.corPrimary.tamanhos.tamanhoOne
                                         .tamanho1
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoOne
+                                      item?.cores.corPrimary.tamanhos.tamanhoOne
                                         .quantidade
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corPrimary.tamanhos.tamanhoTwo
+                                {item?.cores.corPrimary.tamanhos.tamanhoTwo
                                   .tamanho2 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoTwo
+                                      item?.cores.corPrimary.tamanhos.tamanhoTwo
                                         .tamanho2
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoTwo
+                                      item?.cores.corPrimary.tamanhos.tamanhoTwo
                                         .quantidade2
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corPrimary.tamanhos.tamanhoThree
+                                {item?.cores.corPrimary.tamanhos.tamanhoThree
                                   .tamanho3 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos
+                                      item?.cores.corPrimary.tamanhos
                                         .tamanhoThree.tamanho3
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos
+                                      item?.cores.corPrimary.tamanhos
                                         .tamanhoThree.quantidade3
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corPrimary.tamanhos.tamanhoFour
+                                {item?.cores.corPrimary.tamanhos.tamanhoFour
                                   .tamanho4 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoFour
+                                      item?.cores.corPrimary.tamanhos.tamanhoFour
                                         .tamanho4
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corPrimary.tamanhos.tamanhoFour
+                                      item?.cores.corPrimary.tamanhos.tamanhoFour
                                         .quantidade4
                                     }
                                   </h3>
@@ -9595,13 +9595,13 @@ export default function AdminController() {
                           )}
                         </td>
                         <td>
-                          {item.cores.corSecondary.cor2 != "" ? (
+                          {item?.cores.corSecondary.cor2 != "" ? (
                             <div className="box-cores-tamanhos-adm">
                               <h2
                                 style={{
                                   width: "20px",
                                   height: "20px",
-                                  background: item.cores.corSecondary.cor2,
+                                  background: item?.cores.corSecondary.cor2,
                                 }}
                               ></h2>
                               <div
@@ -9611,76 +9611,76 @@ export default function AdminController() {
                                   flexDirection: "column",
                                 }}
                               >
-                                {item.cores.corSecondary.tamanhos.tamanhoOne
+                                {item?.cores.corSecondary.tamanhos.tamanhoOne
                                   .tamanho5 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoOne.tamanho5
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoOne.quantidade5
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corSecondary.tamanhos.tamanhoTwo
+                                {item?.cores.corSecondary.tamanhos.tamanhoTwo
                                   .tamanho6 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoTwo.tamanho6
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoTwo.quantidade6
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corSecondary.tamanhos.tamanhoThree
+                                {item?.cores.corSecondary.tamanhos.tamanhoThree
                                   .tamanho7 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoThree.tamanho7
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoThree.quantidade7
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corSecondary.tamanhos.tamanhoFour
+                                {item?.cores.corSecondary.tamanhos.tamanhoFour
                                   .tamanho8 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoFour.tamanho8
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSecondary.tamanhos
+                                      item?.cores.corSecondary.tamanhos
                                         .tamanhoFour.quantidade8
                                     }
                                   </h3>
@@ -9694,13 +9694,13 @@ export default function AdminController() {
                           )}
                         </td>
                         <td>
-                          {item.cores.corTertiary.cor2 != "" ? (
+                          {item?.cores.corTertiary.cor2 != "" ? (
                             <div className="box-cores-tamanhos-adm">
                               <h2
                                 style={{
                                   width: "20px",
                                   height: "20px",
-                                  background: item.cores.corTertiary.cor3,
+                                  background: item?.cores.corTertiary.cor3,
                                 }}
                               ></h2>
                               <div
@@ -9710,76 +9710,76 @@ export default function AdminController() {
                                   flexDirection: "column",
                                 }}
                               >
-                                {item.cores.corTertiary.tamanhos.tamanhoOne
+                                {item?.cores.corTertiary.tamanhos.tamanhoOne
                                   .tamanho9 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoOne
+                                      item?.cores.corTertiary.tamanhos.tamanhoOne
                                         .tamanho9
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoOne
+                                      item?.cores.corTertiary.tamanhos.tamanhoOne
                                         .quantidade9
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corTertiary.tamanhos.tamanhoTwo
+                                {item?.cores.corTertiary.tamanhos.tamanhoTwo
                                   .tamanho10 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoTwo
+                                      item?.cores.corTertiary.tamanhos.tamanhoTwo
                                         .tamanho10
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos.tamanhoTwo
+                                      item?.cores.corTertiary.tamanhos.tamanhoTwo
                                         .quantidade10
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corTertiary.tamanhos.tamanhoThree
+                                {item?.cores.corTertiary.tamanhos.tamanhoThree
                                   .tamanho11 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos
+                                      item?.cores.corTertiary.tamanhos
                                         .tamanhoThree.tamanho11
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos
+                                      item?.cores.corTertiary.tamanhos
                                         .tamanhoThree.quantidade11
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corTertiary.tamanhos.tamanhoFour
+                                {item?.cores.corTertiary.tamanhos.tamanhoFour
                                   .tamanho12 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos
+                                      item?.cores.corTertiary.tamanhos
                                         .tamanhoFour.tamanho12
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corTertiary.tamanhos
+                                      item?.cores.corTertiary.tamanhos
                                         .tamanhoFour.quantidade12
                                     }
                                   </h3>
@@ -9793,13 +9793,13 @@ export default function AdminController() {
                           )}
                         </td>
                         <td>
-                          {item.cores.corQuaternary.cor2 != "" ? (
+                          {item?.cores.corQuaternary.cor2 != "" ? (
                             <div className="box-cores-tamanhos-adm">
                               <h2
                                 style={{
                                   width: "20px",
                                   height: "20px",
-                                  background: item.cores.corQuaternary.cor4,
+                                  background: item?.cores.corQuaternary.cor4,
                                 }}
                               ></h2>
                               <div
@@ -9809,76 +9809,76 @@ export default function AdminController() {
                                   flexDirection: "column",
                                 }}
                               >
-                                {item.cores.corQuaternary.tamanhos.tamanhoOne
+                                {item?.cores.corQuaternary.tamanhos.tamanhoOne
                                   .tamanho13 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoOne.tamanho13
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoOne.quantidade13
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corQuaternary.tamanhos.tamanhoTwo
+                                {item?.cores.corQuaternary.tamanhos.tamanhoTwo
                                   .tamanho14 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoTwo.tamanho14
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoTwo.quantidade14
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corQuaternary.tamanhos.tamanhoThree
+                                {item?.cores.corQuaternary.tamanhos.tamanhoThree
                                   .tamanho15 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoThree.tamanho15
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoThree.quantidade15
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corQuaternary.tamanhos.tamanhoFour
+                                {item?.cores.corQuaternary.tamanhos.tamanhoFour
                                   .tamanho16 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoFour.tamanho16
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corQuaternary.tamanhos
+                                      item?.cores.corQuaternary.tamanhos
                                         .tamanhoFour.quantidade16
                                     }
                                   </h3>
@@ -9892,13 +9892,13 @@ export default function AdminController() {
                           )}
                         </td>
                         <td>
-                          {item.cores.corFive.cor2 != "" ? (
+                          {item?.cores.corFive.cor2 != "" ? (
                             <div className="box-cores-tamanhos-adm">
                               <h2
                                 style={{
                                   width: "20px",
                                   height: "20px",
-                                  background: item.cores.corFive.cor5,
+                                  background: item?.cores.corFive.cor5,
                                 }}
                               ></h2>
                               <div
@@ -9908,76 +9908,76 @@ export default function AdminController() {
                                   flexDirection: "column",
                                 }}
                               >
-                                {item.cores.corFive.tamanhos.tamanhoOne
+                                {item?.cores.corFive.tamanhos.tamanhoOne
                                   .tamanho17 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoOne
+                                      item?.cores.corFive.tamanhos.tamanhoOne
                                         .tamanho17
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoOne
+                                      item?.cores.corFive.tamanhos.tamanhoOne
                                         .quantidade17
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corFive.tamanhos.tamanhoTwo
+                                {item?.cores.corFive.tamanhos.tamanhoTwo
                                   .tamanho18 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoTwo
+                                      item?.cores.corFive.tamanhos.tamanhoTwo
                                         .tamanho18
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoTwo
+                                      item?.cores.corFive.tamanhos.tamanhoTwo
                                         .quantidade18
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corFive.tamanhos.tamanhoThree
+                                {item?.cores.corFive.tamanhos.tamanhoThree
                                   .tamanho19 != "" ? (
                                   <h3
                                     style={{ fontSize: "19px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoThree
+                                      item?.cores.corFive.tamanhos.tamanhoThree
                                         .tamanho19
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoThree
+                                      item?.cores.corFive.tamanhos.tamanhoThree
                                         .quantidade19
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corFive.tamanhos.tamanhoFour
+                                {item?.cores.corFive.tamanhos.tamanhoFour
                                   .tamanho20 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoFour
+                                      item?.cores.corFive.tamanhos.tamanhoFour
                                         .tamanho20
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corFive.tamanhos.tamanhoFour
+                                      item?.cores.corFive.tamanhos.tamanhoFour
                                         .quantidade20
                                     }
                                   </h3>
@@ -9991,13 +9991,13 @@ export default function AdminController() {
                           )}
                         </td>
                         <td>
-                          {item.cores.corSix.cor2 != "" ? (
+                          {item?.cores.corSix.cor2 != "" ? (
                             <div className="box-cores-tamanhos-adm">
                               <h2
                                 style={{
                                   width: "20px",
                                   height: "20px",
-                                  background: item.cores.corSix.cor6,
+                                  background: item?.cores.corSix.cor6,
                                 }}
                               ></h2>
                               <div
@@ -10007,76 +10007,76 @@ export default function AdminController() {
                                   flexDirection: "column",
                                 }}
                               >
-                                {item.cores.corSix.tamanhos.tamanhoOne
+                                {item?.cores.corSix.tamanhos.tamanhoOne
                                   .tamanho21 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoOne
+                                      item?.cores.corSix.tamanhos.tamanhoOne
                                         .tamanho21
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoOne
+                                      item?.cores.corSix.tamanhos.tamanhoOne
                                         .quantidade21
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corSix.tamanhos.tamanhoTwo
+                                {item?.cores.corSix.tamanhos.tamanhoTwo
                                   .tamanho22 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoTwo
+                                      item?.cores.corSix.tamanhos.tamanhoTwo
                                         .tamanho22
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoTwo
+                                      item?.cores.corSix.tamanhos.tamanhoTwo
                                         .quantidade22
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corSix.tamanhos.tamanhoThree
+                                {item?.cores.corSix.tamanhos.tamanhoThree
                                   .tamanho23 != "" ? (
                                   <h3
                                     style={{ fontSize: "23px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoThree
+                                      item?.cores.corSix.tamanhos.tamanhoThree
                                         .tamanho23
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoThree
+                                      item?.cores.corSix.tamanhos.tamanhoThree
                                         .quantidade23
                                     }
                                   </h3>
                                 ) : (
                                   ""
                                 )}
-                                {item.cores.corSix.tamanhos.tamanhoFour
+                                {item?.cores.corSix.tamanhos.tamanhoFour
                                   .tamanho24 != "" ? (
                                   <h3
                                     style={{ fontSize: "15px", color: "white" }}
                                   >
                                     Tamanho{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoFour
+                                      item?.cores.corSix.tamanhos.tamanhoFour
                                         .tamanho24
                                     }{" "}
                                     -{" "}
                                     {
-                                      item.cores.corSix.tamanhos.tamanhoFour
+                                      item?.cores.corSix.tamanhos.tamanhoFour
                                         .quantidade24
                                     }
                                   </h3>
@@ -10620,8 +10620,8 @@ export default function AdminController() {
                   <option>Categorias</option>
                   {datacategorias.map((item) => {
                     return (
-                      <option key={item.categoria} value={item.categoria}>
-                        {item.categoria}
+                      <option key={item?.categoria} value={item?.categoria}>
+                        {item?.categoria}
                       </option>
                     );
                   })}
@@ -10846,8 +10846,8 @@ export default function AdminController() {
                         {datacores.map((item) => {
                           return (
                             <>
-                              <option key={item._id} value={item.cor}>
-                                {item.cor}
+                              <option key={item?._id} value={item?.cor}>
+                                {item?.cor}
                               </option>
                             </>
                           );
@@ -10962,8 +10962,8 @@ export default function AdminController() {
                         <option>Cores</option>
                         {datacores.map((item) => {
                           return (
-                            <option key={item._id} value={item.cor}>
-                              {item.cor}
+                            <option key={item?._id} value={item?.cor}>
+                              {item?.cor}
                             </option>
                           );
                         })}
@@ -11076,8 +11076,8 @@ export default function AdminController() {
                         <option>Cores</option>
                         {datacores.map((item) => {
                           return (
-                            <option key={item._id} value={item.cor}>
-                              {item.cor}
+                            <option key={item?._id} value={item?.cor}>
+                              {item?.cor}
                             </option>
                           );
                         })}
@@ -11191,8 +11191,8 @@ export default function AdminController() {
                         <option>Cores</option>
                         {datacores.map((item) => {
                           return (
-                            <option key={item._id} value={item.cor}>
-                              {item.cor}
+                            <option key={item?._id} value={item?.cor}>
+                              {item?.cor}
                             </option>
                           );
                         })}
@@ -11306,8 +11306,8 @@ export default function AdminController() {
                         <option>Cores</option>
                         {datacores.map((item) => {
                           return (
-                            <option key={item._id} value={item.cor}>
-                              {item.cor}
+                            <option key={item?._id} value={item?.cor}>
+                              {item?.cor}
                             </option>
                           );
                         })}
@@ -11421,8 +11421,8 @@ export default function AdminController() {
                         <option>Cores</option>
                         {datacores.map((item) => {
                           return (
-                            <option key={item._id} value={item.cor}>
-                              {item.cor}
+                            <option key={item?._id} value={item?.cor}>
+                              {item?.cor}
                             </option>
                           );
                         })}
@@ -11712,7 +11712,7 @@ export default function AdminController() {
                   <div className="box-view-banner">
                     <img
                       src={
-                        dadosedicao.map((item) => item.componentelogos.logo1)[0]
+                        dadosedicao.map((item) => item?.componentelogos?.logo1)[0]
                       }
                       alt="Vazio"
                     ></img>
@@ -11736,7 +11736,7 @@ export default function AdminController() {
                   <div className="box-view-banner">
                     <img
                       src={
-                        dadosedicao.map((item) => item.componentelogos.logo2)[0]
+                        dadosedicao.map((item) => item?.componentelogos?.logo2)[0]
                       }
                       alt="Vazio"
                     ></img>
@@ -11760,7 +11760,7 @@ export default function AdminController() {
                   <div className="box-view-banner">
                     <img
                       src={
-                        dadosedicao.map((item) => item.componentelogos.logo3)[0]
+                        dadosedicao.map((item) => item?.componentelogos?.logo3)[0]
                       }
                       alt="Vazio"
                     ></img>
@@ -11784,7 +11784,7 @@ export default function AdminController() {
                   <div className="box-view-banner">
                     <img
                       src={
-                        dadosedicao.map((item) => item.componentelogos.logo4)[0]
+                        dadosedicao.map((item) => item?.componentelogos?.logo4)[0]
                       }
                       alt="Vazio"
                     ></img>
@@ -11808,7 +11808,7 @@ export default function AdminController() {
                   <div className="box-view-banner">
                     <img
                       src={
-                        dadosedicao.map((item) => item.componentelogos.logo5)[0]
+                        dadosedicao.map((item) => item?.componentelogos?.logo5)[0]
                       }
                       alt="Vazio"
                     ></img>
@@ -11832,7 +11832,7 @@ export default function AdminController() {
                   <div className="box-view-banner">
                     <img
                       src={
-                        dadosedicao.map((item) => item.componentelogos.logo6)[0]
+                        dadosedicao.map((item) => item?.componentelogos?.logo6)[0]
                       }
                       alt="Vazio"
                     ></img>
@@ -11869,7 +11869,7 @@ export default function AdminController() {
                     </button>
                     <div className="box-view-banner">
                       <img
-                        src={dadosedicao.map((item) => item.banners.banner1)[0]}
+                        src={dadosedicao.map((item) => item?.banners?.banner1)[0]}
                         alt="Vazio"
                       ></img>
                     </div>
@@ -11885,7 +11885,7 @@ export default function AdminController() {
                     </button>
                     <div className="box-view-banner">
                       <img
-                        src={dadosedicao.map((item) => item.banners.banner2)[0]}
+                        src={dadosedicao.map((item) => item?.banners?.banner2)[0]}
                         alt="Vazio"
                       ></img>
                     </div>
@@ -11901,7 +11901,7 @@ export default function AdminController() {
                     </button>
                     <div className="box-view-banner">
                       <img
-                        src={dadosedicao.map((item) => item.banners.banner3)[0]}
+                        src={dadosedicao.map((item) => item?.banners?.banner3)[0]}
                         alt="Vazio"
                       ></img>
                     </div>
@@ -11917,7 +11917,7 @@ export default function AdminController() {
                     </button>
                     <div className="box-view-banner">
                       <img
-                        src={dadosedicao.map((item) => item.banners.banner4)[0]}
+                        src={dadosedicao.map((item) => item?.banners?.banner4)[0]}
                         alt="Vazio"
                       ></img>
                     </div>
@@ -11933,7 +11933,7 @@ export default function AdminController() {
                     </button>
                     <div className="box-view-banner">
                       <img
-                        src={dadosedicao.map((item) => item.banners.banner5)[0]}
+                        src={dadosedicao.map((item) => item?.banners?.banner5)[0]}
                         alt="Vazio"
                       ></img>
                     </div>
@@ -11949,7 +11949,7 @@ export default function AdminController() {
                     </button>
                     <div className="box-view-banner">
                       <img
-                        src={dadosedicao.map((item) => item.banners.banner6)[0]}
+                        src={dadosedicao.map((item) => item?.banners?.banner6)[0]}
                         alt="Vazio"
                       ></img>
                     </div>
@@ -12081,10 +12081,10 @@ export default function AdminController() {
             </div>
             {dataemails.map((item) => {
               return (
-                <div key={item._id} className="box-email-lista">
+                <div key={item?._id} className="box-email-lista">
                   <input
                     type="checkbox"
-                    value={item.telefone}
+                    value={item?.telefone}
                     className="checkboxemail"
                     onClick={() => marcaremail(item)}
                   ></input>
@@ -12098,9 +12098,9 @@ export default function AdminController() {
                     }}
                   >
                     <span>Nome: </span>
-                    <span>{item.nome}</span>
+                    <span>{item?.nome}</span>
                     <span>Whatsapp: </span>
-                    <span>{item.telefone}</span>
+                    <span>{item?.telefone}</span>
                   </div>
                   <button onClick={() => delemail(item)} id="del-email-list">
                     <BsTrash size={25} color="white"></BsTrash>
@@ -12174,14 +12174,14 @@ export default function AdminController() {
 
             {dataperguntas.map((item) => {
               return (
-                <div key={item._id} className="item-pergunta">
-                  <h2>{item.sumary}</h2>
-                  <p>{item.resposta}</p>
+                <div key={item?._id} className="item-pergunta">
+                  <h2>{item?.sumary}</h2>
+                  <p>{item?.resposta}</p>
 
                   <button onClick={() => viewModaleditaperguntas(item)}>
                     <MdEdit color="#2d2d2d" size={20}></MdEdit>
                   </button>
-                  <button onClick={() => delpergunta(item._id)}>
+                  <button onClick={() => delpergunta(item?._id)}>
                     <BsTrash color="#2d2d2d" size={20}></BsTrash>
                   </button>
                   <div className="boxeditpergunta">
@@ -12191,7 +12191,7 @@ export default function AdminController() {
                       value={titulopergunta}
                       onChange={(e) =>
                         setTitulopergunta(
-                          titulopergunta == "" ? item.sumary : e.target.value
+                          titulopergunta == "" ? item?.sumary : e.target.value
                         )
                       }
                     ></input>
@@ -12201,7 +12201,7 @@ export default function AdminController() {
                       value={textoresposta}
                       onChange={(e) => setTextoresposta(e.target.value)}
                     ></textarea>
-                    <button onClick={() => updateperguntas(item._id)}>
+                    <button onClick={() => updateperguntas(item?._id)}>
                       Atualizar pergunta
                     </button>
                     <button
@@ -12210,7 +12210,7 @@ export default function AdminController() {
                           .querySelectorAll(".boxeditpergunta")
                           [
                             dataperguntas.findIndex(
-                              (data) => data._id == item._id
+                              (data) => data._id == item?._id
                             )
                           ].setAttribute("style", "display:none")
                       }
@@ -12294,9 +12294,9 @@ export default function AdminController() {
 
             {comentariosTitle.map((item) => {
               return (
-                <div key={item._id} className="item-pergunta">
-                  <h2>{item.user}</h2>
-                  <p>{item.comentario}</p>
+                <div key={item?._id} className="item-pergunta">
+                  <h2>{item?.user}</h2>
+                  <p>{item?.comentario}</p>
 
                   <button
                     className="btn-sumir-background"
@@ -12305,7 +12305,7 @@ export default function AdminController() {
                         .querySelectorAll(".boxcomentarios")
                         [
                           comentariosTitle.findIndex(
-                            (data) => data._id == item._id
+                            (data) => data._id == item?._id
                           )
                         ].setAttribute("style", "display:flex")
                     }
@@ -12314,7 +12314,7 @@ export default function AdminController() {
                   </button>
                   <button
                     className="btn-sumir-background"
-                    onClick={() => delComentario(item._id)}
+                    onClick={() => delComentario(item?._id)}
                   >
                     <BsTrash color="#2d2d2d" size={20}></BsTrash>
                   </button>
@@ -12332,7 +12332,7 @@ export default function AdminController() {
                       value={comentarioavaliacao}
                       onChange={(e) => setComentarioAvaliacao(e.target.value)}
                     ></textarea>
-                    <button onClick={() => updateComentarios(item._id)}>
+                    <button onClick={() => updateComentarios(item?._id)}>
                       Atualizar comentário
                     </button>
                     <button
@@ -12341,7 +12341,7 @@ export default function AdminController() {
                           .querySelectorAll(".boxcomentarios")
                           [
                             comentariosTitle.findIndex(
-                              (data) => data._id == item._id
+                              (data) => data._id == item?._id
                             )
                           ].setAttribute("style", "display:none")
                       }
@@ -12356,14 +12356,14 @@ export default function AdminController() {
                       id="select-aprovacao"
                       onChange={(e) => setAprovarComentarioNow(e.target.value)}
                     >
-                      {/* <option value={item.liberar}>{item.liberar}</option>
-                      {item.liberar != "aprovado" ? (
+                      {/* <option value={item?.liberar}>{item?.liberar}</option>
+                      {item?.liberar != "aprovado" ? (
                         <option value="aprovado">Aprovado</option>
                       ) : (
                         <option value="reprovado">Reprovado</option>
                       )} */}
 
-                      {/* <option value={item.liberar}>{item.liberar}</option> */}
+                      {/* <option value={item?.liberar}>{item?.liberar}</option> */}
                       <option value="...">...</option>
                       <option value="aprovado">Aprovado</option>
                       <option value="reprovado">Reprovado</option>
@@ -12375,12 +12375,12 @@ export default function AdminController() {
                       }}
                     >
                       {" "}
-                      {item.liberar}
+                      {item?.liberar}
                     </strong>
                   </div>
                   <button
                     type="button"
-                    onClick={() => aprovarcomentarioFunction(item._id)}
+                    onClick={() => aprovarcomentarioFunction(item?._id)}
                   >
                     Atualizar aprovação
                   </button>

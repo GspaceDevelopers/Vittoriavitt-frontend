@@ -32,7 +32,7 @@ export default function Footer() {
   useEffect(() => {
     api.get('/edicao')
       .then((value) => {
-        setData(value.data)
+        setData(value?.data)
       })
   }, [data])
 
@@ -181,14 +181,14 @@ export default function Footer() {
           <div className="redes-text-flex-direction">
             <span>Nossas Redes</span>
             {<div className="redes-sociais-footer">
-              <a href={data.map(item => item.linkredes.link1)[0]}>
-                <img src={data.map(item => item.icon1)[0] == ''? face : data.map(item => item.icon1)[0] }></img>
+              <a href={data.map(item => item?.linkredes?.link1)[0]}>
+                <img src={data.map(item => item?.icon1)[0] == ''? face : data.map(item => item.icon1)[0] }></img>
               </a>
-              <a href={data.map(item => item.linkredes.link2)[0]}>
-                <img src={data.map(item => item.icon2)[0] == ''? insta : data.map(item => item.icon2)[0]}></img>
+              <a href={data.map(item => item?.linkredes?.link2)[0]}>
+                <img src={data.map(item => item?.icon2)[0] == ''? insta : data.map(item => item.icon2)[0]}></img>
               </a>
-              <a href={data.map(item => item.linkredes.link3)[0]}>
-                <img src={data.map(item => item.icon3)[0] == ''? whats : data.map(item => item.icon3)[0]}></img>
+              <a href={data.map(item => item?.linkredes?.link3)[0]}>
+                <img src={data.map(item => item?.icon3)[0] == ''? whats : data.map(item => item.icon3)[0]}></img>
               </a>
       </div>}
             <div className="info-empresa-footer">

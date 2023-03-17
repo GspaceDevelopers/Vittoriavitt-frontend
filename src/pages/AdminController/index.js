@@ -248,9 +248,9 @@ export default function AdminController() {
   useEffect(() => {
     setTextofretegratis(dadosedicao.map((item) => item.componentetexto1)[0]);
     setParcelas(dadosedicao.map((item) => item.parcelas)[0]);
-    setLink1(dadosedicao.map((item) => item.linkredes.link1)[0]);
-    setLink2(dadosedicao.map((item) => item.linkredes.link2)[0]);
-    setLink3(dadosedicao.map((item) => item.linkredes.link3)[0]);
+    setLink1(dadosedicao.map((item) => item.linkredes?.link1)[0]);
+    setLink2(dadosedicao.map((item) => item.linkredes?.link2)[0]);
+    setLink3(dadosedicao.map((item) => item.linkredes?.link3)[0]);
     setTelefoneloja(dadosedicao.map((item) => item.telefoneloja)[0]);
     setEmilloja(dadosedicao.map((item) => item.emailloja)[0]);
     setCnpjloja(dadosedicao.map((item) => item.cnpjloja)[0]);
@@ -280,9 +280,9 @@ export default function AdminController() {
     });
   }, [comentariosTitle]);
 
-  
+
   useEffect(() => {
-    const emailuser = JSON.parse(localStorage.getItem("sessaouser"));
+    const emailuser = JSON.parse(localStorage.getItem("sessaouser") || '[]');
     setEmailatual(emailuser.email);
   }, [modaleditadados]);
 
@@ -1741,7 +1741,7 @@ export default function AdminController() {
       promocao: promocao,
       promocao2: promocao2,
       qtdpromocao2: qtdpromocao2,
-      desconto: detalhesproduto.promocao2 == false ? "" : desconto,
+      desconto: promocao2 == 'false' ? "" : desconto,
       subcategoria1: subcategoriaupdate1,
       subcategoria2: subcategoriaupdate2,
       subcategoria3: subcategoriaupdate3,
@@ -3549,8 +3549,7 @@ export default function AdminController() {
             urlbanner7 == ""
               ? dadosedicao.map((item) => item.banners.banner7)[0]
               : urlbanner7,
-        },
-        linkredes: {
+        },linkredes: {
           link1:
             link1 == ""
               ? dadosedicao.map((item) => item.linkredes.link1)[0]

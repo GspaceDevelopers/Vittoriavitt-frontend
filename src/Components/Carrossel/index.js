@@ -12,80 +12,82 @@ const Carrossel = () => {
     api2.get("/edicao").then((data) => {
       setDadosedicao(data.data);
     });
-  }, [dadosedicao]);
+
+  }, []);
 
   const slideImages = [
     {
-      url: dadosedicao.map(item => item.componentelogos?.logo1),
-      link: dadosedicao.map(item => item?.url1)
+      url: dadosedicao.map(item => item.componentelogos.logo1)[0],
+      link: dadosedicao.map(item => item.url1)[0]
     },
     {
-      url: dadosedicao.map(item => item.componentelogos?.logo2),
-      link: dadosedicao.map(item => item?.url2)
+      url: dadosedicao.map(item => item.componentelogos.logo2)[0],
+      link: dadosedicao.map(item => item.url2)[0]
 
     },
     {
-      url: dadosedicao.map(item => item.componentelogos?.logo3),
-      link: dadosedicao.map(item => item?.url3)
+      url: dadosedicao.map(item => item.componentelogos.logo3)[0],
+      link: dadosedicao.map(item => item.url3)[0]
     },
     {
-      url: dadosedicao.map(item => item.componentelogos?.logo4),
-      link: dadosedicao.map(item => item?.url4)
+      url: dadosedicao.map(item => item.componentelogos.logo4)[0],
+      link: dadosedicao.map(item => item.url4)[0]
     },
     {
-      url: dadosedicao.map(item => item.componentelogos?.logo5),
-      link: dadosedicao.map(item => item?.url5)
+      url: dadosedicao.map(item => item.componentelogos.logo5)[0],
+      link: dadosedicao.map(item => item.url5)[0]
     },
     {
-      url: dadosedicao.map(item => item.componentelogos?.logo6),
-      link: dadosedicao.map(item => item?.url6)
+      url: dadosedicao.map(item => item.componentelogos.logo6)[0],
+      link: dadosedicao.map(item => item.url6)[0]
     },
 
   ];
 
   const slideImages2 = [
     {
-      url: dadosedicao.map(item => item.banners?.banner1),
-      link: dadosedicao.map(item => item?.url1)
+      url: dadosedicao.map(item => item.banners?.banner1)[0],
+      link: dadosedicao.map(item => item?.url1)[0]
 
     },
     {
-      url: dadosedicao.map(item => item.banners?.banner2),
-      link: dadosedicao.map(item => item?.url1)
+      url: dadosedicao.map(item => item.banners?.banner2)[0],
+      link: dadosedicao.map(item => item?.url2)[0]
 
     },
     {
-      url: dadosedicao.map(item => item.banners?.banner3),
-      link: dadosedicao.map(item => item?.url1)
+      url: dadosedicao.map(item => item.banners?.banner3)[0],
+      link: dadosedicao.map(item => item?.url3)[0]
 
     },
     {
-      url: dadosedicao.map(item => item.banners?.banner4),
-      link: dadosedicao.map(item => item?.url1)
+      url: dadosedicao.map(item => item.banners?.banner4)[0],
+      link: dadosedicao.map(item => item?.url4)[0]
 
     },
     {
-      url: dadosedicao.map(item => item.banners?.banner5),
-      link: dadosedicao.map(item => item?.url1)
+      url: dadosedicao.map(item => item.banners?.banner5)[0],
+      link: dadosedicao.map(item => item?.url5)[0]
 
     },
     {
-      url: dadosedicao.map(item => item.banners?.banner6),
-      link: dadosedicao.map(item => item?.url1)
-
+      url: dadosedicao.map(item => item.banners?.banner6)[0],
+      link: dadosedicao.map(item => item?.url6)[0]
     },
 
   ];
 
-  const filter = slideImages.filter(item => item.url !== '')
-  const filter2 = slideImages2.filter(item => item.url !== '')
+  const filter = slideImages.filter(item => item.url != '' )
+  const filter2 = slideImages2.filter(item => item.url != '')
+
+  console.log(filter)
 
   return (
 
     <div className="container-pai-carrossel">
       <div className="slide-container">
         {window.screen.width > 500 ?
-          <Fade autoplay duration={3000} >
+          <Fade arrows={filter.length == 1 ? false : true} autoplay duration={3000} >
             {filter.map((fadeImage, index) => (
               <div key={index}>
                 <img onClick={()=> window.location.href=`${fadeImage.link}`} style={{ width: '100%' }} src={fadeImage.url} />
@@ -93,7 +95,7 @@ const Carrossel = () => {
             ))}
           </Fade> :
 
-          <Fade autoplay duration={3000}>
+          <Fade arrows={filter.length == 1 ? false : true} autoplay duration={3000}>
             {filter2.map((fadeImage, index) => (
               <div key={index}>
                 <img onClick={()=> window.location.href=`${fadeImage.link}`} style={{ width: '100%' }} src={fadeImage.url} />

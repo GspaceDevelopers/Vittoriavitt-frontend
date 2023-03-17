@@ -16,69 +16,69 @@ const Carrossel = () => {
 
   const slideImages = [
     {
-      url: dadosedicao.map(item => item.componentelogos.logo1),
-      link: dadosedicao.map(item => item.url1)
+      url: dadosedicao.map(item => item.componentelogos?.logo1),
+      link: dadosedicao.map(item => item?.url1)
     },
     {
-      url: dadosedicao.map(item => item.componentelogos.logo2),
-      link: dadosedicao.map(item => item.url2)
+      url: dadosedicao.map(item => item.componentelogos?.logo2),
+      link: dadosedicao.map(item => item?.url2)
 
     },
     {
-      url: dadosedicao.map(item => item.componentelogos.logo3),
-      link: dadosedicao.map(item => item.url3)
+      url: dadosedicao.map(item => item.componentelogos?.logo3),
+      link: dadosedicao.map(item => item?.url3)
     },
     {
-      url: dadosedicao.map(item => item.componentelogos.logo4),
-      link: dadosedicao.map(item => item.url4)
+      url: dadosedicao.map(item => item.componentelogos?.logo4),
+      link: dadosedicao.map(item => item?.url4)
     },
     {
-      url: dadosedicao.map(item => item.componentelogos.logo5),
-      link: dadosedicao.map(item => item.url5)
+      url: dadosedicao.map(item => item.componentelogos?.logo5),
+      link: dadosedicao.map(item => item?.url5)
     },
     {
-      url: dadosedicao.map(item => item.componentelogos.logo6),
-      link: dadosedicao.map(item => item.url6)
+      url: dadosedicao.map(item => item.componentelogos?.logo6),
+      link: dadosedicao.map(item => item?.url6)
     },
 
   ];
 
   const slideImages2 = [
     {
-      url: dadosedicao.map(item => item.banners.banner1),
-      link: dadosedicao.map(item => item.url1)
+      url: dadosedicao.map(item => item.banners?.banner1),
+      link: dadosedicao.map(item => item?.url1)
 
     },
     {
-      url: dadosedicao.map(item => item.banners.banner2),
-      link: dadosedicao.map(item => item.url1)
+      url: dadosedicao.map(item => item.banners?.banner2),
+      link: dadosedicao.map(item => item?.url1)
 
     },
     {
-      url: dadosedicao.map(item => item.banners.banner3),
-      link: dadosedicao.map(item => item.url1)
+      url: dadosedicao.map(item => item.banners?.banner3),
+      link: dadosedicao.map(item => item?.url1)
 
     },
     {
-      url: dadosedicao.map(item => item.banners.banner4),
-      link: dadosedicao.map(item => item.url1)
+      url: dadosedicao.map(item => item.banners?.banner4),
+      link: dadosedicao.map(item => item?.url1)
 
     },
     {
-      url: dadosedicao.map(item => item.banners.banner5),
-      link: dadosedicao.map(item => item.url1)
+      url: dadosedicao.map(item => item.banners?.banner5),
+      link: dadosedicao.map(item => item?.url1)
 
     },
     {
-      url: dadosedicao.map(item => item.banners.banner6),
-      link: dadosedicao.map(item => item.url1)
+      url: dadosedicao.map(item => item.banners?.banner6),
+      link: dadosedicao.map(item => item?.url1)
 
     },
 
   ];
 
-  const filter = slideImages.filter(item => item.url != '')
-  const filter2 = slideImages2.filter(item => item.url != '')
+  const filter = slideImages.filter(item => item.url !== '')
+  const filter2 = slideImages2.filter(item => item.url !== '')
 
   return (
 

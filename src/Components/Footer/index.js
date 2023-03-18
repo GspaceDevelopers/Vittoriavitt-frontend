@@ -182,19 +182,19 @@ export default function Footer() {
             <span>Nossas Redes</span>
             {<div className="redes-sociais-footer">
               <a href={data.map(item => item?.linkredes?.link1)[0]}>
-                <img src={data.map(item => item?.icon1)[0] == ''? face : data.map(item => item.icon1)[0] }></img>
+                <img src={data.map(item => item?.icon1)[0] == ''? face : data.map(item => item?.icon1)[0] }></img>
               </a>
               <a href={data.map(item => item?.linkredes?.link2)[0]}>
-                <img src={data.map(item => item?.icon2)[0] == ''? insta : data.map(item => item.icon2)[0]}></img>
+                <img src={data.map(item => item?.icon2)[0] == ''? insta : data.map(item => item?.icon2)[0]}></img>
               </a>
               <a href={data.map(item => item?.linkredes?.link3)[0]}>
-                <img src={data.map(item => item?.icon3)[0] == ''? whats : data.map(item => item.icon3)[0]}></img>
+                <img src={data.map(item => item?.icon3)[0] == ''? whats : data.map(item => item?.icon3)[0]}></img>
               </a>
       </div>}
             <div className="info-empresa-footer">
-              <p>{data.map(item => item.telefoneloja)[0]}</p>
-              <p>{data.map(item => item.emailloja)[0]}</p>
-              <p>{data.map(item => item.cnpjloja)[0]}</p>
+              <p>{data.map(item => item?.telefoneloja)[0]}</p>
+              <p>{data.map(item => item?.emailloja)[0]}</p>
+              <p>{data.map(item => item?.cnpjloja)[0]}</p>
             </div>
           </div>
         </div>

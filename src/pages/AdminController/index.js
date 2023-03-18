@@ -2201,7 +2201,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
 
@@ -2443,7 +2443,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
 
@@ -2685,7 +2685,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner4() {
@@ -2926,7 +2926,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner5() {
@@ -3167,7 +3167,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner6() {
@@ -3408,7 +3408,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner7() {
@@ -3645,7 +3645,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner8() {
@@ -3886,7 +3886,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner9() {
@@ -4127,7 +4127,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner10() {
@@ -4366,7 +4366,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner11() {
@@ -4605,7 +4605,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function tirabanner12() {
@@ -4844,7 +4844,7 @@ export default function AdminController() {
       .then(() => {
         setLoad(false);
         toast.success("Homepage atualizada com sucesso!");
-        window.location.reload();
+      
       });
   }
   async function atualizarhome() {

@@ -77,8 +77,8 @@ const Carrossel = () => {
 
   ];
 
-  const filter = slideImages.filter(item => item.url != '' )
-  const filter2 = slideImages2.filter(item => item.url != '')
+  const filter = slideImages.filter(item => item.url != '' && item.url != undefined)
+  const filter2 = slideImages2.filter(item => item.url != '' && item.url != undefined)
 
   return (
 
@@ -88,7 +88,7 @@ const Carrossel = () => {
           <Fade arrows={filter.length == 1 ? false : true} autoplay duration={3000} >
             {filter.map((fadeImage, index) => (
               <div key={index}>
-                <img onClick={()=> window.location.href=`${fadeImage.link}`} style={{ width: '100%' }} src={fadeImage.url} />
+                <img onClick={() => window.location.href = `${fadeImage.link}`} style={{ width: '100%' }} src={fadeImage.url} />
               </div>
             ))}
           </Fade> :
@@ -96,7 +96,7 @@ const Carrossel = () => {
           <Fade arrows={filter.length == 1 ? false : true} autoplay duration={3000}>
             {filter2.map((fadeImage, index) => (
               <div key={index}>
-                <img onClick={()=> window.location.href=`${fadeImage.link}`} style={{ width: '100%' }} src={fadeImage.url} />
+                <img onClick={() => window.location.href = `${fadeImage.link}`} style={{ width: '100%' }} src={fadeImage.url} />
               </div>
             ))}
           </Fade>

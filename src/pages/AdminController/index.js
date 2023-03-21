@@ -1966,7 +1966,7 @@ export default function AdminController() {
   async function tirabanner1() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -2208,7 +2208,7 @@ export default function AdminController() {
   async function tirabanner2() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -2450,7 +2450,7 @@ export default function AdminController() {
   async function tirabanner3() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -2691,7 +2691,7 @@ export default function AdminController() {
   async function tirabanner4() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -2932,7 +2932,7 @@ export default function AdminController() {
   async function tirabanner5() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -3173,7 +3173,7 @@ export default function AdminController() {
   async function tirabanner6() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -3414,7 +3414,7 @@ export default function AdminController() {
   async function tirabanner7() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -3651,7 +3651,7 @@ export default function AdminController() {
   async function tirabanner8() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -3892,7 +3892,7 @@ export default function AdminController() {
   async function tirabanner9() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -4133,7 +4133,7 @@ export default function AdminController() {
   async function tirabanner10() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -4372,7 +4372,7 @@ export default function AdminController() {
   async function tirabanner11() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -4611,7 +4611,7 @@ export default function AdminController() {
   async function tirabanner12() {
     setLoad(true);
     await api2
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
@@ -4850,7 +4850,7 @@ export default function AdminController() {
   async function atualizarhome() {
     setLoad(true);
     await api
-      .put(`/edicao/63ecc3bae25f69b653d416fc`, {
+      .put(`/edicao/641a0280f583ba3c77172b53`, {
         headers: {
           Authorization: "Access-Control-Allow-Origin",
         },
